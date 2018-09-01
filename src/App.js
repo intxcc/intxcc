@@ -8,163 +8,413 @@ import { interpolate } from 'flubber'
 
 import autobind from 'autobind-decorator'
 
-const paths = [
-  [
-    {
-      'fill': '#1a1a1a',
-      'path': 'm212.75 31.767 12.294-26.364-52.116 11.078z'
-    }, {
-      'fill': '#1a1a1a',
-      'path': 'm81.592 48.472 27.402 15.189 89.262-45.481z'
-    }, {
-      'fill': '#1a1a1a',
-      'path': 'm196.85 133.25-95.25-27.186 111.15-53.115z'
+import Layouts from './layouts/index'
+
+// Converts from degrees to radians.
+Math.radians = function (degrees) {
+  return degrees * Math.PI / 180
+}
+
+function lineIntersect (a, b) {
+  a.m = (a[0].y - a[1].y) / (a[0].x - a[1].x) // slope of line 1
+  b.m = (b[0].y - b[1].y) / (b[0].x - b[1].x) // slope of line 2
+
+  if (a.m - b.m < Number.EPSILON) {
+    let c = a
+    a = b
+    b = c
+  }
+
+  return a.m - b.m < Number.EPSILON ? undefined
+    : {
+      x: (a.m * a[0].x - b.m * b[0].x + b[0].y - a[0].y) / (a.m - b.m),
+      y: (a.m * b.m * (b[0].x - a[0].x) + b.m * a[0].y - a.m * b[0].y) / (b.m - a.m)
     }
-  ], [
-    {
-      'fill': '#1a1a1a',
-      'path': 'm204.97 48.464 5.645-12.106-19.312-7.4127z'
-    }, {
-      'fill': '#1a1a1a',
-      'path': 'm63.852 53.072 31.568 17.498-31.551 16.076z'
-    }, {
-      'fill': '#fff',
-      'stroke': '#1a1a1a',
-      'path': 'm88.867 45.012 8.792 32.279 45.745-53.446z'
-    }
-  ], [
-    {
-      'stroke': '#fff',
-      'path': 'm212.16 30.122 10.686-22.916-45.299 9.629z'
-    }, {
-      'stroke': '#fff',
-      'stroke-miterlimit': '11',
-      'path': 'm85.238 48.872 23.844 13.217 77.673-39.576z'
-    }, {
-      'stroke': '#fff',
-      'path': 'm194.81 129.67-84.779-24.198 98.932-47.276z'
-    }
-  ], [
-    {
-      'stroke': '#fff',
-      'path': 'm204.83 46.214 4.3016-9.2248-14.716-5.6485z'
-    }, {
-      'stroke': '#fff',
-      'path': 'm65.425 55.772 26.529 14.705-26.515 13.51z'
-    }, {
-      'stroke': '#1a1a1a',
-      'path': 'm88.867 90.732 8.2714 5.5031-8.2714-30.618z'
-    }
-  ]
-]
+}
 
 class App extends React.Component {
   constructor (props) {
     super(props)
+
+    this.helperDivs = false
+    this.helperLinesIndex = false
+
+    // Use this variable to set the last state on initialization
+    this.initialized = false
+
     this.state = {
-      index: 0
+      svgViewbox: '0 0 100 100',
+      layout: 'Startpage'
     }
+  }
 
-    this.dontAnimate = true
-    this.morphing = false
+  componentDidMount () {
+    window.addEventListener('resize', this.updateDimensions)
+
+    this.updateDimensions()
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.updateDimensions)
   }
 
   @autobind
-  goNext () {
-    let newIndex = this.state.index + 1
+  updateDimensions () {
+    const siteWrapper = this.siteWrapper
 
-    if (newIndex >= paths[0].length) {
-      newIndex = 0
+    let newState = Object.assign({}, this.state)
+    newState.svgViewbox = `0 0 ${siteWrapper.clientWidth} ${siteWrapper.clientHeight}`
+
+    if (this.helperDivs === false) {
+      newState = this.loadLayout(newState, newState.layout)
     }
 
-    this.morphing = true
+    newState = this.drawHelperLines(newState)
+    newState = this.drawPolygons(newState)
 
-    if (this.dontAnimate) {
-      newIndex = this.state.index
-      this.dontAnimate = false
+    if (this.helperDivs && this.initialized === false) {
+      this.initialized = true
+
+      // Initialisation doesn't have to be animated
+      this.animate = false
+
+      setTimeout(this.toStories, 20)
+      setTimeout(this.toStartpage, 101)
     }
 
-    this.setState({
-      index: newIndex
-    })
+    this.setState(newState)
   }
 
   @autobind
-  beginMorphing () {
-    if (this.morphing === true) {
+  toStartpage () {
+    this.toLayout('Startpage')
+  }
+
+  @autobind
+  toStories () {
+    this.toLayout('Stories')
+  }
+
+  @autobind
+  toContact () {
+    this.toLayout('Contact')
+  }
+
+  @autobind
+  toLayout (layoutName) {
+    // Waitr for animation to end
+    if (this.animate) {
       return
     }
 
-    this.goNext()
+    let newState = Object.assign({}, this.state)
+    newState = this.loadLayout(newState, layoutName)
+    this.setState(newState)
   }
 
   @autobind
-  endMorphing () {
-    this.morphing = false
+  stopAnimation () {
+    this.animate = false
+  }
+
+  @autobind
+  loadLayout (newState, layoutName) {
+    newState.layoutName = layoutName
+    newState.helperLines = Layouts[layoutName].HelperLines
+    newState.polygons = Layouts[layoutName].Polygons
+
+    this.animate = true
+
+    newState.last = {}
+    newState.last.layout = this.state.layout
+    if (this.state.helperLines) {
+      newState.last.helperLines = this.state.helperLines
+    }
+
+    if (this.state.polygons) {
+      newState.last.polygons = this.state.polygons
+    }
+
+    // Index helper lines
+    this.helperLinesIndex = {}
+    this.helperDivs = false
+    for (let index in newState.helperLines) {
+      this.helperLinesIndex[newState.helperLines[index].name] = index
+    }
+
+    // Reload at end of js-event-loop
+    setTimeout(this.updateDimensions, 0)
+
+    return newState
+  }
+
+  @autobind
+  drawPolygons (newState) {
+    if (!this.helperDivs) {
+      return newState
+    }
+
+    for (let index in newState.polygons) {
+      let points = []
+      for (let intersectionIndex in newState.polygons[index].intersections) {
+        let intersection = newState.polygons[index].intersections[intersectionIndex]
+
+        let line1 = newState.helperLines[this.helperLinesIndex[intersection[1]]]
+        let line2 = newState.helperLines[this.helperLinesIndex[intersection[0]]]
+
+        let intersectionPos = lineIntersect([
+          line1.from,
+          line1.to
+        ], [
+          line2.from,
+          line2.to
+        ])
+
+        if (!intersectionPos) {
+          return newState
+        }
+
+        points.push({
+          x: intersectionPos.x,
+          y: intersectionPos.y
+        })
+      }
+
+      if (!newState.polygons[index].fill) {
+        newState.polygons[index].fill = '#1a1a1a'
+      }
+
+      newState.polygons[index].points = points
+    }
+
+    return newState
+  }
+
+  @autobind
+  drawHelperLines (newState) {
+    if (!this.helperDivs) {
+      return newState
+    }
+
+    for (let index in newState.helperLines) {
+      let line = newState.helperLines[index]
+
+      if (!line.stroke) {
+        line.stroke = '#1a1a1a'
+      }
+
+      let pos
+      if (line.copy) {
+        pos = newState.helperLines[this.helperLinesIndex[line.copy]].pos
+        line.deg = newState.helperLines[this.helperLinesIndex[line.copy]].deg
+
+        if (line.reverse) {
+          line.deg -= 180
+        }
+
+        let move = 0
+        if (line.move) {
+          move = line.move
+        }
+
+        pos.x += Math.cos(Math.radians(line.deg + 90)) * move
+        pos.y += Math.sin(Math.radians(line.deg + 90)) * move
+      } else {
+        let div
+        let divRect
+        if (line.class) {
+          div = this.helperDivs[line.name]
+
+          divRect = div.getBoundingClientRect()
+        }
+
+        if (line.class) {
+          pos = {
+            x: divRect.right,
+            y: divRect.y
+          }
+        } else if (line.intersect) {
+          let line1 = newState.helperLines[this.helperLinesIndex[line.intersect.line1]]
+          let line2 = newState.helperLines[this.helperLinesIndex[line.intersect.line2]]
+
+          let intersection = lineIntersect([
+            line1.from,
+            line1.to
+          ], [
+            line2.from,
+            line2.to
+          ])
+
+          if (!intersection) {
+            return newState
+          }
+
+          pos = {
+            x: intersection.x,
+            y: intersection.y
+          }
+        } else {
+          return
+        }
+      }
+
+      let from = {
+        x: pos.x - 2000 * Math.cos(Math.radians(line.deg)),
+        y: pos.y - 2000 * Math.sin(Math.radians(line.deg))
+      }
+
+      let to = {
+        x: pos.x + 2000 * Math.cos(Math.radians(line.deg)),
+        y: pos.y + 2000 * Math.sin(Math.radians(line.deg))
+      }
+
+      newState.helperLines[index].from = from
+      newState.helperLines[index].to = to
+      newState.helperLines[index].pos = pos
+    }
+
+    return newState
   }
 
   @autobind
   render () {
-    const index = this.state.index
-
-    let interpolators = []
-    for (let path of paths) {
-      let path2 = index + 1
-      if (path2 >= paths[0].length) {
-        path2 = 0
+    let helperDivs
+    if (this.state.helperLines) {
+      if (!this.helperDivs) {
+        this.helperDivs = {}
       }
 
-      let path1 = path[index]
-      path2 = path[path2]
-
-      if (this.dontAnimate) {
-        path2 = path1
-      }
-
-      interpolators.push(
-        {
-          'interpolator': interpolate(path1['path'], path2['path'], { maxSegmentLength: 1 }),
-          'fill1': path1['fill'] || 'rgba(255,255,255,0)',
-          'stroke1': path1['stroke'] || 'rgba(255,255,255,0)',
-          'strokeWidth1': path1['stroke-width'] || 0.4,
-          'strokeMiterlimit1': path1['stroke-miterlimit'] || 4,
-          'fill2': path2['fill'] || 'rgba(255,255,255,0)',
-          'stroke2': path2['stroke'] || 'rgba(255,255,255,0)',
-          'strokeWidth2': path2['stroke-width'] || 0.4,
-          'strokeMiterlimit2': path2['stroke-miterlimit'] || 4
+      helperDivs = this.state.helperLines.map((config, index) => {
+        if (!config.class) {
+          return
         }
-      )
+
+        return (
+          <div
+            key={'helper-div-' + index + '-' + config.name}
+            className={config.class}
+            ref={ (helperDiv) => { this.helperDivs[config.name] = helperDiv }}>
+          </div>
+        )
+      })
     }
 
-    return (
-      <div id='main-wrapper'>
-        <svg width='100%' viewBox="0 0 232.27 138.68" onClick={this.beginMorphing}>
-          {interpolators.map((interpolator, i) => (
-            <Spring key={'interpolator_' + i} reset native
-              from={{
-                t: 0,
-                fill: interpolator['fill1'],
-                stroke: interpolator['stroke1']
-              }} to={{
-                t: 1,
-                fill: interpolator['fill2'],
-                stroke: interpolator['stroke2']
-              }} onRest={this.endMorphing} impl={TimingAnimation} config={{ duration: 400, easing: Easing.ease }}>
-              {({ t, fill, stroke }) => {
-                console.log(stroke)
+    let helperLines
+    if (this.state.helperLines) {
+      helperLines = this.state.helperLines.map((config, index) => {
+        if (!config.from) {
+          return
+        }
 
+        if (this.animate && this.state.last && this.state.last.helperLines) {
+          let lastConfig = this.state.last.helperLines[index]
+
+          let dLast = `M ${lastConfig.from.x},${lastConfig.from.y} ${lastConfig.to.x},${lastConfig.to.y} Z`
+          let d = `M ${config.from.x},${config.from.y} ${config.to.x},${config.to.y} Z`
+
+          return (
+            <Spring key={'polygon-spring-' + index + '-' + config.name} reset native
+              from={{
+                t: dLast
+              }} to={{
+                t: d
+              }} impl={TimingAnimation} config={{ duration: 1000, easing: Easing.ease }}>
+              {({ t }) => {
                 return (
                   <animated.path
-                    fill={fill}
-                    stroke={stroke}
-                    strokeWidth={interpolator['strokeWidth2']}
-                    strokeMiterlimit={interpolator['strokeMiterlimit2']}
-                    d={t.interpolate(interpolator['interpolator'])} />
+                    strokeWidth='0.1'
+                    stroke={config.stroke}
+                    d={t} />
                 )
               }}
             </Spring>
-          ))}
+          )
+        } else {
+          return (
+            <path
+              key={'helper-line-' + index + '-' + config.name}
+              d={`M ${config.from.x},${config.from.y} ${config.to.x},${config.to.y} Z`}
+              id={'helper-line-' + index + '-' + config.name}
+              strokeWidth='0.1'
+              stroke={config.stroke} />
+          )
+        }
+      })
+    }
+
+    let polygons
+    if (this.state.polygons) {
+      polygons = this.state.polygons.map((polygon, index) => {
+        if (!polygon.points) {
+          return
+        }
+
+        let d = 'M '
+        for (let point of polygon.points) {
+          d += point.x + ',' + point.y + ' '
+        }
+        d += ' Z'
+
+        if (this.animate && this.state.last && this.state.last.polygons) {
+          let dLast = 'M '
+          for (let point of this.state.last.polygons[index].points) {
+            dLast += point.x + ',' + point.y + ' '
+          }
+          dLast += ' Z'
+
+          let interpolator = interpolate(dLast, d, { maxSegmentLength: 6 })
+
+          return (
+            <Spring key={'polygon-spring-' + index + '-' + polygon.name} reset native
+              from={{
+                t: 0,
+                tt: dLast
+              }} to={{
+                t: 1,
+                tt: d
+              }} impl={TimingAnimation} onRest={this.stopAnimation} config={{ duration: 1000, easing: Easing.ease }}>
+              {({ t, tt }) => {
+                return (
+                  <animated.path
+                    fill={polygon.fill}
+                    d={t.interpolate(interpolator)} />
+                )
+              }}
+            </Spring>
+          )
+        } else {
+          return (
+            <path
+              key={'polygon-' + index + '-' + polygon.name}
+              d={d}
+              id={'polygon-' + index + '-' + polygon.name}
+              fill={polygon.fill} />
+          )
+        }
+      })
+    }
+    console.log('Rendered.')
+
+    return (
+      <div
+        className='site-wrapper'
+        ref={ (siteWrapper) => { this.siteWrapper = siteWrapper }} >
+        <svg className='svg-wrapper' viewBox={this.state.svgViewbox} onClick={this.beginMorphing}>
+          {polygons}
+          {helperLines}
         </svg>
+        {helperDivs}
+        <div className='change-btn-wrapper'>
+          <div className='change-btn' onClick={this.toStartpage}>
+            Startpage
+          </div>
+          <div className='change-btn' onClick={this.toStories}>
+            Stories
+          </div>
+          <div className='change-btn' onClick={this.toContact}>
+            Contact
+          </div>
+        </div>
       </div>
     )
   }

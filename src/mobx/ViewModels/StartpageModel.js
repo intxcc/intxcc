@@ -1,3 +1,5 @@
+// This is the ViewModel of the startpage
+
 const ViewModel = {
   name: 'startpage',
   guides: {

@@ -17,7 +17,19 @@ const ViewEntity = types.model({
     const type = config.type
     const deg = config.deg
     const pos = config.pos
-    const intersect = config.intersect
+    let intersect = config.intersect
+
+    if (type === 'intersection' && Array.isArray(intersect)) {
+      let intersectLines = []
+      for (let mapIndex of intersect) {
+        intersectLines.push({
+          from: self.guides.get(mapIndex).from,
+          to: self.guides.get(mapIndex).to
+        })
+      }
+
+      intersect = intersectLines
+    }
 
     if (!self.guides[index]) {
       self.guides.set(index, EntityGuideModel.create({

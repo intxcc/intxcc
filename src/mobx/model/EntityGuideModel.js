@@ -2,14 +2,12 @@
 
 import { types } from 'mobx-state-tree'
 
-import { degreesToRadians } from '../../miscFunctions'
+import Point from './Point'
+import Line from './Line'
+
+import { degreesToRadians, lineIntersect } from '../../miscFunctions'
 
 const DefaultGuideLength = 2000
-
-const Point = types.model({
-  x: types.number,
-  y: types.number
-})
 
 /**
  * The model for an actual guide line, that get drawn. The position and the angle gets copied from the GuideModel of the ViewModel. The from and to is calculated from these properties.
@@ -22,7 +20,7 @@ const EntityGuideModel = types.model({
     x: 0,
     y: 0
   }),
-  intersect: types.optional(types.array(types.string), []),
+  intersect: types.optional(types.array(Line), []),
   length: types.optional(types.number, DefaultGuideLength)
 }).views(self => ({
   get position () {
@@ -30,10 +28,13 @@ const EntityGuideModel = types.model({
       case 'div':
         return self.pos
       case 'intersection':
-        return {
-          x: 0,
-          y: 0
-        }
+        return lineIntersect([
+          self.intersect.get(0).from,
+          self.intersect.get(0).to
+        ], [
+          self.intersect.get(1).from,
+          self.intersect.get(1).to
+        ])
     }
   },
   get from () {

@@ -3,18 +3,60 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { values } from 'mobx'
+import { values, keys } from 'mobx'
 import { observer } from 'mobx-react'
+
+import autobind from 'autobind-decorator'
 
 import View from './view/View'
 
-const App = observer(props => (
-  <div>
-    {values(props.store.views).map((view, index) => (
-      <View key={'view-' + index} view={view} />
-    ))}
-  </div>
-))
+@observer
+class App extends React.Component {
+  componentDidMount () {
+    window.addEventListener('resize', this.updateDimensions)
+
+    this.updateDimensions()
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.updateDimensions)
+  }
+
+  @autobind
+  updateDimensions () {
+    const siteWrapper = this.siteWrapper
+    const global = this.props.store.global
+
+    global.setClientDimensions(siteWrapper.clientWidth, siteWrapper.clientHeight)
+  }
+
+  @autobind
+  render () {
+    return (
+      <div
+        className='site-wrapper'
+        ref={ (siteWrapper) => { this.siteWrapper = siteWrapper }} >
+        {values(this.props.store.views).map((view, index) => {
+          // Don't render empty views.
+          if (view.model === '') {
+            return
+          }
+
+          const key = keys(this.props.store.views)[index]
+
+          return (
+            <View
+              key={'view-' + key}
+              className={'view-' + key}
+              global={this.props.store.global}
+              viewModel={this.props.store.viewModels.get(view.model)}
+              view={view} />
+          )
+        })}
+      </div>
+    )
+  }
+}
 
 App.propTypes = {
   store: PropTypes.object

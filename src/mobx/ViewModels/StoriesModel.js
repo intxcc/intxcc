@@ -1,32 +1,34 @@
-// This is the ViewModel of the startpage
+// This is the ViewModel of the stories view
 
 const ViewModel = {
-  name: 'startpage',
+  name: 'stories',
   guides: {
     'a': {
-      deg: -12,
+      deg: -14.556,
       vpos: 'top',
       hpos: 'right'
     },
     'b': {
-      deg: -65,
+      deg: -27,
       vpos: 'top',
       hpos: 'right'
     },
     'c': {
-      deg: -159,
+      deg: -151,
       vpos: 'top',
       hpos: 'right'
     },
     'd': {
-      deg: -159,
+      deg: -151,
       vpos: 'top',
       hpos: 'right'
     },
     'e': {
-      deg: -125,
-      vpos: 'top',
-      hpos: 'right'
+      type: 'intersection',
+      intersect: [
+        'a', 'd'
+      ],
+      deg: -90
     }
   }
 }

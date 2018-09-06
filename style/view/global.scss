@@ -1,0 +1,57 @@
+.site-wrapper,
+.view-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: #fff;
+
+  width: 100%;
+  min-width: $global--min-view-width;
+
+  min-height: 100%;
+}
+
+@media screen and (max-height: $global--min-view-height) {
+  .site-wrapper,
+  .view-wrapper {
+    min-height: $global--min-view-height;
+  }
+}
+
+.view-model,
+.view-content,
+.svg-wrapper {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.view-buffer {
+  z-index: 99;
+}
+
+.view-main {
+  z-index: 100;
+}
+
+.view-overlay {
+  display: none;
+  z-index: 101;
+}
+
+.view-model {
+  z-index: 10;
+}
+
+.view-content {
+  z-index: 20;
+}
+
+.guide {
+  position: absolute;
+}

@@ -14,7 +14,7 @@ const GlobalModel = types.model({
   },
   get strokeWidth () {
     const max = Math.max(self.clientWidth, self.clientHeight)
-    return (((max - 800) / 1920) * 3) + 1.5
+    return (((max - 800) / 1920) * 3) + 1
   }
 })).actions(self => {
   function setClientDimensions (clientWidth, clientHeight) {

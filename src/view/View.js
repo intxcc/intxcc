@@ -186,7 +186,7 @@ class View extends React.Component {
         </div>
         <div className={'view-content'}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
-          {console.log(this.props.view.model)}
+          {this.props.children}
         </div>
       </div>
     )
@@ -197,7 +197,8 @@ View.propTypes = {
   global: PropTypes.object,
   view: PropTypes.object,
   viewModel: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
+  children: PropTypes.object
 }
 
 export default View

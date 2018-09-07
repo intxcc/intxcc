@@ -9,6 +9,11 @@ import { observer } from 'mobx-react'
 import autobind from 'autobind-decorator'
 
 import View from './view/View'
+import StoriesView from './view/StoriesView'
+
+const Views = {
+  'stories': StoriesView
+}
 
 @observer
 class App extends React.Component {
@@ -44,13 +49,20 @@ class App extends React.Component {
 
           const key = keys(this.props.store.views)[index]
 
+          const loadView = React.createElement(Views[view.model], {
+            global: this.props.store.global,
+            view: view
+          })
+
           return (
             <View
               key={'view-' + key}
               className={'view-' + key}
               global={this.props.store.global}
               viewModel={this.props.store.viewModels.get(view.model)}
-              view={view} />
+              view={view}>
+              {loadView}
+            </View>
           )
         })}
       </div>

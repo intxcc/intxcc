@@ -21,10 +21,15 @@ const ViewEntity = types.model({
     const fill = config.fill
 
     let points = []
-    // for (let pointConfig of config.points) {
-    //   let point = []
-    //   point.push()
-    // }
+    for (let pointConfig of config.points) {
+      points.push(lineIntersect([
+        self.guides.get(pointConfig[0]).from,
+        self.guides.get(pointConfig[0]).to
+      ], [
+        self.guides.get(pointConfig[1]).from,
+        self.guides.get(pointConfig[1]).to
+      ]))
+    }
 
     if (!self.polygons[index]) {
       self.polygons.set(index, EntityPolygonModel.create({

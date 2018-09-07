@@ -88,6 +88,7 @@ class View extends React.Component {
   render () {
     const props = this.props
     const guideKeys = keys(props.viewModel.guides)
+    const polygonKeys = keys(props.viewModel.polygons)
 
     if (this.updateTimeout === false) {
       // Set the update of the helper divs at the end of the javascript event loop queue
@@ -107,6 +108,22 @@ class View extends React.Component {
                   key={props.className + '-' + props.view.model + '-guide-' + key}
                   d={`M ${guide.from.x},${guide.from.y} ${guide.to.x},${guide.to.y} Z`}
                   stroke='#999' strokeWidth='0.2' />
+              )
+            })}
+            {values(props.view.polygons).map((polygon, key) => {
+              key = polygonKeys[key]
+
+              let d = 'M '
+              for (let point of polygon.points) {
+                d += point.x + ',' + point.y + ' '
+              }
+              d += ' Z'
+
+              return (
+                <path
+                  key={props.className + '-' + props.view.model + '-polygon-' + key}
+                  d={d}
+                  fill={polygon.fill} />
               )
             })}
           </svg>

@@ -31,7 +31,6 @@ const ViewModel = {
   },
   polygons: {
     'A': {
-      fill: '#f00',
       points: [
         ['d', 'e'],
         ['e', 'b'],
@@ -39,7 +38,6 @@ const ViewModel = {
       ]
     },
     'B': {
-      fill: '#f0f',
       points: [
         ['c', 'a'],
         ['c', 'b'],

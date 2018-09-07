@@ -2,6 +2,8 @@
 
 import { types } from 'mobx-state-tree'
 
+import Defaults from '../../config/defaults'
+
 /**
  * Describes a guide line. The position of the guide is given by the view-scss-file.
  * The following for example states the div for the guide line with index 'a'
@@ -26,7 +28,7 @@ const GuideModel = types.model({
  */
 const PolygonModel = types.model({
   // index of map is the name of the polygon model
-  fill: types.optional(types.string, '#1a1a1a'),
+  fill: types.optional(types.string, Defaults.PolygonFill),
   points: types.array(types.array(types.string))
 })
 

@@ -58,7 +58,11 @@ class View extends React.Component {
       // MARKER_1 Insert additional guide properties here
       this.props.view.setGuide({
         name: index,
+        hide: this.props.viewModel.guides.get(index).hide,
         intersect: values(this.props.viewModel.guides.get(index).intersect),
+        reverse: this.props.viewModel.guides.get(index).reverse,
+        copy: this.props.viewModel.guides.get(index).copy,
+        move: this.props.viewModel.guides.get(index).move,
         type: this.props.viewModel.guides.get(index).type,
         deg: this.props.viewModel.guides.get(index).deg,
         pos: {
@@ -78,6 +82,7 @@ class View extends React.Component {
 
       this.props.view.setPolygon({
         name: index,
+        stroke: polygon.stroke,
         fill: polygon.fill,
         points: points
       })
@@ -101,6 +106,11 @@ class View extends React.Component {
           {/* The view model (how the bg of the startpage looks) is shown here. That should be a svg object with guide lines, guide divs and polygons. */}
           <svg className='svg-wrapper' viewBox={props.global.svgViewBox}>
             {values(props.view.guides).map((guide, key) => {
+              // Hide guide lines with property hide
+              if (guide.hide) {
+                return
+              }
+
               key = guideKeys[key]
 
               return (
@@ -123,6 +133,9 @@ class View extends React.Component {
                 <path
                   key={props.className + '-' + props.view.model + '-polygon-' + key}
                   d={d}
+                  strokeWidth='3px'
+                  strokeMiterlimit='20'
+                  stroke={polygon.stroke}
                   fill={polygon.fill} />
               )
             })}
@@ -138,8 +151,6 @@ class View extends React.Component {
         </div>
         <div className={'view-content'}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
-          width: {props.global.clientWidth}<br />
-          height: {props.global.clientHeight}
         </div>
       </div>
     )

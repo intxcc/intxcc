@@ -13,6 +13,7 @@ import { degreesToRadians } from '../../miscFunctions'
  */
 const EntityGuideModel = types.model({
   // IMPORTANT: All properties, that are added here need to be also added in the constructor of the ViewEntity model, the GuideModel at ViewModel.js and at the MARKER_1 in the View.js
+  hide: types.boolean,
   pos: Point,
   deg: types.number,
   length: types.optional(types.number, Defaults.GuideLength)

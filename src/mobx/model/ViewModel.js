@@ -17,6 +17,10 @@ import Defaults from '../../config/defaults'
 const GuideModel = types.model({
   // index of map is the name of the guide model
   type: types.optional(types.string, 'div'),
+  reverse: types.optional(types.boolean, false),
+  hide: types.optional(types.boolean, false),
+  copy: types.optional(types.string, ''),
+  move: types.optional(types.number, 0),
   deg: types.optional(types.number, 0),
   intersect: types.optional(types.array(types.string), []),
   vpos: types.optional(types.string, ''),
@@ -29,6 +33,7 @@ const GuideModel = types.model({
 const PolygonModel = types.model({
   // index of map is the name of the polygon model
   fill: types.optional(types.string, Defaults.PolygonFill),
+  stroke: types.optional(types.string, Defaults.PolygonStroke),
   points: types.array(types.array(types.string))
 })
 

@@ -6,6 +6,7 @@ import Point from './Point'
 
 const EntityPolygonModel = types.model({
   fill: types.string,
+  stroke: types.string,
   points: types.array(Point)
 })
 

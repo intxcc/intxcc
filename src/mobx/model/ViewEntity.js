@@ -5,7 +5,7 @@ import { types } from 'mobx-state-tree'
 import EntityGuideModel from './EntityGuideModel'
 import EntityPolygonModel from './EntityPolygonModel'
 
-import { lineIntersect } from '../../miscFunctions'
+import { lineIntersect, degreesToRadians } from '../../miscFunctions'
 
 /**
  * Describes the model of an View object. The model given describes the appearance of the polygons and guide lines.
@@ -19,6 +19,7 @@ const ViewEntity = types.model({
   function setPolygon (config) {
     const index = config.name
     const fill = config.fill
+    const stroke = config.stroke
 
     let points = []
     for (let pointConfig of config.points) {
@@ -34,6 +35,7 @@ const ViewEntity = types.model({
     if (!self.polygons[index]) {
       self.polygons.set(index, EntityPolygonModel.create({
         fill: fill,
+        stroke: stroke,
         points: points
       }))
     } else {
@@ -45,8 +47,12 @@ const ViewEntity = types.model({
   function setGuide (config) {
     const index = config.name
     const type = config.type
-    const deg = config.deg
+    const copy = config.copy
+    const move = config.move
+    const reverse = config.reverse
+    const hide = config.hide
 
+    let deg = config.deg
     let pos = config.pos
     let intersect = config.intersect
 
@@ -60,12 +66,35 @@ const ViewEntity = types.model({
       ])
     }
 
+    if (type === 'copy' && copy) {
+      deg = self.guides.get(copy).deg
+
+      const position = self.guides.get(copy).pos
+      pos = {
+        x: position.x,
+        y: position.y
+      }
+    }
+
+    if (move) {
+      let moveDir = 90
+
+      if (reverse) {
+        moveDir = -90
+      }
+
+      pos.x += Math.cos(degreesToRadians(deg + moveDir)) * move
+      pos.y += Math.sin(degreesToRadians(deg + moveDir)) * move
+    }
+
     if (!self.guides[index]) {
       self.guides.set(index, EntityGuideModel.create({
+        hide: hide,
         deg: deg,
         pos: pos
       }))
     } else {
+      self.guides[index].hide = hide
       self.guides[index].pos = pos
       self.guides[index].deg = deg
     }

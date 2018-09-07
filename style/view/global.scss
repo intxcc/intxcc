@@ -1,34 +1,41 @@
 .site-wrapper,
 .view-wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 
   background-color: #fff;
 
-  width: 100%;
-  min-width: $global--min-view-width;
-
-  min-height: 100%;
-}
-
-@media screen and (max-height: $global--min-view-height) {
-  .site-wrapper,
-  .view-wrapper {
-    min-height: $global--min-view-height;
-  }
+  width: 100vw;
+  height: 100vh;
 }
 
 .view-model,
-.view-content,
 .svg-wrapper {
-  position: absolute;
+  position: fixed;
 
   top: 0;
   left: 0;
 
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  min-width: $global--min-view-width;
+
+  height: 100vh;
+  min-height: $global--min-view-height;
+}
+
+.view-content {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  z-index: 20;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: auto;
 }
 
 .view-buffer {
@@ -48,10 +55,11 @@
   z-index: 10;
 }
 
-.view-content {
-  z-index: 20;
-}
-
 .guide {
   position: absolute;
+}
+
+.content-wrapper-outer {
+  min-width: $global--min-view-width;
+  min-height: $global--min-view-height;
 }

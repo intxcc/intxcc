@@ -6,9 +6,9 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 const StoriesView = observer((props) => (
-  <span>
+  <div className='content-wrapper-inner'>
     {props.global.clientWidth}
-  </span>
+  </div>
 ))
 
 StoriesView.propTypes = {

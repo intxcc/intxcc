@@ -8,6 +8,18 @@ import { keys, values } from 'mobx'
 
 import autobind from 'autobind-decorator'
 
+const SvgObject = observer((props) => (
+  <svg className={props.className} viewBox={props.viewBox}>
+    {props.children}
+  </svg>
+))
+
+SvgObject.propTypes = {
+  children: PropTypes.array,
+  className: PropTypes.string,
+  viewBox: PropTypes.string
+}
+
 const Guide = observer((props) => (
   <path
     d={`M ${props.from.x},${props.from.y} ${props.to.x},${props.to.y} Z`}
@@ -91,6 +103,14 @@ class View extends React.Component {
   }
 
   @autobind
+  viewContentScroll () {
+    if (this.viewContent) {
+      const rect = this.contentWrapperOuter.getBoundingClientRect()
+      this.props.global.setContentWrapperRect(rect)
+    }
+  }
+
+  @autobind
   updateHelperDivs () {
     this.updateTimeout = false
 
@@ -147,6 +167,8 @@ class View extends React.Component {
         points: points
       })
     }
+
+    setTimeout(this.viewContentScroll, 0)
   }
 
   @autobind
@@ -164,7 +186,7 @@ class View extends React.Component {
       <div className={props.className + ' view-wrapper view-' + props.view.model}>
         <div className={'view-model'}>
           {/* The view model (how the bg of the startpage looks) is shown here. That should be a svg object with guide lines, guide divs and polygons. */}
-          <svg className='svg-wrapper' viewBox={props.global.svgViewBox}>
+          <SvgObject className='svg-wrapper' viewBox={props.global.svgViewBox}>
             <Guides
               classNameStart={props.className + '-' + props.view.model + '-guide-'}
               guideKeys={guideKeys}
@@ -174,7 +196,7 @@ class View extends React.Component {
               strokeWidth={this.props.global.strokeWidth}
               polygonKeys={polygonKeys}
               polygons={props.view.polygons} />
-          </svg>
+          </SvgObject>
           {/* Render helper divs */}
           {keys(props.viewModel.guides).map((key) => (
             <div
@@ -184,9 +206,16 @@ class View extends React.Component {
             </div>
           ))}
         </div>
-        <div className={'view-content'}>
+        <div
+          className={'view-content'}
+          ref={ (viewContent) => { this.viewContent = viewContent }}
+          onScroll={this.viewContentScroll}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
-          {this.props.children}
+          <div
+            className='content-wrapper-outer'
+            ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }}>
+            {this.props.children}
+          </div>
         </div>
       </div>
     )

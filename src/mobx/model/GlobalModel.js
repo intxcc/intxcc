@@ -11,6 +11,10 @@ const GlobalModel = types.model({
 }).views(self => ({
   get svgViewBox () {
     return `0 0 ${self.clientWidth} ${self.clientHeight}`
+  },
+  get strokeWidth () {
+    const max = Math.max(self.clientWidth, self.clientHeight)
+    return (((max - 800) / 1920) * 3) + 1.5
   }
 })).actions(self => {
   function setClientDimensions (clientWidth, clientHeight) {

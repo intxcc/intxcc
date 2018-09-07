@@ -8,6 +8,66 @@ import { keys, values } from 'mobx'
 
 import autobind from 'autobind-decorator'
 
+const Guide = observer((props) => (
+  <path
+    d={`M ${props.from.x},${props.from.y} ${props.to.x},${props.to.y} Z`}
+    stroke='#999' strokeWidth='0.2' />
+))
+
+Guide.propTypes = {
+  from: PropTypes.object,
+  to: PropTypes.object
+}
+
+const Guides = observer((props) => (
+  values(props.guides).filter(guide => !guide.hide).map((guide, key) => (
+    <Guide
+      key={props.classNameStart + props.guideKeys[key]}
+      from={guide.from}
+      to={guide.to} />
+  ))
+))
+
+Guides.propTypes = {
+  classNameStart: PropTypes.string,
+  guideKeys: PropTypes.array,
+  guides: PropTypes.object
+}
+
+const Polygon = observer((props) => (
+  <path
+    d={props.path}
+    strokeWidth={props.strokeWidth + 'px'}
+    strokeMiterlimit='20'
+    stroke={props.stroke}
+    fill={props.fill} />
+))
+
+Polygon.propTypes = {
+  path: PropTypes.string,
+  stroke: PropTypes.string,
+  fill: PropTypes.string,
+  strokeWidth: PropTypes.number
+}
+
+const Polygons = observer((props) => (
+  values(props.polygons).map((polygon, key) => (
+    <Polygon
+      key={props.classNameStart + props.polygonKeys[key]}
+      fill={polygon.fill}
+      stroke={polygon.stroke}
+      strokeWidth={props.strokeWidth}
+      path={polygon.path} />
+  ))
+))
+
+Polygons.propTypes = {
+  classNameStart: PropTypes.string,
+  strokeWidth: PropTypes.number,
+  polygonKeys: PropTypes.array,
+  polygons: PropTypes.object
+}
+
 @observer
 class View extends React.Component {
   constructor (props) {
@@ -105,40 +165,15 @@ class View extends React.Component {
         <div className={'view-model'}>
           {/* The view model (how the bg of the startpage looks) is shown here. That should be a svg object with guide lines, guide divs and polygons. */}
           <svg className='svg-wrapper' viewBox={props.global.svgViewBox}>
-            {values(props.view.guides).map((guide, key) => {
-              // Hide guide lines with property hide
-              if (guide.hide) {
-                return
-              }
-
-              key = guideKeys[key]
-
-              return (
-                <path
-                  key={props.className + '-' + props.view.model + '-guide-' + key}
-                  d={`M ${guide.from.x},${guide.from.y} ${guide.to.x},${guide.to.y} Z`}
-                  stroke='#999' strokeWidth='0.2' />
-              )
-            })}
-            {values(props.view.polygons).map((polygon, key) => {
-              key = polygonKeys[key]
-
-              let d = 'M '
-              for (let point of polygon.points) {
-                d += point.x + ',' + point.y + ' '
-              }
-              d += ' Z'
-
-              return (
-                <path
-                  key={props.className + '-' + props.view.model + '-polygon-' + key}
-                  d={d}
-                  strokeWidth='3px'
-                  strokeMiterlimit='20'
-                  stroke={polygon.stroke}
-                  fill={polygon.fill} />
-              )
-            })}
+            <Guides
+              classNameStart={props.className + '-' + props.view.model + '-guide-'}
+              guideKeys={guideKeys}
+              guides={props.view.guides} />
+            <Polygons
+              classNameStart={props.className + '-' + props.view.model + '-polygon-'}
+              strokeWidth={this.props.global.strokeWidth}
+              polygonKeys={polygonKeys}
+              polygons={props.view.polygons} />
           </svg>
           {/* Render helper divs */}
           {keys(props.viewModel.guides).map((key) => (
@@ -151,6 +186,7 @@ class View extends React.Component {
         </div>
         <div className={'view-content'}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
+          {console.log(this.props.view.model)}
         </div>
       </div>
     )

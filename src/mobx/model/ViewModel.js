@@ -22,13 +22,23 @@ const GuideModel = types.model({
 })
 
 /**
+ * Describes a polygon. The points property is an array (1) of arrays (2) with guide names. Array (2) has always a length of 2. Like: [...['a', 'b']]. This will result one point of beeing at the intersection between guide 'a' and guide 'b'.
+ */
+const PolygonModel = types.model({
+  // index of map is the name of the polygon model
+  fill: types.optional(types.string, '#1a1a1a'),
+  points: types.array(types.array(types.string))
+})
+
+/**
  * A ViewModel describes the appearance of a View. That is the appearence of the guide lines and polygons.
  * @name - The name of the ViewModel
  * @guides - An object with all guide lines
  */
 const ViewModel = types.model({
   name: types.string,
-  guides: types.map(GuideModel)
+  guides: types.map(GuideModel),
+  polygons: types.map(PolygonModel)
 })
 
 export default ViewModel

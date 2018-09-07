@@ -1,8 +1,8 @@
 'use strict'
 
-// Converts degrees to radians
+/** Converts degrees to radians */
 function degreesToRadians (degrees) {
-  return degrees * Math.PI / 180
+  return degrees * (Math.PI / 180)
 }
 
 /**

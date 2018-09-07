@@ -67,6 +67,21 @@ class View extends React.Component {
         }
       })
     }
+
+    for (let index of keys(this.props.viewModel.polygons)) {
+      const polygon = this.props.viewModel.polygons.get(index)
+
+      let points = []
+      for (let point of polygon.points) {
+        points.push(values(point))
+      }
+
+      this.props.view.setPolygon({
+        name: index,
+        fill: polygon.fill,
+        points: points
+      })
+    }
   }
 
   @autobind

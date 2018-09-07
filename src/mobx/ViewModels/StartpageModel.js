@@ -28,6 +28,24 @@ const ViewModel = {
       vpos: 'top',
       hpos: 'right'
     }
+  },
+  polygons: {
+    'A': {
+      fill: '#f00',
+      points: [
+        ['d', 'e'],
+        ['e', 'b'],
+        ['d', 'b']
+      ]
+    },
+    'B': {
+      fill: '#f0f',
+      points: [
+        ['c', 'a'],
+        ['c', 'b'],
+        ['a', 'b']
+      ]
+    }
   }
 }
 

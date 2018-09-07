@@ -105,8 +105,11 @@ class View extends React.Component {
   @autobind
   viewContentScroll () {
     if (this.viewContent) {
-      const rect = this.contentWrapperOuter.getBoundingClientRect()
+      let rect = this.contentWrapperOuter.getBoundingClientRect()
       this.props.global.setContentWrapperRect(rect)
+
+      rect = this.viewContent.getBoundingClientRect()
+      this.props.global.setViewContentRect(rect)
     }
   }
 

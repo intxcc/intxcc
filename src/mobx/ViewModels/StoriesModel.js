@@ -177,8 +177,7 @@ const ViewModel = {
     'selected-year-display': {
       type: 'intersections',
       intersections: [
-        ['b', 'c'],
-        ['a', 'c']
+        ['b', 'c']
       ]
     }
   }

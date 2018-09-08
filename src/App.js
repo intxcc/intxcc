@@ -8,6 +8,8 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import Logo from './logo/Logo'
+
 import View from './view/View'
 import { StartpageView, StartpageOverlayView } from './view/StartpageView'
 import { StoriesView, StoriesOverlayView } from './view/StoriesView'
@@ -48,6 +50,7 @@ class App extends React.Component {
       <div
         className='site-wrapper'
         ref={ (siteWrapper) => { this.siteWrapper = siteWrapper }} >
+        <Logo />
         {values(this.props.store.views).map((view, index) => {
           // Don't render empty views.
           if (view.model === '') {

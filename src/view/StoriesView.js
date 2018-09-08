@@ -42,7 +42,7 @@ StoriesView.propTypes = {
 const StoriesOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
     <ViewObject object={props.view.objects.get('story-name-display')}>
-      Mobile App
+      Mobile App<br />
       <div className='story-name-caption'>
         Android
       </div>

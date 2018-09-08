@@ -4,6 +4,7 @@ import { types } from 'mobx-state-tree'
 
 import EntityGuideModel from './EntityGuideModel'
 import EntityPolygonModel from './EntityPolygonModel'
+import EntityObjectModel from './EntityObjectModel'
 
 import { lineIntersect, degreesToRadians } from '../../miscFunctions'
 
@@ -14,8 +15,54 @@ const ViewEntity = types.model({
   // Name of the ViewModel
   model: types.string,
   guides: types.optional(types.map(EntityGuideModel), {}),
-  polygons: types.optional(types.map(EntityPolygonModel), {})
+  polygons: types.optional(types.map(EntityPolygonModel), {}),
+  objects: types.optional(types.map(EntityObjectModel), {})
 }).actions(self => {
+  function setObject (config) {
+    const index = config.name
+    const type = config.type
+    const intersections = config.intersections
+
+    let pos
+    if (type === 'intersections') {
+      let pointCount = 0
+      let pointMiddle = {
+        x: 0,
+        y: 0
+      }
+
+      for (let intersection of intersections) {
+        let point = lineIntersect([
+          self.guides.get(intersection[0]).from,
+          self.guides.get(intersection[0]).to
+        ], [
+          self.guides.get(intersection[1]).from,
+          self.guides.get(intersection[1]).to
+        ])
+
+        pointMiddle.x += point.x
+        pointMiddle.y += point.y
+
+        pointCount++
+      }
+
+      pos = {
+        x: pointMiddle.x / pointCount,
+        y: pointMiddle.y / pointCount
+      }
+    }
+
+    if (!self.objects[index]) {
+      self.objects.set(index, EntityObjectModel.create({
+        className: index,
+        pos: pos
+      }))
+    } else {
+      self.objects[index].className = index
+      self.objects[index].pos = pos
+    }
+  }
+
   function setPolygon (config) {
     const index = config.name
     const fill = config.fill
@@ -101,6 +148,7 @@ const ViewEntity = types.model({
   }
 
   return {
+    setObject,
     setPolygon,
     setGuide
   }

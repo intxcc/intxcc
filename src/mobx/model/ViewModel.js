@@ -38,6 +38,16 @@ const PolygonModel = types.model({
 })
 
 /**
+ * Describes the position of an object (e.g. a div) with a given classname
+ */
+const ObjectModel = types.model({
+  // index of map is the name of the polygon model
+  type: types.optional(types.string, 'intersections'),
+  // One or more intersections, the object position will be in the middle of them
+  intersections: types.optional(types.array(types.array(types.string)), [])
+})
+
+/**
  * A ViewModel describes the appearance of a View. That is the appearence of the guide lines and polygons.
  * @name - The name of the ViewModel
  * @guides - An object with all guide lines
@@ -45,7 +55,8 @@ const PolygonModel = types.model({
 const ViewModel = types.model({
   name: types.string,
   guides: types.map(GuideModel),
-  polygons: types.map(PolygonModel)
+  polygons: types.map(PolygonModel),
+  objects: types.optional(types.map(ObjectModel), {})
 })
 
 export default ViewModel

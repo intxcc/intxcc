@@ -26,6 +26,7 @@ const ViewModel = {
       vpos: 'top',
       hpos: 'right'
     },
+    // Guide line on the left of the triangle for the name of the project
     'e': {
       type: 'intersection',
       intersect: [
@@ -39,6 +40,7 @@ const ViewModel = {
       vpos: 'top',
       hpos: 'right'
     },
+    // Guide line at middle of the 2nd triangle for the name of the project
     'cc': {
       type: 'intersection',
       hide: true,
@@ -161,6 +163,22 @@ const ViewModel = {
         ['ff', 'gg'],
         ['ff', 'b'],
         ['gg', 'b']
+      ]
+    }
+  },
+  objects: {
+    'story-name-display': {
+      type: 'intersections',
+      intersections: [
+        ['e', 'a'],
+        ['e', 'b']
+      ]
+    },
+    'selected-year-display': {
+      type: 'intersections',
+      intersections: [
+        ['b', 'c'],
+        ['a', 'c']
       ]
     }
   }

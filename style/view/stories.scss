@@ -4,4 +4,44 @@
   .content-wrapper-inner {
     height: 200vh;
   }
+
+  .selected-year-display {
+    transform:  translate3d(6.5vw, -2.2vw, 0) rotate(-27deg);
+
+    text-shadow:  3px 2px 0 $white;
+    color: $black;
+    font-size: 4vw;
+
+    transform-origin: left bottom;
+
+    .selected-year-caption {
+      margin: 0 0 0 1rem;
+
+      text-shadow: initial;
+      color: $white;
+      font-family: 'Roboto Condensed';
+      font-size: 1.5vw;
+      font-variant: small-caps;
+    }
+  }
+
+  .story-name-display {
+    transform: translate3d(-6vw, -50%, 0) rotate(90deg);
+    margin: 0 0 0 -2rem;
+
+    line-height: 1em;
+    font-family: 'Roboto Condensed';
+    font-size: 2.5vw;
+    font-weight: bold;
+    font-variant: small-caps;
+
+    .story-name-caption {
+      margin: 0 0 0 .5rem;
+
+      line-height: .8em;
+      color: $gray;
+      font-size: 1.5vw;
+      font-weight: normal;
+    }
+  }
 }

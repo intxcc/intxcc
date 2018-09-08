@@ -8,6 +8,8 @@ import { keys, values } from 'mobx'
 
 import autobind from 'autobind-decorator'
 
+import Defaults from '../config/defaults'
+
 const SvgObject = observer((props) => (
   <svg className={props.className} viewBox={props.viewBox}>
     {props.children}
@@ -34,14 +36,20 @@ Guide.propTypes = {
   to: PropTypes.object
 }
 
-const Guides = observer((props) => (
-  values(props.guides).filter(guide => !guide.hide).map((guide, key) => (
-    <Guide
-      key={props.classNameStart + props.guideKeys[key]}
-      from={guide.from}
-      to={guide.to} />
-  ))
-))
+const Guides = observer((props) => {
+  if (!Defaults.showGuides) {
+    return ''
+  }
+
+  return (
+    values(props.guides).filter(guide => !guide.hide).map((guide, key) => (
+      <Guide
+        key={props.classNameStart + props.guideKeys[key]}
+        from={guide.from}
+        to={guide.to} />
+    ))
+  )
+})
 
 Guides.propTypes = {
   classNameStart: PropTypes.string,
@@ -124,6 +132,7 @@ class View extends React.Component {
     this.dimensions.width = this.props.global.clientWidth
     this.dimensions.height = this.props.global.clientHeight
 
+    // Load the guides in the view entity
     for (let index in this.helperDivs) {
       const div = this.helperDivs[index]
       const rect = div.getBoundingClientRect()
@@ -155,6 +164,7 @@ class View extends React.Component {
       })
     }
 
+    // Load the polygons in the view entity
     for (let index of keys(this.props.viewModel.polygons)) {
       const polygon = this.props.viewModel.polygons.get(index)
 
@@ -168,6 +178,17 @@ class View extends React.Component {
         stroke: polygon.stroke,
         fill: polygon.fill,
         points: points
+      })
+    }
+
+    // Load the objects in the view entity
+    for (let index of keys(this.props.viewModel.objects)) {
+      const object = this.props.viewModel.objects.get(index)
+
+      this.props.view.setObject({
+        name: index,
+        type: object.type,
+        intersections: object.intersections
       })
     }
 

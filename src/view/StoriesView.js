@@ -7,8 +7,7 @@ import { observer } from 'mobx-react'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
-    Stories
-    {props.global.clientWidth}
+    Stories Under
   </div>
 ))
 
@@ -17,4 +16,15 @@ StoriesView.propTypes = {
   view: PropTypes.object
 }
 
-export default StoriesView
+const StoriesOverlayView = observer((props) => (
+  <div className='overlay-wrapper-inner'>
+    Stories
+  </div>
+))
+
+StoriesOverlayView.propTypes = {
+  global: PropTypes.object,
+  view: PropTypes.object
+}
+
+export { StoriesView, StoriesOverlayView }

@@ -5,16 +5,26 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
-const StoriesView = observer((props) => (
+const StartpageView = observer((props) => (
   <div className='content-wrapper-inner'>
     Startpage
-    {props.global.clientWidth}
   </div>
 ))
 
-StoriesView.propTypes = {
+StartpageView.propTypes = {
   global: PropTypes.object,
   view: PropTypes.object
 }
 
-export default StoriesView
+const StartpageOverlayView = observer((props) => (
+  <div className='overlay-wrapper-inner'>
+    Startpage
+  </div>
+))
+
+StartpageOverlayView.propTypes = {
+  global: PropTypes.object,
+  view: PropTypes.object
+}
+
+export { StartpageView, StartpageOverlayView }

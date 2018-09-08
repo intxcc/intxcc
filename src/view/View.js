@@ -212,7 +212,7 @@ class View extends React.Component {
           <div
             className='content-wrapper-outer'
             ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }}>
-            {this.props.children}
+            {this.props.loadedView}
           </div>
         </div>
         <div className={'view-model view-model-overlay'}>
@@ -224,6 +224,9 @@ class View extends React.Component {
               polygons={props.view.polygons} />
           </SvgObject>
         </div>
+        <div className='overlay-wrapper-outer'>
+          {this.props.loadedOverlayView}
+        </div>
       </div>
     )
   }
@@ -234,7 +237,8 @@ View.propTypes = {
   view: PropTypes.object,
   viewModel: PropTypes.object,
   className: PropTypes.string,
-  children: PropTypes.object
+  loadedView: PropTypes.object,
+  loadedOverlayView: PropTypes.object
 }
 
 export default View

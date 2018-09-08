@@ -74,6 +74,22 @@
   }
 }
 
+// .content-wrapper-outer {
+//   background-color: #f00;
+// }
+
+.overlay-wrapper-outer {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  z-index: 40;
+  pointer-events: none;
+}
+
 .guide {
   position: absolute;
 }

@@ -9,12 +9,17 @@ import { observer } from 'mobx-react'
 import autobind from 'autobind-decorator'
 
 import View from './view/View'
-import StartpageView from './view/StartpageView'
-import StoriesView from './view/StoriesView'
+import { StartpageView, StartpageOverlayView } from './view/StartpageView'
+import { StoriesView, StoriesOverlayView } from './view/StoriesView'
 
 const Views = {
   'stories': StoriesView,
   'startpage': StartpageView
+}
+
+const OverlayViews = {
+  'stories': StoriesOverlayView,
+  'startpage': StartpageOverlayView
 }
 
 @observer
@@ -56,14 +61,20 @@ class App extends React.Component {
             view: view
           })
 
+          const loadOverlayView = React.createElement(OverlayViews[view.model], {
+            global: this.props.store.global,
+            view: view
+          })
+
           return (
             <View
               key={'view-' + key}
               className={'view-' + key}
               global={this.props.store.global}
               viewModel={this.props.store.viewModels.get(view.model)}
-              view={view}>
-              {loadView}
+              view={view}
+              loadedView={loadView}
+              loadedOverlayView={loadOverlayView}>
             </View>
           )
         })}

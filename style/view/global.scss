@@ -55,6 +55,31 @@
   z-index: 10;
 }
 
+.view-model-overlay {
+  top: 5vmin;
+  right: 5vmin;
+  bottom: 5vmin;
+  left: 5vmin;
+
+  z-index: 30;
+
+  width: initial;
+  min-width: initial;
+
+  height: initial;
+  min-height: initial;
+
+  overflow: hidden;
+  pointer-events: none;
+
+  .svg-wrapper {
+    position: absolute;
+
+    top: -5vmin;
+    left: -5vmin;
+  }
+}
+
 .guide {
   position: absolute;
 }

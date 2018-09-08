@@ -194,11 +194,6 @@ class View extends React.Component {
               classNameStart={props.className + '-' + props.view.model + '-guide-'}
               guideKeys={guideKeys}
               guides={props.view.guides} />
-            <Polygons
-              classNameStart={props.className + '-' + props.view.model + '-polygon-'}
-              strokeWidth={this.props.global.strokeWidth}
-              polygonKeys={polygonKeys}
-              polygons={props.view.polygons} />
           </SvgObject>
           {/* Render helper divs */}
           {keys(props.viewModel.guides).map((key) => (
@@ -219,6 +214,15 @@ class View extends React.Component {
             ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }}>
             {this.props.children}
           </div>
+        </div>
+        <div className={'view-model view-model-overlay'}>
+          <SvgObject className='svg-wrapper' viewBox={props.global.svgViewBox}>
+            <Polygons
+              classNameStart={props.className + '-' + props.view.model + '-polygon-'}
+              strokeWidth={this.props.global.strokeWidth}
+              polygonKeys={polygonKeys}
+              polygons={props.view.polygons} />
+          </SvgObject>
         </div>
       </div>
     )

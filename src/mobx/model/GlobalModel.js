@@ -42,13 +42,13 @@ const GlobalModel = types.model({
   })
 }).views(self => ({
   get svgViewBox () {
-    if (self.contentWrapperRect.right > self.clientWidth - 20) {
-      // let y = self.contentWrapperRect.y
-      console.log(self.contentWrapperRect.top)
-      console.log(-self.viewContentRect.height)
-      console.log('---')
+    if (self.contentWrapperRect.right > self.clientWidth - 10) {
+      let y = self.contentWrapperRect.top
 
-      let y = Math.max(-self.contentWrapperRect.top, -self.viewContentRect.height)
+      // Marker GMVHPX
+      if (self.viewContentRect.height - self.contentWrapperRect.top >= 450) {
+        y = -(450 - self.viewContentRect.height)
+      }
 
       return `${-self.contentWrapperRect.x} ${-y} ${self.viewContentRect.width} ${self.viewContentRect.height}`
     } else {

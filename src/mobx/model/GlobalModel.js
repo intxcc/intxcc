@@ -20,16 +20,6 @@ const BoundingClientRectModel = types.model({
 const GlobalModel = types.model({
   clientWidth: types.optional(types.number, 0),
   clientHeight: types.optional(types.number, 0),
-  viewContentRect: types.optional(BoundingClientRectModel, {
-    x: 0,
-    y: 0,
-    width: 1000,
-    height: 1000,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0
-  }),
   contentWrapperRect: types.optional(BoundingClientRectModel, {
     x: 0,
     y: 0,
@@ -42,18 +32,7 @@ const GlobalModel = types.model({
   })
 }).views(self => ({
   get svgViewBox () {
-    if (self.contentWrapperRect.right > self.clientWidth - 10) {
-      let y = self.contentWrapperRect.top
-
-      // Marker GMVHPX
-      if (self.viewContentRect.height - self.contentWrapperRect.top >= 450) {
-        y = -(450 - self.viewContentRect.height)
-      }
-
-      return `${-self.contentWrapperRect.x} ${-y} ${self.viewContentRect.width} ${self.viewContentRect.height}`
-    } else {
-      return `0 0 ${self.clientWidth} ${self.clientHeight}`
-    }
+    return `0 0 ${self.clientWidth} ${self.clientHeight}`
   },
   get strokeWidth () {
     const max = Math.max(self.clientWidth, self.clientHeight)
@@ -71,16 +50,9 @@ const GlobalModel = types.model({
     }
   }
 
-  function setViewContentRect (rect) {
-    for (let key of keys(self.viewContentRect)) {
-      self.viewContentRect[key] = rect[key]
-    }
-  }
-
   return {
     setClientDimensions,
-    setContentWrapperRect,
-    setViewContentRect
+    setContentWrapperRect
   }
 })
 

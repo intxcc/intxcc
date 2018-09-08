@@ -18,10 +18,7 @@
   left: 0;
 
   width: 100vw;
-  min-width: $global--min-view-width;
-
   height: 100vh;
-  min-height: $global--min-view-height;
 }
 
 .view-content {
@@ -64,10 +61,7 @@
   z-index: 30;
 
   width: initial;
-  min-width: initial;
-
   height: initial;
-  min-height: initial;
 
   overflow: hidden;
   pointer-events: none;
@@ -82,9 +76,4 @@
 
 .guide {
   position: absolute;
-}
-
-.content-wrapper-outer {
-  min-width: $global--min-view-width;
-  min-height: $global--min-view-height;
 }

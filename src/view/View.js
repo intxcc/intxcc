@@ -15,7 +15,10 @@ const SvgObject = observer((props) => (
 ))
 
 SvgObject.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object
+  ]),
   className: PropTypes.string,
   viewBox: PropTypes.string
 }
@@ -23,7 +26,7 @@ SvgObject.propTypes = {
 const Guide = observer((props) => (
   <path
     d={`M ${props.from.x},${props.from.y} ${props.to.x},${props.to.y} Z`}
-    stroke='#999' strokeWidth='0.2' />
+    stroke='#eee' strokeWidth='1' />
 ))
 
 Guide.propTypes = {
@@ -107,9 +110,6 @@ class View extends React.Component {
     if (this.viewContent) {
       let rect = this.contentWrapperOuter.getBoundingClientRect()
       this.props.global.setContentWrapperRect(rect)
-
-      rect = this.viewContent.getBoundingClientRect()
-      this.props.global.setViewContentRect(rect)
     }
   }
 

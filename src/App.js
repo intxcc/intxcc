@@ -9,10 +9,12 @@ import { observer } from 'mobx-react'
 import autobind from 'autobind-decorator'
 
 import View from './view/View'
+import StartpageView from './view/StartpageView'
 import StoriesView from './view/StoriesView'
 
 const Views = {
-  'stories': StoriesView
+  'stories': StoriesView,
+  'startpage': StartpageView
 }
 
 @observer

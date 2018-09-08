@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
-    Stories
+    Startpage
     {props.global.clientWidth}
   </div>
 ))

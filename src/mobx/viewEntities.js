@@ -1,6 +1,6 @@
 'use strict'
 
-import ViewEntity from './model/ViewEntity'
+// import ViewEntity from './model/ViewEntity'
 
 /**
  * Describes the three views.
@@ -9,15 +9,6 @@ import ViewEntity from './model/ViewEntity'
  * @overlay - A second view we can use to get a picture-in-picture-like-function
  */
 const viewEntities = {
-  main: ViewEntity.create({
-    model: ''
-  }),
-  buffer: ViewEntity.create({
-    model: ''
-  }),
-  overlay: ViewEntity.create({
-    model: ''
-  })
 }
 
 export default viewEntities

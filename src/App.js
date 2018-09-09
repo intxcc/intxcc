@@ -52,12 +52,20 @@ class App extends React.Component {
 
   @autobind
   render () {
+    const mainModelActive = this.props.store.views.get('main') && this.props.store.views.get('main').model !== ''
+
+    let logo = ''
+    if (mainModelActive) {
+      logo = (
+        <Logo className={this.props.store.viewModels.get(this.props.store.views.get('main').model).logoClassName} />
+      )
+    }
+
     return (
       <div
         className='site-wrapper'
         ref={ (siteWrapper) => { this.siteWrapper = siteWrapper }} >
-        {/* <Logo className={this.props.store.global.logoClassName} /> */}
-        {this.props.store.views.get('main').model !== '' ? <Logo className={this.props.store.viewModels.get(this.props.store.views.get('main').model).logoClassName} /> : ''}
+        {logo}
         {values(this.props.store.views).map((view, index) => {
           // Don't render empty views.
           if (view.model === '') {

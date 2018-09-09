@@ -26,7 +26,7 @@ class Router {
     }
 
     if (this.store.viewModels.get(path[0])) {
-      this.store.setViewModel('main', path[0])
+      this.store.updateViewEntity('main', path[0])
     }
   }
 }

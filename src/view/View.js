@@ -113,9 +113,6 @@ class View extends React.Component {
   constructor (props) {
     super(props)
 
-    // Save model to catch model changes
-    this.model = ''
-
     // Save reference to helper divs here
     this.helperDivs = {}
 
@@ -145,7 +142,7 @@ class View extends React.Component {
   updateHelperDivs () {
     this.updateTimeout = false
 
-    if (this.props.global.clientWidth === this.dimensions.width && this.props.global.clientHeight === this.dimensions.height && this.props.view.initialized) {
+    if (this.props.global.clientWidth === this.dimensions.width && this.props.global.clientHeight === this.dimensions.height) {
       return
     }
 
@@ -154,11 +151,6 @@ class View extends React.Component {
 
     // Load the guides in the view entity
     for (let index in this.helperDivs) {
-      // TODO For some reason the helper divs are still in the helperDivs object, even after clearing
-      if (!this.helperDivs[index]) {
-        continue
-      }
-
       const div = this.helperDivs[index]
       const rect = div.getBoundingClientRect()
 
@@ -225,18 +217,6 @@ class View extends React.Component {
     const props = this.props
     const guideKeys = keys(props.viewModel.guides)
     const polygonKeys = keys(props.viewModel.polygons)
-
-    // Catch model update
-    if (this.model !== props.view.model) {
-      this.updateTimeout = false
-
-      for (var member in this.helperDivs) {
-        delete this.helperDivs[member]
-      }
-    } else {
-      props.view.wasInitialized()
-    }
-    this.model = props.view.model
 
     if (this.updateTimeout === false) {
       // Set the update of the helper divs at the end of the javascript event loop queue

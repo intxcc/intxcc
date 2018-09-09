@@ -15,14 +15,24 @@ const RootStore = types.model({
   views: types.map(ViewEntity),
   global: GlobalModel
 }).actions(self => {
-  function setViewModel (viewName, modelName) {
+  function setViewEntity (viewName, modelName) {
     self.views.set(viewName, ViewEntity.create({
       model: modelName
     }))
   }
 
+  function updateViewEntity (viewName, modelName) {
+    self.views.delete(viewName)
+
+    // Wait for the deletion to propagate and then set the new view
+    setTimeout(() => {
+      self.setViewEntity(viewName, modelName)
+    }, 0)
+  }
+
   return {
-    setViewModel
+    setViewEntity,
+    updateViewEntity
   }
 })
 

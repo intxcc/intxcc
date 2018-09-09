@@ -14,15 +14,10 @@ import { lineIntersect, degreesToRadians } from '../../miscFunctions'
 const ViewEntity = types.model({
   // Name of the ViewModel
   model: types.string,
-  initialized: types.optional(types.boolean, false),
   guides: types.optional(types.map(EntityGuideModel), {}),
   polygons: types.optional(types.map(EntityPolygonModel), {}),
   objects: types.optional(types.map(EntityObjectModel), {})
 }).actions(self => {
-  function wasInitialized () {
-    self.initialized = true
-  }
-
   function setObject (config) {
     const index = config.name
     const type = config.type
@@ -153,7 +148,6 @@ const ViewEntity = types.model({
   }
 
   return {
-    wasInitialized,
     setObject,
     setPolygon,
     setGuide

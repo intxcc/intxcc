@@ -16,7 +16,7 @@ import Style from '../../../style/variables/global.scss'
 const ViewEntity = types.model({
   // Name of the ViewModel
   model: types.string,
-  transitionState: types.optional(types.string, 'hide'),
+  transitionState: types.optional(types.string, ''),
   guides: types.optional(types.map(EntityGuideModel), {}),
   polygons: types.optional(types.map(EntityPolygonModel), {}),
   objects: types.optional(types.map(EntityObjectModel), {})
@@ -26,7 +26,7 @@ const ViewEntity = types.model({
   }
 
   function startTransition () {
-    if (self.transitionState !== 'fadeIn') {
+    if (self.transitionState !== '') {
       return
     }
 
@@ -40,6 +40,11 @@ const ViewEntity = types.model({
   }
 
   function endMorphing () {
+    self.transitionState = 'fadeInBuffer'
+    setTimeout(self.swapBuffer, Style.fadeOutDuration)
+  }
+
+  function swapBuffer () {
     self.transitionState = 'swapBuffer'
   }
 
@@ -177,6 +182,7 @@ const ViewEntity = types.model({
     startTransition,
     startMorphing,
     endMorphing,
+    swapBuffer,
     setObject,
     setPolygon,
     setGuide

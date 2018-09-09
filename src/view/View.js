@@ -8,8 +8,11 @@ import { keys, values } from 'mobx'
 
 import { Spring, animated } from 'react-spring'
 import { TimingAnimation, Easing } from 'react-spring/dist/addons'
+import { interpolate } from 'flubber'
 
 import autobind from 'autobind-decorator'
+
+import Logo from '../logo/Logo'
 
 import Defaults from '../config/defaults'
 
@@ -77,8 +80,10 @@ const GuideMorph = observer((props) => (
 ))
 
 GuideMorph.propTypes = {
-  from: PropTypes.object,
-  to: PropTypes.object
+  from1: PropTypes.object,
+  to1: PropTypes.object,
+  from2: PropTypes.object,
+  to2: PropTypes.object
 }
 
 const Guides = observer((props) => {
@@ -140,22 +145,91 @@ Polygon.propTypes = {
   strokeWidth: PropTypes.number
 }
 
+const PolygonMorph = observer((props) => {
+  const interpolator = interpolate(props.path1, props.path2, { maxSegmentLength: 4 })
+
+  return (
+    <Spring reset native
+      from={{
+        t: 0,
+        d: props.path1,
+        stroke: props.stroke1,
+        fill: props.fill1,
+        strokeWidth: props.strokeWidth1
+      }} to={{
+        t: 1,
+        d: props.path2,
+        stroke: props.stroke2,
+        fill: props.fill2,
+        strokeWidth: props.strokeWidth2
+      }} impl={TimingAnimation} config={{ duration: Style.morphDuration, easing: Easing.ease }}>
+      {({ t, d, stroke, fill, strokeWidth }) => {
+        return (
+          <animated.path
+            strokeWidth={strokeWidth}
+            stroke={stroke}
+            fill={fill}
+            d={t.interpolate(interpolator)} />
+        )
+      }}
+    </Spring>
+  )
+})
+
+PolygonMorph.propTypes = {
+  path1: PropTypes.string,
+  stroke1: PropTypes.string,
+  fill1: PropTypes.string,
+  strokeWidth1: PropTypes.number,
+  path2: PropTypes.string,
+  stroke2: PropTypes.string,
+  fill2: PropTypes.string,
+  strokeWidth2: PropTypes.number
+}
+
 const Polygons = observer((props) => (
-  values(props.polygons).map((polygon, key) => (
-    <Polygon
-      key={props.classNameStart + props.polygonKeys[key]}
-      fill={polygon.fill}
-      stroke={polygon.stroke}
-      strokeWidth={props.strokeWidth}
-      path={polygon.path} />
-  ))
+  values(props.polygons).map((polygon, key) => {
+    key = props.polygonKeys[key]
+
+    if (props.morphTo) {
+      const morphToPolygon = props.morphTo.get(key)
+
+      if (morphToPolygon) {
+        return (
+          <PolygonMorph
+            key={props.classNameStart + key}
+            fill1={polygon.fill}
+            stroke1={polygon.stroke}
+            strokeWidth1={polygon.strokeWidth}
+            path1={polygon.path}
+            fill2={morphToPolygon.fill}
+            stroke2={morphToPolygon.stroke}
+            strokeWidth2={morphToPolygon.strokeWidth}
+            path2={morphToPolygon.path} />
+        )
+      }
+    }
+
+    return (
+      <Polygon
+        key={props.classNameStart + key}
+        fill={polygon.fill}
+        stroke={polygon.stroke}
+        strokeWidth={props.strokeWidth}
+        path={polygon.path} />
+    )
+  })
 ))
 
 Polygons.propTypes = {
   classNameStart: PropTypes.string,
   strokeWidth: PropTypes.number,
   polygonKeys: PropTypes.array,
-  polygons: PropTypes.object
+  polygons: PropTypes.object,
+  morphTo: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object
+  ])
 }
 
 @observer
@@ -269,12 +343,15 @@ class View extends React.Component {
     const polygonKeys = keys(props.viewModel.polygons)
 
     let fadeClassName = ''
+    let viewFadeClassName = ''
     switch (props.view.transitionState) {
       case 'fadeOut':
+      case 'morphing':
+      case 'fadeInBuffer':
         fadeClassName = 'fade-out-content'
         break
       case 'fadeIn':
-        fadeClassName = 'fade-in-content'
+        viewFadeClassName = 'fade-in-content'
         break
     }
 
@@ -284,7 +361,7 @@ class View extends React.Component {
     }
 
     return (
-      <div className={props.className + ' view-wrapper view-' + props.view.model}>
+      <div className={viewFadeClassName + ' ' + props.className + ' view-wrapper view-' + props.view.model}>
         <div className={'view-model'}>
           {/* The view model (how the bg of the startpage looks) is shown here. That should be a svg object with guide lines, guide divs and polygons. */}
           <SvgObject className='svg-wrapper' viewBox={props.global.svgViewBox}>
@@ -305,6 +382,7 @@ class View extends React.Component {
           <div
             className={'content-wrapper-outer ' + fadeClassName}
             ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }}>
+            <Logo className={props.viewModel.logoClassName} />
             {this.props.loadedView}
           </div>
         </div>
@@ -314,7 +392,8 @@ class View extends React.Component {
               classNameStart={props.className + '-' + props.view.model + '-polygon-'}
               strokeWidth={this.props.global.strokeWidth}
               polygonKeys={polygonKeys}
-              polygons={props.view.polygons} />
+              polygons={props.view.polygons}
+              morphTo={props.buffer ? props.buffer.polygons : false} />
           </SvgObject>
         </div>
         <div className={'overlay-wrapper-outer ' + fadeClassName}>

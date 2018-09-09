@@ -3,6 +3,11 @@
   padding: 0;
 }
 
+// Removes firefox ugly line around links and all kind of elements
+:focus {
+  outline: none;
+}
+
 html {
   color: $black;
   font-family: 'Roboto';

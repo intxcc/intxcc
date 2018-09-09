@@ -1,3 +1,9 @@
+$logo-clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+.logo-link {
+  pointer-events: none;
+}
+
 .logo-big {
   top: 50% !important;
   left: 50vw !important;
@@ -15,6 +21,7 @@
   position: fixed;
   top: 5rem;
   left: 5rem;
+
   z-index: 1000;
 }
 
@@ -32,7 +39,9 @@
 
   opacity: 0;
   cursor: pointer;
-  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  clip-path: $logo-clip-path;
+
+  pointer-events: fill;
 
   &:hover {
     opacity: 1;

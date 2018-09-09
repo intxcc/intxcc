@@ -6,9 +6,14 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 import { keys, values } from 'mobx'
 
+import { Spring, animated } from 'react-spring'
+import { TimingAnimation, Easing } from 'react-spring/dist/addons'
+
 import autobind from 'autobind-decorator'
 
 import Defaults from '../config/defaults'
+
+import Style from '../../style/variables/global.scss'
 
 const HelperDivs = observer((props) => {
   return keys(props.guides).map((key) => (
@@ -53,25 +58,70 @@ Guide.propTypes = {
   to: PropTypes.object
 }
 
+const GuideMorph = observer((props) => (
+  <Spring reset native
+    from={{
+      t: `M ${props.from1.x},${props.from1.y} ${props.to1.x},${props.to1.y} Z`
+    }} to={{
+      t: `M ${props.from2.x},${props.from2.y} ${props.to2.x},${props.to2.y} Z`
+    }} impl={TimingAnimation} config={{ duration: Style.morphDuration, easing: Easing.ease }}>
+    {({ t }) => {
+      return (
+        <animated.path
+          strokeWidth='1'
+          stroke='#eee'
+          d={t} />
+      )
+    }}
+  </Spring>
+))
+
+GuideMorph.propTypes = {
+  from: PropTypes.object,
+  to: PropTypes.object
+}
+
 const Guides = observer((props) => {
   if (!Defaults.showGuides) {
     return ''
   }
 
   return (
-    values(props.guides).filter(guide => !guide.hide).map((guide, key) => (
-      <Guide
-        key={props.classNameStart + props.guideKeys[key]}
-        from={guide.from}
-        to={guide.to} />
-    ))
+    values(props.guides).filter(guide => !guide.hide).map((guide, key) => {
+      key = props.guideKeys[key]
+      if (props.morphTo) {
+        const morphToGuide = props.morphTo.get(key)
+
+        if (morphToGuide) {
+          return (
+            <GuideMorph
+              key={props.classNameStart + key}
+              from1={guide.from}
+              to1={guide.to}
+              from2={morphToGuide.from}
+              to2={morphToGuide.to} />
+          )
+        }
+      }
+
+      return (
+        <Guide
+          key={props.classNameStart + key}
+          from={guide.from}
+          to={guide.to} />
+      )
+    })
   )
 })
 
 Guides.propTypes = {
   classNameStart: PropTypes.string,
   guideKeys: PropTypes.array,
-  guides: PropTypes.object
+  guides: PropTypes.object,
+  morphTo: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object
+  ])
 }
 
 const Polygon = observer((props) => (
@@ -218,6 +268,16 @@ class View extends React.Component {
     const guideKeys = keys(props.viewModel.guides)
     const polygonKeys = keys(props.viewModel.polygons)
 
+    let fadeClassName = ''
+    switch (props.view.transitionState) {
+      case 'fadeOut':
+        fadeClassName = 'fade-out-content'
+        break
+      case 'fadeIn':
+        fadeClassName = 'fade-in-content'
+        break
+    }
+
     if (this.updateTimeout === false) {
       // Set the update of the helper divs at the end of the javascript event loop queue
       this.updateTimeout = setTimeout(this.updateHelperDivs, 0)
@@ -231,7 +291,8 @@ class View extends React.Component {
             <Guides
               classNameStart={props.className + '-' + props.view.model + '-guide-'}
               guideKeys={guideKeys}
-              guides={props.view.guides} />
+              guides={props.view.guides}
+              morphTo={props.buffer ? props.buffer.guides : false} />
           </SvgObject>
           {/* Render helper divs */}
           <HelperDivs className={props.className} modelName={props.view.model} that={this} guides={props.viewModel.guides} />
@@ -242,7 +303,7 @@ class View extends React.Component {
           onScroll={this.viewContentScroll}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
           <div
-            className='content-wrapper-outer'
+            className={'content-wrapper-outer ' + fadeClassName}
             ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }}>
             {this.props.loadedView}
           </div>
@@ -256,7 +317,7 @@ class View extends React.Component {
               polygons={props.view.polygons} />
           </SvgObject>
         </div>
-        <div className='overlay-wrapper-outer'>
+        <div className={'overlay-wrapper-outer ' + fadeClassName}>
           {this.props.loadedOverlayView}
         </div>
       </div>
@@ -267,6 +328,7 @@ class View extends React.Component {
 View.propTypes = {
   global: PropTypes.object,
   view: PropTypes.object,
+  buffer: PropTypes.object,
   viewModel: PropTypes.object,
   className: PropTypes.string,
   loadedView: PropTypes.object,

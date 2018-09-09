@@ -8,25 +8,33 @@ import autobind from 'autobind-decorator'
 class Router {
   constructor (store) {
     this.store = store
-    setTimeout(this.onHashChange, 0)
+
+    this.resolvePath()
+
+    this.store.updateViewEntity('main', this.path[0])
   }
 
   @autobind
-  onHashChange () {
+  resolvePath () {
     let hash = window.location.hash
     hash = hash.split('/')
 
-    let path = []
+    this.path = []
     for (let hashPart of hash) {
       if (hashPart === '' || hashPart === '#') {
         continue
       }
 
-      path.push(hashPart)
+      this.path.push(hashPart)
     }
+  }
 
-    if (this.store.viewModels.get(path[0])) {
-      this.store.updateViewEntity('main', path[0])
+  @autobind
+  onHashChange () {
+    this.resolvePath()
+
+    if (this.store.viewModels.get(this.path[0])) {
+      this.store.startTransition(this.path[0])
     }
   }
 }

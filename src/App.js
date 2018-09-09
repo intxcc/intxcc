@@ -51,14 +51,40 @@ class App extends React.Component {
   }
 
   @autobind
+  swapBuffer () {
+    this.props.store.updateViewEntity('main', this.props.store.views.get('buffer').model)
+    this.props.store.updateViewEntity('buffer', '')
+  }
+
+  @autobind
+  fadeInMain () {
+    const mainModelActive = this.props.store.views.get('main') && this.props.store.views.get('main').model !== ''
+    if (mainModelActive) {
+      this.props.store.views.get('main').fadeIn()
+    }
+  }
+
+  @autobind
   render () {
     const mainModelActive = this.props.store.views.get('main') && this.props.store.views.get('main').model !== ''
+    const bufferModelActive = this.props.store.views.get('buffer') && this.props.store.views.get('buffer').model !== ''
 
     let logo = ''
     if (mainModelActive) {
       logo = (
         <Logo className={this.props.store.viewModels.get(this.props.store.views.get('main').model).logoClassName} />
       )
+
+      const mainTransitionState = this.props.store.views.get('main').transitionState
+
+      console.log(mainTransitionState)
+      if (mainTransitionState === 'swapBuffer' && bufferModelActive) {        
+        setTimeout(this.swapBuffer, 0)
+      }
+
+      if (mainTransitionState === 'hide') {
+        setTimeout(this.fadeInMain, 0)
+      }
     }
 
     return (
@@ -73,6 +99,10 @@ class App extends React.Component {
           }
 
           const key = keys(this.props.store.views)[index]
+          let buffer
+          if (key === 'main' && this.props.store.views.get('buffer') && view.transitionState !== '' && view.transitionState !== 'fadeOut') {
+            buffer = this.props.store.views.get('buffer')
+          }
 
           const loadView = React.createElement(Views[view.model], {
             global: this.props.store.global,
@@ -90,6 +120,7 @@ class App extends React.Component {
               className={'view-' + key}
               global={this.props.store.global}
               viewModel={this.props.store.viewModels.get(view.model)}
+              buffer={buffer}
               view={view}
               loadedView={loadView}
               loadedOverlayView={loadOverlayView}>

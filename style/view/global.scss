@@ -36,7 +36,9 @@
 }
 
 .view-buffer {
-  z-index: 99;
+  opacity: 0;
+  z-index: 101;
+  pointer-events: none;
 }
 
 .view-main {
@@ -45,7 +47,7 @@
 
 .view-overlay {
   display: none;
-  z-index: 101;
+  z-index: 102;
 }
 
 .view-model {
@@ -74,9 +76,10 @@
   }
 }
 
-// .content-wrapper-outer {
-//   background-color: #f00;
-// }
+.content-wrapper-outer {
+  transition: $global--fade-out-duration opacity;
+  opacity: 0;
+}
 
 .overlay-wrapper-outer {
   position: fixed;
@@ -86,6 +89,9 @@
   bottom: 0;
   left: 0;
 
+  transition: $global--fade-out-duration opacity;
+
+  opacity: 0;
   z-index: 40;
   pointer-events: none;
 }
@@ -97,4 +103,12 @@
 .object {
   position: absolute;
   pointer-events: initial;
+}
+
+.fade-out-content {
+  opacity: 0;
+}
+
+.fade-in-content {
+  opacity: 1;
 }

@@ -15,6 +15,20 @@ const RootStore = types.model({
   views: types.map(ViewEntity),
   global: GlobalModel
 }).actions(self => {
+  function startTransition (modelName) {
+    if (!self.viewModels.get(modelName)) {
+      console.error('No viewModel with the name: ' + modelName)
+      return
+    }
+
+    if (self.views.get('main')) {
+      self.setViewEntity('buffer', modelName)
+      self.views.get('main').startTransition()
+    } else {
+      self.setViewEntity('main', modelName)
+    }
+  }
+
   function setViewEntity (viewName, modelName) {
     self.views.set(viewName, ViewEntity.create({
       model: modelName
@@ -31,6 +45,7 @@ const RootStore = types.model({
   }
 
   return {
+    startTransition,
     setViewEntity,
     updateViewEntity
   }

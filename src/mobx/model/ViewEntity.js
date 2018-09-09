@@ -8,16 +8,41 @@ import EntityObjectModel from './EntityObjectModel'
 
 import { lineIntersect, degreesToRadians } from '../../miscFunctions'
 
+import Style from '../../../style/variables/global.scss'
+
 /**
  * Describes the model of an View object. The model given describes the appearance of the polygons and guide lines.
  */
 const ViewEntity = types.model({
   // Name of the ViewModel
   model: types.string,
+  transitionState: types.optional(types.string, 'hide'),
   guides: types.optional(types.map(EntityGuideModel), {}),
   polygons: types.optional(types.map(EntityPolygonModel), {}),
   objects: types.optional(types.map(EntityObjectModel), {})
 }).actions(self => {
+  function fadeIn () {
+    self.transitionState = 'fadeIn'
+  }
+
+  function startTransition () {
+    if (self.transitionState !== 'fadeIn') {
+      return
+    }
+
+    self.transitionState = 'fadeOut'
+    setTimeout(self.startMorphing, Style.fadeOutDuration)
+  }
+
+  function startMorphing () {
+    self.transitionState = 'morphing'
+    setTimeout(self.endMorphing, Style.fadeOutDuration)
+  }
+
+  function endMorphing () {
+    self.transitionState = 'swapBuffer'
+  }
+
   function setObject (config) {
     const index = config.name
     const type = config.type
@@ -148,6 +173,10 @@ const ViewEntity = types.model({
   }
 
   return {
+    fadeIn,
+    startTransition,
+    startMorphing,
+    endMorphing,
     setObject,
     setPolygon,
     setGuide

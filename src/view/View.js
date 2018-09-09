@@ -10,6 +10,23 @@ import autobind from 'autobind-decorator'
 
 import Defaults from '../config/defaults'
 
+const HelperDivs = observer((props) => {
+  return keys(props.guides).map((key) => (
+    <div
+      ref={ (helperDiv) => { props.that.helperDivs[key] = helperDiv }}
+      key={props.className + '-' + props.modelName + '-helper-div-' + key}
+      className={'guide guide-' + key}>
+    </div>
+  ))
+})
+
+HelperDivs.propTypes = {
+  modelName: PropTypes.string,
+  className: PropTypes.string,
+  guides: PropTypes.object,
+  that: PropTypes.object
+}
+
 const SvgObject = observer((props) => (
   <svg className={props.className} viewBox={props.viewBox}>
     {props.children}
@@ -96,6 +113,9 @@ class View extends React.Component {
   constructor (props) {
     super(props)
 
+    // Save model to catch model changes
+    this.model = ''
+
     // Save reference to helper divs here
     this.helperDivs = {}
 
@@ -125,7 +145,7 @@ class View extends React.Component {
   updateHelperDivs () {
     this.updateTimeout = false
 
-    if (this.props.global.clientWidth === this.dimensions.width && this.props.global.clientHeight === this.dimensions.height) {
+    if (this.props.global.clientWidth === this.dimensions.width && this.props.global.clientHeight === this.dimensions.height && this.props.view.initialized) {
       return
     }
 
@@ -134,6 +154,11 @@ class View extends React.Component {
 
     // Load the guides in the view entity
     for (let index in this.helperDivs) {
+      // TODO For some reason the helper divs are still in the helperDivs object, even after clearing
+      if (!this.helperDivs[index]) {
+        continue
+      }
+
       const div = this.helperDivs[index]
       const rect = div.getBoundingClientRect()
 
@@ -201,6 +226,18 @@ class View extends React.Component {
     const guideKeys = keys(props.viewModel.guides)
     const polygonKeys = keys(props.viewModel.polygons)
 
+    // Catch model update
+    if (this.model !== props.view.model) {
+      this.updateTimeout = false
+
+      for (var member in this.helperDivs) {
+        delete this.helperDivs[member]
+      }
+    } else {
+      props.view.wasInitialized()
+    }
+    this.model = props.view.model
+
     if (this.updateTimeout === false) {
       // Set the update of the helper divs at the end of the javascript event loop queue
       this.updateTimeout = setTimeout(this.updateHelperDivs, 0)
@@ -217,13 +254,7 @@ class View extends React.Component {
               guides={props.view.guides} />
           </SvgObject>
           {/* Render helper divs */}
-          {keys(props.viewModel.guides).map((key) => (
-            <div
-              ref={ (helperDiv) => { this.helperDivs[key] = helperDiv }}
-              key={props.className + '-' + props.view.model + '-helper-div-' + key}
-              className={'guide guide-' + key}>
-            </div>
-          ))}
+          <HelperDivs className={props.className} modelName={props.view.model} that={this} guides={props.viewModel.guides} />
         </div>
         <div
           className={'view-content'}

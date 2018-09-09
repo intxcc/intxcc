@@ -10,7 +10,7 @@ import ViewEntity from './model/ViewEntity'
  */
 const viewEntities = {
   main: ViewEntity.create({
-    model: 'stories'
+    model: ''
   }),
   buffer: ViewEntity.create({
     model: ''

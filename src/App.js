@@ -8,6 +8,8 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import Router from './router/Router'
+
 import Logo from './logo/Logo'
 
 import View from './view/View'
@@ -27,13 +29,17 @@ const OverlayViews = {
 @observer
 class App extends React.Component {
   componentDidMount () {
+    this.router = new Router(this.props.store)
+
     window.addEventListener('resize', this.updateDimensions)
+    window.addEventListener('hashchange', this.router.onHashChange, false)
 
     this.updateDimensions()
   }
 
   componentWillUnmount () {
     window.removeEventListener('resize', this.updateDimensions)
+    window.removeEventListener('hashchange', this.router.onHashChange, false)
   }
 
   @autobind
@@ -51,7 +57,7 @@ class App extends React.Component {
         className='site-wrapper'
         ref={ (siteWrapper) => { this.siteWrapper = siteWrapper }} >
         {/* <Logo className={this.props.store.global.logoClassName} /> */}
-        <Logo className={this.props.store.viewModels.get(this.props.store.views.get('main').model).logoClassName} />
+        {this.props.store.views.get('main').model !== '' ? <Logo className={this.props.store.viewModels.get(this.props.store.views.get('main').model).logoClassName} /> : ''}
         {values(this.props.store.views).map((view, index) => {
           // Don't render empty views.
           if (view.model === '') {

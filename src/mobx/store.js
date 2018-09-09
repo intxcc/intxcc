@@ -14,6 +14,16 @@ const RootStore = types.model({
   viewModels: types.map(ViewModel),
   views: types.map(ViewEntity),
   global: GlobalModel
+}).actions(self => {
+  function setViewModel (viewName, modelName) {
+    self.views.set(viewName, ViewEntity.create({
+      model: modelName
+    }))
+  }
+
+  return {
+    setViewModel
+  }
 })
 
 const store = RootStore.create({

@@ -2,6 +2,7 @@
 
 const ViewModel = {
   name: 'startpage',
+  logoClassName: 'logo-big',
   guides: {
     'a': {
       deg: -12,

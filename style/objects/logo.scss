@@ -1,9 +1,40 @@
-.logo {
+.logo-big {
+  top: 50% !important;
+  left: 50vw !important;
+  transform: translateY(-20vh) rotate(29.8deg);
+
+  transform-origin: top left;
+
+  .logo {
+    width: auto;
+    height: 40vh;
+  }
+}
+
+.logo-wrapper {
   position: fixed;
-  top: 5vmax;
-  left: 5vmax;
+  top: 5rem;
+  left: 5rem;
   z-index: 1000;
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
 
   width: auto;
-  height: 10vmax;
+  height: 11rem;
+}
+
+.logo-inverted {
+  transition: .2s opacity;
+
+  opacity: 0;
+  cursor: pointer;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+  &:hover {
+    opacity: 1;
+  }
 }

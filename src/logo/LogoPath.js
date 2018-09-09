@@ -5,7 +5,12 @@ import PropTypes from 'prop-types'
 
 const LogoPath = (props) => (
   <svg className={props.className} width="250.65" height="217.06" version="1.1" viewBox="0 0 66.318 57.429" xmlns="http://www.w3.org/2000/svg">
-    <g transform="matrix(2.1708 0 0 2.1708 -194.46 -182.16)">
+    <defs>
+      <filter id="filter4840" colorInterpolationFilters="sRGB">
+        <feColorMatrix result="color2" values="-1 0 0 0 1 0 0 -1 0 1 0 -1 0 0 1 -0.21 -0.72 -0.07 2 0 ">
+        </feColorMatrix></filter>
+    </defs>
+    <g transform="matrix(2.1708 0 0 2.1708 -194.46 -182.16)" filter={props.invert ? 'url(#filter4840)' : ''}>
       <g transform="matrix(.83491 .0027989 -.0027989 .83491 16.445 13.609)">
         <g transform="matrix(1.197 -.0040136 .0040136 1.197 70.129 -52.192)">
           <g transform="translate(0,1.0583)" fill="#fff">
@@ -39,7 +44,8 @@ const LogoPath = (props) => (
 )
 
 LogoPath.propTypes = {
-  className: PropTypes.string
+  className: PropTypes.string,
+  invert: PropTypes.bool
 }
 
 export default LogoPath

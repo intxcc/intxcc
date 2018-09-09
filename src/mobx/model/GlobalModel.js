@@ -20,6 +20,7 @@ const BoundingClientRectModel = types.model({
 const GlobalModel = types.model({
   clientWidth: types.optional(types.number, 0),
   clientHeight: types.optional(types.number, 0),
+  logoClassName: types.optional(types.string, ''),
   contentWrapperRect: types.optional(BoundingClientRectModel, {
     x: 0,
     y: 0,

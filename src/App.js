@@ -76,7 +76,6 @@ class App extends React.Component {
       <div
         className='site-wrapper'
         ref={ (siteWrapper) => { this.siteWrapper = siteWrapper }} >
-        {/* {logo} */}
         {values(this.props.store.views).map((view, index) => {
           // Don't render empty views.
           if (view.model === '') {

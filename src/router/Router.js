@@ -2,6 +2,11 @@
 
 import autobind from 'autobind-decorator'
 
+const Routes = {
+  '': 'startpage',
+  'stories': 'stories'
+}
+
 /**
  * Defines the router, which is responsible for synchronizing the hash path with the actual application state.
  */
@@ -11,7 +16,7 @@ class Router {
 
     this.resolvePath()
 
-    this.store.updateViewEntity('main', this.path[0])
+    this.store.updateViewEntity('main', this.modelName)
   }
 
   @autobind
@@ -27,14 +32,21 @@ class Router {
 
       this.path.push(hashPart)
     }
+
+    let path0 = this.path[0]
+    if (!Routes[path0]) {
+      path0 = ''
+    }
+
+    this.modelName = Routes[path0]
   }
 
   @autobind
   onHashChange () {
     this.resolvePath()
 
-    if (this.store.viewModels.get(this.path[0])) {
-      this.store.startTransition(this.path[0])
+    if (this.store.viewModels.get(this.modelName)) {
+      this.store.startTransition(this.modelName)
     }
   }
 }

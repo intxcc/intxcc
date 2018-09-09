@@ -78,7 +78,7 @@ class App extends React.Component {
       const mainTransitionState = this.props.store.views.get('main').transitionState
 
       console.log(mainTransitionState)
-      if (mainTransitionState === 'swapBuffer' && bufferModelActive) {        
+      if (mainTransitionState === 'swapBuffer' && bufferModelActive) {
         setTimeout(this.swapBuffer, 0)
       }
 

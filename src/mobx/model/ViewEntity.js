@@ -36,7 +36,7 @@ const ViewEntity = types.model({
 
   function startMorphing () {
     self.transitionState = 'morphing'
-    setTimeout(self.endMorphing, Style.fadeOutDuration)
+    setTimeout(self.endMorphing, parseInt(Style.fadeOutDuration) + 100)
   }
 
   function endMorphing () {

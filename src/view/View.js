@@ -146,7 +146,7 @@ Polygon.propTypes = {
 }
 
 const PolygonMorph = observer((props) => {
-  const interpolator = interpolate(props.path1, props.path2, { maxSegmentLength: 4 })
+  const interpolator = interpolate(props.path1, props.path2, { maxSegmentLength: 5 })
 
   return (
     <Spring reset native

@@ -13,6 +13,9 @@ const StartpageView = observer((props) => (
       design.<br />
       development.
     </div>
+    <div className='startpage-picture-caption'>
+      <img src='/name.svg' alt='by Marvin Alexander Rüll' />
+    </div>
   </div>
 ))
 

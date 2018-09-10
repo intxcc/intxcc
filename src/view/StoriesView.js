@@ -53,6 +53,12 @@ const StoriesOverlayView = observer((props) => (
         May Till August
       </span>
     </ViewObject>
+    <ViewObject object={props.view.objects.get('story-info-display')}>
+      OwnTrack
+      <div className='story-info-secondary-display'>
+        <b>Skills</b> java | android studio | mysql | python | php
+      </div>
+    </ViewObject>
   </div>
 ))
 

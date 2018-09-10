@@ -44,6 +44,7 @@ const ViewEntity = types.model({
     self.transitionState = 'swapBuffer'
   }
 
+  // Set an object of the entity. The main data is given from the view model and here the calculations take place, to position the object. An object can be anything (e.g. a div), it just needs an class name.
   function setObject (config) {
     const index = config.name
     const type = config.type

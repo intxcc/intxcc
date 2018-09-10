@@ -179,6 +179,12 @@ const ViewModel = {
       intersections: [
         ['b', 'c']
       ]
+    },
+    'story-info-display': {
+      type: 'intersections',
+      intersections: [
+        ['bb', 'ee']
+      ]
     }
   }
 }

@@ -26,22 +26,22 @@
     width: 1px;
   }
 
-  .guide-p1,
-  .guide-p2 {
+  .guide-w1,
+  .guide-w2 {
     top: 50vh;
     left: 50vw;
 
-    transform: translate3d(#{-(14.8 * $picture-dimension-ratio)}vh, 4.2vh, 0) translateX(-$startpage-margin-from-midline);
+    transform: translate3d(#{-(12.88 * $picture-dimension-ratio)}vh, 2.1vh, 0) translateX(-$startpage-margin-from-midline);
 
     width: 5px;
     height: 5px;
   }
 
-  .guide-p3 {
+  .guide-w3 {
     top: 50vh;
     left: 50vw;
 
-    transform: translate3d(#{-(14.6 * $picture-dimension-ratio)}vh, 16.6vh, 0) translateX(-$startpage-margin-from-midline);
+    transform: translate3d(#{-(14.6 * $picture-dimension-ratio)}vh, 15.5vh, 0) translateX(-$startpage-margin-from-midline);
 
     width: 5px;
     height: 5px;

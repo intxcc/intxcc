@@ -75,21 +75,42 @@ const ViewModel = {
       move: 10
     },
     // //////// //
-    // pink tri //
-    'p1': {
+    // white tri //
+    'w1': {
       deg: -65,
       vpos: 'top',
       hpos: 'right'
     },
-    'p2': {
+    'w2': {
       deg: 55,
       vpos: 'top',
       hpos: 'right'
     },
-    'p3': {
+    'w3': {
       deg: -12,
       vpos: 'top',
       hpos: 'right'
+    },
+    // //////// //
+    // pink tri //
+    'p1': {
+      type: 'copy',
+      hide: true,
+      copy: 'w1',
+      move: 5
+    },
+    'p2': {
+      type: 'copy',
+      hide: true,
+      copy: 'w2',
+      move: 5
+    },
+    'p3': {
+      type: 'copy',
+      hide: true,
+      reverse: true,
+      copy: 'w3',
+      move: 5
     }
   },
   polygons: {
@@ -126,6 +147,15 @@ const ViewModel = {
       ]
     },
     'E': {
+      fill: '#fff',
+      stroke: '#fff',
+      points: [
+        ['w1', 'w2'],
+        ['w1', 'w3'],
+        ['w2', 'w3']
+      ]
+    },
+    'F': {
       fill: '#fff',
       stroke: Colors.primaryColor,
       points: [

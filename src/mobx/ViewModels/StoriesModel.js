@@ -157,7 +157,7 @@ const ViewModel = {
       ]
     },
     'F': {
-      fill: 'none',
+      fill: '#fff',
       stroke: Defaults.DefaultStroke,
       points: [
         ['ff', 'gg'],

@@ -31,3 +31,16 @@
   width: 2px;
   height: 37vh;
 }
+
+.startpage-midline-caption {
+  position: fixed;
+  top: 68.5vh;
+  left: 50vw;
+
+  transform: translate3d(-2px, .4rem, 0);
+
+  color: $lightgray;
+  font-family: 'Roboto Condensed';
+  font-size: 1.2rem;
+  font-weight: 400;
+}

@@ -180,6 +180,12 @@ const ViewModel = {
         ['b', 'c']
       ]
     },
+    'year-selection': {
+      type: 'intersections',
+      intersections: [
+        ['b', 'c']
+      ]
+    },
     'story-info-display': {
       type: 'intersections',
       intersections: [

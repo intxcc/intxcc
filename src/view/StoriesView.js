@@ -59,6 +59,20 @@ const StoriesOverlayView = observer((props) => (
         <b>Skills</b> java | android studio | mysql | python | php
       </div>
     </ViewObject>
+    <ViewObject object={props.view.objects.get('year-selection')}>
+      <ul className='year-selection-list'>
+        <li>2018</li>
+        <li className='selected'>2017</li>
+        <li>2016</li>
+        <li>2015</li>
+        <li>2014</li>
+        <li>2012</li>
+        <li>2011</li>
+        <li>2010</li>
+        <li>2009</li>
+        <li>2008</li>
+      </ul>
+    </ViewObject>
   </div>
 ))
 

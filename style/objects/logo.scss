@@ -7,13 +7,13 @@ $logo-clip-path: polygon(0 0, 50% 100%, 100% 0);
 .logo-big {
   top: 50% !important;
   left: 50vw !important;
-  transform: translateY(-20vh) rotate(29.8deg);
+  transform: translateX($startpage-margin-from-midline) translateY(-20.5vh) rotate(29.8deg);
 
   transform-origin: top left;
 
   .logo {
     width: auto;
-    height: 40vh;
+    height: 35vh;
   }
 }
 

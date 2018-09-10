@@ -7,7 +7,8 @@ import { observer } from 'mobx-react'
 
 const StartpageView = observer((props) => (
   <div className='content-wrapper-inner'>
-    Startpage
+    <img className='startpage-picture' alt='Picture of me with triangles.' src='/pic.jpg' />
+    <div className='startpage-midline'></div>
   </div>
 ))
 
@@ -18,7 +19,6 @@ StartpageView.propTypes = {
 
 const StartpageOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
-    Startpage
   </div>
 ))
 

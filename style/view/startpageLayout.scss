@@ -25,4 +25,25 @@
 
     width: 1px;
   }
+
+  .guide-p1,
+  .guide-p2 {
+    top: 50vh;
+    left: 50vw;
+
+    transform: translate3d(#{-(14.9 * $picture-dimension-ratio)}vh, 4.2vh, 0) translateX(-$startpage-margin-from-midline);
+
+    width: 5px;
+    height: 5px;
+  }
+
+  .guide-p3 {
+    top: 50vh;
+    left: 50vw;
+
+    transform: translate3d(#{-(14.6 * $picture-dimension-ratio)}vh, 16.6vh, 0) translateX(-$startpage-margin-from-midline);
+
+    width: 5px;
+    height: 5px;
+  }
 }

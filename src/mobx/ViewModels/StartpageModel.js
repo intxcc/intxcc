@@ -1,3 +1,5 @@
+import Colors from '../../../style/variables/colors.scss'
+
 // This is the ViewModel of the startpage
 
 const ViewModel = {
@@ -71,6 +73,23 @@ const ViewModel = {
       hide: true,
       copy: 'e',
       move: 10
+    },
+    // //////// //
+    // pink tri //
+    'p1': {
+      deg: -65,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'p2': {
+      deg: 55,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'p3': {
+      deg: -12,
+      vpos: 'top',
+      hpos: 'right'
     }
   },
   polygons: {
@@ -104,6 +123,15 @@ const ViewModel = {
         ['j', 'k'],
         ['k', 'i'],
         ['j', 'i']
+      ]
+    },
+    'E': {
+      fill: 'none',
+      stroke: Colors.primaryColor,
+      points: [
+        ['p1', 'p2'],
+        ['p1', 'p3'],
+        ['p2', 'p3']
       ]
     }
   }

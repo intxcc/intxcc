@@ -26,10 +26,6 @@ const ViewEntity = types.model({
   }
 
   function startTransition () {
-    if (self.transitionState !== '') {
-      return
-    }
-
     self.transitionState = 'fadeOut'
     setTimeout(self.startMorphing, Style.fadeOutDuration)
   }

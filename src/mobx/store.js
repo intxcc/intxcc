@@ -14,7 +14,17 @@ const RootStore = types.model({
   viewModels: types.map(ViewModel),
   views: types.map(ViewEntity),
   global: GlobalModel
-}).actions(self => {
+}).views(self => ({
+  get isTransitioning () {
+    if (self.views.get('main')) {
+      if (self.views.get('main').transitionState !== '') {
+        return true
+      }
+    }
+
+    return false
+  }
+})).actions(self => {
   function startTransition (modelName) {
     if (!self.viewModels.get(modelName)) {
       console.error('No viewModel with the name: ' + modelName)
@@ -22,6 +32,11 @@ const RootStore = types.model({
     }
 
     if (self.views.get('main')) {
+      if (self.isTransitioning) {
+        console.warn('Main view is already transitioning. Abort new transition.')
+        return
+      }
+
       self.setViewEntity('buffer', modelName)
       self.views.get('main').startTransition()
     } else {

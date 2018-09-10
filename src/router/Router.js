@@ -24,6 +24,9 @@ class Router {
     let hash = window.location.hash
     hash = hash.split('/')
 
+    // Save hash on every resolve, to get last hash value later
+    this.hash = window.location.hash
+
     this.path = []
     for (let hashPart of hash) {
       if (hashPart === '' || hashPart === '#') {
@@ -42,11 +45,27 @@ class Router {
   }
 
   @autobind
-  onHashChange () {
-    this.resolvePath()
+  revertHash () {
+    window.location.hash = this.hash
+    this.ignoreNextHashChange = true
+  }
 
-    if (this.store.viewModels.get(this.modelName)) {
-      this.store.startTransition(this.modelName)
+  @autobind
+  onHashChange () {
+    // A flag for ignoring one hash change, e.g. for reverting the hash
+    if (this.ignoreNextHashChange) {
+      this.ignoreNextHashChange = false
+      return
+    }
+
+    if (this.store.isTransitioning) {
+      this.revertHash()
+    } else {
+      this.resolvePath()
+
+      if (this.store.viewModels.get(this.modelName)) {
+        this.store.startTransition(this.modelName)
+      }
     }
   }
 }

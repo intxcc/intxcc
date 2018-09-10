@@ -126,7 +126,7 @@ const ViewModel = {
       ]
     },
     'E': {
-      fill: 'none',
+      fill: '#fff',
       stroke: Colors.primaryColor,
       points: [
         ['p1', 'p2'],

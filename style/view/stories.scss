@@ -5,55 +5,6 @@
     height: 200vh;
   }
 
-  .year-selection {
-    transform: rotate(-27deg) translateX(-.85rem) translateY(.1rem);
-    text-rendering: geometricPrecision;
-    font-size: 1.1rem;
-    transform-origin: top left;
-  }
-
-  .year-selection-list {
-    display: flex;
-    align-items: flex-end;
-    list-style: none;
-    font-family: 'Roboto Condensed';
-    font-weight: bold;
-
-    li {
-      transform: translate3d(0, 0, 0) rotate(90deg);
-      transition: .2s background-color,
-      .2s color,
-      .2s text-shadow,
-      .2s color,
-      .2s margin;
-
-      margin: 0 -.5rem;
-      cursor: pointer;
-      padding: 0 .2rem;
-
-      font-size: .9rem;
-
-      transform-origin: right bottom;
-      backface-visibility: hidden;
-
-      &:hover {
-        background-color: $black;
-        color: $white;
-      }
-    }
-
-    .selected {
-      transform: translate3d(1.5rem, 0, 0);
-      margin: 0 .5rem;
-
-      text-shadow:  3px 2px 0 $black;
-      line-height: 1em;
-
-      color: #fff;
-      font-size: 2.5rem;
-    }
-  }
-
   .selected-year-display {
     transform: translateY(-100%) rotate(-27deg) translateX(.5vw) translateY(-10px);
 

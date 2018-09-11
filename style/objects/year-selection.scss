@@ -1,5 +1,5 @@
 .year-selection {
-  transform: rotate(-27deg) translateX(-.85rem) translateY(.1rem);
+  transform: rotate(-27deg) translateX(-.85rem);
   text-rendering: geometricPrecision;
   font-size: 1.1rem;
   transform-origin: top left;
@@ -37,12 +37,23 @@
 
   .selected {
     transform: translate3d(1.5rem, 0, 0);
-    margin: 0 .5rem;
+    margin: 0 -.1rem;
 
     text-shadow:  3px 2px 0 $black;
     line-height: 1em;
 
     color: #fff;
     font-size: 2.5rem;
+
+    &:hover {
+      transition: .2s color,
+      .2s text-shadow,
+      .2s color,
+      .2s margin;
+
+      background-color: initial;
+      cursor: default;
+      color: #fff;
+    }
   }
 }

@@ -28,7 +28,7 @@ const StoriesOverlayView = observer((props) => (
       </div>
     </ViewObject>
     <ViewObject object={props.view.objects.get('selected-year-display')}>
-      2018
+      {props.state.years[props.state.selectedYear]}
       <span className='selected-year-caption'>
         May Till August
       </span>

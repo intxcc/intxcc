@@ -7,7 +7,6 @@ const StoriesModel = types.model({
   selectedYear: types.optional(types.number, 0)
 }).actions(self => {
   function selectYear (index) {
-    console.log(index)
     self.selectedYear = index
   }
 

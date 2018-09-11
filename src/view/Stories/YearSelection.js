@@ -36,10 +36,13 @@ const YearSelection = observer((props) => (
 ))
 
 YearSelection.propTypes = {
-  // An object entity of the view. E.g. props.view.objects.get('year-selection')
+  // An object entity of the view. E.g. props.view.objects.get('year-selection'). That means, that before you can use this component you need to position it in the View Model fist.
   object: PropTypes.object,
+  // An array with the years that should be displayed
   years: PropTypes.array,
+  // The index of the selected year
   selectedYear: PropTypes.number,
+  // The function to select a year. Receives a year index as a single input: selectYear(index)
   selectYear: PropTypes.func
 }
 

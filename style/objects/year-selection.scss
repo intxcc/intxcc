@@ -29,6 +29,8 @@
     transform-origin: right bottom;
     backface-visibility: hidden;
 
+    user-select: none;
+
     &:hover {
       background-color: $black;
       color: $white;

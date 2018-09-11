@@ -15,6 +15,8 @@
 
     transform-origin: left bottom;
 
+    user-select: none;
+
     .selected-year-caption {
       margin: 0 0 0 1rem;
 
@@ -23,6 +25,8 @@
       font-family: 'Roboto Condensed';
       font-size: 1.5vw;
       font-variant: small-caps;
+
+      user-select: text;
     }
   }
 

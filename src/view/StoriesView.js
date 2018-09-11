@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+import ViewObject from './General/ViewObject'
+import YearSelection from './Stories/YearSelection'
+
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
     Stories Under
@@ -14,29 +17,6 @@ const StoriesView = observer((props) => (
 StoriesView.propTypes = {
   global: PropTypes.object,
   view: PropTypes.object
-}
-
-const ViewObject = observer((props) => {
-  if (!props.object) {
-    return ''
-  }
-
-  return (
-    <div className={'object ' + props.object.className} style={{
-      'top': props.object.pos.y,
-      'left': props.object.pos.x
-    }}>
-      {props.children}
-    </div>
-  )
-})
-
-StoriesView.propTypes = {
-  object: PropTypes.object,
-  children: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.object
-  ])
 }
 
 const StoriesOverlayView = observer((props) => (
@@ -59,20 +39,11 @@ const StoriesOverlayView = observer((props) => (
         <b>Skills</b> java | android studio | mysql | python | php
       </div>
     </ViewObject>
-    <ViewObject object={props.view.objects.get('year-selection')}>
-      <ul className='year-selection-list'>
-        <li>2018</li>
-        <li className='selected'>2017</li>
-        <li>2016</li>
-        <li>2015</li>
-        <li>2014</li>
-        <li>2012</li>
-        <li>2011</li>
-        <li>2010</li>
-        <li>2009</li>
-        <li>2008</li>
-      </ul>
-    </ViewObject>
+    <YearSelection
+      object={props.view.objects.get('year-selection')}
+      years={props.state.years}
+      selectedYear={props.state.selectedYear}
+      selectYear={props.state.selectYear} />
   </div>
 ))
 

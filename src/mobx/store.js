@@ -10,10 +10,14 @@ import ViewEntity from './model/ViewEntity'
 import viewModels from './viewModels'
 import viewEntities from './viewEntities'
 
+import StateModel from './StateModels/StateModel'
+import StateDefault from './StateDefaults/StateDefault'
+
 const RootStore = types.model({
   viewModels: types.map(ViewModel),
   views: types.map(ViewEntity),
-  global: GlobalModel
+  global: GlobalModel,
+  state: StateModel
 }).views(self => ({
   get isTransitioning () {
     if (self.views.get('main')) {
@@ -69,7 +73,8 @@ const RootStore = types.model({
 const store = RootStore.create({
   viewModels: viewModels,
   views: viewEntities,
-  global: GlobalModel.create()
+  global: GlobalModel.create(),
+  state: StateModel.create(StateDefault)
 })
 
 export default store

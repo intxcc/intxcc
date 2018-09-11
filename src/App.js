@@ -96,11 +96,13 @@ class App extends React.Component {
 
           const loadView = React.createElement(Views[view.model], {
             global: this.props.store.global,
+            state: this.props.store.state[view.model],
             view: view
           })
 
           const loadOverlayView = React.createElement(OverlayViews[view.model], {
             global: this.props.store.global,
+            state: this.props.store.state[view.model],
             view: view
           })
 

@@ -1,6 +1,7 @@
-// This is the ViewModel of the stories view
-
 import Defaults from '../../config/defaults'
+import Colors from '../../../style/variables/colors.scss'
+
+// This is the ViewModel of the stories view
 
 const ViewModel = {
   name: 'stories',
@@ -112,6 +113,22 @@ const ViewModel = {
       hide: true,
       copy: 'e',
       move: 10
+    },
+    // Helper lines for bottom left caption //
+    'blc0': {
+      deg: 16,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'blc1': {
+      deg: -56,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'blc2': {
+      deg: -27,
+      vpos: 'top',
+      hpos: 'right'
     }
   },
   polygons: {
@@ -164,6 +181,15 @@ const ViewModel = {
         ['ff', 'b'],
         ['gg', 'b']
       ]
+    },
+    'G': {
+      fill: '#fff',
+      stroke: Colors.primaryColor,
+      points: [
+        ['blc0', 'blc1'],
+        ['blc2', 'blc0'],
+        ['blc2', 'blc1']
+      ]
     }
   },
   objects: {
@@ -190,6 +216,12 @@ const ViewModel = {
       type: 'intersections',
       intersections: [
         ['bb', 'ee']
+      ]
+    },
+    'story-page-name-display': {
+      type: 'intersections',
+      intersections: [
+        ['blc0', 'blc1']
       ]
     }
   }

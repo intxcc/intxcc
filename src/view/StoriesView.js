@@ -44,6 +44,12 @@ const StoriesOverlayView = observer((props) => (
       years={props.state.years}
       selectedYear={props.state.selectedYear}
       selectYear={props.state.selectYear} />
+    <ViewObject object={props.view.objects.get('story-page-name-display')}>
+      stories
+      <div className='story-page-name-display-caption'>
+        portfolio
+      </div>
+    </ViewObject>
   </div>
 ))
 

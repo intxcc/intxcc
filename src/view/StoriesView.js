@@ -10,7 +10,9 @@ import YearSelection from './Stories/YearSelection'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
-    Stories Under
+    <div className='articles-container'>
+
+    </div>
   </div>
 ))
 

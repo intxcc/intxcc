@@ -1,0 +1,24 @@
+.selected-year-display {
+  transform: translateY(-100%) rotate(-27deg) translateX(.5vw) translateY(-10px);
+
+  text-shadow:  3px 2px 0 $white;
+  line-height: .65em;
+  color: $black;
+  font-size: 4vw;
+
+  transform-origin: left bottom;
+
+  user-select: none;
+
+  .selected-year-caption {
+    margin: 0 0 0 1rem;
+
+    text-shadow: initial;
+    color: $white;
+    font-family: 'Roboto Condensed';
+    font-size: 1.5vw;
+    font-variant: small-caps;
+
+    user-select: text;
+  }
+}

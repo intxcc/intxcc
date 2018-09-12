@@ -31,7 +31,7 @@
     top: 50vh;
     left: 50vw;
 
-    transform: translate3d(#{(24 * $picture-dimension-ratio)}vh, 2.1vh, 0) translateX($startpage-margin-from-midline);
+    transform: translate3d(#{(24 * $picture-dimension-ratio)}vh, 2.1vh, 0) translateX($startpage-margin-from-midline) translateY(1rem);
 
     width: 5px;
     height: 5px;
@@ -41,7 +41,7 @@
     top: 50vh;
     left: 50vw;
 
-    transform: translate3d(#{(22 * $picture-dimension-ratio)}vh, 15.5vh, 0) translateX($startpage-margin-from-midline);
+    transform: translate3d(#{(22 * $picture-dimension-ratio)}vh, 15.5vh, 0) translateX($startpage-margin-from-midline) translateY(1rem);
 
     width: 5px;
     height: 5px;

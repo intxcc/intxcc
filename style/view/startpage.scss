@@ -61,7 +61,7 @@
   top: 50vh;
   left: 50vw;
 
-  transform: translate3d(#{(2 * $picture-dimension-ratio)}vh, -50%, 0);
+  transform: translate3d(#{(2 * $picture-dimension-ratio)}vh, -50%, 0) translateY(1rem);
 
   margin: 0 0 0 ($startpage-margin-from-midline);
   height: 35vh;
@@ -74,7 +74,7 @@
   top: 50vh;
   left: 50vw;
 
-  transform: translate3d(#{(-.2 * $picture-dimension-ratio)}vh, -4vh, 0) translateX($startpage-margin-from-midline);
+  transform: translate3d(#{(-.2 * $picture-dimension-ratio)}vh, -4vh, 0) translateX($startpage-margin-from-midline) translateY(1rem);
 
   img {
     height: 22vh;

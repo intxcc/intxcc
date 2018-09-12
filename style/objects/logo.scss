@@ -1,22 +1,11 @@
 $logo-clip-path: polygon(0 0, 50% 100%, 100% 0);
 
+// INFO: logo-big is in startpage.scss
+
 .logo-link {
   pointer-events: none;
 }
 
-.logo-big {
-  top: 50% !important;
-  left: 50vw !important;
-
-  transform: translateX($startpage-margin-from-midline) translateY(-18.5vh) rotate(29.8deg);
-
-  transform-origin: top left;
-
-  .logo {
-    width: auto;
-    height: 32vh;
-  }
-}
 
 .logo-wrapper {
   position: fixed;

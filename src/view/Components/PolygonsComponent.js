@@ -87,6 +87,7 @@ const PolygonsComponent = observer((props) => (
         }
       }
 
+      // MARKER_001
       // If no polygon is found from which one this shall be morphed, we choose a random one
       // Attention: This is buggy, because it gets rendered 2 times, fix or just manually select a polygon to morph from in the specific View Models
       // if (!morphToPolygon[0]) {

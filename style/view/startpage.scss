@@ -1,19 +1,68 @@
 @import 'startpageLayout';
 
 // .view-startpage {
-//   .content-wrapper-inner {
-//     height: 200vh;
-//   }
 // }
+
+.logo-big {
+  top: 50% !important;
+  left: 50% !important;
+
+  transform: translate3d(-100%, -50%, 0) translateX(-$startpage-margin-from-midline + .8rem);
+
+  width: 32vh / $logo-dimension-ratio;
+  height: 32vh;
+
+  transform-origin: top left;
+
+  .logo {
+    width: auto;
+    height: 32vh;
+  }
+}
+
+.startpage-navigation-list {
+  display: flex;
+
+  position: absolute;
+  bottom: 2vh;
+  left: 50%;
+
+  transform: translate3d(-50%, -50%, 0);
+
+  list-style: none;
+  font-family: 'Roboto Condensed';
+  font-variant: small-caps;
+
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+
+  li {
+    padding: 0 .4rem;
+
+    font-size: 2vh;
+    font-weight: lighter;
+
+    &:first-child {
+      padding: 0 .2rem;
+      font-weight: bold;
+    }
+
+    &:last-child {
+      padding-right: initial;
+    }
+  }
+}
 
 .startpage-picture {
   position: fixed;
   top: 50vh;
   left: 50vw;
 
-  transform: translate3d(-100%, -50%, 0);
+  transform: translate3d(#{(2 * $picture-dimension-ratio)}vh, -50%, 0);
 
-  margin: 0 0 0 (-$startpage-margin-from-midline);
+  margin: 0 0 0 ($startpage-margin-from-midline);
   height: 35vh;
 
   transform-origin: top left;
@@ -24,7 +73,7 @@
   top: 50vh;
   left: 50vw;
 
-  transform: translate3d(#{-(38 * $picture-dimension-ratio)}vh, -4vh, 0) translateX(-$startpage-margin-from-midline);
+  transform: translate3d(#{(-.2 * $picture-dimension-ratio)}vh, -4vh, 0) translateX($startpage-margin-from-midline);
 
   img {
     height: 22vh;
@@ -34,14 +83,14 @@
 .startpage-midline {
   position: fixed;
   top: 50vh;
+  bottom: 32.875vh;
   left: 50vw;
 
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, 0, 0);
 
-  background-color: $lightgray;
+  background-color: $black;
 
   width: 2px;
-  height: 34.25vh;
 }
 
 .startpage-midline-caption {
@@ -51,7 +100,7 @@
 
   transform: translate3d(-2px, .4rem, 0);
 
-  color: $lightgray;
+  color: $black;
   font-family: 'Roboto Condensed';
   font-size: 1.2rem;
   font-weight: 400;

@@ -5,6 +5,7 @@ import { types } from 'mobx-state-tree'
 import Point from './Point'
 
 const EntityPolygonModel = types.model({
+  morphFrom: types.array(types.string),
   fill: types.string,
   stroke: types.string,
   points: types.array(Point)

@@ -164,16 +164,8 @@ const ViewModel = {
         ['j', 'i']
       ]
     },
-    'E': {
-      fill: '#fff',
-      stroke: Defaults.DefaultStroke,
-      points: [
-        ['bb', 'dd'],
-        ['bb', 'ee'],
-        ['ee', 'dd']
-      ]
-    },
-    'F': {
+    'LeftTriangleA': {
+      morphFrom: ['PinkTriangleBackground'],
       fill: '#fff',
       stroke: Defaults.DefaultStroke,
       points: [
@@ -182,7 +174,17 @@ const ViewModel = {
         ['gg', 'b']
       ]
     },
-    'G': {
+    'RightTriangleA': {
+      morphFrom: ['PinkTriangle'],
+      fill: '#fff',
+      stroke: Defaults.DefaultStroke,
+      points: [
+        ['bb', 'dd'],
+        ['bb', 'ee'],
+        ['ee', 'dd']
+      ]
+    },
+    'PinkTriangle': {
       fill: '#fff',
       stroke: Colors.primaryColor,
       points: [

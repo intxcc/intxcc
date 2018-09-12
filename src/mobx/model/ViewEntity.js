@@ -2,6 +2,8 @@
 
 import { types } from 'mobx-state-tree'
 
+import { values } from 'mobx'
+
 import EntityGuideModel from './EntityGuideModel'
 import EntityPolygonModel from './EntityPolygonModel'
 import EntityObjectModel from './EntityObjectModel'
@@ -94,6 +96,7 @@ const ViewEntity = types.model({
     const index = config.name
     const fill = config.fill
     const stroke = config.stroke
+    const morphFrom = values(config.morphFrom)
 
     let points = []
     for (let pointConfig of config.points) {
@@ -108,11 +111,13 @@ const ViewEntity = types.model({
 
     if (!self.polygons[index]) {
       self.polygons.set(index, EntityPolygonModel.create({
+        morphFrom: morphFrom,
         fill: fill,
         stroke: stroke,
         points: points
       }))
     } else {
+      self.polygons[index].morphFrom = morphFrom
       self.polygons[index].fill = fill
       self.polygons[index].points = points
     }

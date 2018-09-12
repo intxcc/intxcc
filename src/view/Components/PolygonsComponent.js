@@ -75,21 +75,56 @@ const PolygonsComponent = observer((props) => (
     key = props.polygonKeys[key]
 
     if (props.morphTo) {
-      const morphToPolygon = props.morphTo.get(key)
+      let morphToPolygon = [props.morphTo.get(key)]
 
-      if (morphToPolygon) {
-        return (
-          <PolygonMorph
-            key={props.classNameStart + key}
-            fill1={polygon.fill}
-            stroke1={polygon.stroke}
-            strokeWidth1={polygon.strokeWidth}
-            path1={polygon.path}
-            fill2={morphToPolygon.fill}
-            stroke2={morphToPolygon.stroke}
-            strokeWidth2={morphToPolygon.strokeWidth}
-            path2={morphToPolygon.path} />
-        )
+      // Find out which polygons want to get morphed from this one and create a Morph object for them
+      if (polygon.morphFrom && polygon.morphFrom.length > 0) {
+        morphToPolygon = []
+        for (let morphFrom of polygon.morphFrom) {
+          morphToPolygon.push(
+            props.morphTo.get(morphFrom)
+          )
+        }
+      }
+
+      if (morphToPolygon[0]) {
+        if (morphToPolygon.length === 1) {
+          morphToPolygon = morphToPolygon[0]
+
+          return (
+            <PolygonMorph
+              key={props.classNameStart + key}
+              fill1={polygon.fill}
+              stroke1={polygon.stroke}
+              strokeWidth1={polygon.strokeWidth}
+              path1={polygon.path}
+              fill2={morphToPolygon.fill}
+              stroke2={morphToPolygon.stroke}
+              strokeWidth2={morphToPolygon.strokeWidth}
+              path2={morphToPolygon.path} />
+          )
+        } else {
+          // If there is more than one polygon, that wants to be morphed from this, every one gets its own copy
+
+          let polygonMorphes = []
+          for (let morphToIndex in morphToPolygon) {
+            const morphTo = morphToPolygon[morphToIndex]
+            polygonMorphes.push(
+              <PolygonMorph
+                key={props.classNameStart + key + '-' + morphToIndex}
+                fill1={polygon.fill}
+                stroke1={polygon.stroke}
+                strokeWidth1={polygon.strokeWidth}
+                path1={polygon.path}
+                fill2={morphTo.fill}
+                stroke2={morphTo.stroke}
+                strokeWidth2={morphTo.strokeWidth}
+                path2={morphTo.path} />
+            )
+          }
+
+          return polygonMorphes
+        }
       }
     }
 

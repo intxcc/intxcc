@@ -146,7 +146,8 @@ const ViewModel = {
         ['j', 'i']
       ]
     },
-    'E': {
+    'PinkTriangleBackground': {
+      morphFrom: ['LeftTriangleA'],
       fill: '#fff',
       stroke: '#fff',
       points: [
@@ -155,7 +156,8 @@ const ViewModel = {
         ['w2', 'w3']
       ]
     },
-    'F': {
+    'PinkTriangle': {
+      morphFrom: ['RightTriangleA', 'PinkTriangle'],
       fill: '#fff',
       stroke: Colors.primaryColor,
       points: [

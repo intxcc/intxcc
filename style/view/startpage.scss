@@ -4,10 +4,11 @@
 // }
 
 .logo-big {
-  top: 50% !important;
+  top: initial !important;
+  bottom: 32.875vh;
   left: 50% !important;
 
-  transform: translate3d(-100%, -50%, 0) translateX(-$startpage-margin-from-midline + .8rem);
+  transform: translate3d(-100%, 0, 0) translateY(1rem) translateX(-$startpage-margin-from-midline + .8rem);
 
   width: 32vh / $logo-dimension-ratio;
   height: 32vh;

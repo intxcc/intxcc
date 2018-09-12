@@ -9,7 +9,7 @@ import LogoPath from './LogoPath'
 
 const Logo = observer((props) => (
   <div className={props.className + ' logo-wrapper'}>
-    <a className={'logo-link'} href='#/startpage/'>
+    <a className={'logo-link'} href='#/'>
       <LogoPath className={'logo logo-normal'} />
       <LogoPath className={'logo logo-inverted'} invert={true} />
     </a>

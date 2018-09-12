@@ -87,6 +87,16 @@ const PolygonsComponent = observer((props) => (
         }
       }
 
+      // If no polygon is found from which one this shall be morphed, we choose a random one
+      // Attention: This is buggy, because it gets rendered 2 times, fix or just manually select a polygon to morph from in the specific View Models
+      // if (!morphToPolygon[0]) {
+      //   console.log('1')
+      //   const morphToKeys = keys(props.morphTo)
+      //   const randomKeyIndex = Math.floor((Math.random() * morphToKeys.length))
+      //   const randomKey = morphToKeys[randomKeyIndex]
+      //   morphToPolygon = [props.morphTo.get(randomKey)]
+      // }
+
       if (morphToPolygon[0]) {
         if (morphToPolygon.length === 1) {
           morphToPolygon = morphToPolygon[0]

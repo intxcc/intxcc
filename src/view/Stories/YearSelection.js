@@ -22,7 +22,7 @@ Year.propTypes = {
 }
 
 const YearSelection = observer((props) => (
-  <ViewObject object={props.object}>
+  <ViewObject object={props.object} className={props.className}>
     <ul className='year-selection-list'>
       {props.years.map((year, index) => (
         <Year
@@ -38,6 +38,8 @@ const YearSelection = observer((props) => (
 YearSelection.propTypes = {
   // An object entity of the view. E.g. props.view.objects.get('year-selection'). That means, that before you can use this component you need to position it in the View Model fist.
   object: PropTypes.object,
+  // Additional class name
+  className: PropTypes.string,
   // An array with the years that should be displayed
   years: PropTypes.array,
   // The index of the selected year

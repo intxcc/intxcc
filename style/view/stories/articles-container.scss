@@ -1,0 +1,44 @@
+$articles-h2filler-margin-left: 10vw;
+$articles-h2filler-width: 1rem;
+
+.articles-container {
+  transform: translate3d(-100%, 7rem, 0);
+
+  // This is so the content is not overlayed by the big polygon, which gets its position from the
+  margin-top: 2vw;
+
+  width: 50vw;
+  height: 100vh;
+
+  text-align: justify;
+
+  font-size: 1.2rem;
+
+  .h2-filler {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    border-radius: $articles-h2filler-width / 2;
+
+    background-color: $black;
+
+    width: $articles-h2filler-width;
+  }
+
+  .h2-filler-left {
+    margin: 0 0 0 (-$articles-h2filler-width * 2);
+  }
+
+  .h2-filler-right {
+    right: 0;
+  }
+
+  h2 {
+    position: relative;
+
+    margin: 0 0 1rem;
+    padding: 0 $articles-h2filler-width * 2 0 $articles-h2filler-margin-left;
+    font-size: 1.2rem;
+  }
+}

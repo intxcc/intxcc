@@ -7,7 +7,20 @@
   font-size: 3.5rem;
   font-weight: bold;
 
+  .story-info-display-name {
+    margin: 0 -1rem 0 0;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 0 1rem;
+  }
+
   .story-info-secondary-display {
+    margin: -1rem -1rem 0 0;
+    border-radius: 10px;
+
+    background-color: #fff;
+    padding: .5rem 1rem;
+
     color: $gray;
     font-size: 1.5rem;
     font-weight: normal;

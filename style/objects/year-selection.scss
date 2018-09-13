@@ -1,13 +1,9 @@
-.year-selection {
-  transform: rotate(-27deg) translateX(-.85rem);
-  text-rendering: geometricPrecision;
-  font-size: 1.1rem;
-  transform-origin: top left;
-}
-
 .year-selection-list {
   display: flex;
+
   align-items: flex-end;
+  margin: 0 0 0 -1.2rem;
+
   list-style: none;
   font-family: 'Roboto Condensed';
   font-weight: bold;
@@ -21,8 +17,10 @@
     .2s margin;
 
     margin: 0 -.5rem;
+    background-color: #fff;
+
     cursor: pointer;
-    padding: 0 .2rem;
+    padding: 0 .3rem;
 
     font-size: .9rem;
 

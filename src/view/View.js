@@ -167,7 +167,7 @@ class View extends React.Component {
           {/* Render helper divs */}
           <HelperDivsComponent className={props.className} modelName={props.view.model} that={this} guides={props.viewModel.guides} />
         </div>
-        <div
+        <main
           className={'view-content'}
           ref={ (viewContent) => { this.viewContent = viewContent }}
           onScroll={this.viewContentScroll}>
@@ -178,7 +178,7 @@ class View extends React.Component {
             <Logo className={props.viewModel.logoClassName} />
             {this.props.loadedView}
           </div>
-        </div>
+        </main>
         <div className={'view-model view-model-overlay'}>
           <SvgObjectComponent className='svg-wrapper' viewBox={props.global.svgViewBox}>
             <PolygonsComponent

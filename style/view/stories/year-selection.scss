@@ -1,0 +1,12 @@
+.stories-year-selection {
+  transform: rotate(-27deg) translateX(-.85rem) translateX(1.1rem);
+
+  border-radius: 10px;
+
+  // background-color: #fff;
+  padding: 0 2rem .25rem 0;
+
+  text-rendering: geometricPrecision;
+  font-size: 1.1rem;
+  transform-origin: top left;
+}

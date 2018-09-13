@@ -220,6 +220,12 @@ const ViewModel = {
         ['bb', 'ee']
       ]
     },
+    'articles-container': {
+      type: 'intersections',
+      intersections: [
+        ['bb', 'ee']
+      ]
+    },
     'story-page-name-display': {
       type: 'intersections',
       intersections: [

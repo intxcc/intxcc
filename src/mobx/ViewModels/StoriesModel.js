@@ -142,13 +142,6 @@ const ViewModel = {
         ['d', 'b']
       ]
     },
-    'A': {
-      points: [
-        ['d', 'e'],
-        ['e', 'b'],
-        ['d', 'b']
-      ]
-    },
     'B_WhiteStroke_Outer': {
       stroke: '#fff',
       fill: 'none',
@@ -157,6 +150,13 @@ const ViewModel = {
         ['c', 'a'],
         ['c', 'b'],
         ['a', 'b']
+      ]
+    },
+    'A': {
+      points: [
+        ['d', 'e'],
+        ['e', 'b'],
+        ['d', 'b']
       ]
     },
     'B': {
@@ -250,6 +250,24 @@ const ViewModel = {
       type: 'intersections',
       intersections: [
         ['blc0', 'blc1']
+      ]
+    },
+    'stories-top-left-white-area': {
+      type: 'intersections',
+      intersections: [
+        ['b', 'c']
+      ]
+    },
+    'stories-top-right-white-area': {
+      type: 'intersections',
+      intersections: [
+        ['bb', 'ee']
+      ]
+    },
+    'stories-top-middle-white-area': {
+      type: 'intersections',
+      intersections: [
+        ['bb', 'ee']
       ]
     }
   }

@@ -10,6 +10,9 @@ import YearSelection from './Stories/YearSelection'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
+    <ViewObject object={props.view.objects.get('stories-top-left-white-area')}></ViewObject>
+    <ViewObject object={props.view.objects.get('stories-top-right-white-area')}></ViewObject>
+    <ViewObject object={props.view.objects.get('stories-top-middle-white-area')}></ViewObject>
     <ViewObject object={props.view.objects.get('articles-container')}>
       <article>
         <h2>

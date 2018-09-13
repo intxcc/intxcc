@@ -132,11 +132,31 @@ const ViewModel = {
     }
   },
   polygons: {
+    'A_WhiteStroke_Outer': {
+      stroke: '#fff',
+      fill: 'none',
+      strokeWidth: 10,
+      points: [
+        ['d', 'e'],
+        ['e', 'b'],
+        ['d', 'b']
+      ]
+    },
     'A': {
       points: [
         ['d', 'e'],
         ['e', 'b'],
         ['d', 'b']
+      ]
+    },
+    'B_WhiteStroke_Outer': {
+      stroke: '#fff',
+      fill: 'none',
+      strokeWidth: 10,
+      points: [
+        ['c', 'a'],
+        ['c', 'b'],
+        ['a', 'b']
       ]
     },
     'B': {

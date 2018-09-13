@@ -8,6 +8,7 @@ const EntityPolygonModel = types.model({
   morphFrom: types.array(types.string),
   fill: types.string,
   stroke: types.string,
+  strokeWidth: types.number,
   points: types.array(Point)
 }).views(self => ({
   get path () {

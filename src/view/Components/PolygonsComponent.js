@@ -74,6 +74,12 @@ const PolygonsComponent = observer((props) => (
   values(props.polygons).map((polygon, key) => {
     key = props.polygonKeys[key]
 
+    // If stroke width of the polygon is set to a number smaller than 0 we use the default stroke width
+    let pStrokeWidth = polygon.strokeWidth
+    if (pStrokeWidth < 0) {
+      pStrokeWidth = props.strokeWidth
+    }
+
     if (props.morphTo) {
       let morphToPolygon = [props.morphTo.get(key)]
 
@@ -102,16 +108,22 @@ const PolygonsComponent = observer((props) => (
         if (morphToPolygon.length === 1) {
           morphToPolygon = morphToPolygon[0]
 
+          // If stroke width of the morphToPolygon is set to a number smaller than 0 we use the default stroke width
+          let mStrokeWidth = morphToPolygon.strokeWidth
+          if (mStrokeWidth < 0) {
+            mStrokeWidth = props.strokeWidth
+          }
+
           return (
             <PolygonMorph
               key={props.classNameStart + key}
               fill1={polygon.fill}
               stroke1={polygon.stroke}
-              strokeWidth1={polygon.strokeWidth}
+              strokeWidth1={pStrokeWidth}
               path1={polygon.path}
               fill2={morphToPolygon.fill}
               stroke2={morphToPolygon.stroke}
-              strokeWidth2={morphToPolygon.strokeWidth}
+              strokeWidth2={mStrokeWidth}
               path2={morphToPolygon.path} />
           )
         } else {
@@ -120,16 +132,23 @@ const PolygonsComponent = observer((props) => (
           let polygonMorphes = []
           for (let morphToIndex in morphToPolygon) {
             const morphTo = morphToPolygon[morphToIndex]
+
+            // If stroke width of the morphToPolygon is set to a number smaller than 0 we use the default stroke width
+            let mStrokeWidth = morphTo.strokeWidth
+            if (mStrokeWidth < 0) {
+              mStrokeWidth = props.strokeWidth
+            }
+
             polygonMorphes.push(
               <PolygonMorph
                 key={props.classNameStart + key + '-' + morphToIndex}
                 fill1={polygon.fill}
                 stroke1={polygon.stroke}
-                strokeWidth1={polygon.strokeWidth}
+                strokeWidth1={pStrokeWidth}
                 path1={polygon.path}
                 fill2={morphTo.fill}
                 stroke2={morphTo.stroke}
-                strokeWidth2={morphTo.strokeWidth}
+                strokeWidth2={mStrokeWidth}
                 path2={morphTo.path} />
             )
           }
@@ -144,7 +163,7 @@ const PolygonsComponent = observer((props) => (
         key={props.classNameStart + key}
         fill={polygon.fill}
         stroke={polygon.stroke}
-        strokeWidth={props.strokeWidth}
+        strokeWidth={pStrokeWidth}
         path={polygon.path} />
     )
   })

@@ -101,6 +101,7 @@ class View extends React.Component {
       this.props.view.setPolygon({
         name: index,
         morphFrom: polygon.morphFrom,
+        strokeWidth: polygon.strokeWidth,
         stroke: polygon.stroke,
         fill: polygon.fill,
         points: points

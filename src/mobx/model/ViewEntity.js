@@ -96,6 +96,7 @@ const ViewEntity = types.model({
     const index = config.name
     const fill = config.fill
     const stroke = config.stroke
+    const strokeWidth = config.strokeWidth
     const morphFrom = values(config.morphFrom)
 
     let points = []
@@ -114,11 +115,14 @@ const ViewEntity = types.model({
         morphFrom: morphFrom,
         fill: fill,
         stroke: stroke,
+        strokeWidth: strokeWidth,
         points: points
       }))
     } else {
       self.polygons[index].morphFrom = morphFrom
       self.polygons[index].fill = fill
+      self.polygons[index].stroke = stroke
+      self.polygons[index].strokeWidth = strokeWidth
       self.polygons[index].points = points
     }
   }

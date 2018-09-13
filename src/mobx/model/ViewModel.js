@@ -36,6 +36,7 @@ const PolygonModel = types.model({
   morphFrom: types.optional(types.array(types.string), []),
   fill: types.optional(types.string, Defaults.PolygonFill),
   stroke: types.optional(types.string, Defaults.PolygonStroke),
+  strokeWidth: types.optional(types.number, -1),
   points: types.array(types.array(types.string))
 })
 

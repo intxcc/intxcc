@@ -80,10 +80,15 @@ const ViewEntity = types.model({
   function changeModelVariant (modelVariant) {
     // Dont allow changing if the current variant is the same as the one that should be changed to
     if (self.modelVariant === modelVariant) {
+      // If the state is still transitioning, its possible, that to go back we still need a transition
+      if (self.transitionState === 'morphVariant' && self.nextModelVariant !== '') {
+        self.nextModelVariant = modelVariant
+      }
+
       return
     }
 
-    // If we just can't morph, because there is a transition happening, we wait a few milliseconds and tr again
+    // If we just can't morph, because there is a transition happening, we wait a few milliseconds and try again
     if (self.transitionState === 'morphVariant' && modelVariant !== 'next' && self.modelVariant !== modelVariant) {
       // We set only one timeout, to check back in a few ms, if the requested change is still wanted
       if (self.nextModelVariant === '') {

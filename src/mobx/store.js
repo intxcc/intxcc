@@ -50,6 +50,7 @@ const RootStore = types.model({
 
   function setViewEntity (viewName, modelName) {
     self.views.set(viewName, ViewEntity.create({
+      id: viewName,
       model: modelName
     }))
   }

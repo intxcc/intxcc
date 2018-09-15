@@ -39,6 +39,10 @@ class View extends React.Component {
   componentDidMount () {
     this.updateHelperDivs()
 
+    if (this.props.state && this.props.state.setViewEntityReference) {
+      this.props.state.setViewEntityReference(this.props.view)
+    }
+
     // Set scroll top after first render, append to event queue
     setTimeout(this.setScrollTop, 0)
   }
@@ -256,7 +260,7 @@ class View extends React.Component {
           onScroll={this.viewContentScroll}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
           <div
-            className={'content-wrapper-outer ' + fadeClassName + contentClassName}
+            className={'content-wrapper-outer ' + props.viewModel.className + ' ' + fadeClassName + contentClassName}
             ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }} >
             <Logo className={props.viewModel.logoClassName} />
             {props.loadedView}
@@ -265,7 +269,7 @@ class View extends React.Component {
         <div className={'view-model view-model-overlay'}>
           {Polygons}
         </div>
-        <div className={'overlay-wrapper-outer ' + fadeClassName + contentClassName}>
+        <div className={'overlay-wrapper-outer ' + props.viewModel.className + ' ' + fadeClassName + contentClassName}>
           {this.props.loadedOverlayView}
         </div>
       </div>

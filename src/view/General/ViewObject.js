@@ -11,7 +11,7 @@ const ViewObject = observer((props) => {
   }
 
   return (
-    <div className={'object ' + props.object.className + ' ' + props.className} style={{
+    <div className={'object ' + props.object.className + ' ' + (props.className ? props.className : '')} style={{
       'top': props.object.pos.y,
       'left': props.object.pos.x
     }}>

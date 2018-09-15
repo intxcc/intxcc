@@ -16,9 +16,12 @@ import Style from '../../../style/variables/global.scss'
  * Describes the model of an View object. The model given describes the appearance of the polygons and guide lines.
  */
 const ViewEntity = types.model({
+  // Necessary to reference this in the states
+  id: types.identifier,
   // Name of the ViewModel
   model: types.string,
   modelVariant: types.optional(types.string, 'default'),
+  nextModelVariant: types.optional(types.string, ''),
   snapshotVariant: types.optional(types.string, ''),
   transitionState: types.optional(types.string, ''),
   guides: types.optional(types.map(EntityGuideModel), {}),
@@ -35,6 +38,46 @@ const ViewEntity = types.model({
   }
 
   function changeModelVariant (modelVariant) {
+    // Dont allow changing if the current variant is the same as the one that should be changed to
+    if (self.modelVariant === modelVariant) {
+      return
+    }
+
+    // If we just can't morph, because there is a transition happening, we wait a few milliseconds and tr again
+    if (self.transitionState === 'morphVariant' && modelVariant !== 'next' && self.modelVariant !== modelVariant) {
+      // We set only one timeout, to check back in a few ms, if the requested change is still wanted
+      if (self.nextModelVariant === '') {
+        setTimeout(() => self.changeModelVariant('next'), 100)
+      }
+
+      // While the timeout is waiting, if something still wants to change the model, it gets saved, so later that last requested change will happen
+      self.nextModelVariant = modelVariant
+    }
+
+    // We waited.. But not long enough. Wait again.
+    if (self.transitionState === 'morphVariant' && modelVariant === 'next') {
+      setTimeout(() => self.changeModelVariant('next'), 100)
+    }
+
+    // If we are transitioning nothing goes past this point
+    if (self.transitionState === 'morphVariant') {
+      return
+    }
+
+    // This is the function call of the timeout, because we were busy
+    if (modelVariant === 'next') {
+      // Get the last requested model change
+      modelVariant = self.nextModelVariant
+
+      // Check again, if it is different, than the current
+      if (self.modelVariant === modelVariant || modelVariant === '') {
+        return
+      }
+    }
+
+    // Reset the "waiting queue"
+    self.nextModelVariant = ''
+
     self.snapshotEntity()
     self.modelVariant = modelVariant
     self.transitionState = 'morphVariant'

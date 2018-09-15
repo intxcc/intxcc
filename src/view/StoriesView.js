@@ -12,6 +12,12 @@ import Texts from '../mobx/StateData/stories/Texts'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
+    <ViewObject object={props.view.objects.get('story-info-display')}>
+      <span className='story-info-display-name'>OwnTrack</span>
+      <div className='story-info-secondary-display'>
+        <b>Skills</b> java | android studio | mysql | python | php
+      </div>
+    </ViewObject>
     <ViewObject object={props.view.objects.get('articles-container')}>
       {props.state.stories.map((story, index) => (
         <article key={'story-' + index}>
@@ -39,12 +45,6 @@ const StoriesOverlayView = observer((props) => (
       Mobile App<br />
       <div className='story-name-caption'>
         Android
-        <span onClick={() => {
-          props.view.changeModelVariant('ArticleFocusModel')
-          console.log('a')
-        }}>
-          test
-        </span>
       </div>
     </ViewObject>
     <ViewObject object={props.view.objects.get('selected-year-display')}>
@@ -52,12 +52,6 @@ const StoriesOverlayView = observer((props) => (
       <span className='selected-year-caption'>
         May Till August
       </span>
-    </ViewObject>
-    <ViewObject object={props.view.objects.get('story-info-display')}>
-      <span className='story-info-display-name'>OwnTrack</span>
-      <div className='story-info-secondary-display'>
-        <b>Skills</b> java | android studio | mysql | python | php
-      </div>
     </ViewObject>
     <YearSelection
       object={props.view.objects.get('year-selection')}

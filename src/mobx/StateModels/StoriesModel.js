@@ -2,10 +2,16 @@
 
 import { types } from 'mobx-state-tree'
 
+const StoryModel = types.model({
+  textName: types.string,
+  summary: types.string
+})
+
 const StoriesModel = types.model({
   scrollTop: types.optional(types.number, 0),
   years: types.array(types.number),
-  selectedYear: types.optional(types.number, 0)
+  selectedYear: types.optional(types.number, 0),
+  stories: types.array(StoryModel)
 }).actions(self => {
   function onScroll (scrollTop) {
     self.scrollTop = scrollTop

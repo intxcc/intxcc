@@ -77,7 +77,7 @@ const PolygonsComponent = observer((props) => (
     // If stroke width of the polygon is set to a number smaller than 0 we use the default stroke width
     let pStrokeWidth = polygon.strokeWidth
     if (pStrokeWidth < 0) {
-      pStrokeWidth = props.strokeWidth
+      pStrokeWidth = props.defaultStrokeWidth
     }
 
     if (props.morphTo) {
@@ -104,56 +104,33 @@ const PolygonsComponent = observer((props) => (
       // }
 
       if (morphToPolygon[0]) {
-        if (morphToPolygon.length === 1) {
-          morphToPolygon = morphToPolygon[0]
+        // Every polygon, that wants to be morphed from this, gets its own copy
+
+        let polygonMorphes = []
+        for (let morphToIndex in morphToPolygon) {
+          const morphTo = morphToPolygon[morphToIndex]
 
           // If stroke width of the morphToPolygon is set to a number smaller than 0 we use the default stroke width
-          let mStrokeWidth = morphToPolygon.strokeWidth
+          let mStrokeWidth = morphTo.strokeWidth
           if (mStrokeWidth < 0) {
-            mStrokeWidth = props.strokeWidth
+            mStrokeWidth = props.defaultStrokeWidth
           }
 
-          return (
+          polygonMorphes.push(
             <PolygonMorph
-              key={props.classNameStart + key}
+              key={props.classNameStart + key + '-' + morphToIndex}
               fill1={polygon.fill}
               stroke1={polygon.stroke}
               strokeWidth1={pStrokeWidth}
               path1={polygon.path}
-              fill2={morphToPolygon.fill}
-              stroke2={morphToPolygon.stroke}
+              fill2={morphTo.fill}
+              stroke2={morphTo.stroke}
               strokeWidth2={mStrokeWidth}
-              path2={morphToPolygon.path} />
+              path2={morphTo.path} />
           )
-        } else {
-          // If there is more than one polygon, that wants to be morphed from this, every one gets its own copy
-
-          let polygonMorphes = []
-          for (let morphToIndex in morphToPolygon) {
-            const morphTo = morphToPolygon[morphToIndex]
-
-            // If stroke width of the morphToPolygon is set to a number smaller than 0 we use the default stroke width
-            let mStrokeWidth = morphTo.strokeWidth
-            if (mStrokeWidth < 0) {
-              mStrokeWidth = props.strokeWidth
-            }
-
-            polygonMorphes.push(
-              <PolygonMorph
-                key={props.classNameStart + key + '-' + morphToIndex}
-                fill1={polygon.fill}
-                stroke1={polygon.stroke}
-                strokeWidth1={pStrokeWidth}
-                path1={polygon.path}
-                fill2={morphTo.fill}
-                stroke2={morphTo.stroke}
-                strokeWidth2={mStrokeWidth}
-                path2={morphTo.path} />
-            )
-          }
-
-          return polygonMorphes
         }
+
+        return polygonMorphes
       }
     }
 
@@ -170,7 +147,7 @@ const PolygonsComponent = observer((props) => (
 
 PolygonsComponent.propTypes = {
   classNameStart: PropTypes.string,
-  strokeWidth: PropTypes.number,
+  defaultStrokeWidth: PropTypes.number,
   polygonKeys: PropTypes.array,
   polygons: PropTypes.object,
   morphTo: PropTypes.oneOfType([

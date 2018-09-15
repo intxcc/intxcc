@@ -16,7 +16,7 @@ import Style from '../../../style/variables/global.scss'
 const Guide = observer((props) => (
   <path
     d={`M ${props.from.x},${props.from.y} ${props.to.x},${props.to.y} Z`}
-    stroke='#eee' strokeWidth='1' />
+    stroke={Defaults.guideStroke} strokeWidth='1' />
 ))
 
 Guide.propTypes = {
@@ -35,7 +35,7 @@ const GuideMorph = observer((props) => (
       return (
         <animated.path
           strokeWidth='1'
-          stroke='#eee'
+          stroke={Defaults.guideStroke}
           d={t} />
       )
     }}

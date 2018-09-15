@@ -5,7 +5,8 @@ const Defaults = {
   PolygonStroke: 'none',
   DefaultStroke: '#1a1a1a',
   GuideLength: 2000,
-  showGuides: false
+  guideStroke: '#f00',
+  showGuides: true
 }
 
 export default Defaults

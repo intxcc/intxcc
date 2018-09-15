@@ -251,24 +251,6 @@ const ViewModel = {
       intersections: [
         ['blc0', 'blc1']
       ]
-    },
-    'stories-top-left-white-area': {
-      type: 'intersections',
-      intersections: [
-        ['b', 'c']
-      ]
-    },
-    'stories-top-right-white-area': {
-      type: 'intersections',
-      intersections: [
-        ['bb', 'ee']
-      ]
-    },
-    'stories-top-middle-white-area': {
-      type: 'intersections',
-      intersections: [
-        ['bb', 'ee']
-      ]
     }
   }
 }

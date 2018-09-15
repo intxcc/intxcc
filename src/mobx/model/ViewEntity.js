@@ -118,6 +118,7 @@ const ViewEntity = types.model({
   function setObject (config) {
     const index = config.name
     const type = config.type
+    const deg = config.deg
     const intersections = config.intersections
 
     let pos
@@ -152,10 +153,12 @@ const ViewEntity = types.model({
     if (!self.objects[index]) {
       self.objects.set(index, EntityObjectModel.create({
         className: index,
+        deg: deg,
         pos: pos
       }))
     } else {
       self.objects[index].className = index
+      self.objects[index].deg = deg
       self.objects[index].pos = pos
     }
   }

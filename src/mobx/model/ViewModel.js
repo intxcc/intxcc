@@ -46,6 +46,10 @@ const PolygonModel = types.model({
 const ObjectModel = types.model({
   // index of map is the name of the polygon model
   type: types.optional(types.string, 'intersections'),
+  // Copy rotation from guide
+  copyDeg: types.optional(types.string, ''),
+  // Rotation of the object
+  deg: types.optional(types.number, 0),
   // One or more intersections, the object position will be in the middle of them
   intersections: types.optional(types.array(types.array(types.string)), [])
 })

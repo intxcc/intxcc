@@ -227,12 +227,14 @@ const VariantModel = {
     },
     'selected-year-display': {
       type: 'intersections',
+      copyDeg: 'b',
       intersections: [
         ['b', 'c']
       ]
     },
     'year-selection': {
       type: 'intersections',
+      copyDeg: 'b',
       intersections: [
         ['b', 'c']
       ]

@@ -100,11 +100,13 @@
 }
 
 .object-transition {
-  .object {
+  .object,
+  .rotation-div {
     transition: $global--morph-duration top,
     $global--morph-duration right,
     $global--morph-duration bottom,
-    $global--morph-duration left;
+    $global--morph-duration left,
+    $global--morph-duration transform;
   }
 }
 

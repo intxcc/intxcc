@@ -145,8 +145,18 @@ class View extends React.Component {
     for (let index of keys(this.props.viewModel.objects)) {
       const object = this.props.viewModel.objects.get(index)
 
+      let deg = object.deg
+      // If a the copyDeg attribute is set we copy the deg of the guide line with the name of copyDeg
+      if (object.copyDeg !== '') {
+        const copyGuideDeg = this.props.viewModel.guides.get(object.copyDeg)
+        if (copyGuideDeg) {
+          deg = copyGuideDeg.deg
+        }
+      }
+
       this.props.view.setObject({
         name: index,
+        deg: deg,
         type: object.type,
         intersections: object.intersections
       })

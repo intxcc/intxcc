@@ -1,5 +1,18 @@
 'use strict'
 
+/**
+ * Check if an object is empty
+ * @param {*} Object to check if it is empty
+ */
+function isEmpty (obj) {
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      return false
+    }
+  }
+  return true
+}
+
 /** Converts degrees to radians */
 function degreesToRadians (degrees) {
   return degrees * (Math.PI / 180)
@@ -27,4 +40,4 @@ function lineIntersect (a, b) {
     }
 }
 
-export { degreesToRadians, lineIntersect }
+export { isEmpty, degreesToRadians, lineIntersect }

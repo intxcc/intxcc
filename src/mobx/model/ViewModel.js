@@ -51,16 +51,20 @@ const ObjectModel = types.model({
 })
 
 /**
- * A ViewModel describes the appearance of a View. That is the appearence of the guide lines and polygons.
+ * A StateModel describes the appearance of a View. That is the appearence of the guide lines and polygons.
  * @name - The name of the ViewModel
  * @guides - An object with all guide lines
  */
-const ViewModel = types.model({
-  name: types.string,
+const VariantModel = types.model({
   logoClassName: types.optional(types.string, ''),
   guides: types.map(GuideModel),
   polygons: types.map(PolygonModel),
   objects: types.optional(types.map(ObjectModel), {})
+})
+
+const ViewModel = types.model({
+  name: types.string,
+  variants: types.map(VariantModel)
 })
 
 export default ViewModel

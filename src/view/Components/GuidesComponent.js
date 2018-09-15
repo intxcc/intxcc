@@ -55,8 +55,13 @@ const GuidesComponent = observer((props) => {
   }
 
   return (
-    values(props.guides).filter(guide => !guide.hide).map((guide, key) => {
+    values(props.guides).map((guide, key) => {
+      if (guide.hide) {
+        return
+      }
+
       key = props.guideKeys[key]
+
       if (props.morphTo) {
         const morphToGuide = props.morphTo.get(key)
 

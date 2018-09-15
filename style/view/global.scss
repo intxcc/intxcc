@@ -99,6 +99,15 @@
   position: absolute;
 }
 
+.object-transition {
+  .object {
+    transition: $global--morph-duration top,
+    $global--morph-duration right,
+    $global--morph-duration bottom,
+    $global--morph-duration left;
+  }
+}
+
 .object {
   position: absolute;
   pointer-events: initial;

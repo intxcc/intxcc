@@ -12,11 +12,13 @@ import { interpolate } from 'flubber'
 
 import Style from '../../../style/variables/global.scss'
 
+import Defaults from '../../config/defaults'
+
 const Polygon = observer((props) => (
   <path
     d={props.path}
     strokeWidth={props.strokeWidth + 'px'}
-    strokeMiterlimit='20'
+    strokeMiterlimit={Defaults.DefaultStrokeMiterlimit}
     stroke={props.stroke}
     fill={props.fill} />
 ))
@@ -51,6 +53,7 @@ const PolygonMorph = observer((props) => {
           <animated.path
             strokeWidth={strokeWidth}
             stroke={stroke}
+            strokeMiterlimit={Defaults.DefaultStrokeMiterlimit}
             fill={fill}
             d={t.interpolate(interpolator)} />
         )
@@ -83,13 +86,16 @@ const PolygonsComponent = observer((props) => (
     if (props.morphTo) {
       let morphToPolygon = [props.morphTo.get(key)]
 
-      // Find out which polygons want to get morphed from this one and create a Morph object for them
-      if (polygon.morphFrom && polygon.morphFrom.length > 0) {
-        morphToPolygon = []
-        for (let morphFrom of polygon.morphFrom) {
-          morphToPolygon.push(
-            props.morphTo.get(morphFrom)
-          )
+      // Only when the current change is no variant change do we search for polygons that want to get transition from this, as it makes no sense and is buggy if done with variant changes
+      if (!props.isVariantMorph) {
+        // Find out which polygons want to get morphed from this one and create a Morph object for them
+        if (polygon.morphFrom && polygon.morphFrom.length > 0) {
+          morphToPolygon = []
+          for (let morphFrom of polygon.morphFrom) {
+            morphToPolygon.push(
+              props.morphTo.get(morphFrom)
+            )
+          }
         }
       }
 
@@ -148,6 +154,7 @@ const PolygonsComponent = observer((props) => (
 PolygonsComponent.propTypes = {
   classNameStart: PropTypes.string,
   defaultStrokeWidth: PropTypes.number,
+  isVariantMorph: PropTypes.bool,
   polygonKeys: PropTypes.array,
   polygons: PropTypes.object,
   morphTo: PropTypes.oneOfType([

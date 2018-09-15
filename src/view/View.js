@@ -8,6 +8,8 @@ import { keys, values } from 'mobx'
 
 import autobind from 'autobind-decorator'
 
+import { isEmpty } from '../miscFunctions'
+
 import Logo from '../logo/Logo'
 import SvgObjectComponent from './Components/SvgObjectComponent'
 import HelperDivsComponent from './Components/HelperDivsCompontent'
@@ -72,9 +74,14 @@ class View extends React.Component {
   updateHelperDivs () {
     this.updateTimeout = false
 
-    if (this.props.global.clientWidth === this.dimensions.width && this.props.global.clientHeight === this.dimensions.height) {
-      return
+    // Check if the update is forces (e.g. on model variant change)
+    if (!this.forceUpdateHelperDivs) {
+      // If the update isn't forced we check if the dimension have changed
+      if (this.props.global.clientWidth === this.dimensions.width && this.props.global.clientHeight === this.dimensions.height) {
+        return
+      }
     }
+    this.forceUpdateHelperDivs = false
 
     this.dimensions.width = this.props.global.clientWidth
     this.dimensions.height = this.props.global.clientHeight
@@ -149,8 +156,6 @@ class View extends React.Component {
   @autobind
   render () {
     const props = this.props
-    const guideKeys = keys(props.viewModel.guides)
-    const polygonKeys = keys(props.viewModel.polygons)
 
     let fadeClassName = ''
     let viewFadeClassName = ''
@@ -170,19 +175,72 @@ class View extends React.Component {
       this.updateTimeout = setTimeout(this.updateHelperDivs, 0)
     }
 
+    // Compare last rendered model and current to update layout
+    if (this.renderedVariant && this.props.view.modelVariant !== this.renderedVariant) {
+      // Force helper divs update. We have to do this, because the dimensions haven't changed
+      this.forceUpdateHelperDivs = true
+    }
+    this.renderedVariant = props.view.modelVariant
+
+    // ///////////// //
+    // Create Guides //
     let Guides
     if (Defaults.showGuides) {
-      Guides = (
-        <SvgObjectComponent className='svg-wrapper' viewBox={props.global.svgViewBox}>
-          <GuidesComponent
-            classNameStart={props.className + '-' + props.view.model + '-guide-'}
-            guideKeys={guideKeys}
-            guides={props.view.guides}
-            morphTo={props.buffer ? props.buffer.guides : false} />
-        </SvgObjectComponent>
-      )
+      let guides = props.view.guides
+      let morphTo = props.buffer ? props.buffer.guides : false
+
+      // If there is a snapshot, which is different from the current variant, we start morphong to the new variant. This only happens, when there is no buffer loaded (No state transition happening)
+      if (props.view.snapshotVariant !== '' && props.view.snapshotVariant !== props.view.modelVariant && !props.buffer) {
+        // !isEmpty(values(props.view.guidesSnapshot)) ? props.view.guidesSnapshot :
+        guides = props.view.guidesSnapshot
+        morphTo = props.view.guides
+      }
+
+      const guideKeys = keys(props.viewModel.guides)
+
+      if (!isEmpty(values(guides))) {
+        Guides = (
+          <SvgObjectComponent className='svg-wrapper' viewBox={props.global.svgViewBox}>
+            <GuidesComponent
+              classNameStart={props.className + '-' + props.view.model + '-guide-'}
+              guideKeys={guideKeys}
+              guides={guides}
+              morphTo={morphTo} />
+          </SvgObjectComponent>
+        )
+      }
     }
 
+    // //////////////// //
+    // Create Polygons //
+    let polygons = props.view.polygons
+    let morphTo = props.buffer ? props.buffer.polygons : false
+
+    // If there is a snapshot, which is different from the current variant, we start morphong to the new variant. This only happens, when there is no buffer loaded (No state transition happening)
+    if (props.view.snapshotVariant !== '' && props.view.snapshotVariant !== props.view.modelVariant && !props.buffer) {
+      // !isEmpty(values(props.view.guidesSnapshot)) ? props.view.guidesSnapshot :
+      polygons = props.view.polygonsSnapshot
+      morphTo = props.view.polygons
+    }
+
+    const polygonKeys = keys(props.viewModel.polygons)
+
+    const Polygons = (
+      <SvgObjectComponent className='svg-wrapper' viewBox={props.global.svgViewBox}>
+        <PolygonsComponent
+          classNameStart={props.className + '-' + props.view.model + '-polygon-'}
+          defaultStrokeWidth={this.props.global.strokeWidth}
+          isVariantMorph={props.view.transitionState === 'morphVariant'}
+          polygonKeys={polygonKeys}
+          polygons={polygons}
+          morphTo={morphTo} />
+      </SvgObjectComponent>
+    )
+
+    const contentClassName = props.view.transitionState === 'morphVariant' ? ' object-transition ' : ''
+
+    // //////////////// //
+    // Render View //
     return (
       <div className={viewFadeClassName + ' ' + props.className + ' view-wrapper view-' + props.view.model}>
         <div className={'view-model'}>
@@ -198,23 +256,16 @@ class View extends React.Component {
           onScroll={this.viewContentScroll}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
           <div
-            className={'content-wrapper-outer ' + fadeClassName}
+            className={'content-wrapper-outer ' + fadeClassName + contentClassName}
             ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }} >
             <Logo className={props.viewModel.logoClassName} />
             {props.loadedView}
           </div>
         </main>
         <div className={'view-model view-model-overlay'}>
-          <SvgObjectComponent className='svg-wrapper' viewBox={props.global.svgViewBox}>
-            <PolygonsComponent
-              classNameStart={props.className + '-' + props.view.model + '-polygon-'}
-              defaultStrokeWidth={this.props.global.strokeWidth}
-              polygonKeys={polygonKeys}
-              polygons={props.view.polygons}
-              morphTo={props.buffer ? props.buffer.polygons : false} />
-          </SvgObjectComponent>
+          {Polygons}
         </div>
-        <div className={'overlay-wrapper-outer ' + fadeClassName}>
+        <div className={'overlay-wrapper-outer ' + fadeClassName + contentClassName}>
           {this.props.loadedOverlayView}
         </div>
       </div>

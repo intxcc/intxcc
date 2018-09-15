@@ -18,11 +18,36 @@ import Style from '../../../style/variables/global.scss'
 const ViewEntity = types.model({
   // Name of the ViewModel
   model: types.string,
+  modelVariant: types.optional(types.string, 'default'),
+  snapshotVariant: types.optional(types.string, ''),
   transitionState: types.optional(types.string, ''),
   guides: types.optional(types.map(EntityGuideModel), {}),
+  guidesSnapshot: types.optional(types.map(EntityGuideModel), {}),
   polygons: types.optional(types.map(EntityPolygonModel), {}),
+  polygonsSnapshot: types.optional(types.map(EntityPolygonModel), {}),
   objects: types.optional(types.map(EntityObjectModel), {})
 }).actions(self => {
+  // Save current guides state to morph from this to a new one
+  function snapshotEntity () {
+    self.snapshotVariant = self.modelVariant
+    self.guidesSnapshot = JSON.parse(JSON.stringify(self.guides))
+    self.polygonsSnapshot = JSON.parse(JSON.stringify(self.polygons))
+  }
+
+  function changeModelVariant (modelVariant) {
+    self.snapshotEntity()
+    self.modelVariant = modelVariant
+    self.transitionState = 'morphVariant'
+
+    // The multiplication with 2, because flubber needs some freetime to create the right paths
+    setTimeout(self.resetTransitionState, parseInt(Style.morphDuration) * 2)
+  }
+
+  function resetTransitionState () {
+    self.transitionState = ''
+    self.snapshotEntity()
+  }
+
   function fadeIn () {
     self.transitionState = 'fadeIn'
   }
@@ -34,7 +59,7 @@ const ViewEntity = types.model({
 
   function startMorphing () {
     self.transitionState = 'morphing'
-    setTimeout(self.endMorphing, parseInt(Style.fadeOutDuration) + 100)
+    setTimeout(self.endMorphing, parseInt(Style.morphDuration) + 100)
   }
 
   function endMorphing () {
@@ -184,6 +209,9 @@ const ViewEntity = types.model({
   }
 
   return {
+    snapshotEntity,
+    changeModelVariant,
+    resetTransitionState,
     fadeIn,
     startTransition,
     startMorphing,

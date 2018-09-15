@@ -106,12 +106,17 @@ class App extends React.Component {
             view: view
           })
 
+          // Variant of the model that is going to get rendered
+          const modelVariant = view.modelVariant
+          // Load model of the specific variant
+          const viewModel = this.props.store.viewModels.get(view.model).variants.get(modelVariant)
+
           return (
             <View
               key={'view-' + key}
               className={'view-' + key}
               global={this.props.store.global}
-              viewModel={this.props.store.viewModels.get(view.model)}
+              viewModel={viewModel}
               buffer={buffer}
               view={view}
               state={this.props.store.state[view.model]}

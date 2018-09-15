@@ -39,6 +39,12 @@ const StoriesOverlayView = observer((props) => (
       Mobile App<br />
       <div className='story-name-caption'>
         Android
+        <span onClick={() => {
+          props.view.changeModelVariant('ArticleFocusModel')
+          console.log('a')
+        }}>
+          test
+        </span>
       </div>
     </ViewObject>
     <ViewObject object={props.view.objects.get('selected-year-display')}>

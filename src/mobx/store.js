@@ -11,7 +11,7 @@ import viewModels from './viewModels'
 import viewEntities from './viewEntities'
 
 import StateModel from './StateModels/StateModel'
-import StateDefault from './StateDefaults/StateDefault'
+import StateData from './StateData/StateData'
 
 const RootStore = types.model({
   viewModels: types.map(ViewModel),
@@ -74,7 +74,7 @@ const store = RootStore.create({
   viewModels: viewModels,
   views: viewEntities,
   global: GlobalModel.create(),
-  state: StateModel.create(StateDefault)
+  state: StateModel.create(StateData)
 })
 
 export default store

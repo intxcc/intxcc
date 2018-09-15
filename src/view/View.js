@@ -36,6 +36,18 @@ class View extends React.Component {
 
   componentDidMount () {
     this.updateHelperDivs()
+
+    // Set scroll top after first render, append to event queue
+    setTimeout(this.setScrollTop, 0)
+  }
+
+  @autobind
+  setScrollTop () {
+    if (this.viewContent) {
+      if (this.props.state && this.props.state.onScroll) {
+        this.viewContent.scrollTop = this.props.state.scrollTop
+      }
+    }
   }
 
   @autobind
@@ -43,6 +55,16 @@ class View extends React.Component {
     if (this.viewContent) {
       let rect = this.contentWrapperOuter.getBoundingClientRect()
       this.props.global.setContentWrapperRect(rect)
+
+      // onScroll event is forwarded to the state if it has a onScroll event
+      if (this.props.state && this.props.state.onScroll) {
+        // If we are currently initializing scroll then don't update the state, as the state scroll gets set in the next step
+        if (!this.initializeScroll) {
+          this.props.state.onScroll(this.viewContent.scrollTop)
+        }
+      }
+
+      this.initializeScroll = false
     }
   }
 
@@ -119,6 +141,8 @@ class View extends React.Component {
       })
     }
 
+    // Initilize scroll
+    this.initializeScroll = true
     setTimeout(this.viewContentScroll, 0)
   }
 
@@ -175,9 +199,9 @@ class View extends React.Component {
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
           <div
             className={'content-wrapper-outer ' + fadeClassName}
-            ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }}>
+            ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }} >
             <Logo className={props.viewModel.logoClassName} />
-            {this.props.loadedView}
+            {props.loadedView}
           </div>
         </main>
         <div className={'view-model view-model-overlay'}>
@@ -201,6 +225,7 @@ class View extends React.Component {
 View.propTypes = {
   global: PropTypes.object,
   view: PropTypes.object,
+  state: PropTypes.object,
   buffer: PropTypes.object,
   viewModel: PropTypes.object,
   className: PropTypes.string,

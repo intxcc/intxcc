@@ -114,6 +114,7 @@ class App extends React.Component {
               viewModel={this.props.store.viewModels.get(view.model)}
               buffer={buffer}
               view={view}
+              state={this.props.store.state[view.model]}
               loadedView={loadView}
               loadedOverlayView={loadOverlayView}>
             </View>

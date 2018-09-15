@@ -2,7 +2,7 @@
 
 import { types } from 'mobx-state-tree'
 
-import ViewEntity from './../model/ViewEntity'
+import { BasicInfoModel } from '../model/ViewEntity'
 
 const StoryModel = types.model({
   textName: types.string,
@@ -10,24 +10,19 @@ const StoryModel = types.model({
 })
 
 const StoriesModel = types.model({
-  viewEntity: types.optional(types.reference(ViewEntity), ''),
-  scrollTop: types.optional(types.number, 0),
+  basicInfo: BasicInfoModel,
   years: types.array(types.number),
   selectedYear: types.optional(types.number, 0),
   stories: types.array(StoryModel)
 }).actions(self => {
-  function setViewEntityReference (viewEntity) {
-    self.viewEntity = viewEntity
-  }
-
   function onScroll (scrollTop) {
-    self.scrollTop = scrollTop
+    self.basicInfo.setScrollTop(scrollTop)
 
-    if (self.viewEntity !== '') {
-      if (self.scrollTop > 50) {
-        self.viewEntity.changeModelVariant('ArticleFocusModel')
+    if (self.basicInfo.viewEntity !== '') {
+      if (self.basicInfo.scrollTop > 50) {
+        self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
       } else {
-        self.viewEntity.changeModelVariant('default')
+        self.basicInfo.viewEntity.changeModelVariant('default')
       }
     }
   }
@@ -37,7 +32,6 @@ const StoriesModel = types.model({
   }
 
   return {
-    setViewEntityReference,
     onScroll,
     selectYear
   }

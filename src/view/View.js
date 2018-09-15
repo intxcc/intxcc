@@ -39,8 +39,11 @@ class View extends React.Component {
   componentDidMount () {
     this.updateHelperDivs()
 
-    if (this.props.state && this.props.state.setViewEntityReference) {
-      this.props.state.setViewEntityReference(this.props.view)
+    // Give the basicInfo the reference of the view entity and the view entity the one of the basicInfo. Then load the modelVariant saved in the basicInfo of the state now loaded
+    if (this.props.state && this.props.state.basicInfo) {
+      this.props.state.basicInfo.setViewEntityReference(this.props.view.id)
+      this.props.view.setStateBasicInfo(this.props.state.basicInfo.id)
+      this.props.view.forceModelVariant(this.props.state.basicInfo.modelVariant)
     }
 
     // Set scroll top after first render, append to event queue
@@ -51,7 +54,7 @@ class View extends React.Component {
   setScrollTop () {
     if (this.viewContent) {
       if (this.props.state && this.props.state.onScroll) {
-        this.viewContent.scrollTop = this.props.state.scrollTop
+        this.viewContent.scrollTop = this.props.state.basicInfo.scrollTop
       }
     }
   }

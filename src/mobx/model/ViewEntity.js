@@ -13,14 +13,44 @@ import { lineIntersect, degreesToRadians } from '../../miscFunctions'
 import Style from '../../../style/variables/global.scss'
 
 /**
+ * Basic Info for the different view states. Like scrollTop and modelvariant of the view, that is currently showing this. The basic info is at first a property of the view states, but in this file, because we get an infinite import loop otherwise. So before I google 1 hour how to circumvent this is just paste it here and write this far too long comment.
+ */
+const BasicInfoModel = types.model({
+  // Necessary to reference this in the view entity
+  id: types.identifier,
+  viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
+  modelVariant: types.optional(types.string, 'default'),
+  scrollTop: types.optional(types.number, 0)
+}).actions(self => {
+  function setViewEntityReference (viewEntity) {
+    self.viewEntity = viewEntity
+  }
+
+  function setModelVariant (modelVariant) {
+    self.modelVariant = modelVariant
+  }
+
+  function setScrollTop (scrollTop) {
+    self.scrollTop = scrollTop
+  }
+
+  return {
+    setViewEntityReference,
+    setModelVariant,
+    setScrollTop
+  }
+})
+
+/**
  * Describes the model of an View object. The model given describes the appearance of the polygons and guide lines.
  */
 const ViewEntity = types.model({
-  // Necessary to reference this in the states
+  // Necessary to reference this in the basicStateInfo
   id: types.identifier,
   // Name of the ViewModel
   model: types.string,
   modelVariant: types.optional(types.string, 'default'),
+  stateBasicInfo: types.optional(types.reference(BasicInfoModel), ''),
   nextModelVariant: types.optional(types.string, ''),
   snapshotVariant: types.optional(types.string, ''),
   transitionState: types.optional(types.string, ''),
@@ -30,6 +60,16 @@ const ViewEntity = types.model({
   polygonsSnapshot: types.optional(types.map(EntityPolygonModel), {}),
   objects: types.optional(types.map(EntityObjectModel), {})
 }).actions(self => {
+  // Save the reference to the basic info of the view state that is currently using this viewentity to display its state
+  function setStateBasicInfo (stateBasicInfo) {
+    self.stateBasicInfo = stateBasicInfo
+  }
+
+  // ATTENTION Only use extremely careful. Probably only once, in the initialization
+  function forceModelVariant (modelvariant) {
+    self.modelVariant = modelvariant
+  }
+
   // Save current guides state to morph from this to a new one
   function snapshotEntity () {
     self.snapshotVariant = self.modelVariant
@@ -80,6 +120,7 @@ const ViewEntity = types.model({
 
     self.snapshotEntity()
     self.modelVariant = modelVariant
+    self.stateBasicInfo.setModelVariant(modelVariant)
     self.transitionState = 'morphVariant'
 
     // The multiplication with 2, because flubber needs some freetime to create the right paths
@@ -255,6 +296,8 @@ const ViewEntity = types.model({
   }
 
   return {
+    setStateBasicInfo,
+    forceModelVariant,
     snapshotEntity,
     changeModelVariant,
     resetTransitionState,
@@ -269,4 +312,5 @@ const ViewEntity = types.model({
   }
 })
 
+export { BasicInfoModel }
 export default ViewEntity

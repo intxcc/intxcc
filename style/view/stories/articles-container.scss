@@ -1,10 +1,17 @@
+.variant--article-focus {
+  .articles-container {
+    h1 {
+      opacity: 1;
+    }
+  }
+}
+
 .articles-container {
   transform: translate3d(-100%, 6rem, 0);
 
   margin-top: -2rem;
 
   width: 50vw;
-  height: 100vh;
 
   text-align: justify;
 
@@ -13,9 +20,10 @@
     align-items: center;
     justify-content: center;
 
-    margin: $articles-h2-spacer-margin-top-bottom * 2 -2vmax $articles-h2-spacer-margin-top-bottom -2vmax;
+    transition: $global--morph-duration opacity;
+    opacity: 0;
 
-    border-radius: $articles-h2-spacer-margin-top-bottom / 2;
+    margin: $articles-h2-spacer-margin-top-bottom * 2 -2vmax $articles-h2-spacer-margin-top-bottom -2vmax;
 
     background-color: $black;
 
@@ -65,12 +73,11 @@
   }
 
   .h2-spacer {
-    margin: $articles-h2-spacer-margin-top-bottom 0;
+    margin: $articles-h2-spacer-margin-top-bottom 2vmax;
 
     border-radius: $articles-h2filler-width / 2;
     background-color: $black;
 
-    width: 100%;
     height: $articles-h2filler-width;
   }
 

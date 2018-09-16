@@ -40,20 +40,20 @@ const VariantModel = {
       type: 'copy',
       hide: true,
       copy: 'a',
-      move: 10
+      move: 12
     },
     'g': {
       type: 'copy',
       hide: true,
       reverse: true,
       copy: 'b',
-      move: 10
+      move: 12
     },
     'h': {
       type: 'copy',
       hide: true,
       copy: 'c',
-      move: 10
+      move: 12
     },
     // //////// //
     'i': {
@@ -61,20 +61,20 @@ const VariantModel = {
       hide: true,
       reverse: true,
       copy: 'b',
-      move: 10
+      move: 12
     },
     'j': {
       type: 'copy',
       hide: true,
       reverse: true,
       copy: 'd',
-      move: 10
+      move: 12
     },
     'k': {
       type: 'copy',
       hide: true,
       copy: 'e',
-      move: 10
+      move: 12
     },
     // //////// //
     // white tri //

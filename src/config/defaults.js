@@ -6,7 +6,8 @@ const Defaults = {
   DefaultStroke: '#1a1a1a',
   DefaultStrokeMiterlimit: '20',
   GuideLength: 2000,
-  guideStroke: '#f00',
+  guideStroke: '#111',
+  showAllGuides: true,
   showGuides: false
 }
 

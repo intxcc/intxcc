@@ -260,7 +260,7 @@ class View extends React.Component {
     // Render View //
     return (
       <div className={viewFadeClassName + ' ' + props.className + ' view-wrapper view-' + props.view.model}>
-        <div className={'view-model'}>
+        <div className={'view-model' + ' ' + props.viewModel.className}>
           {/* The view model (how the bg of the startpage looks) is shown here. That should be a svg object with guide lines and guide divs. The polygons are a overlay and go to */}
           {/* Render guide lines */}
           {Guides}
@@ -275,7 +275,6 @@ class View extends React.Component {
           <div
             className={'content-wrapper-outer ' + props.viewModel.className + ' ' + fadeClassName + contentClassName}
             ref={ (contentWrapperOuter) => { this.contentWrapperOuter = contentWrapperOuter }} >
-            <Logo className={props.viewModel.logoClassName} />
             {props.loadedView}
           </div>
         </main>
@@ -283,6 +282,7 @@ class View extends React.Component {
           {Polygons}
         </div>
         <div className={'overlay-wrapper-outer ' + props.viewModel.className + ' ' + fadeClassName + contentClassName}>
+          <Logo className={props.viewModel.logoClassName} />
           {this.props.loadedOverlayView}
         </div>
       </div>

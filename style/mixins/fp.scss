@@ -10,11 +10,11 @@
 
 @mixin fp($properties, $min-value, $max-value, $min-screen: $global--min-screen, $max-screen: $global--max-screen) {
   @if unit($min-value) == 'rem' {
-    $min-value: strip-unit($min-value) * $font-size;
+    $min-value: strip-unit($min-value) * $global--font-size;
   }
 
   @if unit($max-value) == 'rem' {
-    $max-value: strip-unit($max-value) * $font-size;
+    $max-value: strip-unit($max-value) * $global--font-size;
   }
 
   & {

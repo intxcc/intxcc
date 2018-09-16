@@ -1,3 +1,9 @@
+.variant--article-focus {
+  .stories-year-selection {
+    transform:  translateX(-.85rem) translateX(2rem) translateY(2px);
+  }
+}
+
 .stories-year-selection {
   transform:  translateX(-.85rem) translateX(1.1rem);
   //rotate(-27deg)

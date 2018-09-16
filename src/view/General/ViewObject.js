@@ -17,7 +17,8 @@ const ViewObject = observer((props) => {
         className={'rotation-div ' + props.object.className + ' ' + (props.className ? props.className : '')}
         style={{
           'transform': 'rotate(' + props.object.deg + 'deg)',
-          'position': 'initial'
+          'position': 'initial',
+          'pointerEvents': 'initial'
         }}>
         {props.children}
       </div>
@@ -26,11 +27,18 @@ const ViewObject = observer((props) => {
     content = props.children
   }
 
+  let style = {
+    'top': props.object.pos.y,
+    'left': props.object.pos.x
+  }
+
+  // If the rotation div is active set the pointer events only there and not here, to remove areas where the mouse is not working (for the user) for no apparent reason
+  if (props.object.deg) {
+    style['pointerEvents'] = 'none'
+  }
+
   return (
-    <div className={'object ' + props.object.className + ' ' + (props.className ? props.className : '')} style={{
-      'top': props.object.pos.y,
-      'left': props.object.pos.x
-    }}>
+    <div className={'object ' + props.object.className + ' ' + (props.className ? props.className : '')} style={style}>
       {content}
     </div>
   )

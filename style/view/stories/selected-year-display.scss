@@ -1,16 +1,24 @@
+.variant--article-focus {
+  .selected-year-display {
+    transform: translateY(-100%) translateY(-16px) translateX(1rem);
+  }
+}
+
 .selected-year-display {
+  @include user-select(none);
+
   transform: translateY(-100%) translateY(-12px);
 
   text-shadow:  3px 2px 0 $white;
   line-height: .65em;
   color: $black;
-  font-size: 4vw;
+  font-size: 4vmax;
 
   transform-origin: left bottom;
 
-  user-select: none;
-
   .selected-year-caption {
+    @include user-select(text);
+
     margin: 0 0 0 1rem;
 
     text-shadow: initial;
@@ -18,7 +26,5 @@
     font-family: 'Roboto Condensed';
     font-size: 1.5vw;
     font-variant: small-caps;
-
-    user-select: text;
   }
 }

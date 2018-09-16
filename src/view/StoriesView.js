@@ -21,11 +21,26 @@ const StoriesView = observer((props) => (
     <ViewObject object={props.view.objects.get('articles-container')}>
       {props.state.stories.map((story, index) => (
         <article key={'story-' + index}>
+          <h1>
+            <ul>
+              <li><b>STORY</b></li>
+              <li>owntrack</li>
+              <li><b>YEAR</b></li>
+              <li>two thousand eighteen</li>
+              <li><b>TIME</b></li>
+              <li>may till august</li>
+              <li><b>TYPE</b></li>
+              <li>mobile app | android</li>
+              <li><b>SKILLS</b></li>
+              <li>java | android studio | mysql | python | php</li>
+            </ul>
+          </h1>
           <h2>
             <div className='h2-filler h2-filler-left'></div>
             {story.summary}
             <div className='h2-filler h2-filler-right'></div>
           </h2>
+          <div className='h2-spacer'></div>
           <div className='clear-both'></div>
           {Texts[story.textName]}
         </article>

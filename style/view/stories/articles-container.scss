@@ -1,44 +1,86 @@
-$articles-h2filler-margin-left: 15vw;
-$articles-h2filler-width: 1rem;
-
 .articles-container {
-  transform: translate3d(-100%, 7rem, 0);
+  transform: translate3d(-100%, 6rem, 0);
 
-  // This is so the content is not overlayed by the big polygon, which gets its position from the
-  margin-top: 2vw;
+  margin-top: -2rem;
 
   width: 50vw;
   height: 100vh;
 
   text-align: justify;
 
-  font-size: 1.2rem;
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .h2-filler {
-    position: absolute;
-    top: 0;
-    bottom: 0;
+    margin: $articles-h2-spacer-margin-top-bottom * 2 -2vmax $articles-h2-spacer-margin-top-bottom -2vmax;
 
-    border-radius: $articles-h2filler-width / 2;
+    border-radius: $articles-h2-spacer-margin-top-bottom / 2;
 
     background-color: $black;
 
-    width: $articles-h2filler-width;
-  }
+    padding: 0 1em;
+    height: $articles-h2-spacer-margin-top-bottom * .8;
 
-  .h2-filler-left {
-    margin: 0 0 0 (-$articles-h2filler-width * 2);
-  }
+    color: #fff;
+    font-family: 'Roboto Condensed';
+    font-size: $articles-h2-spacer-margin-top-bottom * .35;
+    font-weight: 200;
+    font-variant: small-caps;
 
-  .h2-filler-right {
-    right: 0;
+    b {
+      font-size: $articles-h2-spacer-margin-top-bottom * .5;
+      font-weight: 600;
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      width: 100%;
+
+      list-style: none;
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
   }
 
   h2 {
+    @include media-big {
+      font-size: 2.25rem;
+    }
+
     position: relative;
 
-    margin: 0 0 1rem;
-    padding: 0 $articles-h2filler-width * 2 0 $articles-h2filler-margin-left;
-    font-size: 1.2rem;
+    margin: 0 0 .2em;
+    padding: 0 $articles-h2-spacer-margin-top-bottom;
+
+    font-family: 'Roboto Condensed';
+    font-size: 1.5rem;
+  }
+
+  .h2-spacer {
+    margin: $articles-h2-spacer-margin-top-bottom 0;
+
+    border-radius: $articles-h2filler-width / 2;
+    background-color: $black;
+
+    width: 100%;
+    height: $articles-h2filler-width;
+  }
+
+  p {
+    @include media-big {
+      font-size: 1.95rem;
+    }
+
+    padding: 0 $articles-h2-spacer-margin-top-bottom;
+
+    font-size: 1.35rem;
   }
 }

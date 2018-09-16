@@ -56,7 +56,7 @@ const GuidesComponent = observer((props) => {
 
   return (
     values(props.guides).map((guide, key) => {
-      if (guide.hide) {
+      if (guide.hide && !Defaults.showAllGuides) {
         return
       }
 

@@ -1,5 +1,5 @@
-$global--min-screen: 300px;
-$global--max-screen: 1920px;
+$global--min-screen: 600px;
+$global--max-screen: 3840px;
 
 $global--min-view-height: 450px; //MARKER: GMVHPX
 $global--min-view-width: 800px;
@@ -9,11 +9,11 @@ $global--font-size: 14px;
 $global--fade-out-duration-ms: 600;
 $global--fade-out-duration: $global--fade-out-duration-ms + ms;
 
-$global--morph-duration-ms: $global--fade-out-duration-ms;
+$global--morph-duration-ms: $global--fade-out-duration-ms + 400;
 $global--morph-duration: $global--morph-duration-ms + ms;
 
 // sass-lint:disable-all
 :export {
   fadeOutDuration: $global--fade-out-duration-ms;
-  morphDuration: $global--morph-duration-ms;
+  morphDuration: $global--morph-duration-ms - 400;
 }

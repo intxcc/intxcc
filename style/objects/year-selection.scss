@@ -9,6 +9,8 @@
   font-weight: bold;
 
   li {
+    @include user-select(none);
+
     transform: translate3d(0, 0, 0) rotate(90deg);
     transition: .2s background-color,
     .2s color,
@@ -26,8 +28,6 @@
 
     transform-origin: right bottom;
     backface-visibility: hidden;
-
-    user-select: none;
 
     &:hover {
       background-color: $black;

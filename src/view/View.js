@@ -62,9 +62,6 @@ class View extends React.Component {
   @autobind
   viewContentScroll () {
     if (this.viewContent) {
-      let rect = this.contentWrapperOuter.getBoundingClientRect()
-      this.props.global.setContentWrapperRect(rect)
-
       // onScroll event is forwarded to the state if it has a onScroll event
       if (this.props.state && this.props.state.onScroll) {
         // If we are currently initializing scroll then don't update the state, as the state scroll gets set in the next step

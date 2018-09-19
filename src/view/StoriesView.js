@@ -37,7 +37,9 @@ const StoriesView = observer((props) => (
           </h1>
           <h2>
             <div className='h2-filler h2-filler-left'></div>
-            {story.summary}
+            <p>
+              {story.summary}
+            </p>
             <div className='h2-filler h2-filler-right'></div>
           </h2>
           <div className='h2-spacer'></div>

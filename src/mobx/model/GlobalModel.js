@@ -1,18 +1,6 @@
 'use strict'
 
 import { types } from 'mobx-state-tree'
-import { keys } from 'mobx'
-
-const BoundingClientRectModel = types.model({
-  x: types.number,
-  y: types.number,
-  width: types.number,
-  height: types.number,
-  top: types.number,
-  right: types.number,
-  bottom: types.number,
-  left: types.number
-})
 
 /**
  * Describes the global object with globally relevant information
@@ -22,6 +10,10 @@ const GlobalModel = types.model({
   clientHeight: types.optional(types.number, 0),
   logoClassName: types.optional(types.string, '')
 }).views(self => ({
+  get pixelScale () {
+    const minLength = Math.min(self.clientHeight, self.clientWidth)
+    return minLength / 1000
+  },
   get svgViewBox () {
     return `0 0 ${self.clientWidth} ${self.clientHeight}`
   },

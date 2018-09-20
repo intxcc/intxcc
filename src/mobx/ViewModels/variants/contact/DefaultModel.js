@@ -27,21 +27,21 @@ const VariantModel = {
       type: 'copy',
       hide: true,
       copy: 'a',
-      move: 20
+      move: 25
     },
     'g': {
       type: 'copy',
       hide: true,
       reverse: true,
       copy: 'b',
-      move: 20
+      move: 25
     },
     'h': {
       type: 'copy',
       hide: true,
       reverse: true,
       copy: 'c',
-      move: 20
+      move: 25
     }
   },
   polygons: {

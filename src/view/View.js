@@ -105,6 +105,12 @@ class View extends React.Component {
         x = rect.right
       }
 
+      let move = this.props.viewModel.guides.get(index).move
+      if (move) {
+        // Calculate client dimension dependent move length
+        move = move * this.props.global.pixelScale
+      }
+
       // MARKER_1 Insert additional guide properties here
       this.props.view.setGuide({
         name: index,
@@ -112,7 +118,7 @@ class View extends React.Component {
         intersect: values(this.props.viewModel.guides.get(index).intersect),
         reverse: this.props.viewModel.guides.get(index).reverse,
         copy: this.props.viewModel.guides.get(index).copy,
-        move: this.props.viewModel.guides.get(index).move,
+        move: move,
         type: this.props.viewModel.guides.get(index).type,
         deg: this.props.viewModel.guides.get(index).deg,
         pos: {

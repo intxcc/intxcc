@@ -267,7 +267,10 @@ const ViewEntity = types.model({
     }
 
     if (type === 'copy' && copy) {
-      deg = self.guides.get(copy).deg
+      // TODO -1111 is a magic number, to signal undefined deg
+      if (deg === -1111) {
+        deg = self.guides.get(copy).deg
+      }
 
       const position = self.guides.get(copy).pos
       pos = {

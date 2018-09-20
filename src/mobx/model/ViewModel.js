@@ -21,7 +21,7 @@ const GuideModel = types.model({
   hide: types.optional(types.boolean, false),
   copy: types.optional(types.string, ''),
   move: types.optional(types.number, 0),
-  deg: types.optional(types.number, 0),
+  deg: types.optional(types.number, -1111),
   intersect: types.optional(types.array(types.string), []),
   vpos: types.optional(types.string, ''),
   hpos: types.optional(types.string, '')

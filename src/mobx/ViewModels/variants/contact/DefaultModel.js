@@ -45,20 +45,29 @@ const VariantModel = {
       move: 25
     },
     // Helper lines for bottom left caption //
+    'blc00': {
+      type: 'intersection',
+      deg: 90,
+      intersect: [
+        'a', 'c'
+      ],
+      move: 100
+    },
     'blc0': {
-      deg: 16,
-      vpos: 'top',
-      hpos: 'right'
+      type: 'copy',
+      copy: 'blc00',
+      deg: -6
     },
     'blc1': {
-      deg: -56,
-      vpos: 'top',
-      hpos: 'right'
+      type: 'copy',
+      copy: 'blc00',
+      deg: -60,
+      move: 45
     },
     'blc2': {
-      deg: -27,
-      vpos: 'top',
-      hpos: 'right'
+      type: 'copy',
+      copy: 'blc00',
+      deg: 22
     }
   },
   polygons: {

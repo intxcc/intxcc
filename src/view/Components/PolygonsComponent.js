@@ -89,10 +89,10 @@ const PolygonsComponent = observer((props) => (
       // Only when the current change is no variant change do we search for polygons that want to get transition from this, as it makes no sense and is buggy if done with variant changes
       if (!props.isVariantMorph) {
         // Find out which polygons want to get morphed from this one and create a Morph object for them
-        if (polygon.morphFrom && polygon.morphFrom.length > 0) {
+        if (polygon.morphTo && polygon.morphTo.length > 0) {
           morphToPolygon = []
-          for (let morphFrom of polygon.morphFrom) {
-            const getMorphTo = props.morphTo.get(morphFrom)
+          for (let morphTo of polygon.morphTo) {
+            const getMorphTo = props.morphTo.get(morphTo)
             if (getMorphTo) {
               morphToPolygon.push(getMorphTo)
             }

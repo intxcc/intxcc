@@ -188,7 +188,7 @@ const VariantModel = {
       ]
     },
     'LeftTriangleA': {
-      morphFrom: ['PinkTriangleBackground'],
+      morphTo: ['PinkTriangleBackground'],
       fill: '#fff',
       stroke: Defaults.DefaultStroke,
       points: [
@@ -198,7 +198,7 @@ const VariantModel = {
       ]
     },
     'RightTriangleA': {
-      morphFrom: ['PinkTriangle'],
+      morphTo: ['PinkTriangle'],
       fill: '#fff',
       stroke: Defaults.DefaultStroke,
       points: [

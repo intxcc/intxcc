@@ -32,8 +32,8 @@ const GuideModel = types.model({
  */
 const PolygonModel = types.model({
   // index of map is the name of the polygon model
-  // morphFrom is the polygon this one will be morphed from
-  morphFrom: types.optional(types.array(types.string), []),
+  // morphTo is the polygon this one will be morphed to
+  morphTo: types.optional(types.array(types.string), []),
   fill: types.optional(types.string, Defaults.PolygonFill),
   stroke: types.optional(types.string, Defaults.PolygonStroke),
   strokeWidth: types.optional(types.number, -1),

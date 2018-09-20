@@ -214,7 +214,7 @@ const ViewEntity = types.model({
     const fill = config.fill
     const stroke = config.stroke
     const strokeWidth = config.strokeWidth
-    const morphFrom = values(config.morphFrom)
+    const morphTo = values(config.morphTo)
 
     let points = []
     for (let pointConfig of config.points) {
@@ -229,14 +229,14 @@ const ViewEntity = types.model({
 
     if (!self.polygons[index]) {
       self.polygons.set(index, EntityPolygonModel.create({
-        morphFrom: morphFrom,
+        morphTo: morphTo,
         fill: fill,
         stroke: stroke,
         strokeWidth: strokeWidth,
         points: points
       }))
     } else {
-      self.polygons[index].morphFrom = morphFrom
+      self.polygons[index].morphTo = morphTo
       self.polygons[index].fill = fill
       self.polygons[index].stroke = stroke
       self.polygons[index].strokeWidth = strokeWidth

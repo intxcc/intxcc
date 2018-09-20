@@ -1,7 +1,7 @@
 'use strict'
 
 import Colors from '../../../../../style/variables/colors.scss'
-import Defaults from '../../../../config/defaults';
+import Defaults from '../../../../config/defaults'
 
 // This is the ViewModel of the stories view
 

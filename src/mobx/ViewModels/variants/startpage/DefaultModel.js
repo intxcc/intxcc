@@ -161,7 +161,7 @@ const VariantModel = {
       ]
     },
     'PinkTriangle': {
-      morphFrom: ['RightTriangleA', 'PinkTriangle'],
+      morphFrom: ['PinkTriangle', 'RightTriangleA'],
       fill: '#fff',
       stroke: Colors.primaryColor,
       points: [

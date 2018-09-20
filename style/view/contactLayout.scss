@@ -1,18 +1,23 @@
 .view-contact {
   .guide-a,
-  .guide-b {
-    top: 25vh;
-    left: 20%;
-
-    width: 70%;
-    height: 1px;
-  }
-
+  .guide-b,
   .guide-c {
     bottom: 5vh;
     left: 20%;
 
     width: 70%;
-    height: 1px;
+    height: 65vh;
+    max-height: 50vw;
+  }
+
+  .guide-blc0,
+  .guide-blc1 {
+    bottom: 13vh;
+    left: 28vw;
+  }
+
+  .guide-blc2 {
+    bottom: 10vh;
+    left: 28vw;
   }
 }

@@ -1,6 +1,7 @@
 'use strict'
 
 import Defaults from '../../../../config/defaults'
+import Colors from '../../../../../style/variables/colors.scss'
 
 // This is the ViewModel of the contact view
 
@@ -18,7 +19,7 @@ const VariantModel = {
     },
     'c': {
       deg: 16,
-      vpos: 'top',
+      vpos: 'bottom',
       hpos: 'right'
     },
     // //////// //
@@ -42,6 +43,22 @@ const VariantModel = {
       reverse: true,
       copy: 'c',
       move: 25
+    },
+    // Helper lines for bottom left caption //
+    'blc0': {
+      deg: 16,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'blc1': {
+      deg: -56,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'blc2': {
+      deg: -27,
+      vpos: 'top',
+      hpos: 'right'
     }
   },
   polygons: {
@@ -62,6 +79,23 @@ const VariantModel = {
         ['f', 'g']
       ]
     },
+    'PinkTriangle': {
+      fill: '#fff',
+      stroke: Colors.primaryColor,
+      points: [
+        ['blc0', 'blc1'],
+        ['blc2', 'blc0'],
+        ['blc2', 'blc1']
+      ]
+    }
+  },
+  objects: {
+    'contact-page-name-display': {
+      type: 'intersections',
+      intersections: [
+        ['blc0', 'blc1']
+      ]
+    }
   }
 }
 

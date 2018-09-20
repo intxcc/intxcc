@@ -92,9 +92,10 @@ const PolygonsComponent = observer((props) => (
         if (polygon.morphFrom && polygon.morphFrom.length > 0) {
           morphToPolygon = []
           for (let morphFrom of polygon.morphFrom) {
-            morphToPolygon.push(
-              props.morphTo.get(morphFrom)
-            )
+            const getMorphTo = props.morphTo.get(morphFrom)
+            if (getMorphTo) {
+              morphToPolygon.push(getMorphTo)
+            }
           }
         }
       }

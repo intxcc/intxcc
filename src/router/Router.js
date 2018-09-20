@@ -4,7 +4,8 @@ import autobind from 'autobind-decorator'
 
 const Routes = {
   '': 'startpage',
-  'stories': 'stories'
+  'stories': 'stories',
+  'contact': 'contact'
 }
 
 /**

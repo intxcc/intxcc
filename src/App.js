@@ -13,15 +13,18 @@ import Router from './router/Router'
 import View from './view/View'
 import { StartpageView, StartpageOverlayView } from './view/StartpageView'
 import { StoriesView, StoriesOverlayView } from './view/StoriesView'
+import { ContactView, ContactOverlayView } from './view/ContactView'
 
 const Views = {
   'stories': StoriesView,
-  'startpage': StartpageView
+  'startpage': StartpageView,
+  'contact': ContactView
 }
 
 const OverlayViews = {
   'stories': StoriesOverlayView,
-  'startpage': StartpageOverlayView
+  'startpage': StartpageOverlayView,
+  'contact': ContactOverlayView
 }
 
 @observer

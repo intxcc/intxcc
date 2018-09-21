@@ -10,6 +10,9 @@ import autobind from 'autobind-decorator'
 
 import Router from './router/Router'
 
+// Defines the fontawesome library with icons we want to use
+import './fontawesome'
+
 import View from './view/View'
 import { StartpageView, StartpageOverlayView } from './view/StartpageView'
 import { StoriesView, StoriesOverlayView } from './view/StoriesView'

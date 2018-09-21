@@ -3,13 +3,36 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
 
 const ContactView = observer((props) => (
   <div className='content-wrapper-inner'>
-    Test
+    <ViewObject object={props.view.objects.get('contact-page-social')}>
+      <div className='contact-page-social-inner'>
+        <div className='contact-page-social-titles'>
+          github<br />
+          linkedin<br />
+          twitter<br />
+          email
+        </div>
+        <div className='contact-page-social-symbols'>
+          <FontAwesomeIcon icon={['fab', 'github']} /><br />
+          <FontAwesomeIcon icon={['fab', 'linkedin']} /><br />
+          <FontAwesomeIcon icon={['fab', 'twitter']} /><br />
+          <FontAwesomeIcon icon={'envelope-open'} />
+        </div>
+        <div className='contact-page-social-links'>
+          intxcc<br />
+          intxcc<br />
+          intxcc<br />
+          contact@intx.cc
+        </div>
+      </div>
+    </ViewObject>
   </div>
 ))
 
@@ -24,6 +47,18 @@ const ContactOverlayView = observer((props) => (
       contact
       <div className='contact-page-name-display-caption'>
         details
+      </div>
+    </ViewObject>
+    <ViewObject object={props.view.objects.get('contact-page-impressum')}>
+      <div className='contact-page-impressum-inner'>
+        <h2>
+          Marvin Alexander Rüll<br />
+          Abtstr. 4<br />
+          12489 Berlin
+        </h2>
+        <h1>
+          Angaben gemäß §5 TMG
+        </h1>
       </div>
     </ViewObject>
   </div>

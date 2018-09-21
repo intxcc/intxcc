@@ -1,0 +1,30 @@
+.contact-page-social {
+  transform: translate3d(0, -100%, 0) translate3d(3rem, -1.5rem, 0);
+
+  font-size: 3rem;
+
+  transform-origin: bottom left;
+
+  .contact-page-social-inner {
+    display: flex;
+    flex-direction: row;
+
+    background-color: #fff;
+
+    padding: 1rem;
+
+    .contact-page-social-titles {
+      text-align: right;
+      font-family: 'Roboto Condensed';
+      font-variant: small-caps;
+    }
+
+    .contact-page-social-symbols {
+      margin: 0 .5rem;
+    }
+
+    .contact-page-social-links {
+      font-family: 'Roboto Condensed';
+    }
+  }
+}

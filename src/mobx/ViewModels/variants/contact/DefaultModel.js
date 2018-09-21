@@ -132,7 +132,7 @@ const VariantModel = {
       ]
     },
     'D': {
-      fill: '#00000000',
+      fill: '#fff',
       stroke: Defaults.DefaultStroke,
       points: [
         ['ltp-a', 'ltp-b'],
@@ -155,6 +155,21 @@ const VariantModel = {
       type: 'intersections',
       intersections: [
         ['blc0', 'blc1']
+      ]
+    },
+    'contact-page-impressum': {
+      type: 'intersections',
+      copyDeg: 'b',
+      intersections: [
+        ['g', 'h']
+      ]
+    },
+    'contact-page-social': {
+      type: 'intersections',
+      copyDeg: 'a',
+      intersections: [
+        // ['a', 'b'],
+        ['a', 'c']
       ]
     }
   }

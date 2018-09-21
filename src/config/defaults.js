@@ -1,9 +1,9 @@
 'use strict'
 
 const Defaults = {
-  PolygonFill: '#1a1a1a',
+  PolygonFill: '#242124',
   PolygonStroke: 'none',
-  DefaultStroke: '#1a1a1a',
+  DefaultStroke: '#242124',
   DefaultStrokeMiterlimit: '20',
   GuideLength: 2000,
   guideStroke: '#111',

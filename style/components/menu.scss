@@ -1,31 +1,31 @@
 .menu-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
 
   position: fixed;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
 
-  height: 4vh;
+  align-items: center;
+  justify-content: center;
 
   z-index: 200;
-
   background-color: #fff;
+  height: 4vh;
+
+  pointer-events: none;
 }
 
 .menu-component {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  pointer-events: initial;
-
   padding: 0 .5rem 0 .4rem;
 
   list-style: none;
   font-family: 'Roboto Condensed';
+
+  pointer-events: initial;
   font-variant: small-caps;
 
   a {

@@ -98,9 +98,8 @@ class App extends React.Component {
             buffer = this.props.store.views.get('buffer')
 
             if (view.transitionState === 'fadeInBuffer') {
-              // Change active page variable, for easier accessibility of that variable
-              this.props.store.global.setActivePage(this.props.store.views.get('buffer').model)
-
+              // Change active page variable, for easier accessibility of that variable. Do that at the end of the event loop, as we shouldn't change state during a state transition
+              setTimeout(() => this.props.store.global.setActivePage(this.props.store.views.get('buffer').model), 0)
               setTimeout(buffer.fadeIn, 0)
             }
           }

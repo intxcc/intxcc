@@ -13,7 +13,7 @@ const VariantModel = {
       hpos: 'right'
     },
     'b': {
-      deg: -79,
+      deg: -74,
       vpos: 'top',
       hpos: 'right'
     },

@@ -1,5 +1,5 @@
 .contact-page-social {
-  transform: translate3d(0, -100%, 0) translate3d(3rem, -1.5rem, 0);
+  transform: translate3d(0, -100%, 0) translate3d(6rem, -3rem, 0);
 
   font-size: 3rem;
 
@@ -15,16 +15,21 @@
 
     .contact-page-social-titles {
       text-align: right;
+      line-height: 3.65rem;
       font-family: 'Roboto Condensed';
+      font-size: 2rem;
       font-variant: small-caps;
     }
 
     .contact-page-social-symbols {
       margin: 0 .5rem;
+      line-height: 3.65rem;
     }
 
     .contact-page-social-links {
+      line-height: 3.65rem;
       font-family: 'Roboto Condensed';
+      font-size: 2.8rem;
     }
   }
 }

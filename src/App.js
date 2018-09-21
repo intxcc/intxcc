@@ -56,10 +56,6 @@ class App extends React.Component {
   @autobind
   swapBuffer () {
     this.props.store.updateViewEntity('main', this.props.store.views.get('buffer').model)
-
-    // Change active page variable, for easier accessibility of that variable
-    this.props.store.global.setActivePage(this.props.store.views.get('buffer').model)
-
     setTimeout(this.clearBuffer, 100)
   }
 
@@ -99,6 +95,9 @@ class App extends React.Component {
             buffer = this.props.store.views.get('buffer')
 
             if (view.transitionState === 'fadeInBuffer') {
+              // Change active page variable, for easier accessibility of that variable
+              this.props.store.global.setActivePage(this.props.store.views.get('buffer').model)
+
               setTimeout(buffer.fadeIn, 0)
             }
           }

@@ -8,8 +8,8 @@ const Defaults = {
   DefaultStroke: Colors.black,
   DefaultStrokeMiterlimit: '20',
   GuideLength: 2000,
-  guideStroke: '#111',
-  showAllGuides: true,
+  guideStroke: Colors.black,
+  showAllGuides: false,
   showGuides: false
 }
 

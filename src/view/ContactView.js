@@ -14,10 +14,10 @@ const ContactView = observer((props) => (
     <ViewObject object={props.view.objects.get('contact-page-social')}>
       <div className='contact-page-social-inner'>
         <div className='contact-page-social-titles'>
-          Github<br />
-          Linkedin<br />
-          Twitter<br />
-          Email
+          <span className='contact-page-social-title-item'>Github</span><br />
+          <span className='contact-page-social-title-item'>Linkedin</span><br />
+          <span className='contact-page-social-title-item'>Twitter</span><br />
+          <span className='contact-page-social-title-item'>Email</span>
         </div>
         <div className='contact-page-social-symbols'>
           <FontAwesomeIcon icon={['fab', 'github']} /><br />

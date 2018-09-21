@@ -4,32 +4,38 @@
   font-size: 3rem;
 
   transform-origin: bottom left;
+}
 
-  .contact-page-social-inner {
-    display: flex;
-    flex-direction: row;
+.contact-page-social-inner {
+  display: flex;
+  flex-direction: row;
 
-    background-color: #fff;
+  background-color: #fff;
 
-    padding: 1rem;
+  padding: 1rem;
 
-    .contact-page-social-titles {
-      text-align: right;
-      line-height: 3.65rem;
-      font-family: 'Roboto Condensed';
-      font-size: 2rem;
-      font-variant: small-caps;
+  .contact-page-social-titles {
+    text-align: right;
+    line-height: 3.65rem;
+    font-family: 'Roboto Condensed';
+    font-size: 2rem;
+    font-variant: small-caps;
+
+    .contact-page-social-title-item {
+      background-color: $black;
+      padding: 0 .4rem;
+      color: $white;
     }
+  }
 
-    .contact-page-social-symbols {
-      margin: 0 .5rem;
-      line-height: 3.65rem;
-    }
+  .contact-page-social-symbols {
+    margin: 0 .5rem;
+    line-height: 3.65rem;
+  }
 
-    .contact-page-social-links {
-      line-height: 3.65rem;
-      font-family: 'Roboto Condensed';
-      font-size: 2.8rem;
-    }
+  .contact-page-social-links {
+    line-height: 3.65rem;
+    font-size: 2rem;
+    font-variant: small-caps;
   }
 }

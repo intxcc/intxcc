@@ -21,53 +21,6 @@
   }
 }
 
-.startpage-navigation-list {
-  display: flex;
-
-  position: absolute;
-  bottom: 2vh;
-  left: 50%;
-
-  transform: translate3d(-50%, -50%, 0);
-
-  list-style: none;
-  font-family: 'Roboto Condensed';
-  font-variant: small-caps;
-
-  a {
-    text-decoration: none;
-    color: $black;
-  }
-
-  li {
-    transition: .2s color, .2s background-color;
-
-    padding: 0 .4rem;
-
-    font-size: 2vh;
-    font-weight: lighter;
-
-    &:first-child {
-      background-color: initial !important;
-      cursor: default;
-      padding: 0 .2rem;
-      font-weight: bold;
-    }
-
-    &:last-child {
-      padding-right: initial;
-    }
-
-    &:hover {
-      background-color: $black;
-
-      a {
-        color: #fff;
-      }
-    }
-  }
-}
-
 .startpage-picture {
   position: fixed;
   top: 50vh;

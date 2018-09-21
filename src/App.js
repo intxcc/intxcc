@@ -15,6 +15,8 @@ import { StartpageView, StartpageOverlayView } from './view/StartpageView'
 import { StoriesView, StoriesOverlayView } from './view/StoriesView'
 import { ContactView, ContactOverlayView } from './view/ContactView'
 
+import MenuComponent from './view/Components/MenuComponent'
+
 const Views = {
   'stories': StoriesView,
   'startpage': StartpageView,
@@ -54,6 +56,10 @@ class App extends React.Component {
   @autobind
   swapBuffer () {
     this.props.store.updateViewEntity('main', this.props.store.views.get('buffer').model)
+
+    // Change active page variable, for easier accessibility of that variable
+    this.props.store.global.setActivePage(this.props.store.views.get('buffer').model)
+
     setTimeout(this.clearBuffer, 100)
   }
 
@@ -128,6 +134,7 @@ class App extends React.Component {
             </View>
           )
         })}
+        <MenuComponent selection={this.props.store.global.activePage} />
       </div>
     )
   }

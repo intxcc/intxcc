@@ -19,6 +19,9 @@ class Router {
     this.resolvePath()
 
     this.store.updateViewEntity('main', this.modelName)
+
+    // Change active page variable, for easier accessibility of that variable
+    this.store.global.setActivePage(this.modelName)
   }
 
   @autobind

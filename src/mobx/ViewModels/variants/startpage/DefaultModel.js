@@ -152,7 +152,7 @@ const VariantModel = {
       ]
     },
     'PinkTriangleBackground': {
-      morphTo: ['LeftTriangleA'],
+      morphTo: ['LeftTriangleA', 'D'],
       fill: '#fff',
       stroke: '#fff',
       points: [

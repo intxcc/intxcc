@@ -1,0 +1,81 @@
+.menu-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: 4vh;
+
+  z-index: 200;
+
+  background-color: #fff;
+}
+
+.menu-component {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: initial;
+
+  padding: 0 .5rem 0 .4rem;
+
+  list-style: none;
+  font-family: 'Roboto Condensed';
+  font-variant: small-caps;
+
+  a {
+    transition: .8s color;
+
+    text-decoration: none;
+    color: $black;
+  }
+
+  li {
+    transition: .2s background-color;
+
+    padding: 0 .4rem;
+
+    font-size: 2vh;
+    font-weight: lighter;
+
+    &:first-child {
+      background-color: initial !important;
+      cursor: default;
+      padding: 0 .2rem;
+      font-weight: bold;
+    }
+
+    &:last-child {
+      padding-right: initial;
+    }
+
+    &:hover {
+      background-color: $black;
+
+      a {
+        transition: .2s color;
+
+        color: #fff;
+      }
+    }
+  }
+
+  .selected,
+  .selected a {
+    cursor: default;
+    color: $primary-color;
+
+    &:hover {
+      background-color: initial !important;
+
+      a {
+        color: $primary-color;
+      }
+    }
+  }
+}

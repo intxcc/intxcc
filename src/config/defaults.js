@@ -1,9 +1,11 @@
 'use strict'
 
+import Colors from '../../style/variables/colors.scss'
+
 const Defaults = {
-  PolygonFill: '#242124',
+  PolygonFill: Colors.black,
   PolygonStroke: 'none',
-  DefaultStroke: '#242124',
+  DefaultStroke: Colors.black,
   DefaultStrokeMiterlimit: '20',
   GuideLength: 2000,
   guideStroke: '#111',

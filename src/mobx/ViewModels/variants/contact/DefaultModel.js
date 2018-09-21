@@ -116,6 +116,7 @@ const VariantModel = {
     },
     'B': {
       fill: Defaults.PolygonFill,
+      stroke: '#fff',
       points: [
         ['a', 'b'],
         ['a', 'c'],

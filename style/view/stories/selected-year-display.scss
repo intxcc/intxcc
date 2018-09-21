@@ -1,10 +1,7 @@
 .variant--article-focus {
   .selected-year-display {
-    @include media-big {
-      transform: translateY(-100%) translateY(-16px) translateX(1rem);
-    }
-
-    transform: translateY(-100%) translateY(-20px) translateX(1rem);
+    opacity: 0;
+    pointer-events: none;
   }
 }
 

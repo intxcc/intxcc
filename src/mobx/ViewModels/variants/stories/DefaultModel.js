@@ -135,7 +135,7 @@ const VariantModel = {
   polygons: {
     'A_WhiteStroke_Outer': {
       stroke: '#fff',
-      fill: 'none',
+      fill: '#00000000',
       strokeWidth: 10,
       points: [
         ['d', 'e'],
@@ -145,7 +145,7 @@ const VariantModel = {
     },
     'B_WhiteStroke_Outer': {
       stroke: '#fff',
-      fill: 'none',
+      fill: '#00000000',
       strokeWidth: 10,
       points: [
         ['c', 'a'],
@@ -164,6 +164,7 @@ const VariantModel = {
     },
     'B': {
       fill: Defaults.PolygonFill,
+      stroke: '#fff',
       points: [
         ['c', 'a'],
         ['c', 'b'],

@@ -80,7 +80,9 @@ const PolygonsComponent = observer((props) => (
     // If stroke width of the polygon is set to a number smaller than 0 we use the default stroke width
     let pStrokeWidth = polygon.strokeWidth
     if (pStrokeWidth < 0) {
-      pStrokeWidth = props.defaultStrokeWidth
+      pStrokeWidth = Defaults.DefaultStrokeWidth * props.pixelScale
+    } else {
+      pStrokeWidth = pStrokeWidth * props.pixelScale
     }
 
     if (props.morphTo) {
@@ -100,16 +102,6 @@ const PolygonsComponent = observer((props) => (
         }
       }
 
-      // MARKER_001
-      // If no polygon is found from which one this shall be morphed, we choose a random one
-      // Attention: This is buggy, because it gets rendered 2 times, fix or just manually select a polygon to morph from in the specific View Models
-      // if (!morphToPolygon[0]) {
-      //   const morphToKeys = keys(props.morphTo)
-      //   const randomKeyIndex = Math.floor((Math.random() * morphToKeys.length))
-      //   const randomKey = morphToKeys[randomKeyIndex]
-      //   morphToPolygon = [props.morphTo.get(randomKey)]
-      // }
-
       if (morphToPolygon[0]) {
         // Every polygon, that wants to be morphed from this, gets its own copy
 
@@ -120,7 +112,9 @@ const PolygonsComponent = observer((props) => (
           // If stroke width of the morphToPolygon is set to a number smaller than 0 we use the default stroke width
           let mStrokeWidth = morphTo.strokeWidth
           if (mStrokeWidth < 0) {
-            mStrokeWidth = props.defaultStrokeWidth
+            mStrokeWidth = Defaults.DefaultStrokeWidth * props.pixelScale
+          } else {
+            mStrokeWidth = mStrokeWidth * props.pixelScale
           }
 
           polygonMorphes.push(
@@ -154,7 +148,7 @@ const PolygonsComponent = observer((props) => (
 
 PolygonsComponent.propTypes = {
   classNameStart: PropTypes.string,
-  defaultStrokeWidth: PropTypes.number,
+  pixelScale: PropTypes.number,
   isVariantMorph: PropTypes.bool,
   polygonKeys: PropTypes.array,
   polygons: PropTypes.object,

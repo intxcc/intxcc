@@ -249,7 +249,7 @@ class View extends React.Component {
       <SvgObjectComponent className='svg-wrapper' viewBox={props.global.svgViewBox}>
         <PolygonsComponent
           classNameStart={props.className + '-' + props.view.model + '-polygon-'}
-          defaultStrokeWidth={this.props.global.strokeWidth}
+          pixelScale={this.props.global.pixelScale}
           isVariantMorph={props.view.transitionState === 'morphVariant'}
           polygonKeys={polygonKeys}
           polygons={polygons}

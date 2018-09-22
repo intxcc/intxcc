@@ -6,6 +6,7 @@ const Defaults = {
   PolygonFill: Colors.black,
   PolygonStroke: 'none',
   DefaultStroke: Colors.black,
+  DefaultStrokeWidth: 4, // should get multiplied with pixel scale
   DefaultStrokeMiterlimit: '20',
   GuideLength: 2000,
   guideStroke: Colors.black,

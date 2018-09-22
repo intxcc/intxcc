@@ -37,5 +37,15 @@
     line-height: 3.65rem;
     font-size: 2rem;
     font-variant: small-caps;
+
+    a {
+      transition: color .2s;
+      text-decoration: none;
+      color: $black;
+
+      &:hover {
+        color: $gray;
+      }
+    }
   }
 }

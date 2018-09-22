@@ -26,10 +26,10 @@ const ContactView = observer((props) => (
           <FontAwesomeIcon icon={'envelope-open'} />
         </div>
         <div className='contact-page-social-links'>
-          intxcc<br />
-          intxcc<br />
-          intxcc<br />
-          contact@intx.cc
+          <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc'>intxcc</a><br />
+          <a target='_blank' rel='noopener noreferrer' href='https://www.linkedin.com/in/intxcc/'>intxcc</a><br />
+          <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/intxcc'>intxcc</a><br />
+          <a target='_blank' rel='noopener noreferrer' href='mailto:contact@intx.cc'>contact@intx.cc</a>
         </div>
       </div>
     </ViewObject>

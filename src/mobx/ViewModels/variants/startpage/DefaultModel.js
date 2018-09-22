@@ -117,6 +117,7 @@ const VariantModel = {
   },
   polygons: {
     'A': {
+      morphTo: ['A', 'SkillsPolyA'],
       fill: Defaults.PolygonFill,
       stroke: '#fff',
       points: [
@@ -126,6 +127,7 @@ const VariantModel = {
       ]
     },
     'B': {
+      morphTo: ['B', 'SkillsPolyA'],
       fill: Defaults.PolygonFill,
       stroke: '#fff',
       points: [

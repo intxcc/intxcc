@@ -9,7 +9,7 @@ const Defaults = {
   DefaultStrokeMiterlimit: '20',
   GuideLength: 2000,
   guideStroke: Colors.black,
-  showAllGuides: false,
+  showAllGuides: true,
   showGuides: false
 }
 

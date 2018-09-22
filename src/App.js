@@ -17,18 +17,21 @@ import View from './view/View'
 import { StartpageView, StartpageOverlayView } from './view/StartpageView'
 import { StoriesView, StoriesOverlayView } from './view/StoriesView'
 import { ContactView, ContactOverlayView } from './view/ContactView'
+import { SkillsView, SkillsOverlayView } from './view/SkillsView'
 
 import MenuComponent from './view/Components/MenuComponent'
 
 const Views = {
-  'stories': StoriesView,
   'startpage': StartpageView,
+  'stories': StoriesView,
+  'skills': SkillsView,
   'contact': ContactView
 }
 
 const OverlayViews = {
-  'stories': StoriesOverlayView,
   'startpage': StartpageOverlayView,
+  'stories': StoriesOverlayView,
+  'skills': SkillsOverlayView,
   'contact': ContactOverlayView
 }
 

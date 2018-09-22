@@ -106,6 +106,7 @@ const VariantModel = {
   },
   polygons: {
     'A': {
+      morphTo: ['A', 'SkillsPolyA'],
       fill: '#00000000',
       stroke: Defaults.DefaultStroke,
       points: [
@@ -115,6 +116,7 @@ const VariantModel = {
       ]
     },
     'B': {
+      morphTo: ['B', 'SkillsPolyA'],
       fill: Defaults.PolygonFill,
       stroke: '#fff',
       points: [
@@ -134,6 +136,7 @@ const VariantModel = {
     },
     'D': {
       fill: '#fff',
+      morphTo: ['D', 'SkillsPolyA'],
       stroke: Defaults.DefaultStroke,
       points: [
         ['ltp-a', 'ltp-b'],

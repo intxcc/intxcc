@@ -4,6 +4,7 @@ import ViewModel from './model/ViewModel'
 
 import StartpageModel from './ViewModels/StartpageModel'
 import StoriesModel from './ViewModels/StoriesModel'
+import SkillsModel from './ViewModels/SkillsModel'
 import ContactModel from './ViewModels/ContactModel'
 
 /**
@@ -12,6 +13,7 @@ import ContactModel from './ViewModels/ContactModel'
 const viewModels = {
   [StartpageModel.name]: ViewModel.create(StartpageModel),
   [StoriesModel.name]: ViewModel.create(StoriesModel),
+  [SkillsModel.name]: ViewModel.create(SkillsModel),
   [ContactModel.name]: ViewModel.create(ContactModel)
 }
 

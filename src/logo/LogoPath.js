@@ -3,16 +3,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const LogoNormal = () => (
+const LogoNormal = (props) => (
   <g transform="matrix(2.1708 0 0 2.1708 -194.46 -182.16)">
     <g transform="matrix(.83491 .0027989 -.0027989 .83491 16.445 13.609)">
       <g transform="matrix(1.197 -.0040136 .0040136 1.197 70.129 -52.192)">
         <g transform="translate(0,1.0583)" fill="#fff">
           <path d="m14.446 112.69 15.284 26.472 15.284-26.472z" />
-          <path d="m16.393 113.76 13.337 23.273 13.437-23.273z" stroke="#242124" strokeWidth=".3" />
+          <path d="m16.393 113.76 13.337 23.273 13.437-23.273z" stroke="#242124" strokeWidth={props.strokeWidth} />
         </g>
         <g transform="matrix(.37943 0 0 .37943 26.892 74.962)">
-          <g transform="matrix(.85121 0 0 .85121 -36.697 21.734)" fill="none" stroke="#242124" strokeMiterlimit="3.8" strokeWidth=".3098">
+          <g transform="matrix(.85121 0 0 .85121 -36.697 21.734)" fill="none" stroke="#242124" strokeMiterlimit="3.8" strokeWidth={props.strokeWidth}>
             <path d="m34.91 105.52v14.143h5.8778z" />
             <path d="m68.982 119.67 0.10498-10.127h-4.7877z" />
             <path d="m71.623 105.52v2.9938h-7.6412z" />
@@ -30,21 +30,25 @@ const LogoNormal = () => (
           </g>
         </g>
         <path d="m29.73 131.5 3.4159-5.9166h-6.8318z" fill="#242124" />
-        <path d="m29.73 130.71 2.7476-4.759h-5.4952z" fill="none" stroke="#fff" strokeWidth=".2" />
+        <path d="m29.73 130.71 2.7476-4.759h-5.4952z" fill="none" stroke="#fff" strokeWidth={props.strokeWidth * 0.5} />
       </g>
     </g>
   </g>
 )
 
-const LogoDark = () => (
+LogoNormal.propTypes = {
+  strokeWidth: PropTypes.number
+}
+
+const LogoDark = (props) => (
   <g transform="matrix(2.1708 0 0 2.1708 -194.46 -182.16)">
     <g transform="matrix(.9994 -7.1148e-7 7.1148e-7 .9994 75.142 -29.77)">
       <g transform="translate(0,1.0583)">
         <path d="m14.446 112.69 15.284 26.472 15.284-26.472z" fill="#242124" />
-        <path d="m16.393 113.76 13.337 23.273 13.437-23.273z" fill="none" stroke="#fff" strokeWidth=".3" />
+        <path d="m16.393 113.76 13.337 23.273 13.437-23.273z" fill="none" stroke="#fff" strokeWidth={props.strokeWidth} />
       </g>
       <g transform="matrix(.37943 0 0 .37943 26.892 74.962)">
-        <g transform="matrix(.85121 0 0 .85121 -36.697 21.734)" fill="none" stroke="#fff" strokeMiterlimit="3.8" strokeWidth=".3098">
+        <g transform="matrix(.85121 0 0 .85121 -36.697 21.734)" fill="none" stroke="#fff" strokeMiterlimit="3.8" strokeWidth={props.strokeWidth}>
           <path d="m34.91 105.52v14.143h5.8778z" />
           <path d="m68.982 119.67 0.10498-10.127h-4.7877z" />
           <path d="m71.623 105.52v2.9938h-7.6412z" />
@@ -62,18 +66,23 @@ const LogoDark = () => (
         </g>
       </g>
       <path d="m29.73 131.5 3.4159-5.9166h-6.8318z" fill="#fff" />
-      <path d="m29.73 130.71 2.7476-4.759h-5.4952z" fill="#fff" stroke="#242124" strokeWidth=".2" />
+      <path d="m29.73 130.71 2.7476-4.759h-5.4952z" fill="#fff" stroke="#242124" strokeWidth={props.strokeWidth * 0.5} />
     </g>
   </g>
 )
 
+LogoDark.propTypes = {
+  strokeWidth: PropTypes.number
+}
+
 const LogoPath = (props) => (
   <svg className={props.className} width="250.65" height="217.06" version="1.1" viewBox="0 0 66.318 57.429" xmlns="http://www.w3.org/2000/svg">
-    {props.invert ? <LogoDark /> : <LogoNormal />}
+    {props.invert ? <LogoDark strokeWidth={props.strokeWidth} /> : <LogoNormal strokeWidth={props.strokeWidth} />}
   </svg>
 )
 
 LogoPath.propTypes = {
+  strokeWidth: PropTypes.number,
   className: PropTypes.string,
   invert: PropTypes.bool
 }

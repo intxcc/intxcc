@@ -127,6 +127,7 @@ const VariantModel = {
       ]
     },
     'C': {
+      morphTo: ['C', 'SkillsPolyA'],
       fill: '#00000000',
       stroke: '#fff',
       points: [

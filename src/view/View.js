@@ -285,7 +285,9 @@ class View extends React.Component {
           {Polygons}
         </div>
         <div className={'overlay-wrapper-outer ' + props.viewModel.className + ' ' + fadeClassName + contentClassName}>
-          <Logo className={props.viewModel.logoClassName} />
+          <Logo
+            strokeWidth={(Defaults.DefaultStrokeWidth * props.global.pixelScale) / 8}
+            className={props.viewModel.logoClassName} />
           {this.props.loadedOverlayView}
         </div>
       </div>

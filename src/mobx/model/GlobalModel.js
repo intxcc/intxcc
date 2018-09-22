@@ -20,8 +20,7 @@ const GlobalModel = types.model({
     return `0 0 ${self.clientWidth} ${self.clientHeight}`
   },
   get strokeWidth () {
-    const max = Math.max(self.clientWidth, self.clientHeight)
-    return (((max - 800) / 1920) * 3) + 1
+    return self.pixelScale * 4
   }
 })).actions(self => {
   // ATTENTION: Changes only the variable in the global model, does not change the active page

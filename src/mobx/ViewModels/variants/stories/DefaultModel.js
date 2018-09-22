@@ -197,6 +197,7 @@ const VariantModel = {
       morphTo: ['PinkTriangleBackground'],
       fill: '#fff',
       stroke: Defaults.DefaultStroke,
+      strokeWidth: 15,
       points: [
         ['ff', 'gg'],
         ['ff', 'b'],
@@ -207,6 +208,7 @@ const VariantModel = {
       morphTo: ['PinkTriangle'],
       fill: '#fff',
       stroke: Defaults.DefaultStroke,
+      strokeWidth: 15,
       points: [
         ['bb', 'dd'],
         ['bb', 'ee'],

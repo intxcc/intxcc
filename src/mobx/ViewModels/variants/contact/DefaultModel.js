@@ -109,6 +109,7 @@ const VariantModel = {
       morphTo: ['A', 'SkillsPolyA'],
       fill: '#00000000',
       stroke: Defaults.DefaultStroke,
+      strokeWidth: 15,
       points: [
         ['lp-a', 'lp-b'],
         ['lp-a', 'lp-c'],
@@ -138,6 +139,7 @@ const VariantModel = {
       fill: '#fff',
       morphTo: ['D', 'SkillsPolyA'],
       stroke: Defaults.DefaultStroke,
+      strokeWidth: 15,
       points: [
         ['ltp-a', 'ltp-b'],
         ['ltp-a', 'ltp-c'],

@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { observer } from 'mobx-react'
 
+import PointerLock from '../Components/PointerLock'
+
 import SkillsMapColumn from './SkillsMapColumn'
 import SkillsMapCategory from './SkillsMapCategory'
 import SkillsMapItem from './SkillsMapItem'
@@ -33,6 +35,7 @@ const SkillsMap = observer((props) => (
       <div className='skills-map-scroll-anchor-caption'>
         move
       </div>
+      <PointerLock className='pointer-lock-canvas' />
     </div>
   </div>
 ))

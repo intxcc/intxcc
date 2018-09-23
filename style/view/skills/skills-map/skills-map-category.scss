@@ -12,6 +12,10 @@
 
   padding: 1rem $skills-map-category-padding-left-right * 2;
 
+  &.category-selected {
+    background-color: #ff0;
+  }
+
   &:last-child {
     border-bottom: initial;
   }

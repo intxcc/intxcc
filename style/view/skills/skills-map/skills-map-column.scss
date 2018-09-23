@@ -1,0 +1,36 @@
+.skills-map-column {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  border-right: $skills-map-column-border;
+
+  padding-top: 180vh;
+
+  width: 25vw;
+  min-width: 25rem;
+
+  height: 400vh;
+
+  box-sizing: border-box;
+
+  &.column-selected {
+    background-color: #f0f;
+  }
+
+  &:first-child {
+    margin: 0 0 0 100vh;
+    border-left: $skills-map-column-border;
+  }
+
+  h1 {
+    display: inline-flex;
+
+    margin: 0 0 1rem;
+
+    font-size: 6vh;
+    font-variant: small-caps;
+  }
+}

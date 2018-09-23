@@ -1,3 +1,7 @@
 .skills-map-item {
   font-size: 1.8rem;
+
+  &.item-selected {
+    background-color: #f00;
+  }
 }

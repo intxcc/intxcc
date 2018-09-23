@@ -1,47 +1,49 @@
-@keyframes skills-map-scroll-anchor-animation {
-  0% {
-    bottom: 50vh;
-    left: 50vw;
+// @keyframes skills-map-scroll-anchor-animation {
+//   0% {
+//     bottom: 50vh;
+//     left: 50vw;
 
-    transform: scale(1);
+//     transform: scale(1);
 
-    background-color: darken($color: $white, $amount: 20);
-  }
+//     background-color: darken($color: $white, $amount: 20);
+//   }
 
-  20% {
-    transform: scale(1.2);
-  }
+//   20% {
+//     transform: scale(1.2);
+//   }
 
-  40% {
-    transform: scale(1);
-  }
+//   40% {
+//     transform: scale(1);
+//   }
 
-  50% {
-    bottom: 50vh;
-    left: 50vw;
+//   50% {
+//     bottom: 50vh;
+//     left: 50vw;
 
-    background-color: darken($color: $white, $amount: 20);
-  }
+//     background-color: darken($color: $white, $amount: 20);
+//   }
 
-  75% {
-    bottom: $global--menu-height;
-    left: 50vw;
-  }
+//   75% {
+//     bottom: $global--menu-height;
+//     left: 50vw;
+//   }
 
-  100% {
-    bottom: $global--menu-height;
-    left: 0;
+//   100% {
+//     bottom: $global--menu-height;
+//     left: 0;
 
-    background-color: $white;
-  }
-}
+//     background-color: $white;
+//   }
+// }
 
 .skills-map-scroll-anchor {
   display: flex;
 
   position: fixed;
-  bottom: 50vh;
-  left: 50vw;
+  // bottom: 50vh;
+  // left: 50vw;
+  bottom: $global--menu-height;
+  left: 0;
 
   flex-direction: column;
   align-items: center;
@@ -54,7 +56,8 @@
 
   z-index: 50;
 
-  background-color: darken($color: $white, $amount: 20);
+  // background-color: darken($color: $white, $amount: 20);
+  background-color: $white;
 
   width: 4vmax;
   min-width: 4rem;

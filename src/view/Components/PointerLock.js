@@ -86,6 +86,10 @@ class PointerLock extends React.Component {
 
   @autobind
   onMouseMove (e) {
+    if (!this.pointerLocked) {
+      return
+    }
+
     if (this.props.onMovement) {
       if (e.nativeEvent.movementX && e.nativeEvent.movementY) {
         this.props.onMovement({

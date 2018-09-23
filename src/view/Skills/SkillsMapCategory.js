@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 const SkillsMapCategory = observer((props) => (
-  <div className='skills-map-category'>
+  <div className={'skills-map-category' + (props.selected ? ' category-selected' : '')}>
     <h2>
       {props.title}
     </h2>
@@ -15,6 +15,7 @@ const SkillsMapCategory = observer((props) => (
 ))
 
 SkillsMapCategory.propTypes = {
+  selected: PropTypes.bool,
   title: PropTypes.string,
   children: PropTypes.array
 }

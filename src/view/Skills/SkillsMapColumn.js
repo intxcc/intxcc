@@ -5,19 +5,31 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+import SkillsMapCategory from './SkillsMapCategory'
+
 const SkillsMapColumn = observer((props) => (
   <div className={'skills-map-column' + (props.selected ? ' column-selected' : '')}>
     <h1>
       {props.title}
     </h1>
-    {props.children}
+    {props.categories.map(category => (
+      <SkillsMapCategory
+        key={'skills-' + category.id}
+        selected={props.selected.category && props.selected.category.id === category.id ? props.selected : false}
+        title={category.title}
+        skills={category.skills}>
+      </SkillsMapCategory>
+    ))}
   </div>
 ))
 
 SkillsMapColumn.propTypes = {
-  selected: PropTypes.bool,
+  selected: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object
+  ]),
   title: PropTypes.string,
-  children: PropTypes.array
+  categories: PropTypes.array
 }
 
 export default SkillsMapColumn

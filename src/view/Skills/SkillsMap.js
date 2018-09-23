@@ -10,32 +10,24 @@ import { observer } from 'mobx-react'
 import PointerLock from '../Components/PointerLock'
 
 import SkillsMapColumn from './SkillsMapColumn'
-import SkillsMapCategory from './SkillsMapCategory'
-import SkillsMapItem from './SkillsMapItem'
 
 const SkillsMap = observer((props) => (
   <div className='skills-map-outer-wrapper'>
-    <div className='skills-map-wrapper' style={{
-      'transform': 'translate3d(-50%, -50%, 0) rotate(30deg) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0)'
-    }}>
+    <div
+      onWheel={(e) => {
+        const n = e.deltaY > 0 ? 1 : -1
+        props.state.scrollSkill(n)
+      }}
+      className='skills-map-wrapper'
+      style={{
+        'transform': 'translate3d(-50%, -50%, 0) rotate(30deg) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0)'
+      }}>
       {props.columns.map(column => (
         <SkillsMapColumn
-          key={'skills-column-' + column.id}
-          selected={column.id === props.state.selection.column}
-          title={column.title}>
-          {column.categories.map(category => (
-            <SkillsMapCategory
-              key={'skills-category-' + category.id}
-              selected={category.id === props.state.selection.category}
-              title={category.title}>
-              {category.skills.map(skill => (
-                <SkillsMapItem
-                  key={'skills-item-' + skill.id}
-                  selected={skill.id === props.state.selection.skill}
-                  title={skill.title} />
-              ))}
-            </SkillsMapCategory>
-          ))}
+          key={'skills-' + column.id}
+          selected={props.state.selection.column && props.state.selection.column.id === column.id ? props.state.selection : false}
+          title={column.title}
+          categories={column.categories}>
         </SkillsMapColumn>
       ))}
     </div>

@@ -1,12 +1,17 @@
 'use strict'
 
-import SkillsColumns from './skills/SkillsColumns'
+import { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount } from './skills/SkillsColumns'
 
 const SkillsData = {
   basicInfo: {
     id: 'skillsBasicInfo'
   },
-  columns: SkillsColumns
+  columns: SkillsColumns,
+  limits: {
+    columnsCount: ColumnsCount,
+    categoriesCount: CategoriesCount,
+    skillsCount: SkillsCount
+  }
 }
 
 export default SkillsData

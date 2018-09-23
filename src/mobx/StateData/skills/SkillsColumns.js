@@ -22,16 +22,25 @@ for (let columnIndex in SkillsColumns) {
   for (let categoryIndex in column.categories) {
     const category = column.categories[categoryIndex]
     for (let skillIndex in category.skills) {
-      category.skills[skillIndex].id = skillCounter
+      category.skills[skillIndex].columnId = 'column-' + columnCounter
+      category.skills[skillIndex].categoryId = 'category-' + categoryCounter
+      category.skills[skillIndex].id = 'skill-' + skillCounter
       skillCounter++
     }
 
-    column.categories[categoryIndex].id = categoryCounter
+    column.categories[categoryIndex].columnId = 'column-' + columnCounter
+    column.categories[categoryIndex].id = 'category-' + categoryCounter
     categoryCounter++
   }
 
-  SkillsColumns[columnIndex].id = columnCounter
+  SkillsColumns[columnIndex].id = 'column-' + columnCounter
   columnCounter++
 }
 
-export default SkillsColumns
+const ColumnsCount = columnCounter
+const CategoriesCount = categoryCounter
+const SkillsCount = skillCounter
+
+console.log(ColumnsCount)
+
+export { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount }

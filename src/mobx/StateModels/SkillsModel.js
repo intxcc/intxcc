@@ -5,18 +5,21 @@ import { types } from 'mobx-state-tree'
 import { BasicInfoModel } from '../model/ViewEntity'
 
 const SkillModel = types.model({
-  id: types.number,
+  id: types.identifier,
+  categoryId: types.string,
+  columnId: types.string,
   title: types.string
 })
 
 const SkillCategory = types.model({
-  id: types.number,
+  id: types.identifier,
+  columnId: types.string,
   title: types.string,
   skills: types.array(SkillModel)
 })
 
 const SkillColumn = types.model({
-  id: types.number,
+  id: types.identifier,
   title: types.string,
   categories: types.array(SkillCategory)
 })
@@ -27,17 +30,28 @@ const Position = types.model({
 })
 
 const Selection = types.model({
-  column: types.optional(types.number, 0),
-  category: types.optional(types.number, 0),
-  skill: types.optional(types.number, 0)
+  column: types.maybeNull(types.reference(SkillColumn)),
+  category: types.maybeNull(types.reference(SkillCategory)),
+  skill: types.maybeNull(types.reference(SkillModel))
+})
+
+const Limits = types.model({
+  columnsCount: types.optional(types.number, 0),
+  categoriesCount: types.optional(types.number, 0),
+  skillsCount: types.optional(types.number, 0)
 })
 
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
-  columns: types.array(SkillColumn)
+  columns: types.array(SkillColumn),
+  limits: types.optional(Limits, {})
 }).actions(self => {
+  function getIdNumberFromIdString (idString) {
+    return parseInt(idString.split('-')[1])
+  }
+
   function moveMapBy (pos) {
     self.mapPosition = {
       x: self.mapPosition.x + pos.x,
@@ -45,8 +59,37 @@ const SkillsModel = types.model({
     }
   }
 
+  function scrollSkill (n) {
+    let skillId
+    if (self.selection.skill) {
+      skillId = getIdNumberFromIdString(self.selection.skill.id)
+      skillId += n
+
+      if (skillId >= self.limits.skillsCount) {
+        skillId = self.limits.skillsCount - 1
+      }
+
+      if (skillId < 0) {
+        skillId = 0
+      }
+    } else {
+      skillId = 0
+    }
+
+    self.selectSkill(skillId)
+  }
+
+  function selectSkill (id) {
+    const skillIdentifier = 'skill-' + id
+    self.selection.skill = skillIdentifier
+    self.selection.category = self.selection.skill.categoryId
+    self.selection.column = self.selection.skill.columnId
+  }
+
   return {
-    moveMapBy
+    scrollSkill,
+    moveMapBy,
+    selectSkill
   }
 })
 

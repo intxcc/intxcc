@@ -11,7 +11,7 @@
 
   z-index: 200;
   background-color: $white;
-  height: 4vh;
+  height: $global--menu-height;
 
   pointer-events: none;
 }

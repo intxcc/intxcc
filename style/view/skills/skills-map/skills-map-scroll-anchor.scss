@@ -1,0 +1,97 @@
+@keyframes skills-map-scroll-anchor-animation {
+  0% {
+    bottom: 50vh;
+    left: 50vw;
+
+    transform: scale(1);
+
+    background-color: darken($color: $white, $amount: 10);
+  }
+
+  20% {
+    transform: scale(1.2);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+
+  50% {
+    bottom: 50vh;
+    left: 50vw;
+
+    background-color: darken($color: $white, $amount: 10);
+  }
+
+  75% {
+    bottom: $global--menu-height;
+    left: 50vw;
+  }
+
+  100% {
+    bottom: $global--menu-height;
+    left: 0;
+
+    background-color: $white;
+  }
+}
+
+.skills-map-scroll-anchor {
+  display: flex;
+
+  position: fixed;
+  bottom: 50vh;
+  left: 50vw;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  animation-name: skills-map-scroll-anchor-animation;
+  animation-duration: 2s;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+
+  z-index: 50;
+
+  background-color: darken($color: $white, $amount: 10);
+
+  width: 4vmax;
+  min-width: 4rem;
+
+  height: 4vmax;
+  min-height: 4rem;
+
+  color: $black;
+
+  .skills-map-scroll-anchor-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2vmax;
+    min-width: 2rem;
+
+    height: 2vmax;
+    min-height: 2rem;
+
+    font-size: 1.5vmax;
+  }
+
+  .skills-map-scroll-anchor-caption {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-top: 2px $black dotted;
+
+    width: 2vmax;
+    min-width: 2rem;
+
+    font-family: 'Roboto Condensed';
+    font-size: .8rem;
+    font-weight: bold;
+    font-variant: small-caps;
+  }
+}

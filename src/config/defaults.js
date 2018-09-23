@@ -3,6 +3,8 @@
 import Colors from '../../style/variables/colors.scss'
 
 const Defaults = {
+  White: Colors.white,
+  Black: Colors.black,
   PolygonFill: Colors.black,
   PolygonStroke: 'none',
   DefaultStroke: Colors.black,

@@ -25,7 +25,7 @@ const VariantModel = {
   polygons: {
     'SkillsPolyA': {
       morphTo: ['A', 'B', 'D'],
-      fill: '#fff',
+      fill: Defaults.White,
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,
       points: [

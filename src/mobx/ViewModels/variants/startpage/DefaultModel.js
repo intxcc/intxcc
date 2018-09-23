@@ -119,7 +119,7 @@ const VariantModel = {
     'A': {
       morphTo: ['A', 'SkillsPolyA'],
       fill: Defaults.PolygonFill,
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['d', 'e'],
         ['e', 'b'],
@@ -129,7 +129,7 @@ const VariantModel = {
     'B': {
       morphTo: ['B', 'SkillsPolyA'],
       fill: Defaults.PolygonFill,
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['c', 'a'],
         ['c', 'b'],
@@ -139,7 +139,7 @@ const VariantModel = {
     'C': {
       morphTo: ['C', 'SkillsPolyA'],
       fill: '#00000000',
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['h', 'f'],
         ['h', 'g'],
@@ -149,7 +149,7 @@ const VariantModel = {
     'D': {
       morphTo: ['D', 'SkillsPolyA'],
       fill: '#00000000',
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['j', 'k'],
         ['k', 'i'],
@@ -158,8 +158,8 @@ const VariantModel = {
     },
     'PinkTriangleBackground': {
       morphTo: ['LeftTriangleA', 'D'],
-      fill: '#fff',
-      stroke: '#fff',
+      fill: Defaults.White,
+      stroke: Defaults.White,
       points: [
         ['w1', 'w2'],
         ['w1', 'w3'],
@@ -168,7 +168,7 @@ const VariantModel = {
     },
     'PinkTriangle': {
       morphTo: ['PinkTriangle', 'RightTriangleA'],
-      fill: '#fff',
+      fill: Defaults.White,
       stroke: Colors.primaryColor,
       points: [
         ['p1', 'p2'],

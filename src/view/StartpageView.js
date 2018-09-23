@@ -5,16 +5,19 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+import { stringToBase64 } from '../miscFunctions'
+import NameSvg from './Components/NameSvg'
+
 const StartpageView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <img className='startpage-picture' alt='Picture of me with triangles.' src='/pic.jpg' />
+    <img className='startpage-picture' alt='Picture of me with triangles.' src='/pic.png' />
     <div className='startpage-midline'></div>
     <div className='startpage-midline-caption'>
       design.<br />
       development.
     </div>
     <div className='startpage-picture-caption'>
-      <img src='/name.svg' alt='by Marvin Alexander Rüll' />
+      <img src={'data:image/svg+xml;base64,' + stringToBase64(NameSvg)} alt='by Marvin Alexander Rüll' />
     </div>
   </div>
 ))

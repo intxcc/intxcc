@@ -40,4 +40,9 @@ function lineIntersect (a, b) {
     }
 }
 
-export { isEmpty, degreesToRadians, lineIntersect }
+// Just so the eslint error, that btoa is undefined is contained in this file and doesn't annoy me anymore. Also this is a prettier function name
+function stringToBase64 (input) {
+  return btoa(input)
+}
+
+export { isEmpty, degreesToRadians, lineIntersect, stringToBase64 }

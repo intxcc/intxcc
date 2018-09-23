@@ -134,7 +134,7 @@ const VariantModel = {
   },
   polygons: {
     'A_WhiteStroke_Outer': {
-      stroke: '#fff',
+      stroke: Defaults.White,
       fill: '#00000000',
       strokeWidth: 10,
       points: [
@@ -144,7 +144,7 @@ const VariantModel = {
       ]
     },
     'B_WhiteStroke_Outer': {
-      stroke: '#fff',
+      stroke: Defaults.White,
       fill: '#00000000',
       strokeWidth: 10,
       points: [
@@ -156,7 +156,7 @@ const VariantModel = {
     'A': {
       morphTo: ['A', 'SkillsPolyA'],
       fill: Defaults.PolygonFill,
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['d', 'e'],
         ['e', 'b'],
@@ -166,7 +166,7 @@ const VariantModel = {
     'B': {
       morphTo: ['B', 'SkillsPolyA'],
       fill: Defaults.PolygonFill,
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['c', 'a'],
         ['c', 'b'],
@@ -176,7 +176,7 @@ const VariantModel = {
     'C': {
       morphTo: ['C', 'SkillsPolyA'],
       fill: '#00000000',
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['h', 'f'],
         ['h', 'g'],
@@ -186,7 +186,7 @@ const VariantModel = {
     'D': {
       morphTo: ['D', 'SkillsPolyA'],
       fill: '#00000000',
-      stroke: '#fff',
+      stroke: Defaults.White,
       points: [
         ['j', 'k'],
         ['k', 'i'],
@@ -195,7 +195,7 @@ const VariantModel = {
     },
     'LeftTriangleA': {
       morphTo: ['PinkTriangleBackground'],
-      fill: '#fff',
+      fill: Defaults.White,
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,
       points: [
@@ -206,7 +206,7 @@ const VariantModel = {
     },
     'RightTriangleA': {
       morphTo: ['PinkTriangle'],
-      fill: '#fff',
+      fill: Defaults.White,
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,
       points: [
@@ -216,7 +216,7 @@ const VariantModel = {
       ]
     },
     'PinkTriangle': {
-      fill: '#fff',
+      fill: Defaults.White,
       stroke: Colors.primaryColor,
       points: [
         ['blc0', 'blc1'],

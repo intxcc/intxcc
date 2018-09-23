@@ -53,6 +53,7 @@ const StoriesView = observer((props) => (
 
 StoriesView.propTypes = {
   global: PropTypes.object,
+  state: PropTypes.object,
   view: PropTypes.object
 }
 
@@ -87,6 +88,7 @@ const StoriesOverlayView = observer((props) => (
 
 StoriesOverlayView.propTypes = {
   global: PropTypes.object,
+  state: PropTypes.object,
   view: PropTypes.object
 }
 

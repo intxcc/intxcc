@@ -10,7 +10,7 @@
 
   border-bottom: $skills-map-column-border;
 
-  padding: 1rem .5rem;
+  padding: 1rem $skills-map-category-padding-left-right * 2;
 
   &:last-child {
     border-bottom: initial;
@@ -21,7 +21,7 @@
     top: 50%;
     left: 0;
 
-    transform: rotate(-90deg) translate3d(-50%, .5rem, 0);
+    transform: rotate(-90deg) translate3d(-50%, $skills-map-category-padding-left-right, 0);
 
     font-family: 'Roboto Condensed';
     font-size: 1.2rem;

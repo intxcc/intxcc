@@ -10,7 +10,7 @@ import SkillsMap from './Skills/SkillsMap'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <SkillsMap />
+    <SkillsMap columns={props.state.columns} />
     <ViewObject object={props.view.objects.get('stories-overlay-title')}>
       <div className='stories-overlay-title-inner'>
         Stories
@@ -21,6 +21,7 @@ const SkillsView = observer((props) => (
 
 SkillsView.propTypes = {
   global: PropTypes.object,
+  state: PropTypes.object,
   view: PropTypes.object
 }
 
@@ -31,6 +32,7 @@ const SkillsOverlayView = observer((props) => (
 
 SkillsOverlayView.propTypes = {
   global: PropTypes.object,
+  state: PropTypes.object,
   view: PropTypes.object
 }
 

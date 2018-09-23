@@ -1,0 +1,32 @@
+.skills-map-category {
+  display: flex;
+  position: relative;
+
+  flex-direction: column;
+  align-items: flex-end;
+
+  align-self: stretch;
+  margin: 0 1rem;
+
+  border-bottom: $skills-map-column-border;
+
+  padding: 1rem .5rem;
+
+  &:last-child {
+    border-bottom: initial;
+  }
+
+  h2 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    transform: rotate(-90deg) translate3d(-50%, .5rem, 0);
+
+    font-family: 'Roboto Condensed';
+    font-size: 1.2rem;
+    font-variant: small-caps;
+
+    transform-origin: top left;
+  }
+}

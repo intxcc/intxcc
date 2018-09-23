@@ -6,9 +6,11 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
+import SkillsMap from './Skills/SkillsMap'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>
+    <SkillsMap />
     <ViewObject object={props.view.objects.get('stories-overlay-title')}>
       <div className='stories-overlay-title-inner'>
         Stories
@@ -24,7 +26,6 @@ SkillsView.propTypes = {
 
 const SkillsOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
-    aa
   </div>
 ))
 

@@ -13,6 +13,33 @@ class PointerLock extends React.Component {
   }
 
   @autobind
+  componentDidMount () {
+    if ('onpointerlockchange' in document) {
+      document.addEventListener('pointerlockchange', this.lockChangeAlert, false)
+    } else if ('onmozpointerlockchange' in document) {
+      document.addEventListener('mozpointerlockchange', this.lockChangeAlert, false)
+    }
+  }
+
+  @autobind
+  componentWillUnmount () {
+    if ('onpointerlockchange' in document) {
+      document.removeEventListener('pointerlockchange', this.lockChangeAlert)
+    } else if ('onmozpointerlockchange' in document) {
+      document.removeEventListener('mozpointerlockchange', this.lockChangeAlert)
+    }
+  }
+
+  @autobind
+  lockChangeAlert () {
+    if (document.pointerLockElement === this.canvas || document.mozPointerLockElement === this.canvas) {
+      this.pointerLocked = true
+    } else {
+      this.pointerLocked = false
+    }
+  }
+
+  @autobind
   requestPointerLock () {
     this.canvas.requestPointerLock = this.canvas.requestPointerLock || this.canvas.mozRequestPointerLock
     this.canvas.requestPointerLock()

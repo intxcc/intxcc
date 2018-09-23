@@ -1,26 +1,12 @@
 'use strict'
 
+import SkillsColumns from './skills/SkillsColumns'
+
 const SkillsData = {
   basicInfo: {
     id: 'skillsBasicInfo'
   },
-  columns: [
-    {
-      title: 'General',
-      categories: [
-        {
-          title: 'OS',
-          skills: [
-            {
-              title: 'Windows'
-            }, {
-              title: 'Linux'
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  columns: SkillsColumns
 }
 
 export default SkillsData

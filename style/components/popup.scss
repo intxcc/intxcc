@@ -1,0 +1,54 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  transform: translate3d(-50%, -50%, 0);
+  transition: .2s opacity,
+  .2s transform;
+
+  // box-shadow: $shadow-1;
+
+  background-color: $white;
+
+  padding: 2rem;
+
+  min-width: 30rem;
+  max-width: 90vw;
+
+  min-height: 15rem;
+  max-height: 90vh;
+
+  box-sizing: border-box;
+
+  pointer-events: initial;
+
+  &.hidden {
+    transform: translate3d(-50%, -50%, 0) scale(1.5);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  h1 {
+    font-family: 'Roboto Condensed';
+  }
+
+  .close-btn-wrapper {
+    display: flex;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 3rem;
+    height: 3rem;
+
+    .close-btn {
+      cursor: pointer;
+      font-size: 2rem;
+    }
+  }
+}

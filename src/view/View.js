@@ -264,8 +264,14 @@ class View extends React.Component {
     const contentClassName = props.view.transitionState === 'morphVariant' ? ' object-transition ' : ''
 
     let disabledClassName = ''
-    if (props.state && props.state.basicInfo && props.state.basicInfo.disabled) {
+    // If this view or the state we morph to is disabled, disable this view
+    if ((props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.disabled) || (props.buffer && props.buffer.toJSON()['stateBasicInfo'] !== '' && props.buffer.stateBasicInfo.disabled)) {
       disabledClassName = ' disabled'
+    }
+
+    // If the view this one is transitioning to is not disabled, or doesn't have a basic state, enable this one as well, for a smooth transition
+    if ((props.buffer && props.buffer.toJSON()['stateBasicInfo'] === '') || (props.buffer && props.buffer.toJSON()['stateBasicInfo'] !== '' && !props.buffer.stateBasicInfo.disabled)) {
+      disabledClassName = ''
     }
 
     // //////////////// //

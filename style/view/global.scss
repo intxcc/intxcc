@@ -57,9 +57,11 @@
 
 .view-model,
 .view-content {
-  transition: $global--morph-duration filter;
+  transition: $global--morph-duration filter,
+  $global--morph-duration transform;
 
   &.disabled {
+    transform: scale(1.5);
     filter: blur(3px);
     pointer-events: none;
   }

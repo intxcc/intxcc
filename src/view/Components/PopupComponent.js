@@ -56,7 +56,9 @@ class PopupComponent extends React.Component {
             <FontAwesomeIcon icon={'times'} />
           </div>
         </div>
-        {this.props.children}
+        <div className='popup-inner'>
+          {this.props.children}
+        </div>
       </div>
     )
   }

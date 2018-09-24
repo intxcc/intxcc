@@ -49,15 +49,16 @@
     height: 2vmax;
     min-height: 2rem;
 
-    font-size: 1.5vmax;
+    font-size: 1.2vmax;
 
     pointer-events: none;
 
     &.toggle {
       position: relative;
       z-index: 5;
-
       cursor: pointer;
+
+      font-size: 1.5vmax;
       pointer-events: initial;
     }
   }

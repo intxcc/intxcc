@@ -37,6 +37,9 @@ class PointerLock extends React.Component {
     } else {
       this.pointerLocked = false
     }
+
+    // Callback function given to this component to alert on change
+    this.props.onPointerLockChange(this.pointerLocked)
   }
 
   @autobind
@@ -113,7 +116,8 @@ class PointerLock extends React.Component {
 PointerLock.propTypes = {
   className: PropTypes.string,
   // Is called when the mouse is locked and is moving. Gives element with delta {x: <x>, y: <y>}
-  onMovement: PropTypes.func
+  onMovement: PropTypes.func,
+  onPointerLockChange: PropTypes.func
 }
 
 export default PointerLock

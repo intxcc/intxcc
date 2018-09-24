@@ -1,6 +1,12 @@
 @import 'skills-map/skills-map-scroll-anchor';
 
+.skills-map-outer-wrapper {
+  height: 100vh;
+}
+
 .skills-map-wrapper {
+  @include user-select(none);
+
   display: flex;
 
   position: fixed;
@@ -9,6 +15,12 @@
 
   min-width: 100vw;
   min-height: 100vh;
+
+
+  &.transition {
+    @include user-select(initial);
+    transition: .1s transform;
+  }
 
   .skills-map-inner-wrapper {
     display: flex;

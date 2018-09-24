@@ -48,8 +48,18 @@ const SkillsModel = types.model({
   columns: types.array(SkillColumn),
   limits: types.optional(Limits, {}),
   mouseLastPosition: types.optional(Position, {}),
-  mouseDragActive: types.optional(types.boolean, false)
+  mouseDragActive: types.optional(types.boolean, false),
+  mouseDragEnabled: types.optional(types.boolean, false),
+  pointerLocked: types.optional(types.boolean, false)
 }).actions(self => {
+  function toggleMouseDrag () {
+    self.mouseDragEnabled = !self.mouseDragEnabled
+  }
+
+  function onPointerLockChange (isLocked) {
+    self.pointerLocked = isLocked
+  }
+
   function onMouseDown (e) {
     self.mouseDragActive = true
     self.mouseLastPosition = {
@@ -63,7 +73,7 @@ const SkillsModel = types.model({
   }
 
   function onMouseMove (e) {
-    if (self.mouseDragActive) {
+    if (self.mouseDragEnabled && self.mouseDragActive) {
       const delta = {
         x: -(self.mouseLastPosition.x - e.screenX),
         y: -(self.mouseLastPosition.y - e.screenY)
@@ -122,6 +132,8 @@ const SkillsModel = types.model({
   }
 
   return {
+    toggleMouseDrag,
+    onPointerLockChange,
     onMouseDown,
     onMouseUp,
     onMouseMove,

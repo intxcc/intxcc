@@ -21,8 +21,12 @@
   }
 
   &:first-child {
-    margin: 0 0 0 100vh;
+    margin: 0 0 0 157vh;
     border-left: $skills-map-column-border;
+  }
+
+  &:last-child {
+    margin: 0 50vh 0 0;
   }
 
   h1 {

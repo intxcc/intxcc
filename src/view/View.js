@@ -37,14 +37,14 @@ class View extends React.Component {
   }
 
   componentDidMount () {
-    this.updateHelperDivs()
-
     // Give the basicInfo the reference of the view entity and the view entity the one of the basicInfo. Then load the modelVariant saved in the basicInfo of the state now loaded
     if (this.props.state && this.props.state.basicInfo) {
       this.props.state.basicInfo.setViewEntityReference(this.props.view.id)
       this.props.view.setStateBasicInfo(this.props.state.basicInfo.id)
       this.props.view.forceModelVariant(this.props.state.basicInfo.modelVariant)
     }
+
+    this.updateHelperDivs()
 
     // Set scroll top after first render, append to event queue
     setTimeout(this.setScrollTop, 0)
@@ -89,6 +89,10 @@ class View extends React.Component {
 
     this.dimensions.width = this.props.global.clientWidth
     this.dimensions.height = this.props.global.clientHeight
+
+    if (this.props.state && this.props.state.basicInfo && this.props.state.basicInfo.setClientDimensions) {
+      this.props.state.basicInfo.setClientDimensions(this.props.global.clientWidth, this.props.global.clientHeight)
+    }
 
     // Load the guides in the view entity
     for (let index in this.helperDivs) {

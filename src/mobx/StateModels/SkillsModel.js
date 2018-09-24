@@ -52,6 +52,11 @@ const SkillsModel = types.model({
     return parseInt(idString.split('-')[1])
   }
 
+  function centerMap (x, y) {
+    self.mapPosition.x = self.mapPosition.x - x + self.basicInfo.clientWidth / 2
+    self.mapPosition.y = self.mapPosition.y - y + self.basicInfo.clientHeight / 2
+  }
+
   function moveMapBy (pos) {
     self.mapPosition = {
       x: self.mapPosition.x + pos.x,
@@ -88,6 +93,7 @@ const SkillsModel = types.model({
 
   return {
     scrollSkill,
+    centerMap,
     moveMapBy,
     selectSkill
   }

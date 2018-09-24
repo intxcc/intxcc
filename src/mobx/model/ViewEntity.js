@@ -18,10 +18,18 @@ import Style from '../../../style/variables/global.scss'
 const BasicInfoModel = types.model({
   // Necessary to reference this in the view entity
   id: types.identifier,
+  clientWidth: types.optional(types.number, 0),
+  clientHeight: types.optional(types.number, 0),
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
   modelVariant: types.optional(types.string, 'default'),
   scrollTop: types.optional(types.number, 0)
 }).actions(self => {
+  // Save the client dimensions here, so we can use them to calculate e.g. the mid to center the selected dif in the skills view
+  function setClientDimensions (clientWidth, clientHeight) {
+    self.clientWidth = clientWidth
+    self.clientHeight = clientHeight
+  }
+
   function setViewEntityReference (viewEntity) {
     self.viewEntity = viewEntity
   }
@@ -35,6 +43,7 @@ const BasicInfoModel = types.model({
   }
 
   return {
+    setClientDimensions,
     setViewEntityReference,
     setModelVariant,
     setScrollTop

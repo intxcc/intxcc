@@ -16,10 +16,8 @@ const SkillsMapCategory = observer((props) => (
       <SkillsMapItem
         key={'skills-' + skill.id}
         selected={props.selected.skill && props.selected.skill.id === skill.id}
+        centerMapFunc={props.centerMapFunc}
         title={skill.title}>
-        {
-          console.log('a')
-        }
       </SkillsMapItem>
     ))}
   </div>
@@ -30,6 +28,7 @@ SkillsMapCategory.propTypes = {
     PropTypes.bool,
     PropTypes.object
   ]),
+  centerMapFunc: PropTypes.func,
   title: PropTypes.string,
   skills: PropTypes.array
 }

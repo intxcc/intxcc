@@ -41,6 +41,4 @@ const ColumnsCount = columnCounter
 const CategoriesCount = categoryCounter
 const SkillsCount = skillCounter
 
-console.log(ColumnsCount)
-
 export { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount }

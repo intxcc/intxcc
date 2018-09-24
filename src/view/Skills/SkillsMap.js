@@ -20,12 +20,13 @@ const SkillsMap = observer((props) => (
       }}
       className='skills-map-wrapper'
       style={{
-        'transform': 'translate3d(-50%, -50%, 0) rotate(30deg) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0)'
+        'transform': 'translate3d(-50%, -50%, 0) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0) rotate(30deg)'
       }}>
       {props.columns.map(column => (
         <SkillsMapColumn
           key={'skills-' + column.id}
           selected={props.state.selection.column && props.state.selection.column.id === column.id ? props.state.selection : false}
+          centerMapFunc={props.state.centerMap}
           title={column.title}
           categories={column.categories}>
         </SkillsMapColumn>

@@ -19,7 +19,7 @@
 
   &.transition {
     @include user-select(initial);
-    transition: .1s transform;
+    transition: $skills-map-transition-time transform;
   }
 
   .skills-map-inner-wrapper {

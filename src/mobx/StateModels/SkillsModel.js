@@ -136,10 +136,11 @@ const SkillsModel = types.model({
 
   function selectSkill (id) {
     const skillIdentifier = 'skill-' + id
-    selectSkillByIdentifier(skillIdentifier)
+    self.selectSkillByIdentifier(skillIdentifier)
   }
 
   return {
+    selectSkillByIdentifier,
     onSkillClick,
     toggleMouseDrag,
     onPointerLockChange,

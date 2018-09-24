@@ -14,8 +14,12 @@ $global--morph-duration: $global--morph-duration-ms + ms;
 
 $global--menu-height: 4vh;
 
+$skills-map-transition-time-ms: 400;
+$skills-map-transition-time: $skills-map-transition-time-ms + ms;
+
 // sass-lint:disable-all
 :export {
   fadeOutDuration: $global--fade-out-duration-ms;
   morphDuration: $global--morph-duration-ms - 400;
+  skillsMapTransitionTime: $skills-map-transition-time-ms;
 }

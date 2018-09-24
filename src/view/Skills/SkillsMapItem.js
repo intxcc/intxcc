@@ -7,6 +7,8 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import Style from '../../../style/variables/global.scss'
+
 const SkillsMapItemConst = observer((props) => (
   <div onClick={() => {
     props.onSkillClick(props.id)
@@ -38,6 +40,7 @@ class SkillsMapItemComponent extends React.Component {
   @autobind
   render () {
     setTimeout(this.updateSelectedPosition, 0)
+    setTimeout(this.updateSelectedPosition, Style.skillsMapTransitionTime)
 
     return (
       <div ref={div => { this.div = div }} className='skills-map-item item-selected'>

@@ -1,7 +1,22 @@
 .skills-map-item {
+  transition: .2s background-color,
+  .2s color,
+  .2s padding;
+
+  cursor: pointer;
+
+  padding: 0 .5rem;
+
   font-size: 1.8rem;
 
+  &:hover {
+    background-color: $black;
+    color: $white;
+  }
+
   &.item-selected {
-    // background-color: #f00;
+    background-color: $black;
+    padding: 0 .5rem;
+    color: $white;
   }
 }

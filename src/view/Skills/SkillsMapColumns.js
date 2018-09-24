@@ -13,6 +13,7 @@ const SkillsMapColumns = observer((props) => (
       <SkillsMapColumn
         key={'skills-' + column.id}
         selected={props.selected.column && props.selected.column.id === column.id ? props.selected : false}
+        onSkillClick={props.onSkillClick}
         centerMapFunc={props.centerMapFunc}
         title={column.title}
         categories={column.categories}>
@@ -23,6 +24,7 @@ const SkillsMapColumns = observer((props) => (
 
 SkillsMapColumns.propTypes = {
   selected: PropTypes.object,
+  onSkillClick: PropTypes.func,
   centerMapFunc: PropTypes.func,
   columns: PropTypes.array
 }

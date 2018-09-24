@@ -52,6 +52,16 @@ const SkillsModel = types.model({
   mouseDragEnabled: types.optional(types.boolean, false),
   pointerLocked: types.optional(types.boolean, false)
 }).actions(self => {
+  function selectSkillByIdentifier (skillIdentifier) {
+    self.selection.skill = skillIdentifier
+    self.selection.category = self.selection.skill.categoryId
+    self.selection.column = self.selection.skill.columnId
+  }
+
+  function onSkillClick (skillIdentifier) {
+    selectSkillByIdentifier(skillIdentifier)
+  }
+
   function toggleMouseDrag () {
     self.mouseDragEnabled = !self.mouseDragEnabled
   }
@@ -126,12 +136,11 @@ const SkillsModel = types.model({
 
   function selectSkill (id) {
     const skillIdentifier = 'skill-' + id
-    self.selection.skill = skillIdentifier
-    self.selection.category = self.selection.skill.categoryId
-    self.selection.column = self.selection.skill.columnId
+    selectSkillByIdentifier(skillIdentifier)
   }
 
   return {
+    onSkillClick,
     toggleMouseDrag,
     onPointerLockChange,
     onMouseDown,

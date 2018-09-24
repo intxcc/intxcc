@@ -8,13 +8,17 @@ import { observer } from 'mobx-react'
 import autobind from 'autobind-decorator'
 
 const SkillsMapItemConst = observer((props) => (
-  <div className='skills-map-item'>
+  <div onClick={() => {
+    props.onSkillClick(props.id)
+  }} className='skills-map-item'>
     {props.title}
   </div>
 ))
 
 SkillsMapItemConst.propTypes = {
-  title: PropTypes.string
+  id: PropTypes.string,
+  title: PropTypes.string,
+  onSkillClick: PropTypes.func
 }
 
 @observer
@@ -55,7 +59,7 @@ const SkillsMapItem = observer((props) => {
     )
   } else {
     return (
-      <SkillsMapItemConst title={props.title} />
+      <SkillsMapItemConst onSkillClick={props.onSkillClick} id={props.id} title={props.title} />
     )
   }
 })
@@ -63,6 +67,8 @@ const SkillsMapItem = observer((props) => {
 SkillsMapItem.propTypes = {
   selected: PropTypes.bool,
   centerMapFunc: PropTypes.func,
+  onSkillClick: PropTypes.func,
+  id: PropTypes.string,
   title: PropTypes.string
 }
 

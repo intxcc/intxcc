@@ -25,7 +25,7 @@
 
   .pointer-lock-canvas {
     position: absolute;
-    top: 0;
+    top: 4rem;
     left: 0;
 
     cursor: move;
@@ -80,6 +80,11 @@
     font-variant: small-caps;
 
     pointer-events: none;
+
+    &.scroll-hint {
+      margin-top: .5rem;
+      border: initial;
+    }
 
     &.toggle {
       position: relative;

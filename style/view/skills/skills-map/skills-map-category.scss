@@ -25,10 +25,10 @@
 
     align-self: stretch;
 
-    border-right: 2px rgba($color: $black, $alpha: 0) dashed;
-    border-left: 2px rgba($color: $black, $alpha: 0) dashed;
+    border-right: 4px rgba($color: $black, $alpha: 0) dotted;
+    border-left: 4px rgba($color: $black, $alpha: 0) dotted;
 
-    padding: 1rem $skills-map-category-padding-left-right * 2;
+    padding: 1rem $skills-map-category-padding-left-right 1rem $skills-map-category-padding-left-right * 2;
   }
 
   &:last-child {

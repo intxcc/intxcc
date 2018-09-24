@@ -53,6 +53,10 @@
 
 .view-model {
   z-index: 10;
+
+  &.disabled {
+    transform: initial !important;
+  }
 }
 
 .view-model,

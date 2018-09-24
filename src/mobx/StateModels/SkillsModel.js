@@ -4,11 +4,14 @@ import { types } from 'mobx-state-tree'
 
 import { BasicInfoModel } from '../model/ViewEntity'
 
+import Style from '../../../style/variables/global.scss'
+
 const SkillModel = types.model({
   id: types.identifier,
   categoryId: types.string,
   columnId: types.string,
-  title: types.string
+  title: types.string,
+  mark: types.optional(types.number, 0)
 })
 
 const SkillCategory = types.model({
@@ -49,8 +52,9 @@ const SkillsModel = types.model({
   limits: types.optional(Limits, {}),
   mouseLastPosition: types.optional(Position, {}),
   mouseDragActive: types.optional(types.boolean, false),
-  mouseDragEnabled: types.optional(types.boolean, false),
-  pointerLocked: types.optional(types.boolean, false)
+  mouseDragEnabled: types.optional(types.boolean, true),
+  pointerLocked: types.optional(types.boolean, false),
+  transitionOn: types.optional(types.boolean, false)
 }).actions(self => {
   function selectSkillByIdentifier (skillIdentifier) {
     self.selection.skill = skillIdentifier
@@ -60,6 +64,13 @@ const SkillsModel = types.model({
 
   function onSkillClick (skillIdentifier) {
     selectSkillByIdentifier(skillIdentifier)
+
+    self.transitionOn = true
+    setTimeout(self.turnTransitionOff, Style.skillsMapTransitionTime)
+  }
+
+  function turnTransitionOff () {
+    self.transitionOn = false
   }
 
   function toggleMouseDrag () {
@@ -142,6 +153,7 @@ const SkillsModel = types.model({
   return {
     selectSkillByIdentifier,
     onSkillClick,
+    turnTransitionOff,
     toggleMouseDrag,
     onPointerLockChange,
     onMouseDown,

@@ -7,7 +7,8 @@ const AdminColumn = {
       title: 'Webserver',
       skills: [
         {
-          title: 'nginx'
+          title: 'nginx',
+          mark: 3
         }, {
           title: 'NodeJS'
         }, {

@@ -1,7 +1,7 @@
 @import 'skills-map/skills-map-scroll-anchor';
 
 .skills-map-outer-wrapper {
-  height: 100vh;
+  height: #{'calc(100vh - ' + $global--menu-height + ')'};
 }
 
 .skills-map-wrapper {

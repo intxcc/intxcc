@@ -16,7 +16,7 @@ const SkillsMap = observer((props) => (
     const n = e.deltaY > 0 ? 1 : -1
     props.state.scrollSkill(n)
   }} onMouseDown={props.state.onMouseDown} onMouseUp={props.state.onMouseUp} onMouseMove={props.state.onMouseMove} className='skills-map-outer-wrapper'>
-    <div className={'skills-map-wrapper' + ((props.state.mouseDragEnabled && props.state.mouseDragActive) || props.state.pointerLocked ? '' : ' transition')}
+    <div className={'skills-map-wrapper' + ((props.state.transitionOn ? ' transition' : ''))}
       style={{
         'transform': 'translate3d(-50%, -50%, 0) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0) rotate(30deg)'
       }}>

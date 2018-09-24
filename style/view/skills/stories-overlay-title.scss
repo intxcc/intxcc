@@ -1,5 +1,6 @@
 .stories-overlay-title {
   transform-origin: top left;
+  pointer-events: none !important;
 
   .stories-overlay-title-inner {
     transform: translate3d(-50%, -100%, 0);

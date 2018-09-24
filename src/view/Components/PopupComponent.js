@@ -9,6 +9,8 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import Style from '../../../style/variables/global.scss'
+
 @observer
 class PopupComponent extends React.Component {
   constructor (props) {
@@ -21,7 +23,7 @@ class PopupComponent extends React.Component {
 
   @autobind
   componentDidMount () {
-    this.show()
+    setTimeout(this.show, Style.morphDuration * 3)
   }
 
   @autobind

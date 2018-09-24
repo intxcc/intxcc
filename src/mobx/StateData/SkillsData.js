@@ -4,7 +4,8 @@ import { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount } from './ski
 
 const SkillsData = {
   basicInfo: {
-    id: 'skillsBasicInfo'
+    id: 'skillsBasicInfo',
+    disabled: true
   },
   columns: SkillsColumns,
   limits: {

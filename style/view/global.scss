@@ -55,6 +55,16 @@
   z-index: 10;
 }
 
+.view-model,
+.view-content {
+  transition: $global--morph-duration filter;
+
+  &.disabled {
+    filter: blur(3px);
+    pointer-events: none;
+  }
+}
+
 .view-model-overlay {
   top: 5vmin;
   right: 5vmin;

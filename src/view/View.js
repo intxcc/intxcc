@@ -263,11 +263,16 @@ class View extends React.Component {
 
     const contentClassName = props.view.transitionState === 'morphVariant' ? ' object-transition ' : ''
 
+    let disabledClassName = ''
+    if (props.state && props.state.basicInfo && props.state.basicInfo.disabled) {
+      disabledClassName = ' disabled'
+    }
+
     // //////////////// //
     // Render View //
     return (
       <div className={viewFadeClassName + ' ' + props.className + ' view-wrapper view-' + props.view.model}>
-        <div className={'view-model' + ' ' + props.viewModel.className}>
+        <div className={'view-model' + ' ' + props.viewModel.className + disabledClassName}>
           {/* The view model (how the bg of the startpage looks) is shown here. That should be a svg object with guide lines and guide divs. The polygons are a overlay and go to */}
           {/* Render guide lines */}
           {Guides}
@@ -275,7 +280,7 @@ class View extends React.Component {
           <HelperDivsComponent className={props.className} modelName={props.view.model} that={this} guides={props.viewModel.guides} />
         </div>
         <main
-          className={'view-content'}
+          className={'view-content' + disabledClassName}
           ref={ (viewContent) => { this.viewContent = viewContent }}
           onScroll={this.viewContentScroll}>
           {/* The actual content of the view entity (the text on the startpage, search fields, interactive stuff, etc.) active in this view  */}
@@ -285,7 +290,7 @@ class View extends React.Component {
             {props.loadedView}
           </div>
         </main>
-        <div className={'view-model view-model-overlay'}>
+        <div className={'view-model view-model-overlay' + disabledClassName}>
           {Polygons}
         </div>
         <div className={'overlay-wrapper-outer ' + props.viewModel.className + ' ' + fadeClassName + contentClassName}>

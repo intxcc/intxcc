@@ -10,7 +10,9 @@ import autobind from 'autobind-decorator'
 const SkillsItemInner = observer((props) => (
   <div className='skills-map-item-inner'>
     {props.skill.mark <= 0 ? '' : (
-      <div className='skills-map-item-mark'>
+      <div className='skills-map-item-mark' style={{
+        'opacity': ((props.skill.mark + 0.5) / 3.5)
+      }}>
         {props.skill.mark}
       </div>
     )}

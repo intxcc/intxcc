@@ -22,12 +22,17 @@ const BasicInfoModel = types.model({
   clientHeight: types.optional(types.number, 0),
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
   modelVariant: types.optional(types.string, 'default'),
-  scrollTop: types.optional(types.number, 0)
+  scrollTop: types.optional(types.number, 0),
+  disabled: types.optional(types.boolean, false)
 }).actions(self => {
   // Save the client dimensions here, so we can use them to calculate e.g. the mid to center the selected dif in the skills view
   function setClientDimensions (clientWidth, clientHeight) {
     self.clientWidth = clientWidth
     self.clientHeight = clientHeight
+  }
+
+  function setDisabled (disabled) {
+    self.disabled = disabled
   }
 
   function setViewEntityReference (viewEntity) {
@@ -44,6 +49,7 @@ const BasicInfoModel = types.model({
 
   return {
     setClientDimensions,
+    setDisabled,
     setViewEntityReference,
     setModelVariant,
     setScrollTop

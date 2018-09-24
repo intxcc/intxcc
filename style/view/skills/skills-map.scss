@@ -16,9 +16,11 @@
   min-width: 100vw;
   min-height: 100vh;
 
+  &.no-drag {
+    @include user-select(initial);
+  }
 
   &.transition {
-    @include user-select(initial);
     transition: $skills-map-transition-time transform;
   }
 

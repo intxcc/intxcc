@@ -47,7 +47,7 @@ const ToolsColumn = {
         }
       ]
     }, {
-      title: 'Version Control',
+      title: 'Version CS',
       skills: [
         {
           title: 'GitHub',

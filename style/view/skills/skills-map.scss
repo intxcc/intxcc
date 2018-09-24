@@ -7,10 +7,12 @@
   top: 50vh;
   left: 50vw;
 
-  transition: .1s transform;
-
   min-width: 100vw;
   min-height: 100vh;
+
+  .skills-map-inner-wrapper {
+    display: flex;
+  }
 
   @import 'skills-map/skills-map-column';
   @import 'skills-map/skills-map-category';

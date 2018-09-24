@@ -46,8 +46,38 @@ const SkillsModel = types.model({
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
   columns: types.array(SkillColumn),
-  limits: types.optional(Limits, {})
+  limits: types.optional(Limits, {}),
+  mouseLastPosition: types.optional(Position, {}),
+  mouseDragActive: types.optional(types.boolean, false)
 }).actions(self => {
+  function onMouseDown (e) {
+    self.mouseDragActive = true
+    self.mouseLastPosition = {
+      x: e.screenX,
+      y: e.screenY
+    }
+  }
+
+  function onMouseUp (e) {
+    self.mouseDragActive = false
+  }
+
+  function onMouseMove (e) {
+    if (self.mouseDragActive) {
+      const delta = {
+        x: -(self.mouseLastPosition.x - e.screenX),
+        y: -(self.mouseLastPosition.y - e.screenY)
+      }
+
+      self.mouseLastPosition = {
+        x: e.screenX,
+        y: e.screenY
+      }
+
+      self.moveMapBy(delta)
+    }
+  }
+
   function getIdNumberFromIdString (idString) {
     return parseInt(idString.split('-')[1])
   }
@@ -92,6 +122,9 @@ const SkillsModel = types.model({
   }
 
   return {
+    onMouseDown,
+    onMouseUp,
+    onMouseMove,
     scrollSkill,
     centerMap,
     moveMapBy,

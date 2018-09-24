@@ -7,33 +7,42 @@ const ConceptsColumn = {
       title: 'Code',
       skills: [
         {
-          title: 'Coding Style Guides'
+          title: 'Coding Style Guides',
+          mark: 3
         }, {
-          title: 'DRY'
+          title: 'DRY',
+          mark: 3
         }, {
-          title: 'KISS'
+          title: 'KISS',
+          mark: 3
         }, {
-          title: 'RESTful'
+          title: 'RESTful',
+          mark: 3
         }, {
-          title: 'Reusable Components'
+          title: 'Reusable Components',
+          mark: 2
         }
       ]
     }, {
       title: 'Design',
       skills: [
         {
-          title: 'Responsive Design'
+          title: 'Responsive Design',
+          mark: 2
         }, {
-          title: 'Material Design'
+          title: 'Material Design',
+          mark: 2
         }
       ]
     }, {
       title: 'Model',
       skills: [
         {
-          title: 'Agile'
+          title: 'Agile',
+          mark: 2
         }, {
-          title: 'Scrum'
+          title: 'Scrum',
+          mark: 1
         }
       ]
     }

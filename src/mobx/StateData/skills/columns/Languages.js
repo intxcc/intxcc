@@ -7,77 +7,115 @@ const LanguagesColumn = {
       title: 'HTML',
       skills: [
         {
-          title: 'CSS3'
+          title: 'HTML',
+          mark: 3
         }, {
-          title: 'SCSS'
+          title: 'CSS3',
+          mark: 3
         }, {
-          title: 'HTML5'
+          title: 'SCSS',
+          mark: 3
+        }, {
+          title: 'HTML5',
+          mark: 2
         }
       ]
     }, {
       title: 'JavaScript',
       skills: [
         {
-          title: 'Standard JS'
+          title: 'JavaScript',
+          mark: 3
         }, {
-          title: 'ES6'
+          title: 'Standard JS',
+          mark: 3
         }, {
-          title: 'ReactJS'
+          title: 'ES6',
+          mark: 3
         }, {
-          title: 'Babel'
+          title: 'ReactJS',
+          mark: 3
         }, {
-          title: 'Canvas'
+          title: 'MobX',
+          mark: 3
         }, {
-          title: 'Redux'
+          title: 'Canvas',
+          mark: 2
         }, {
-          title: 'MobX'
+          title: 'Redux',
+          mark: 2
         }, {
-          title: 'jQuery'
+          title: 'Babel',
+          mark: 2
         }, {
-          title: 'WebSocket'
+          title: 'jQuery',
+          mark: 2
         }, {
-          title: 'Mongoose'
+          title: 'WebSocket',
+          mark: 2
         }, {
-          title: 'Webpack 4'
+          title: 'Mongoose',
+          mark: 2
         }, {
-          title: 'Express'
+          title: 'Webpack 4',
+          mark: 2
         }, {
-          title: 'Gulp'
+          title: 'Express',
+          mark: 1
         }, {
-          title: 'React Native'
+          title: 'Gulp',
+          mark: 1
         }, {
-          title: 'ThreeJS'
+          title: 'React Native',
+          mark: 1
+        }, {
+          title: 'ThreeJS',
+          mark: 1
         }
       ]
     }, {
       title: 'Python',
       skills: [
         {
-          title: 'Django'
+          title: 'Python',
+          mark: 2
         }, {
-          title: 'Redis'
+          title: 'Django',
+          mark: 3
+        }, {
+          title: 'Redis',
+          mark: 1
         }
       ]
     }, {
       title: 'Java',
       skills: [
         {
-          title: 'Android Development'
+          title: 'Java',
+          mark: 2
         }, {
-          title: 'Kotlin'
+          title: 'Android Development',
+          mark: 3
+        }, {
+          title: 'Kotlin',
+          mark: 1
         }
       ]
     }, {
       title: 'Others',
       skills: [
         {
-          title: 'C'
+          title: 'C',
+          mark: 3
         }, {
-          title: 'C++'
+          title: 'C++',
+          mark: 2
         }, {
-          title: 'MIPS'
+          title: 'MIPS',
+          mark: 2
         }, {
-          title: 'PHP'
+          title: 'PHP',
+          mark: 2
         }
       ]
     }

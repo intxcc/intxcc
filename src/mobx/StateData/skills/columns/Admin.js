@@ -10,54 +10,71 @@ const AdminColumn = {
           title: 'nginx',
           mark: 3
         }, {
-          title: 'NodeJS'
+          title: 'NodeJS',
+          mark: 2
         }, {
-          title: 'Apache2'
+          title: 'Apache2',
+          mark: 2
         }
       ]
     }, {
       title: 'Database',
       skills: [
         {
-          title: 'MySQL'
+          title: 'MySQL',
+          mark: 3
         }, {
-          title: 'MongoDB'
+          title: 'MongoDB',
+          mark: 2
         }, {
-          title: 'Redis'
+          title: 'Redis',
+          mark: 2
         }
       ]
     }, {
       title: 'Communication',
       skills: [
         {
-          title: 'Dovecot'
+          title: 'Dovecot',
+          mark: 2
         }, {
-          title: 'ejabberd'
+          title: 'ejabberd',
+          mark: 2
         }, {
-          title: 'Postfix'
+          title: 'Postfix',
+          mark: 1
         }, {
-          title: 'Roundcube'
+          title: 'Roundcube',
+          mark: 1
         }
       ]
     }, {
       title: 'Security',
       skills: [
         {
-          title: 'Securing user data'
+          title: 'Securing user data',
+          mark: 3
         }, {
-          title: 'XSRF'
+          title: 'XSRF',
+          mark: 3
         }, {
-          title: 'HSTS'
+          title: 'HSTS',
+          mark: 3
         }, {
-          title: 'TLS'
+          title: 'TLS',
+          mark: 3
         }, {
-          title: 'CORS'
+          title: 'CORS',
+          mark: 2
         }, {
-          title: 'XSS'
+          title: 'XSS',
+          mark: 2
         }, {
-          title: 'SQLi'
+          title: 'SQLi',
+          mark: 2
         }, {
-          title: 'iptables'
+          title: 'iptables',
+          mark: 1
         }
       ]
     }

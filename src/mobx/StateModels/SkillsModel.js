@@ -66,7 +66,7 @@ const SkillsModel = types.model({
     selectSkillByIdentifier(skillIdentifier)
 
     self.transitionOn = true
-    setTimeout(self.turnTransitionOff, Style.skillsMapTransitionTime)
+    setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
   }
 
   function turnTransitionOff () {

@@ -7,9 +7,11 @@ const GeneralColumn = {
       title: 'OS',
       skills: [
         {
-          title: 'Windows'
+          title: 'Windows',
+          mark: 2
         }, {
-          title: 'Linux'
+          title: 'Linux',
+          mark: 3
         }
       ]
     }

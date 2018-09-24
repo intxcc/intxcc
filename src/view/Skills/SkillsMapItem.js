@@ -7,17 +7,31 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+const SkillsItemInner = observer((props) => (
+  <div className='skills-map-item-inner'>
+    {props.skill.mark <= 0 ? '' : (
+      <div className='skills-map-item-mark'>
+        {props.skill.mark}
+      </div>
+    )}
+    {props.skill.title}
+  </div>
+))
+
+SkillsItemInner.propTypes = {
+  skill: PropTypes.object
+}
+
 const SkillsMapItemConst = observer((props) => (
   <div onClick={() => {
-    props.onSkillClick(props.id)
+    props.onSkillClick(props.skill.id)
   }} className='skills-map-item'>
-    {props.title}
+    <SkillsItemInner skill={props.skill} />
   </div>
 ))
 
 SkillsMapItemConst.propTypes = {
-  id: PropTypes.string,
-  title: PropTypes.string,
+  skill: PropTypes.object,
   onSkillClick: PropTypes.func
 }
 
@@ -41,25 +55,25 @@ class SkillsMapItemComponent extends React.Component {
 
     return (
       <div ref={div => { this.div = div }} className='skills-map-item item-selected'>
-        {this.props.title}
+        <SkillsItemInner skill={this.props.skill} />
       </div>
     )
   }
 }
 
 SkillsMapItemComponent.propTypes = {
-  centerMapFunc: PropTypes.func,
-  title: PropTypes.string
+  skill: PropTypes.object,
+  centerMapFunc: PropTypes.func
 }
 
 const SkillsMapItem = observer((props) => {
   if (props.selected) {
     return (
-      <SkillsMapItemComponent centerMapFunc={props.centerMapFunc} title={props.title} />
+      <SkillsMapItemComponent centerMapFunc={props.centerMapFunc} skill={props.skill} />
     )
   } else {
     return (
-      <SkillsMapItemConst onSkillClick={props.onSkillClick} id={props.id} title={props.title} />
+      <SkillsMapItemConst onSkillClick={props.onSkillClick} skill={props.skill} />
     )
   }
 })
@@ -68,8 +82,7 @@ SkillsMapItem.propTypes = {
   selected: PropTypes.bool,
   centerMapFunc: PropTypes.func,
   onSkillClick: PropTypes.func,
-  id: PropTypes.string,
-  title: PropTypes.string
+  skill: PropTypes.object
 }
 
 export default SkillsMapItem

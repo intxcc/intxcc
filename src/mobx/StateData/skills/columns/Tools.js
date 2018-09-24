@@ -7,56 +7,74 @@ const ToolsColumn = {
       title: 'Mediadesign',
       skills: [
         {
-          title: 'Photoshop'
+          title: 'Photoshop',
+          mark: 3
         }, {
-          title: 'Inkscape'
+          title: 'Inkscape',
+          mark: 3
         }, {
-          title: 'Illustrator'
+          title: 'Illustrator',
+          mark: 2
         }, {
-          title: 'Blender'
+          title: 'Blender',
+          mark: 2
         }, {
-          title: 'Premiere Pro'
+          title: 'Premiere Pro',
+          mark: 2
         }, {
-          title: 'After Effects'
+          title: 'After Effects',
+          mark: 1
         }
       ]
     }, {
       title: 'Development',
       skills: [
         {
-          title: 'Visual Studio Code'
+          title: 'Visual Studio Code',
+          mark: 3
         }, {
-          title: 'Atom'
+          title: 'Atom',
+          mark: 3
         }, {
-          title: 'Yarn'
+          title: 'Yarn',
+          mark: 2
         }, {
-          title: 'NPM'
+          title: 'NPM',
+          mark: 2
         }, {
-          title: 'IntelliJ'
+          title: 'IntelliJ',
+          mark: 2
         }
       ]
     }, {
       title: 'Version Control',
       skills: [
         {
-          title: 'GitHub'
+          title: 'GitHub',
+          mark: 3
         }, {
-          title: 'Git'
+          title: 'Git',
+          mark: 2
         }, {
-          title: 'Subversion'
+          title: 'Subversion',
+          mark: 1
         }
       ]
     }, {
       title: 'Others',
       skills: [
         {
-          title: 'Latex'
+          title: 'Latex',
+          mark: 2
         }, {
-          title: 'Bash'
+          title: 'Bash',
+          mark: 2
         }, {
-          title: 'Cygwin'
+          title: 'Cygwin',
+          mark: 2
         }, {
-          title: 'PowerShell'
+          title: 'PowerShell',
+          mark: 1
         }
       ]
     }

@@ -9,13 +9,15 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import MARK_TOOLTIP from '../../config/MarkTooltips'
+
 const SkillsItemInner = observer((props) => (
   <div className='skills-map-item-inner'>
-    {props.skill.desc || props.skill.trivia ? <div className='skills-map-item-comment-icon'>
+    {props.skill.desc || props.skill.trivia ? <div title={'with comment'} className='skills-map-item-comment-icon'>
       <FontAwesomeIcon icon={['far', 'comment-dots']} />
     </div> : ''}
     {props.skill.mark <= 0 ? '' : (
-      <div className='skills-map-item-mark' style={{
+      <div title={MARK_TOOLTIP[props.skill.mark]} className='skills-map-item-mark' style={{
         'opacity': ((props.skill.mark + 0.5) / 3.5)
       }}>
         {props.skill.mark}

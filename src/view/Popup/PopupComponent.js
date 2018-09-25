@@ -11,7 +11,7 @@ const PopupComponent = observer(props => (
   <div className={'popup ' + props.className}>
     <h1>{props.title}</h1>
     <div className='close-btn-wrapper'>
-      <div className='close-btn'>
+      <div onClick={props.closeFunc} className='close-btn'>
         <FontAwesomeIcon icon={'times'} />
       </div>
     </div>
@@ -28,6 +28,7 @@ const PopupComponent = observer(props => (
 ))
 
 PopupComponent.propTypes = {
+  closeFunc: PropTypes.func,
   className: PropTypes.string,
   title: PropTypes.string,
   text: PropTypes.string,

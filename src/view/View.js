@@ -267,14 +267,14 @@ class View extends React.Component {
 
     let disabledClassName = ''
     // If this view has popups active, disable this view
-    if ((props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups.length > 0) || (props.buffer && props.buffer.toJSON()['stateBasicInfo'] !== '' && props.buffer.stateBasicInfo.disabled)) {
+    if (props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
       disabledClassName = ' disabled'
     }
 
     let popupComponent = ''
     if (props.state && props.state.toJSON()['stateBasicInfo'] !== '') {
       popupComponent = (
-        <PopupWrapper popups={props.state.basicInfo.popups} />
+        <PopupWrapper closeFunc={props.state.basicInfo.closePopup} popups={props.state.basicInfo.popups} />
       )
     }
 

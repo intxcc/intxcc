@@ -25,7 +25,7 @@ const BasicInfoModel = types.model({
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
   modelVariant: types.optional(types.string, 'default'),
   scrollTop: types.optional(types.number, 0),
-  popups: types.optional(types.array(PopupModel), [])
+  popups: types.optional(types.map(PopupModel), {})
 }).actions(self => {
   // Save the client dimensions here, so we can use them to calculate e.g. the mid to center the selected dif in the skills view
   function setClientDimensions (clientWidth, clientHeight) {
@@ -45,11 +45,16 @@ const BasicInfoModel = types.model({
     self.scrollTop = scrollTop
   }
 
+  function closePopup (id) {
+    self.popups.delete(id)
+  }
+
   return {
     setClientDimensions,
     setViewEntityReference,
     setModelVariant,
-    setScrollTop
+    setScrollTop,
+    closePopup
   }
 })
 

@@ -7,6 +7,7 @@ const SkillsData = {
     id: 'skillsBasicInfo',
     popups: [
       {
+        id: 'skills-explanation-popup',
         className: 'skills-explanation',
         title: 'Explanation of skills',
         text: 'The skills are rated from 1 to 3, where 1 is basic, 2 is good and 3 is very good knowledge.',

@@ -4,6 +4,7 @@ import { types } from 'mobx-state-tree'
 
 import { BasicInfoModel } from '../model/ViewEntity'
 
+import SKILLS_EXPLANATION from '../../config/SkillsExplanation'
 import Style from '../../../style/variables/global.scss'
 
 const SkillModel = types.model({
@@ -58,6 +59,10 @@ const SkillsModel = types.model({
   pointerLocked: types.optional(types.boolean, false),
   transitionOn: types.optional(types.boolean, false)
 }).actions(self => {
+  function showExplanation () {
+    self.basicInfo.popups.set(SKILLS_EXPLANATION.id, SKILLS_EXPLANATION)
+  }
+
   function selectSkillByIdentifier (skillIdentifier) {
     self.selection.skill = skillIdentifier
     self.selection.category = self.selection.skill.categoryId
@@ -153,6 +158,7 @@ const SkillsModel = types.model({
   }
 
   return {
+    showExplanation,
     selectSkillByIdentifier,
     onSkillClick,
     turnTransitionOff,

@@ -1,0 +1,17 @@
+.popup-wrapper {
+  display: flex;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+
+  transform: translate3d(-50%, 0, 0);
+
+  min-width: 20rem;
+  max-width: 90vw;
+}

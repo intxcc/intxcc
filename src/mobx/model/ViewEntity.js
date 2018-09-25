@@ -8,6 +8,8 @@ import EntityGuideModel from './EntityGuideModel'
 import EntityPolygonModel from './EntityPolygonModel'
 import EntityObjectModel from './EntityObjectModel'
 
+import PopupModel from './PopupModel'
+
 import { lineIntersect, degreesToRadians } from '../../miscFunctions'
 
 import Style from '../../../style/variables/global.scss'
@@ -23,16 +25,12 @@ const BasicInfoModel = types.model({
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
   modelVariant: types.optional(types.string, 'default'),
   scrollTop: types.optional(types.number, 0),
-  disabled: types.optional(types.boolean, false)
+  popups: types.optional(types.array(PopupModel), [])
 }).actions(self => {
   // Save the client dimensions here, so we can use them to calculate e.g. the mid to center the selected dif in the skills view
   function setClientDimensions (clientWidth, clientHeight) {
     self.clientWidth = clientWidth
     self.clientHeight = clientHeight
-  }
-
-  function setDisabled (disabled) {
-    self.disabled = disabled
   }
 
   function setViewEntityReference (viewEntity) {
@@ -49,7 +47,6 @@ const BasicInfoModel = types.model({
 
   return {
     setClientDimensions,
-    setDisabled,
     setViewEntityReference,
     setModelVariant,
     setScrollTop

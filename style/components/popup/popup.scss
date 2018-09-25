@@ -1,33 +1,24 @@
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
+@import 'popup-wrapper';
 
-  transform: translate3d(-50%, -50%, 0);
+.popup {
+  position: relative;
+
   transition: .2s opacity,
   .2s transform;
-
-  // box-shadow: $shadow-1;
 
   background-color: $white;
 
   padding: 2rem;
-
-  min-width: 20rem;
-  max-width: 90vw;
-
-  min-height: 12rem;
   max-height: 90vh;
 
   box-sizing: border-box;
-
   pointer-events: initial;
 
-  &.hidden {
-    transform: translate3d(-50%, -50%, 0) scale(1.5);
-    opacity: 0;
-    pointer-events: none;
-  }
+  // &.hidden {
+  //   transform: translate3d(-50%, -50%, 0) scale(1.5);
+  //   opacity: 0;
+  //   pointer-events: none;
+  // }
 
   h1 {
     font-family: 'Roboto Condensed';
@@ -36,8 +27,15 @@
   .popup-inner {
     display: flex;
 
-    align-items: center;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    max-width: 23rem;
+
+    text-align: justify;
+    font-family: 'Roboto Condensed';
+    font-size: 1.5rem;
   }
 
   .close-btn-wrapper {

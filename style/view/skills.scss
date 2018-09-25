@@ -1,14 +1,6 @@
 @import 'skillsLayout';
 
 .view-skills {
-  .skills-explanation-p {
-    max-width: 23rem;
-
-    text-align: justify;
-    font-family: 'Roboto Condensed';
-    font-size: 1.5rem;
-  }
-
   @import './skills/stories-overlay-title';
   @import './skills/skills-map';
 }

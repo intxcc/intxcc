@@ -6,7 +6,6 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
-import ExplanationPopup from './Skills/ExplanationPopup'
 import SkillsMap from './Skills/SkillsMap'
 
 const SkillsView = observer((props) => (
@@ -28,7 +27,6 @@ SkillsView.propTypes = {
 
 const SkillsOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
-    <ExplanationPopup state={props.state} />
   </div>
 ))
 

@@ -16,6 +16,8 @@ import HelperDivsComponent from './Components/HelperDivsCompontent'
 import GuidesComponent from './Components/GuidesComponent'
 import PolygonsComponent from './Components/PolygonsComponent'
 
+import PopupWrapper from './Popup/PopupWrapper'
+
 import Defaults from '../config/defaults'
 
 @observer
@@ -264,14 +266,16 @@ class View extends React.Component {
     const contentClassName = props.view.transitionState === 'morphVariant' ? ' object-transition ' : ''
 
     let disabledClassName = ''
-    // If this view or the state we morph to is disabled, disable this view
-    if ((props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.disabled) || (props.buffer && props.buffer.toJSON()['stateBasicInfo'] !== '' && props.buffer.stateBasicInfo.disabled)) {
+    // If this view has popups active, disable this view
+    if ((props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups.length > 0) || (props.buffer && props.buffer.toJSON()['stateBasicInfo'] !== '' && props.buffer.stateBasicInfo.disabled)) {
       disabledClassName = ' disabled'
     }
 
-    // If the view this one is transitioning to is not disabled, or doesn't have a basic state, enable this one as well, for a smooth transition
-    if ((props.buffer && props.buffer.toJSON()['stateBasicInfo'] === '') || (props.buffer && props.buffer.toJSON()['stateBasicInfo'] !== '' && !props.buffer.stateBasicInfo.disabled)) {
-      disabledClassName = ''
+    let popupComponent = ''
+    if (props.state && props.state.toJSON()['stateBasicInfo'] !== '') {
+      popupComponent = (
+        <PopupWrapper popups={props.state.basicInfo.popups} />
+      )
     }
 
     // //////////////// //
@@ -304,6 +308,7 @@ class View extends React.Component {
             strokeWidth={(Defaults.DefaultStrokeWidth * props.global.pixelScale) / 8}
             className={props.viewModel.logoClassName} />
           {this.props.loadedOverlayView}
+          {popupComponent}
         </div>
       </div>
     )

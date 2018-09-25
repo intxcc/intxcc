@@ -59,13 +59,16 @@
 
   &.disabled {
     transform: initial !important;
+    background-color: rgba($color: $black, $alpha: .1);
   }
 }
 
 .view-model,
 .view-content {
   transition: $global--morph-duration filter,
-  $global--morph-duration transform;
+  $global--morph-duration background-color,
+  $global--morph-duration transform,
+  $global--morph-duration opacity;
 
   &.disabled {
     transform: translate3d(0, 0, 0) scale(1.5);
@@ -87,6 +90,11 @@
 
   overflow: hidden;
   pointer-events: none;
+
+  &.disabled {
+    opacity: .8;
+    background-color: initial;
+  }
 
   .svg-wrapper {
     position: absolute;

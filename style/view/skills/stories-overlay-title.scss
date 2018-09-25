@@ -3,10 +3,10 @@
   pointer-events: none !important;
 
   .stories-overlay-title-inner {
-    transform: translate3d(-50%, -100%, 0);
+    transform: translate3d(-50%, -100%, 0) translateY(-.5rem);
 
     background-color: $white;
-    padding: 0 1rem .5rem;
+    padding: 0 1rem;
 
     font-family: 'Roboto Condensed';
     font-size: 6vh;

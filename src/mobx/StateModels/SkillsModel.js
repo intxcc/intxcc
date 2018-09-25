@@ -11,6 +11,7 @@ const SkillModel = types.model({
   categoryId: types.string,
   columnId: types.string,
   title: types.string,
+  desc: types.optional(types.string, ''),
   mark: types.optional(types.number, 0)
 })
 

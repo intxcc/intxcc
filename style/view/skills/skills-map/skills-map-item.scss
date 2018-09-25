@@ -13,7 +13,8 @@
     background-color: $black;
     color: $white;
 
-    .skills-map-item-mark {
+    .skills-map-item-mark,
+    .skills-map-item-comment-icon {
       background-color: $white;
       color: $black;
     }
@@ -24,7 +25,8 @@
     padding: 0 .5rem;
     color: $white;
 
-    .skills-map-item-mark {
+    .skills-map-item-mark,
+    .skills-map-item-comment-icon {
       background-color: $white;
       color: $black;
     }
@@ -36,7 +38,8 @@
   align-items: center;
   justify-content: center;
 
-  .skills-map-item-mark {
+  .skills-map-item-mark,
+  .skills-map-item-comment-icon {
     display: flex;
     align-items: center;
     justify-content: center;

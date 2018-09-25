@@ -19,7 +19,7 @@ const SkillsView = observer((props) => (
       </div>
     </ViewObject>
     <ScrollAnchor state={props.state} />
-    <SkillsDetailView />
+    {props.state.selection.skill ? <SkillsDetailView selection={props.state.selection} /> : ''}
   </div>
 ))
 

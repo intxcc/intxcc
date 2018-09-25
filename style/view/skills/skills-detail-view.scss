@@ -7,6 +7,41 @@
 
   padding: 1rem 1rem 1rem 5rem;
 
-  max-width: 40vw;
-  height: 40vh;
+  max-width: 20vw;
+
+  h1 {
+    font-family: 'Roboto Condensed';
+  }
+
+  p {
+    margin:  0 0 1rem;
+
+    text-align: justify;
+    font-family: 'Roboto Condensed';
+    font-size: 1.4rem;
+  }
+
+  .skills-detail-view-icon {
+    font-size: 1.5rem;
+  }
+
+  .skills-detail-view-mark,
+  .skills-detail-view-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    float: left;
+    margin: .25rem .5rem 0 0;
+
+    border-radius: .5rem;
+    background-color: $black;
+
+    width: 2rem;
+    height: 2rem;
+
+    color: $white;
+    font-family: 'Roboto';
+    font-size: 1.8rem;
+  }
 }

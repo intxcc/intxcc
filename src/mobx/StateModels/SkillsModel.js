@@ -12,6 +12,7 @@ const SkillModel = types.model({
   columnId: types.string,
   title: types.string,
   desc: types.optional(types.string, ''),
+  trivia: types.optional(types.string, ''),
   mark: types.optional(types.number, 0)
 })
 

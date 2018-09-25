@@ -8,8 +8,7 @@ const AdminColumn = {
       skills: [
         {
           title: 'nginx',
-          mark: 3,
-          desc: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
+          mark: 3
         }, {
           title: 'NodeJS',
           mark: 2

@@ -19,6 +19,9 @@ const SkillsDetailView = observer((props) => (
       <div className='skills-detail-view-mark'>{props.selection.skill.mark}</div>
       {props.selection.skill.title}
     </h1>
+    {props.selection.skill.trivia ? <p className='skills-detail-view-trivia'>
+      {props.selection.skill.trivia}
+    </p> : ''}
   </div>
 ))
 

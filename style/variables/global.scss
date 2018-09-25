@@ -12,6 +12,9 @@ $global--fade-out-duration: $global--fade-out-duration-ms + ms;
 $global--morph-duration-ms: $global--fade-out-duration-ms + 400;
 $global--morph-duration: $global--morph-duration-ms + ms;
 
+$global--popup-fade-out-duration-ms: 200;
+$global--popup-fade-out-duration: $global--popup-fade-out-duration-ms + ms;
+
 $global--menu-height: 4vh;
 
 $skills-map-transition-time-ms: 400;
@@ -20,6 +23,7 @@ $skills-map-transition-time: $skills-map-transition-time-ms + ms;
 // sass-lint:disable-all
 :export {
   fadeOutDuration: $global--fade-out-duration-ms;
+  popupFadeOutDuration: $global--popup-fade-out-duration-ms;
   morphDuration: $global--morph-duration-ms - 400;
   skillsMapTransitionTime: $skills-map-transition-time-ms;
 }

@@ -1,10 +1,11 @@
 @import 'popup-wrapper';
+@import 'popup-transition';
 
 .popup {
   position: relative;
 
-  transition: .2s opacity,
-  .2s transform;
+  transition: $global--popup-fade-out-duration opacity,
+  $global--popup-fade-out-duration transform;
 
   background-color: $white;
 
@@ -13,12 +14,6 @@
 
   box-sizing: border-box;
   pointer-events: initial;
-
-  // &.hidden {
-  //   transform: translate3d(-50%, -50%, 0) scale(1.5);
-  //   opacity: 0;
-  //   pointer-events: none;
-  // }
 
   @import 'popup-variants';
 

@@ -8,7 +8,8 @@ const AdminColumn = {
       skills: [
         {
           title: 'nginx',
-          mark: 3
+          mark: 3,
+          trivia: 'This webpage is provided by nginx. Thank nginx, not me.'
         }, {
           title: 'NodeJS',
           mark: 2
@@ -22,7 +23,8 @@ const AdminColumn = {
       skills: [
         {
           title: 'MySQL',
-          mark: 3
+          mark: 3,
+          desc: 'For the most part the main database I use. Lately I try to use more MongoDB, if it has an advantage.'
         }, {
           title: 'MongoDB',
           mark: 2

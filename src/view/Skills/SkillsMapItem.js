@@ -11,7 +11,7 @@ import autobind from 'autobind-decorator'
 
 const SkillsItemInner = observer((props) => (
   <div className='skills-map-item-inner'>
-    {props.skill.desc ? <div className='skills-map-item-comment-icon'>
+    {props.skill.desc || props.skill.trivia ? <div className='skills-map-item-comment-icon'>
       <FontAwesomeIcon icon={['far', 'comment-dots']} />
     </div> : ''}
     {props.skill.mark <= 0 ? '' : (

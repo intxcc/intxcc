@@ -13,7 +13,7 @@ const SkillsDetailView = observer((props) => (
       {props.selection.skill.desc}
     </p> : ''}
     <h1>
-      {props.selection.skill.desc ? <div className='skills-detail-view-icon'>
+      {props.selection.skill.desc || props.selection.skill.trivia ? <div className='skills-detail-view-icon'>
         <FontAwesomeIcon icon={['far', 'comment-dots']} />
       </div> : ''}
       <div className='skills-detail-view-mark'>{props.selection.skill.mark}</div>

@@ -6,7 +6,9 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
+import ScrollAnchor from './Skills/ScrollAnchor'
 import SkillsMap from './Skills/SkillsMap'
+import SkillsDetailView from './Skills/SkillsDetailView'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>
@@ -16,6 +18,8 @@ const SkillsView = observer((props) => (
         Stories
       </div>
     </ViewObject>
+    <ScrollAnchor state={props.state} />
+    <SkillsDetailView />
   </div>
 ))
 

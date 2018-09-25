@@ -1,0 +1,12 @@
+.skills-detail-view {
+  position: fixed;
+  bottom: $global--menu-height;
+  left: 0;
+
+  background-color: $white;
+
+  padding: 1rem 1rem 1rem 5rem;
+
+  max-width: 40vw;
+  height: 40vh;
+}

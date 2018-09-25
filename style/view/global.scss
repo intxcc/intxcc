@@ -59,7 +59,7 @@
 
   &.disabled {
     transform: initial !important;
-    background-color: rgba($color: $black, $alpha: .1);
+    background-color: rgba($color: $black, $alpha: .05);
   }
 }
 
@@ -92,7 +92,6 @@
   pointer-events: none;
 
   &.disabled {
-    opacity: .8;
     background-color: initial;
   }
 

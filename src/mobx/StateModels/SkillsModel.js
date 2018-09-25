@@ -54,7 +54,7 @@ const SkillsModel = types.model({
   mouseDragActive: types.optional(types.boolean, false),
   mouseDragEnabled: types.optional(types.boolean, true),
   pointerLocked: types.optional(types.boolean, false),
-  transitionOn: types.optional(types.boolean, false),
+  transitionOn: types.optional(types.boolean, false)
 }).actions(self => {
   function selectSkillByIdentifier (skillIdentifier) {
     self.selection.skill = skillIdentifier

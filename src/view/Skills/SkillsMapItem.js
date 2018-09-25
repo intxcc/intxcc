@@ -21,7 +21,8 @@ const SkillsItemInner = observer((props) => (
 ))
 
 SkillsItemInner.propTypes = {
-  skill: PropTypes.object
+  skill: PropTypes.object,
+  onSkillClick: PropTypes.func
 }
 
 const SkillsMapItemConst = observer((props) => (
@@ -52,11 +53,17 @@ class SkillsMapItemComponent extends React.Component {
   }
 
   @autobind
+  onClick () {
+    this.updateSelectedPosition()
+    this.props.onSkillClick(this.props.skill.id)
+  }
+
+  @autobind
   render () {
     setTimeout(this.updateSelectedPosition, 0)
 
     return (
-      <div ref={div => { this.div = div }} className='skills-map-item item-selected'>
+      <div ref={div => { this.div = div }} onClick={this.onClick} className='skills-map-item item-selected'>
         <SkillsItemInner skill={this.props.skill} />
       </div>
     )
@@ -65,13 +72,14 @@ class SkillsMapItemComponent extends React.Component {
 
 SkillsMapItemComponent.propTypes = {
   skill: PropTypes.object,
+  onSkillClick: PropTypes.func,
   centerMapFunc: PropTypes.func
 }
 
 const SkillsMapItem = observer((props) => {
   if (props.selected) {
     return (
-      <SkillsMapItemComponent centerMapFunc={props.centerMapFunc} skill={props.skill} />
+      <SkillsMapItemComponent centerMapFunc={props.centerMapFunc} onSkillClick={props.onSkillClick} skill={props.skill} />
     )
   } else {
     return (

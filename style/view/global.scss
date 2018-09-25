@@ -17,6 +17,8 @@
   top: 0;
   left: 0;
 
+  transform: translate3d(0, 0, 0);
+
   width: 100vw;
   height: 100vh;
 }
@@ -27,6 +29,7 @@
   top: 0;
   left: 0;
 
+  transform: translate3d(0, 0, 0);
   z-index: 20;
 
   width: 100vw;
@@ -65,7 +68,7 @@
   $global--morph-duration transform;
 
   &.disabled {
-    transform: scale(1.5);
+    transform: translate3d(0, 0, 0) scale(1.5);
     filter: blur(3px);
     pointer-events: none;
   }

@@ -4,6 +4,7 @@
 .popup {
   position: relative;
 
+  transform: translate3d(0, 0, 0);
   transition: $global--popup-fade-out-duration opacity,
   $global--popup-fade-out-duration transform;
 

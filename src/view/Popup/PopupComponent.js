@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { observer } from 'mobx-react'
 
 const PopupComponent = observer(props => (
-  <div className='popup'>
+  <div className={'popup ' + props.className}>
     <h1>{props.title}</h1>
     <div className='close-btn-wrapper'>
       <div className='close-btn'>
@@ -28,6 +28,7 @@ const PopupComponent = observer(props => (
 ))
 
 PopupComponent.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string,
   text: PropTypes.string,
   hint: PropTypes.string

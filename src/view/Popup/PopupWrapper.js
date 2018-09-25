@@ -10,7 +10,7 @@ import PopupComponent from './PopupComponent'
 const PopupWrapper = observer((props) => (
   <div className='popup-wrapper'>
     {props.popups.map((popup, id) => (
-      <PopupComponent key={'popup-' + id} title={popup.title} text={popup.text} hint={popup.hint} />
+      <PopupComponent key={'popup-' + id} className={popup.className} title={popup.title} text={popup.text} hint={popup.hint} />
     ))}
   </div>
 ))

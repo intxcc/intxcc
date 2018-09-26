@@ -15,6 +15,7 @@ import './fontawesome'
 
 import View from './view/View'
 import { StartpageView, StartpageOverlayView } from './view/StartpageView'
+import { AboutView, AboutOverlayView } from './view/AboutView'
 import { StoriesView, StoriesOverlayView } from './view/StoriesView'
 import { ContactView, ContactOverlayView } from './view/ContactView'
 import { SkillsView, SkillsOverlayView } from './view/SkillsView'
@@ -23,6 +24,7 @@ import MenuComponent from './view/Components/MenuComponent'
 
 const Views = {
   'startpage': StartpageView,
+  'about': AboutView,
   'stories': StoriesView,
   'skills': SkillsView,
   'contact': ContactView
@@ -30,6 +32,7 @@ const Views = {
 
 const OverlayViews = {
   'startpage': StartpageOverlayView,
+  'about': AboutOverlayView,
   'stories': StoriesOverlayView,
   'skills': SkillsOverlayView,
   'contact': ContactOverlayView

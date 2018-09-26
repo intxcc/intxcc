@@ -13,7 +13,7 @@ const Defaults = {
   GuideLength: 2000,
   guideStroke: Colors.black,
   showAllGuides: true,
-  showGuides: false
+  showGuides: true
 }
 
 export default Defaults

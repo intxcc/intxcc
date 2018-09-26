@@ -11,7 +11,8 @@ const ToolsColumn = {
           mark: 3
         }, {
           title: 'Inkscape',
-          mark: 3
+          mark: 3,
+          trivia: 'The design for this website was created in Inkscape.'
         }, {
           title: 'Illustrator',
           mark: 2

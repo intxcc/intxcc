@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+import MYAGE from '../../config/MyAge'
+
 const AboutTableItem = observer((props) => (
   <li className='about-table-item'>
     <div className='about-table-item-title'>
@@ -24,7 +26,7 @@ AboutTableItem.propTypes = {
 const AboutTableComponent = observer((props) => (
   <ul className='about-table-component'>
     <AboutTableItem title='name' text='Marvin Alexander Rüll' />
-    <AboutTableItem title='year of birth' text='1994' />
+    <AboutTableItem title='year of birth' text={'1994 (' + MYAGE + 'yrs)'} />
     <AboutTableItem title='location' text='Berlin / Germany' />
     <AboutTableItem title='stack' text='Full Stack' />
     <AboutTableItem title='experience' text='3+ years' />

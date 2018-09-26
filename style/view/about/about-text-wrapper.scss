@@ -3,9 +3,14 @@
 
   flex-direction: column;
 
-  margin: #{'calc(50vh - (4rem + 10vw + ' + (34 * .5) + 'vh))'} 20vw 4rem $about-picture-left;
+  margin: #{'calc(50vh - (5rem + 10vw + ' + (34 * .5) + 'vh))'} 20vw 4rem $about-picture-left;
 
   padding: 0 4rem;
+
+  .about-text-intro-sentence {
+    font-family: 'Roboto Condensed';
+    font-size: 3rem;
+  }
 
   p {
     padding: 0 0 2rem;

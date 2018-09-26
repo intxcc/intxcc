@@ -22,6 +22,14 @@
 
     .about-table-item-title,
     .about-table-item-text {
+      @include media-medium-small {
+        font-size: 1.2rem;
+      }
+
+      @include media-small {
+        font-size: .9rem;
+      }
+
       font-family: 'Roboto Condensed';
       font-size: 1.4rem;
       font-variant: small-caps;

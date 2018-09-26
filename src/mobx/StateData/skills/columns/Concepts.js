@@ -11,10 +11,12 @@ const ConceptsColumn = {
           mark: 3
         }, {
           title: 'DRY',
-          mark: 3
+          mark: 3,
+          desc: '"Don\'t repeat yourself"'
         }, {
           title: 'KISS',
-          mark: 3
+          mark: 3,
+          desc: '"Keep It Simple, Stupid"'
         }, {
           title: 'RESTful',
           mark: 3

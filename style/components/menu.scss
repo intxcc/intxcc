@@ -62,7 +62,7 @@
   }
 
   .selected,
-  .selected a {
+  .selected a { // sass-lint:disable-line force-element-nesting
     cursor: default;
     color: $primary-color;
 

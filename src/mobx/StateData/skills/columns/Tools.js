@@ -52,7 +52,8 @@ const ToolsColumn = {
       skills: [
         {
           title: 'GitHub',
-          mark: 3
+          mark: 3,
+          trivia: 'The full source code of this website can be found on my GitHub profile.'
         }, {
           title: 'Git',
           mark: 2

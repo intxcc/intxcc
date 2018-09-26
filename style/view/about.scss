@@ -1,9 +1,18 @@
 @import 'aboutLayout';
 
 .view-about {
+  .content-wrapper-inner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: $global--menu-height;
+    left: 0;
+
+    overflow-y: auto;
+  }
+
   .about-picture {
     position: fixed;
-    // top: 38.7vh;
     top: $about-picture-top;
     left: $about-picture-left;
 

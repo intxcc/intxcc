@@ -1,14 +1,17 @@
 .about-table-component {
   display: flex;
 
-  position: absolute;
-  top: 10vw;
-  right: 20vw;
+  position: sticky;
+  top: 0;
   left: 20vw;
 
   align-items: center;
   justify-content: space-between;
+  margin: 10vw 0 0;
 
+  background-color: $white;
+
+  width: 60vw;
   height: 4rem;
 
   list-style: none;

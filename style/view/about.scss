@@ -1,4 +1,14 @@
 @import 'aboutLayout';
 
-// .view-about {
-// }
+.view-about {
+  .about-picture {
+    position: fixed;
+    // top: 38.7vh;
+    top: $about-picture-top;
+    left: $about-picture-left;
+
+    transform: translate3d(-100%, -50%, 0);
+
+    height: 35vh;
+  }
+}

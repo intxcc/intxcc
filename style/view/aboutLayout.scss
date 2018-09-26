@@ -1,14 +1,16 @@
 .view-about {
-  .guide-a,
-  .guide-b,
-  .guide-c {
-    bottom: 3vh;
-    left: 18%;
+  .guide-w1,
+  .guide-w2,
+  .guide-w3 {
+    top: $about-picture-top;
+    left: $about-picture-left;
 
-    background-color: #f00;
+    transform: translate3d(-25.8vh, 1.9vh, 0);
 
-    width: 74%;
-    height: 70vh;
+    opacity: .1;
+
+    width: 17vh;
+    height: 17vh;
     max-height: 50vw;
   }
 }

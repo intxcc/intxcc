@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 
 const AboutView = observer((props) => (
   <div className='content-wrapper-inner'>
-    test
+    <img className='about-picture' alt='Picture of me with triangles.' src='/pic.png' />
   </div>
 ))
 

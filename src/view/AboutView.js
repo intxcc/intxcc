@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+import AboutTableComponent from './About/AboutTableComponent'
+
 const AboutView = observer((props) => (
   <div className='content-wrapper-inner'>
     <img className='about-picture' alt='Picture of me with triangles.' src='/pic.png' />
@@ -14,6 +16,7 @@ const AboutView = observer((props) => (
         description
       </div>
     </div>
+    <AboutTableComponent />
   </div>
 ))
 

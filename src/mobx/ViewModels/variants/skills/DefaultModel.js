@@ -24,7 +24,7 @@ const VariantModel = {
   },
   polygons: {
     'SkillsPolyA': {
-      morphTo: ['A', 'B', 'D'],
+      morphTo: ['A', 'B', 'D', 'AboutPinkTriangle'],
       fill: Defaults.White,
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,

@@ -73,7 +73,7 @@ const VariantModel = {
       ]
     },
     'AboutPinkTriangle': {
-      morphTo: ['PinkTriangle', 'PinkTriangle', 'RightTriangleA', 'A', 'C'],
+      morphTo: ['PinkTriangle', 'PinkTriangle', 'RightTriangleA', 'A', 'C', 'SkillsPolyA'],
       fill: Defaults.White,
       stroke: Colors.primaryColor,
       points: [

@@ -1,0 +1,35 @@
+.about-table-component {
+  display: flex;
+
+  position: absolute;
+  top: 10vw;
+  right: 20vw;
+  left: 20vw;
+
+  align-items: center;
+  justify-content: space-around;
+
+  height: 4rem;
+
+  list-style: none;
+
+  .about-table-item {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .about-table-item-title,
+    .about-table-item-text {
+      font-family: 'Roboto Condensed';
+      font-size: 1.4rem;
+      font-variant: small-caps;
+    }
+
+    .about-table-item-text {
+      font-weight: bold;
+      font-style: italic;
+    }
+  }
+}

@@ -18,7 +18,6 @@ AboutView.propTypes = {
 
 const AboutOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
-    overlay
   </div>
 ))
 

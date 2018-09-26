@@ -48,7 +48,7 @@ const VariantModel = {
   },
   polygons: {
     'AboutPinkTriangleBackground': {
-      morphTo: ['LeftTriangleA', 'AboutPinkTriangleBackground', 'D'],
+      morphTo: ['LeftTriangleA', 'AboutPinkTriangleBackground', 'B', 'D'],
       fill: Defaults.White,
       stroke: Defaults.White,
       points: [
@@ -58,7 +58,7 @@ const VariantModel = {
       ]
     },
     'AboutPinkTriangle': {
-      morphTo: ['PinkTriangle', 'PinkTriangle', 'RightTriangleA'],
+      morphTo: ['PinkTriangle', 'PinkTriangle', 'RightTriangleA', 'A', 'C'],
       fill: Defaults.White,
       stroke: Colors.primaryColor,
       points: [

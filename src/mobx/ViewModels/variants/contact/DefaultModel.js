@@ -106,7 +106,7 @@ const VariantModel = {
   },
   polygons: {
     'A': {
-      morphTo: ['A', 'SkillsPolyA'],
+      morphTo: ['A', 'SkillsPolyA', 'AboutPinkTriangle'],
       fill: '#00000000',
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,
@@ -117,7 +117,7 @@ const VariantModel = {
       ]
     },
     'B': {
-      morphTo: ['B', 'SkillsPolyA'],
+      morphTo: ['B', 'SkillsPolyA', 'AboutPinkTriangleBackground'],
       fill: Defaults.PolygonFill,
       stroke: Defaults.White,
       points: [
@@ -127,7 +127,7 @@ const VariantModel = {
       ]
     },
     'C': {
-      morphTo: ['C', 'SkillsPolyA'],
+      morphTo: ['C', 'SkillsPolyA', 'AboutPinkTriangle'],
       fill: '#00000000',
       stroke: Defaults.White,
       points: [
@@ -138,7 +138,7 @@ const VariantModel = {
     },
     'D': {
       fill: Defaults.White,
-      morphTo: ['D', 'SkillsPolyA'],
+      morphTo: ['D', 'SkillsPolyA', 'AboutPinkTriangleBackground'],
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,
       points: [
@@ -148,6 +148,7 @@ const VariantModel = {
       ]
     },
     'PinkTriangle': {
+      morphTo: ['PinkTriangle', 'AboutPinkTriangle'],
       fill: Defaults.White,
       stroke: Colors.primaryColor,
       points: [

@@ -13,4 +13,19 @@
     height: 17vh;
     max-height: 50vw;
   }
+
+  .guide-blc0,
+  .guide-blc1,
+  .guide-blc2 {
+    top: $about-picture-top;
+    left: $about-picture-left;
+
+    transform: translate3d(-7.5rem, 25vh, 0)
+    translate3d(.25rem, 1.5rem, 0)
+    // Now we are exactly where we want to be, the next line behaves like margin
+    translate3d(1rem, .6rem, 0);
+
+    width: 10vh;
+    height: 10vh;
+  }
 }

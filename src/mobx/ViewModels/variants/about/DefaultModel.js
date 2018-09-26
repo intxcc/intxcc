@@ -44,6 +44,21 @@ const VariantModel = {
       reverse: true,
       copy: 'w3',
       move: 5
+    },
+    'blc0': {
+      deg: 9.5,
+      vpos: 'top',
+      hpos: 'left'
+    },
+    'blc1': {
+      deg: -41.5,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'blc2': {
+      deg: 44,
+      vpos: 'top',
+      hpos: 'left'
     }
   },
   polygons: {
@@ -65,6 +80,16 @@ const VariantModel = {
         ['p1', 'p2'],
         ['p1', 'p3'],
         ['p2', 'p3']
+      ]
+    },
+    'PinkTriangle': {
+      morphTo: ['PinkTriangle', 'AboutPinkTriangle'],
+      fill: Defaults.White,
+      stroke: Colors.primaryColor,
+      points: [
+        ['blc0', 'blc1'],
+        ['blc2', 'blc0'],
+        ['blc2', 'blc1']
       ]
     }
   }

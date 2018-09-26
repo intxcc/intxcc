@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 import AboutTableComponent from './About/AboutTableComponent'
+import AboutTextComponent from './About/AboutTextComponent'
 
 const AboutView = observer((props) => (
   <div className='content-wrapper-inner'>
@@ -17,6 +18,7 @@ const AboutView = observer((props) => (
       </div>
     </div>
     <AboutTableComponent />
+    <AboutTextComponent />
   </div>
 ))
 

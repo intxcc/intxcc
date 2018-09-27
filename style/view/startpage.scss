@@ -37,6 +37,18 @@
   }
 }
 
+.startpage-background-white {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: #{'calc(50vw - 1px)'};
+
+  opacity: .8;
+
+  background-color: $white;
+}
+
 .startpage-picture {
   position: fixed;
   top: 50vh;
@@ -45,6 +57,7 @@
   transform: translate3d(#{(2 * $picture-dimension-ratio)}vh, -50%, 0) translateY(1rem);
 
   margin: 0 0 0 ($startpage-margin-from-midline);
+  width: 35vh * $picture-dimension-ratio;
   height: 35vh;
 
   transform-origin: top left;

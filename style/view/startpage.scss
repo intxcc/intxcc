@@ -8,7 +8,14 @@
     bottom: 0;
     left: 0;
 
-    background-color: #f00;
+    overflow: hidden;
+
+    .startpage-background-video {
+      width: 100vw;
+      height: 100vh;
+
+      object-fit: fill;
+    }
   }
 }
 

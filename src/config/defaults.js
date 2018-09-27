@@ -12,6 +12,7 @@ const Defaults = {
   DefaultStrokeMiterlimit: '20',
   GuideLength: 2000,
   guideStroke: Colors.black,
+  enableStartpageBackgroundVideo: true,
   showAllGuides: true,
   showGuides: false
 }

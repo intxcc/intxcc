@@ -16,6 +16,7 @@ class BackgroundVideo extends React.Component {
     return (
       <div className='startpage-background'>
         <video ref={video => { this.video = video }} className='startpage-background-video' loop autoPlay>
+          <source src="./intxcc.webm" type="video/webm" />
           <source src="./intxcc.mp4" type="video/mp4" />
         </video>
       </div>

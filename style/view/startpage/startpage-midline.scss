@@ -1,0 +1,46 @@
+.startpage-midline {
+  position: fixed;
+  top: 50vh;
+  bottom: 32.875vh;
+  left: 50vw;
+
+  transform: translate3d(-50%, 0, 0);
+  border-radius: .25rem;
+
+  background-color: $black;
+
+  width: .5rem;
+}
+
+.startpage-midline-top-line {
+  position: fixed;
+  top: #{'calc(49.9vh - 1rem)'};
+  bottom: 50.1vh;
+  left: 50vw;
+
+  transform: translate3d(-.25rem, 0, 0);
+
+  border-left: .5rem dotted $black;
+}
+
+.startpage-midline-caption {
+  position: fixed;
+  top: 67.1vh;
+  left: 50vw;
+
+  padding: .75rem 0 .75rem .75rem;
+
+  color: $black;
+  font-family: 'Roboto Condensed';
+  // font-size: 1.2rem;
+  font-weight: 400;
+
+  .startpage-midline-caption-left-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -.25rem;
+
+    border-left: .5rem dotted $black;
+  }
+}

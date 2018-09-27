@@ -1,0 +1,25 @@
+.startpage-picture {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+
+  transform: translate3d(#{(2 * $picture-dimension-ratio)}vh, -50%, 0) translateY(1rem);
+
+  margin: 0 0 0 ($startpage-margin-from-midline);
+  width: 35vh * $picture-dimension-ratio;
+  height: 35vh;
+
+  transform-origin: top left;
+}
+
+.startpage-picture-caption {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+
+  transform: translate3d(#{(-.2 * $picture-dimension-ratio)}vh, -4vh, 0) translateX($startpage-margin-from-midline) translateY(1rem);
+
+  img {
+    height: 22vh;
+  }
+}

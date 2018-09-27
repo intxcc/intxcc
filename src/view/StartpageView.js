@@ -13,11 +13,12 @@ import Defaults from '../config/defaults'
 
 const StartpageView = observer((props) => (
   <div className='content-wrapper-inner'>
-    {props.state.showBackgroundVideo}
-    {Defaults.enableStartpageBackgroundVideo ? <BackgroundVideo /> : ''}
+    {Defaults.enableStartpageBackgroundVideo && props.state.showBackgroundVideo ? <BackgroundVideo /> : ''}
     <img className='startpage-picture' alt='Picture of me with triangles.' src='/pic.png' />
+    <div className='startpage-midline-top-line'></div>
     <div className='startpage-midline'></div>
     <div className='startpage-midline-caption'>
+      <div className='startpage-midline-caption-left-line'></div>
       design.<br />
       development.
     </div>
@@ -35,6 +36,9 @@ StartpageView.propTypes = {
 
 const StartpageOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
+    <div className='startpage-disable-video-wrapper'>
+
+    </div>
   </div>
 ))
 

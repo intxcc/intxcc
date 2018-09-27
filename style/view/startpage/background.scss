@@ -1,0 +1,16 @@
+.startpage-background {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  .startpage-background-video {
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: fill;
+  }
+}

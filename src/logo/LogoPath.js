@@ -9,7 +9,7 @@ const LogoNormal = (props) => (
   <g transform="matrix(2.1708 0 0 2.1708 -194.46 -182.16)">
     <g transform="matrix(.83491 .0027989 -.0027989 .83491 16.445 13.609)">
       <g transform="matrix(1.197 -.0040136 .0040136 1.197 70.129 -52.192)">
-        <g transform="translate(0,1.0583)" fill={Defaults.White}>
+        <g transform="translate(0,1.0583)" fill={props.transparent ? ('#' + Defaults.White.substring(1) + Defaults.White.substring(1) + '88') : Defaults.White}>
           <path d="m14.446 112.69 15.284 26.472 15.284-26.472z" />
           <path d="m16.393 113.76 13.337 23.273 13.437-23.273z" stroke={Defaults.DefaultStroke} strokeWidth={props.strokeWidth} />
         </g>
@@ -39,7 +39,8 @@ const LogoNormal = (props) => (
 )
 
 LogoNormal.propTypes = {
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
+  transparent: PropTypes.bool
 }
 
 const LogoDark = (props) => (
@@ -79,11 +80,12 @@ LogoDark.propTypes = {
 
 const LogoPath = (props) => (
   <svg className={props.className} width="250.65" height="217.06" version="1.1" viewBox="0 0 66.318 57.429" xmlns="http://www.w3.org/2000/svg">
-    {props.invert ? <LogoDark strokeWidth={props.strokeWidth} /> : <LogoNormal strokeWidth={props.strokeWidth} />}
+    {props.invert ? <LogoDark strokeWidth={props.strokeWidth} /> : <LogoNormal transparent={props.transparent} strokeWidth={props.strokeWidth} />}
   </svg>
 )
 
 LogoPath.propTypes = {
+  transparent: PropTypes.bool,
   strokeWidth: PropTypes.number,
   className: PropTypes.string,
   invert: PropTypes.bool

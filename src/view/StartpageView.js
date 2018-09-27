@@ -10,6 +10,7 @@ import NameSvg from './Components/NameSvg'
 
 const StartpageView = observer((props) => (
   <div className='content-wrapper-inner'>
+    <div className='startpage-background'></div>
     <img className='startpage-picture' alt='Picture of me with triangles.' src='/pic.png' />
     <div className='startpage-midline'></div>
     <div className='startpage-midline-caption'>

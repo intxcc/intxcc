@@ -7,6 +7,7 @@ import Defaults from '../../../../config/defaults'
 
 const VariantModel = {
   logoClassName: 'logo-big',
+  logoTransparent: true,
   guides: {
     'a': {
       deg: -12,

@@ -306,8 +306,7 @@ class View extends React.Component {
         <div className={'overlay-wrapper-outer ' + props.viewModel.className + ' ' + fadeClassName + contentClassName}>
           <Logo
             strokeWidth={(Defaults.DefaultStrokeWidth * props.global.pixelScale) / 8}
-            className={props.viewModel.logoClassName}
-            transparent={props.viewModel.logoTransparent} />
+            className={props.viewModel.logoClassName} />
           {this.props.loadedOverlayView}
           {popupComponent}
         </div>

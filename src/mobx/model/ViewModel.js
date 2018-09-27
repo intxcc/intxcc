@@ -61,7 +61,6 @@ const ObjectModel = types.model({
  */
 const VariantModel = types.model({
   logoClassName: types.optional(types.string, ''),
-  logoTransparent: types.optional(types.boolean, false),
   className: types.optional(types.string, ''),
   guides: types.map(GuideModel),
   polygons: types.map(PolygonModel),

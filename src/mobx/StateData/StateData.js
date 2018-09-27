@@ -1,9 +1,11 @@
 'use strict'
 
+import StartpageData from './StartpageData'
 import StoriesData from './StoriesData'
 import SkillsData from './SkillsData'
 
 const StateData = {
+  startpage: StartpageData,
   stories: StoriesData,
   skills: SkillsData
 }

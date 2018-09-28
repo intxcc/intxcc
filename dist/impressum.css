@@ -1,0 +1,48 @@
+p {
+  margin: 0;
+}
+
+.site-wrapper {
+  display: flex;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  height: 100vh;
+  width: 100vw;
+}
+
+.license-wrapper,
+.impressum-wrapper {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
+
+  width: 400px;
+
+  text-align: justify;
+  font-variant: small-caps;
+  font-size: 24px;
+}
+
+.impressum-text {
+  text-align: left;
+}
+
+.impressum-svg {
+  width: 150px;
+  margin: .5rem 0;
+}
+
+.license-wrapper a {
+  font-variant: initial;
+}

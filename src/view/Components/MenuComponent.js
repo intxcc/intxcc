@@ -3,6 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { observer } from 'mobx-react'
 
 const MenuComponent = observer((props) => {
@@ -41,6 +43,13 @@ const MenuComponent = observer((props) => {
           </li>
         ))}
       </ul>
+      <div className='menu-impressum-license-link'>
+        <a target='_blank' rel='noopener noreferrer' href='/impressum.html'>Impressum &amp; License
+          <span className='menu-impressum-symbols'>
+            <FontAwesomeIcon icon={['fab', 'creative-commons']} /> <FontAwesomeIcon icon={['fab', 'creative-commons-by']} /> <FontAwesomeIcon icon={['fab', 'creative-commons-sa']} />
+          </span>
+        </a>
+      </div>
     </div>
   )
 })

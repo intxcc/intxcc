@@ -18,10 +18,12 @@ const ToolsColumn = {
           mark: 2
         }, {
           title: 'Blender',
-          mark: 2
+          mark: 2,
+          trivia: 'The video on the startpage was created with Blender.'
         }, {
           title: 'Premiere Pro',
-          mark: 2
+          mark: 2,
+          trivia: 'To make it look glitchier the video on the startpage got a few effects from Premiere Pro.'
         }, {
           title: 'After Effects',
           mark: 1

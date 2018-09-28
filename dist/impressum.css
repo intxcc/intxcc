@@ -1,3 +1,8 @@
+html,
+a {
+  color: #242124;
+}
+
 p {
   margin: 0;
 }
@@ -18,7 +23,8 @@ p {
 }
 
 .license-wrapper,
-.impressum-wrapper {
+.impressum-wrapper,
+.source-code-link-wrapper {
   display: flex;
 
   align-items: center;

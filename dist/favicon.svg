@@ -3,15 +3,13 @@
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 255.6 255.6" style="enable-background:new 0 0 255.6 255.6;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#FFFFFF;}
-	.st1{fill:none;stroke:#242124;stroke-width:20;}
-	.st2{fill:#242124;}
+	.st0{fill:#242124;}
+	.st1{fill:none;}
+	.st2{fill:#FFFFFF;}
 </style>
-<rect x="23" y="23" class="st0" width="209.7" height="209.7"/>
-<g>
-	<g transform="translate(0,1.0583)">
-		<path class="st1" d="M49.3,58.6l78.2,136.4l78.7-136.4H49.3z"/>
-	</g>
-	<path class="st2" d="M127.7,139.1l28.8-49.7H98.7L127.7,139.1z"/>
-</g>
+<polygon class="st0" points="127.8,215.9 223.7,49.8 31.9,49.8 "/>
+<polygon class="st1" points="6,34.8 249.7,34.8 127.8,245.9 "/>
+<polygon class="st0" points="127.8,215.9 223.7,49.8 31.9,49.8 "/>
+<polygon class="st2" points="66.6,69.8 189,69.8 127.8,175.9 "/>
+<polygon class="st0" points="101.2,90.3 154.4,90.3 127.8,136.4 "/>
 </svg>

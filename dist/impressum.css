@@ -7,6 +7,11 @@ p {
   margin: 0;
 }
 
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .site-wrapper {
   display: flex;
 

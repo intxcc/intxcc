@@ -1,19 +1,4 @@
 .view-about {
-  .guide-w1,
-  .guide-w2,
-  .guide-w3 {
-    top: $about-picture-top;
-    left: $about-picture-left;
-
-    transform: translate3d(-25.8vh, 1.9vh, 0);
-
-    opacity: .1;
-
-    width: 17vh;
-    height: 17vh;
-    max-height: 50vw;
-  }
-
   .guide-blc0,
   .guide-blc1,
   .guide-blc2 {

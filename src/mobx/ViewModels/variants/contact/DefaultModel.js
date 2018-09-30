@@ -117,7 +117,7 @@ const VariantModel = {
       ]
     },
     'B': {
-      morphTo: ['B', 'SkillsPolyA', 'AboutPinkTriangleBackground'],
+      morphTo: ['B', 'SkillsPolyA', 'AboutPinkTriangle'],
       fill: Defaults.PolygonFill,
       stroke: Defaults.White,
       points: [
@@ -138,7 +138,7 @@ const VariantModel = {
     },
     'D': {
       fill: Defaults.White,
-      morphTo: ['D', 'SkillsPolyA', 'AboutPinkTriangleBackground'],
+      morphTo: ['D', 'SkillsPolyA', 'AboutPinkTriangle'],
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,
       points: [

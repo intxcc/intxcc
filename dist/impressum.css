@@ -44,6 +44,15 @@ p {
   text-align: left;
 }
 
+.impressum-text-contact {
+  font-size: 1rem;
+  font-variant: initial;
+  padding: .25rem .5rem;
+  margin: 1rem 0;
+
+  border-left: 4px #242124 dotted;
+}
+
 .impressum-svg {
   width: 150px;
   margin: .5rem 0;

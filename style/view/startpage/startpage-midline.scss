@@ -14,13 +14,15 @@
 
 .startpage-midline-top-line {
   position: fixed;
-  top: #{'calc(49.9vh - 1rem)'};
+  // top: #{'calc(49.9vh - 1rem)'};
   bottom: 50.1vh;
   left: 50vw;
 
   transform: translate3d(-.25rem, 0, 0);
 
   border-left: .5rem dotted $black;
+
+  height: 1rem;
 }
 
 .startpage-midline-caption {
@@ -37,8 +39,8 @@
 
   .startpage-midline-caption-left-line {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    top: .4rem;
+    bottom: .4rem;
     left: -.25rem;
 
     border-left: .5rem dotted $black;

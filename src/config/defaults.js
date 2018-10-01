@@ -2,7 +2,7 @@
 
 import Colors from '../../style/variables/colors.scss'
 
-const Defaults = {
+const ProductionDefaults = {
   White: Colors.white,
   Black: Colors.black,
   PolygonFill: Colors.black,
@@ -16,5 +16,16 @@ const Defaults = {
   showAllGuides: true,
   showGuides: false
 }
+
+const DevelopmentDefaults = {
+  enableStartpageBackgroundVideo: false
+}
+
+let isRunningInDevelopmentEnvironment = false
+if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
+  isRunningInDevelopmentEnvironment = true
+}
+
+const Defaults = Object.assign({}, ProductionDefaults, isRunningInDevelopmentEnvironment ? DevelopmentDefaults : {})
 
 export default Defaults

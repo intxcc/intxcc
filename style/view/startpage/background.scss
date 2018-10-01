@@ -8,6 +8,22 @@
   overflow: hidden;
 
   .startpage-background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .startpage-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+
     width: 100vw;
     height: 100vh;
 

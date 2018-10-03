@@ -129,6 +129,11 @@
   bottom: 0;
   left: 0;
 
+  transition: $global--morph-duration filter,
+  $global--morph-duration background-color,
+  $global--morph-duration transform,
+  $global--morph-duration opacity;
+
   &.disabled {
     filter: blur(3px);
     pointer-events: none;

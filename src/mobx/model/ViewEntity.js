@@ -2,7 +2,7 @@
 
 import { types } from 'mobx-state-tree'
 
-import { values } from 'mobx'
+import { values, keys } from 'mobx'
 
 import EntityGuideModel from './EntityGuideModel'
 import EntityPolygonModel from './EntityPolygonModel'
@@ -53,13 +53,22 @@ const BasicInfoModel = types.model({
     self.popups.delete(id)
   }
 
+  function clearNotPersistentPopups () {
+    for (let popupKey of keys(self.popups)) {
+      if (!self.popups.get(popupKey).persistent) {
+        self.popups.delete(popupKey)
+      }
+    }
+  }
+
   return {
     setClientDimensions,
     setViewEntityReference,
     setModelVariant,
     setScrollTop,
     showPopup,
-    closePopup
+    closePopup,
+    clearNotPersistentPopups
   }
 })
 

@@ -62,6 +62,10 @@ class App extends React.Component {
 
   @autobind
   swapBuffer () {
+    if (this.props.store.views.get('main').stateBasicInfo) {
+      this.props.store.views.get('main').stateBasicInfo.clearNotPersistentPopups()
+    }
+
     this.props.store.updateViewEntity('main', this.props.store.views.get('buffer').model)
     setTimeout(this.clearBuffer, 100)
   }

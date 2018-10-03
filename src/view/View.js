@@ -307,7 +307,9 @@ class View extends React.Component {
           <Logo
             strokeWidth={(Defaults.DefaultStrokeWidth * props.global.pixelScale) / 8}
             className={props.viewModel.logoClassName} />
-          {this.props.loadedOverlayView}
+          <div className={'overlay-wrapper-content' + disabledClassName}>
+            {this.props.loadedOverlayView}
+          </div>
           {popupComponent}
         </div>
       </div>

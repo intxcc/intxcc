@@ -18,6 +18,7 @@ const StoriesModel = types.model({
   function onScroll (scrollTop) {
     self.basicInfo.setScrollTop(scrollTop)
 
+    // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
     if (self.basicInfo.viewEntity !== '') {
       if (self.basicInfo.scrollTop > 50) {
         self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
@@ -25,6 +26,7 @@ const StoriesModel = types.model({
         self.basicInfo.viewEntity.changeModelVariant('default')
       }
     }
+    // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
   }
 
   function selectYear (index) {

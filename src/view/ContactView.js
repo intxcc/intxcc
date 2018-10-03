@@ -33,6 +33,12 @@ const ContactView = observer((props) => (
         </div>
       </div>
     </ViewObject>
+    <ViewObject object={props.view.objects.get('contact-page-name-display')}>
+      contact
+      <div className='contact-page-name-display-caption'>
+        details
+      </div>
+    </ViewObject>
   </div>
 ))
 
@@ -43,12 +49,6 @@ ContactView.propTypes = {
 
 const ContactOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
-    <ViewObject object={props.view.objects.get('contact-page-name-display')}>
-      contact
-      <div className='contact-page-name-display-caption'>
-        details
-      </div>
-    </ViewObject>
     <ViewObject object={props.view.objects.get('contact-page-impressum')}>
       <div className='contact-page-impressum-inner'>
         <h2>

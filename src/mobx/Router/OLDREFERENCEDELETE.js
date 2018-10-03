@@ -70,6 +70,9 @@ class Router {
 
   @autobind
   onHashChange () {
+    // TODO CONTINUE HERE WE NEED TO GET THE ID AND SELECT THE CORRESPONDING SKILL NEXT
+    console.log('test')
+
     // A flag for ignoring one hash change, e.g. for reverting the hash
     if (this.ignoreNextHashChange) {
       this.ignoreNextHashChange = false

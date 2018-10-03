@@ -4,8 +4,11 @@ import { types } from 'mobx-state-tree'
 
 import { BasicInfoModel } from '../model/ViewEntity'
 
+import { getIdNumberFromIdString } from '../../miscFunctions'
+
 import SKILLS_EXPLANATION from '../../config/SkillsExplanation'
-import Style from '../../../style/variables/global.scss'
+// TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
+// import Style from '../../../style/variables/global.scss'
 
 const SkillModel = types.model({
   id: types.identifier,
@@ -60,21 +63,25 @@ const SkillsModel = types.model({
   transitionOn: types.optional(types.boolean, false)
 }).actions(self => {
   function showExplanation () {
-    self.basicInfo.popups.set(SKILLS_EXPLANATION.id, SKILLS_EXPLANATION)
+    self.basicInfo.showPopup(SKILLS_EXPLANATION)
   }
 
   function selectSkillByIdentifier (skillIdentifier) {
     self.selection.skill = skillIdentifier
     self.selection.category = self.selection.skill.categoryId
     self.selection.column = self.selection.skill.columnId
+
+    // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
+    // window.location.hash = '/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(' ', '-')
   }
 
-  function onSkillClick (skillIdentifier) {
-    selectSkillByIdentifier(skillIdentifier)
+  // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
+  // function onSkillClick (skillIdentifier) {
+  //   selectSkillByIdentifier(skillIdentifier)
 
-    self.transitionOn = true
-    setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
-  }
+  //   self.transitionOn = true
+  //   setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
+  // }
 
   function turnTransitionOff () {
     self.transitionOn = false
@@ -114,10 +121,6 @@ const SkillsModel = types.model({
 
       self.moveMapBy(delta)
     }
-  }
-
-  function getIdNumberFromIdString (idString) {
-    return parseInt(idString.split('-')[1])
   }
 
   function centerMap (x, y) {
@@ -160,7 +163,6 @@ const SkillsModel = types.model({
   return {
     showExplanation,
     selectSkillByIdentifier,
-    onSkillClick,
     turnTransitionOff,
     toggleMouseDrag,
     onPointerLockChange,

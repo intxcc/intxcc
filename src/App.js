@@ -8,8 +8,6 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
-import Router from './router/Router'
-
 // Defines the fontawesome library with icons we want to use
 import './fontawesome'
 
@@ -41,17 +39,17 @@ const OverlayViews = {
 @observer
 class App extends React.Component {
   componentDidMount () {
-    this.router = new Router(this.props.store)
-
     window.addEventListener('resize', this.updateDimensions)
-    window.addEventListener('hashchange', this.router.onHashChange, false)
+    window.addEventListener('hashchange', this.props.store.router.onHashChange, false)
 
     this.updateDimensions()
+
+    this.props.store.router.initialize()
   }
 
   componentWillUnmount () {
     window.removeEventListener('resize', this.updateDimensions)
-    window.removeEventListener('hashchange', this.router.onHashChange, false)
+    window.removeEventListener('hashchange', this.props.store.router.onHashChange, false)
   }
 
   @autobind
@@ -76,11 +74,11 @@ class App extends React.Component {
   @autobind
   render () {
     const mainModelActive = this.props.store.views.get('main') && this.props.store.views.get('main').model !== ''
-    const bufferModelActive = this.props.store.views.get('buffer') && this.props.store.views.get('buffer').model !== ''
 
     if (mainModelActive) {
       const mainTransitionState = this.props.store.views.get('main').transitionState
 
+      const bufferModelActive = this.props.store.views.get('buffer') && this.props.store.views.get('buffer').model !== ''
       if (mainTransitionState === 'swapBuffer' && bufferModelActive) {
         setTimeout(this.swapBuffer, 0)
       }

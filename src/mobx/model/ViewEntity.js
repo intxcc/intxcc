@@ -45,6 +45,10 @@ const BasicInfoModel = types.model({
     self.scrollTop = scrollTop
   }
 
+  function showPopup (popup) {
+    self.popups.set(popup.id, popup)
+  }
+
   function closePopup (id) {
     self.popups.delete(id)
   }
@@ -54,6 +58,7 @@ const BasicInfoModel = types.model({
     setViewEntityReference,
     setModelVariant,
     setScrollTop,
+    showPopup,
     closePopup
   }
 })
@@ -65,8 +70,10 @@ const ViewEntity = types.model({
   // Necessary to reference this in the basicStateInfo
   id: types.identifier,
   // Name of the ViewModel
-  model: types.string,
+  model: types.optional(types.string, ''),
   modelVariant: types.optional(types.string, 'default'),
+  // Cooldown to prevent some race conditions, that were the cause of a freezed main view bug
+  cooldown: types.optional(types.boolean, true),
   stateBasicInfo: types.optional(types.reference(BasicInfoModel), ''),
   nextModelVariant: types.optional(types.string, ''),
   snapshotVariant: types.optional(types.string, ''),
@@ -80,6 +87,10 @@ const ViewEntity = types.model({
   // Save the reference to the basic info of the view state that is currently using this viewentity to display its state
   function setStateBasicInfo (stateBasicInfo) {
     self.stateBasicInfo = stateBasicInfo
+  }
+
+  function stopCooldown () {
+    self.cooldown = false
   }
 
   // ATTENTION Only use extremely careful. Probably only once, in the initialization
@@ -322,6 +333,7 @@ const ViewEntity = types.model({
 
   return {
     setStateBasicInfo,
+    stopCooldown,
     forceModelVariant,
     snapshotEntity,
     changeModelVariant,

@@ -1,6 +1,14 @@
 'use strict'
 
 /**
+ * Gives id number from id string
+ * @param {*} idString String representing the id. IMORTANT: Has to be shaped like '<some identifier>-<id number>'
+ */
+function getIdNumberFromIdString (idString) {
+  return parseInt(idString.split('-')[1])
+}
+
+/**
  * Check if an object is empty
  * @param {*} Object to check if it is empty
  */
@@ -45,4 +53,4 @@ function stringToBase64 (input) {
   return btoa(input)
 }
 
-export { isEmpty, degreesToRadians, lineIntersect, stringToBase64 }
+export { getIdNumberFromIdString, isEmpty, degreesToRadians, lineIntersect, stringToBase64 }

@@ -37,7 +37,8 @@ const LanguagesColumn = {
           mark: 3
         }, {
           title: 'MobX',
-          mark: 3
+          mark: 3,
+          desc: 'Including MST (MobX state tree).'
         }, {
           title: 'Canvas',
           mark: 2

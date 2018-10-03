@@ -4,7 +4,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
@@ -28,21 +27,17 @@ const SkillsItemInner = observer((props) => (
 ))
 
 SkillsItemInner.propTypes = {
-  skill: PropTypes.object,
-  onSkillClick: PropTypes.func
+  skill: PropTypes.object
 }
 
 const SkillsMapItemConst = observer((props) => (
-  <div onClick={() => {
-    props.onSkillClick(props.skill.id)
-  }} className='skills-map-item'>
+  <div className='skills-map-item'>
     <SkillsItemInner skill={props.skill} />
   </div>
 ))
 
 SkillsMapItemConst.propTypes = {
-  skill: PropTypes.object,
-  onSkillClick: PropTypes.func
+  skill: PropTypes.object
 }
 
 @observer
@@ -61,8 +56,8 @@ class SkillsMapItemComponent extends React.Component {
 
   @autobind
   onClick () {
+    // This is important, to recenter the skillItem if the map was moved manually
     this.updateSelectedPosition()
-    this.props.onSkillClick(this.props.skill.id)
   }
 
   @autobind
@@ -70,7 +65,7 @@ class SkillsMapItemComponent extends React.Component {
     setTimeout(this.updateSelectedPosition, 0)
 
     return (
-      <div ref={div => { this.div = div }} onClick={this.onClick} className='skills-map-item item-selected'>
+      <div ref={div => { this.div = div }} className='skills-map-item item-selected'>
         <SkillsItemInner skill={this.props.skill} />
       </div>
     )
@@ -79,18 +74,32 @@ class SkillsMapItemComponent extends React.Component {
 
 SkillsMapItemComponent.propTypes = {
   skill: PropTypes.object,
-  onSkillClick: PropTypes.func,
   centerMapFunc: PropTypes.func
+}
+
+const SkillsMapItemLinkWrapper = observer(props => (
+  <a href={'/#/skills/' + props.skill.id + '-' + props.skill.title.toLowerCase().replace(' ', '-')}>
+    {props.children}
+  </a>
+))
+
+SkillsMapItemLinkWrapper.propTypes = {
+  skill: PropTypes.object,
+  children: PropTypes.object
 }
 
 const SkillsMapItem = observer((props) => {
   if (props.selected) {
     return (
-      <SkillsMapItemComponent centerMapFunc={props.centerMapFunc} onSkillClick={props.onSkillClick} skill={props.skill} />
+      <SkillsMapItemLinkWrapper skill={props.skill}>
+        <SkillsMapItemComponent centerMapFunc={props.centerMapFunc} skill={props.skill} />
+      </SkillsMapItemLinkWrapper>
     )
   } else {
     return (
-      <SkillsMapItemConst onSkillClick={props.onSkillClick} skill={props.skill} />
+      <SkillsMapItemLinkWrapper skill={props.skill}>
+        <SkillsMapItemConst skill={props.skill} />
+      </SkillsMapItemLinkWrapper>
     )
   }
 })
@@ -98,7 +107,6 @@ const SkillsMapItem = observer((props) => {
 SkillsMapItem.propTypes = {
   selected: PropTypes.bool,
   centerMapFunc: PropTypes.func,
-  onSkillClick: PropTypes.func,
   skill: PropTypes.object
 }
 

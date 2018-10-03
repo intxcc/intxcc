@@ -16,7 +16,7 @@ const SkillsMap = observer((props) => (
       style={{
         'transform': 'translate3d(-50%, -50%, 0) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0) rotate(30deg)'
       }}>
-      <SkillsMapColumns onSkillClick={props.state.onSkillClick} selected={props.state.selection} centerMapFunc={props.state.centerMap} columns={props.columns} />
+      <SkillsMapColumns selected={props.state.selection} centerMapFunc={props.state.centerMap} columns={props.columns} />
     </div>
   </div>
 ))

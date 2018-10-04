@@ -266,8 +266,8 @@ class View extends React.Component {
     const contentClassName = props.view.transitionState === 'morphVariant' ? ' object-transition ' : ''
 
     let disabledClassName = ''
-    // If this view has popups active, disable this view
-    if (props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
+    // If this view has popups active and is not transitioning, disable this view
+    if (!props.rootStore.isTransitioning && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
       disabledClassName = ' disabled'
     }
 
@@ -319,6 +319,7 @@ class View extends React.Component {
 
 View.propTypes = {
   global: PropTypes.object,
+  rootStore: PropTypes.object,
   view: PropTypes.object,
   state: PropTypes.object,
   buffer: PropTypes.object,

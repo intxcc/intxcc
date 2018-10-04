@@ -5,10 +5,7 @@
 
   transform: translate3d(-100%, 0, 0) translateY(1rem) translateX(-$startpage-margin-from-midline + .8rem);
 
-  transition: $global--morph-duration filter,
-  $global--morph-duration background-color,
-  $global--morph-duration transform,
-  $global--morph-duration opacity;
+  transition: $global--morph-duration filter;
 
   width: 32vh / $logo-dimension-ratio;
   height: 32vh;

@@ -24,6 +24,8 @@ $skills-map-transition-time-ms: 400;
 $skills-map-transition-time: $skills-map-transition-time-ms + ms;
 
 $global--disable-blur: blur(5px);
+$global--disable-clip-path: circle(40vmin at 50% 50%);
+$global--enable-clip-path: circle(50vmax at 50% 50%);
 
 // sass-lint:disable-all
 :export {

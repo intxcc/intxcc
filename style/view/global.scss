@@ -10,14 +10,19 @@
   height: 100vh;
 }
 
+// To enable hardware acceleration
+.svg-wrapper,
+.view-model,
+.view-content {
+  transform: translate3d(0, 0, 0);
+}
+
 .view-model,
 .svg-wrapper {
   position: fixed;
 
   top: 0;
   left: 0;
-
-  transform: translate3d(0, 0, 0);
 
   width: 100vw;
   height: 100vh;
@@ -29,7 +34,6 @@
   top: 0;
   left: 0;
 
-  transform: translate3d(0, 0, 0);
   z-index: 20;
 
   width: 100vw;
@@ -59,7 +63,6 @@
   z-index: 10;
 
   &.disabled {
-    transform: initial !important;
     background-color: rgba($color: $black, $alpha: .05);
   }
 }
@@ -69,12 +72,15 @@
   transition: $global--morph-duration filter,
   $global--morph-duration background-color,
   $global--morph-duration transform,
+  $global--morph-duration clip-path,
   $global--morph-duration opacity;
 
+  clip-path: $global--enable-clip-path;
+
   &.disabled {
-    transform: translate3d(0, 0, 0);
     filter: $global--disable-blur;
     pointer-events: none;
+    clip-path: $global--disable-clip-path;
   }
 }
 
@@ -91,10 +97,6 @@
 
   overflow: hidden;
   pointer-events: none;
-
-  &.disabled {
-    background-color: initial;
-  }
 
   .svg-wrapper {
     position: absolute;
@@ -130,11 +132,12 @@
   left: 0;
 
   transition: $global--morph-duration filter,
-  $global--morph-duration background-color,
-  $global--morph-duration transform,
-  $global--morph-duration opacity;
+  $global--morph-duration clip-path;
+
+  clip-path: $global--enable-clip-path;
 
   &.disabled {
+    clip-path: $global--disable-clip-path;
     filter: $global--disable-blur;
     pointer-events: none;
   }

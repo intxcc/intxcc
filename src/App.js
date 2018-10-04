@@ -172,6 +172,7 @@ class App extends React.Component {
             <View
               key={'view-' + key}
               className={'view-' + key}
+              rootStore={this.props.store}
               global={this.props.store.global}
               viewModel={viewModel}
               buffer={buffer}

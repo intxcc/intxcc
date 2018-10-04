@@ -4,8 +4,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
+import { values } from 'mobx'
 
-import { stringToBase64 } from '../miscFunctions'
+import { stringToBase64, isEmpty } from '../miscFunctions'
 import NameSvg from './Startpage/NameSvg'
 import BackgroundVideo from './Startpage/BackgroundVideo'
 
@@ -13,7 +14,7 @@ import Defaults from '../config/defaults'
 
 const StartpageView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <BackgroundVideo showVideo={Defaults.enableStartpageBackgroundVideo && props.state.showBackgroundVideo} />
+    <BackgroundVideo stopped={!isEmpty(values(props.state.basicInfo.popups))} showVideo={Defaults.enableStartpageBackgroundVideo && props.state.showBackgroundVideo} />
     <div className='startpage-overlay-right'></div>
     <img className='startpage-picture' alt='Picture of me with triangles.' src='/pic.png' />
     <div className='startpage-midline-top-line'></div>

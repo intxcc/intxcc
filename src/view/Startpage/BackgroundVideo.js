@@ -9,9 +9,26 @@ import autobind from 'autobind-decorator'
 
 @observer
 class BackgroundVideo extends React.Component {
+  @autobind
   componentDidMount () {
     if (this.video) {
       this.video.playbackRate = 1
+    }
+
+    this.checkIfShouldStop()
+  }
+
+  @autobind
+  getSnapshotBeforeUpdate () {
+    this.checkIfShouldStop()
+
+    return null
+  }
+
+  @autobind
+  checkIfShouldStop () {
+    if (this.video) {
+      this.video.playbackRate = this.props.stopped ? 0 : 1
     }
   }
 
@@ -34,6 +51,7 @@ class BackgroundVideo extends React.Component {
 }
 
 BackgroundVideo.propTypes = {
+  stopped: PropTypes.bool,
   showVideo: PropTypes.bool
 }
 

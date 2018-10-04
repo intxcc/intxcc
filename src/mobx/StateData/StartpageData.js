@@ -8,8 +8,7 @@ const StartpageData = {
       className: 'start-popup',
       persistent: false,
       title: 'This is intxcc',
-      text: 'This is future: This is life: This is freedom: This is warm summer rain: This is design: This is for you.',
-      hint: ''
+      text: 'This is future: This is life: This is freedom: This is warm summer rain: This is design: This is for you.'
     }]
   }
 }

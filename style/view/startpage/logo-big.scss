@@ -16,7 +16,7 @@
   transform-origin: top left;
 
   &.disabled {
-    filter: blur(3px);
+    filter: $global--disable-blur;
     pointer-events: none;
   }
 

@@ -23,6 +23,8 @@ $global--menu-height: 4vh;
 $skills-map-transition-time-ms: 400;
 $skills-map-transition-time: $skills-map-transition-time-ms + ms;
 
+$global--disable-blur: blur(5px);
+
 // sass-lint:disable-all
 :export {
   fadeOutDuration: $global--fade-out-duration-ms;

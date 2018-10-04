@@ -73,7 +73,7 @@
 
   &.disabled {
     transform: translate3d(0, 0, 0);
-    filter: blur(3px);
+    filter: $global--disable-blur;
     pointer-events: none;
   }
 }
@@ -135,7 +135,7 @@
   $global--morph-duration opacity;
 
   &.disabled {
-    filter: blur(3px);
+    filter: $global--disable-blur;
     pointer-events: none;
   }
 }

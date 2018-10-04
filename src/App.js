@@ -20,6 +20,8 @@ import { SkillsView, SkillsOverlayView } from './view/SkillsView'
 
 import MenuComponent from './view/Components/MenuComponent'
 
+import subscribeToRouterParams from './mobx/StateModels/functions/subscribeToRouterParams'
+
 const Views = {
   'startpage': StartpageView,
   'about': AboutView,
@@ -127,14 +129,14 @@ class App extends React.Component {
           }
 
           // Check if the responsible state does have a function to receive router params and forward them
-          if (this.props.store.state[view.model].subscribeToRouterParams) {
+          if (this.props.store.state[view.model].onRouterParamChange) {
             if (routerParams !== null) {
               // Only add disposers if there are none, which means no subscription inside of the state
               if (!this.disposers[view.model] || this.disposers[view.model].length <= 0) {
                 this.disposers[view.model] = []
 
                 // Save the disposer to delete the subscription from the state to the router parameters, when the current model changes
-                this.disposers[view.model].push(this.props.store.state[view.model].subscribeToRouterParams(routerParams))
+                this.disposers[view.model].push(subscribeToRouterParams(routerParams, this.props.store.state[view.model].onRouterParamChange))
               }
             } else {
               if (this.disposers[view.model]) {

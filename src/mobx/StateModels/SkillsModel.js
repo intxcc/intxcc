@@ -1,6 +1,6 @@
 'use strict'
 
-import { types, onPatch } from 'mobx-state-tree'
+import { types } from 'mobx-state-tree'
 
 import { BasicInfoModel } from '../model/ViewEntity'
 
@@ -62,15 +62,8 @@ const SkillsModel = types.model({
   pointerLocked: types.optional(types.boolean, false),
   transitionOn: types.optional(types.boolean, false)
 }).actions(self => {
-  function onRouterParamChange (params) {
-    console.log('skills param change: ')
-    console.log(params)
-  }
-
-  function subscribeToRouterParams (params) {
-    return onPatch(params, patch => {
-      self.onRouterParamChange(patch)
-    })
+  function onRouterParamChange (paramName, paramValue) {
+    console.log(paramName + ': ' + paramValue)
   }
 
   function showExplanation () {
@@ -173,7 +166,6 @@ const SkillsModel = types.model({
 
   return {
     onRouterParamChange,
-    subscribeToRouterParams,
     showExplanation,
     selectSkillByIdentifier,
     turnTransitionOff,

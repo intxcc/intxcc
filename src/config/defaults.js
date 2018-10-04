@@ -18,7 +18,7 @@ const ProductionDefaults = {
 }
 
 const DevelopmentDefaults = {
-  enableStartpageBackgroundVideo: true
+  enableStartpageBackgroundVideo: false
 }
 
 let isRunningInDevelopmentEnvironment = false

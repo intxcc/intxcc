@@ -7,8 +7,8 @@ import { BasicInfoModel } from '../model/ViewEntity'
 import { getIdNumberFromIdString } from '../../miscFunctions'
 
 import SKILLS_EXPLANATION from '../../config/SkillsExplanation'
-// TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
-// import Style from '../../../style/variables/global.scss'
+
+import Style from '../../../style/variables/global.scss'
 
 const SkillModel = types.model({
   id: types.identifier,
@@ -52,6 +52,7 @@ const Limits = types.model({
 
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
+  routerParams: types.optional(types.map(types.string), {}),
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
   columns: types.array(SkillColumn),
@@ -63,8 +64,18 @@ const SkillsModel = types.model({
   transitionOn: types.optional(types.boolean, false)
 }).actions(self => {
   function onRouterParamChange (paramName, paramValue) {
+    self.routerParams.set(paramName, paramValue)
+
     switch (paramName) {
       case 'skill_id':
+        // If the URL changes, we check if the skill id is different than the selected skill, and if this is the case we transition smoothly to the new skill. This does not happen if the scroll wheel changes the selected skill, as then the in the URL represented skill is already selected
+        if (self.selection.skill !== null && getIdNumberFromIdString(self.selection.skill.id) === parseInt(paramValue)) {
+          break
+        }
+
+        self.transitionOn = true
+        setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
+
         self.selectSkillById(parseInt(paramValue))
         break
     }
@@ -86,17 +97,11 @@ const SkillsModel = types.model({
     self.selection.category = self.selection.skill.categoryId
     self.selection.column = self.selection.skill.columnId
 
-    // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
-    // window.location.hash = '/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(' ', '-')
+    // Check if the URL does represent the selected skill. If not, we change the URL
+    if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {
+      window.history.pushState(null, null, '/#/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(' ', '-'))
+    }
   }
-
-  // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
-  // function onSkillClick (skillIdentifier) {
-  //   selectSkillByIdentifier(skillIdentifier)
-
-  //   self.transitionOn = true
-  //   setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
-  // }
 
   function turnTransitionOff () {
     self.transitionOn = false

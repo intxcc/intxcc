@@ -1,19 +1,19 @@
 .popup-transition-enter {
-  transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) scale(1.5) !important;
   opacity: .01;
 }
 
 .popup-transition-enter-active {
-  transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
   opacity: 1;
 }
 
 .popup-transition-exit {
-  transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) scale(1) !important;
   opacity: 1;
 }
 
 .popup-transition-exit-active {
-  transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) scale(1.5) !important;
   opacity: .01;
 }

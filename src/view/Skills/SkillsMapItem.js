@@ -78,7 +78,7 @@ SkillsMapItemComponent.propTypes = {
 }
 
 const SkillsMapItemLinkWrapper = observer(props => (
-  <a className='skills-map-item-link' href={'/#/skills/' + props.skill.id + '-' + props.skill.title.toLowerCase().replace(' ', '-')}>
+  <a className='skills-map-item-link' href={'/#/skills/' + props.skill.id + '-' + props.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')}>
     {props.children}
   </a>
 ))

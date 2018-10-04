@@ -3,7 +3,7 @@
 import { onPatch } from 'mobx-state-tree'
 
 function onRouterParamPatch (patch, callback) {
-  const paramName = patch.path.replace('/', '')
+  const paramName = patch.path.replace(new RegExp('/', 'g'), '')
   if (patch.op === 'replace' || patch.op === 'add') {
     const paramValue = patch.value
 

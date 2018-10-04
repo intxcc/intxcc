@@ -114,6 +114,7 @@ class App extends React.Component {
 
           const loadView = React.createElement(Views[view.model], {
             global: this.props.store.global,
+            router: this.props.store.router,
             state: this.props.store.state[view.model],
             view: view
           })

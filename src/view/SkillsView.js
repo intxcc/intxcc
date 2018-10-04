@@ -25,6 +25,7 @@ const SkillsView = observer((props) => (
 
 SkillsView.propTypes = {
   global: PropTypes.object,
+  router: PropTypes.object,
   state: PropTypes.object,
   view: PropTypes.object
 }

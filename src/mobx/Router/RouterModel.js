@@ -19,7 +19,15 @@ const RouterModel = types.model({
 
   // Required variables, because the structure of this website
   model: types.optional(types.string, ''),
-  modelVariant: types.optional(types.string, '')
+  modelVariant: types.optional(types.string, ''),
+
+  // Optional variables
+  params: types.optional(types.map(types.string), {}),
+
+  // Private variables. IMPORTANT: Only to be used in this model
+  nextModel: types.optional(types.string, ''),
+  nextModelVariant: types.optional(types.string, ''),
+  nextParams: types.optional(types.map(types.string), {})
 }).actions(self => {
   function initialize () {
     self.updateHash()
@@ -41,20 +49,31 @@ const RouterModel = types.model({
     self.updateHash()
 
     if (!self.rootStore.isTransitioning) {
-      if (!self.rootStore.views.get('main') || self.model !== self.rootStore.views.get('main').model) {
+      // Accept the current path as working
+      self.acceptPath()
+
+      if (!self.rootStore.views.get('main') || self.nextModel !== self.rootStore.views.get('main').model) {
         self.rootStore.startTransition(self.model)
       }
     } else {
       self.goToLastWorkingPath()
     }
-
-    // Accept the current path as working
-    self.acceptPath()
   }
 
+  // This finally accepts the path as valid and accepts the variables it has given
   function acceptPath () {
     // Remember this, to revert changes that don't work
     self.lastWorkingPath = self.path
+
+    self.params.clear()
+    // Load new params from the already parsed path, which wrote them to nextParams
+    for (let paramIndex in self.nextParams.toJSON()) {
+      const paramValue = self.nextParams.get(paramIndex)
+      self.params.set(paramIndex, paramValue)
+    }
+
+    // Accept model
+    self.model = self.nextModel
   }
 
   function goToLastWorkingPath () {
@@ -74,8 +93,6 @@ const RouterModel = types.model({
     // Delete hash sign, so we get a "real" path
     self.path = window.location.hash.substr(1)
 
-    console.log('update hash: ' + self.path)
-
     // Get the actual information from the hash
     parsePath()
   }
@@ -83,11 +100,17 @@ const RouterModel = types.model({
   function parsePath () {
     // Check if one of our routes is matching
     let route
+    let routeValues
+    let routeKeys
     for (let routeIndex in RoutingPaths) {
       route = RoutingPaths[routeIndex]
-      const re = pathToRegexp(route.path)
 
-      if (re.exec(self.path) !== null) {
+      // Reset route keys, so not old ones are given when parsing the params. This might happen, if the next view has no keys
+      routeKeys = []
+      const re = pathToRegexp(route.path, routeKeys)
+
+      routeValues = re.exec(self.path)
+      if (routeValues !== null) {
         break
       } else {
         route = null
@@ -106,7 +129,19 @@ const RouterModel = types.model({
       return
     }
 
-    self.model = route.model
+    // Preload variables, they will get set finally, after the path was accepted
+    self.nextParams.clear()
+    for (let paramIndexString in routeKeys) {
+      const paramIndex = parseInt(paramIndexString)
+
+      // The +1 because the index 0 will always contain the full path
+      let paramValue = routeValues[paramIndex + 1]
+      let paramKey = routeKeys[paramIndex].name
+
+      self.nextParams.set(paramKey, paramValue)
+    }
+
+    self.nextModel = route.model
   }
 
   return {

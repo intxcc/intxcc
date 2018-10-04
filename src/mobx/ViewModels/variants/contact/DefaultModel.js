@@ -107,7 +107,7 @@ const VariantModel = {
   polygons: {
     'A': {
       morphTo: ['A', 'SkillsPolyA', 'AboutPinkTriangle'],
-      fill: '#00000000',
+      fill: 'rgba(0,0,0,0)',
       stroke: Defaults.DefaultStroke,
       strokeWidth: 15,
       points: [
@@ -128,7 +128,7 @@ const VariantModel = {
     },
     'C': {
       morphTo: ['C', 'SkillsPolyA', 'AboutPinkTriangle'],
-      fill: '#00000000',
+      fill: 'rgba(0,0,0,0)',
       stroke: Defaults.White,
       points: [
         ['h', 'f'],

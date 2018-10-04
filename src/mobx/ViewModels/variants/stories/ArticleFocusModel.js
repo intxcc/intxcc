@@ -10,7 +10,7 @@ ArticleFocusModel.guides['b'].deg = -13
 ArticleFocusModel.guides['c'].deg = -120
 ArticleFocusModel.guides['d'].deg = -120
 
-const transparent = '#00000000'
+const transparent = 'rgba(0,0,0,0)'
 
 ArticleFocusModel.polygons['A_WhiteStroke_Outer'].stroke = transparent
 ArticleFocusModel.polygons['B_WhiteStroke_Outer'].stroke = transparent

@@ -80,7 +80,7 @@
   &.disabled {
     filter: $global--disable-blur;
     pointer-events: none;
-    clip-path: $global--disable-clip-path;
+    clip-path: $global--disable-clip-path !important;
   }
 }
 
@@ -137,7 +137,7 @@
   clip-path: $global--enable-clip-path;
 
   &.disabled {
-    clip-path: $global--disable-clip-path;
+    clip-path: $global--disable-clip-path !important;
     filter: $global--disable-blur;
     pointer-events: none;
   }

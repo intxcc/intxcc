@@ -1,6 +1,10 @@
 @import 'storiesLayout';
 
 .view-stories {
+  .view-content {
+    clip-path: $global--completely-enable-clip-path;
+  }
+
   @import './stories/year-selection';
   @import './stories/selected-year-display';
   @import './stories/story-name-display';

@@ -1,6 +1,10 @@
 @import 'aboutLayout';
 
 .view-about {
+  .view-content {
+    clip-path: $global--completely-enable-clip-path;
+  }
+
   .content-wrapper-inner {
     position: fixed;
     top: 0;
@@ -8,7 +12,7 @@
     bottom: $global--menu-height;
     left: 0;
 
-    overflow-y: auto;
+    // overflow-y: auto;
   }
 
   .about-picture {

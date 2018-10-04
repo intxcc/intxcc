@@ -123,7 +123,7 @@ const RouterModel = types.model({
     if (route === null) {
       self.goToLastWorkingPath()
 
-      // Show 404-popup after 500ms, when we can confidently assume that there is a main view entity
+      // Show popup-404 after 500ms, when we can confidently assume that there is a main view entity
       setTimeout(function () {
         self.rootStore.views.get('main').stateBasicInfo.show404Popup()
       }, 500)

@@ -8,8 +8,6 @@ import RootStoreModel from '../RootStoreModel'
 
 import RoutingPaths from './RoutingPaths'
 
-import POPUP_404 from '../../config/POPUP_404'
-
 const FallBackPath = '/'
 
 const RouterModel = types.model({
@@ -127,7 +125,7 @@ const RouterModel = types.model({
 
       // Show 404-popup after 500ms, when we can confidently assume that there is a main view entity
       setTimeout(function () {
-        self.rootStore.views.get('main').stateBasicInfo.showPopup(POPUP_404)
+        self.rootStore.views.get('main').stateBasicInfo.show404Popup()
       }, 500)
 
       return

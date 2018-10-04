@@ -12,6 +12,8 @@ import PopupModel from './PopupModel'
 
 import { lineIntersect, degreesToRadians } from '../../miscFunctions'
 
+import POPUP_404 from '../../config/POPUP_404'
+
 import Style from '../../../style/variables/global.scss'
 
 /**
@@ -45,6 +47,10 @@ const BasicInfoModel = types.model({
     self.scrollTop = scrollTop
   }
 
+  function show404Popup (popup) {
+    self.showPopup(POPUP_404)
+  }
+
   function showPopup (popup) {
     self.popups.set(popup.id, popup)
   }
@@ -66,6 +72,7 @@ const BasicInfoModel = types.model({
     setViewEntityReference,
     setModelVariant,
     setScrollTop,
+    show404Popup,
     showPopup,
     closePopup,
     clearNotPersistentPopups

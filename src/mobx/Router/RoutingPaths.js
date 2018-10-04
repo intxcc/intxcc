@@ -25,7 +25,7 @@ const RoutingPaths = [
     model: 'skills'
   },
   {
-    path: '/skills/:type(skill)-:id-(.*)',
+    path: '/skills/:type(skill)-:skill_id-(.*)',
     model: 'skills'
   },
   {

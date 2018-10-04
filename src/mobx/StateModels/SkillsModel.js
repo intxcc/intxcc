@@ -1,6 +1,6 @@
 'use strict'
 
-import { types } from 'mobx-state-tree'
+import { types, resolveIdentifier } from 'mobx-state-tree'
 
 import { BasicInfoModel } from '../model/ViewEntity'
 
@@ -63,7 +63,11 @@ const SkillsModel = types.model({
   transitionOn: types.optional(types.boolean, false)
 }).actions(self => {
   function onRouterParamChange (paramName, paramValue) {
-    console.log(paramName + ': ' + paramValue)
+    switch (paramName) {
+      case 'skill_id':
+        self.selectSkillById(parseInt(paramValue))
+        break
+    }
   }
 
   function showExplanation () {
@@ -71,6 +75,13 @@ const SkillsModel = types.model({
   }
 
   function selectSkillByIdentifier (skillIdentifier) {
+    // Show 404 if the skill does not exist and go to the skill with the id 0
+    if (typeof resolveIdentifier(SkillModel, self.columns, skillIdentifier) === 'undefined') {
+      self.selectSkillById(0)
+      self.basicInfo.show404Popup()
+      return
+    }
+
     self.selection.skill = skillIdentifier
     self.selection.category = self.selection.skill.categoryId
     self.selection.column = self.selection.skill.columnId
@@ -156,10 +167,10 @@ const SkillsModel = types.model({
       skillId = 0
     }
 
-    self.selectSkill(skillId)
+    self.selectSkillById(skillId)
   }
 
-  function selectSkill (id) {
+  function selectSkillById (id) {
     const skillIdentifier = 'skill-' + id
     self.selectSkillByIdentifier(skillIdentifier)
   }
@@ -177,7 +188,7 @@ const SkillsModel = types.model({
     scrollSkill,
     centerMap,
     moveMapBy,
-    selectSkill
+    selectSkillById
   }
 })
 

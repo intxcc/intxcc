@@ -23,7 +23,7 @@ function subscribeToRouterParams (params, callback) {
       op: 'add',
       path: '/' + paramIndex,
       value: paramValue
-    })
+    }, callback)
   }
 
   return onPatch(params, patch => {

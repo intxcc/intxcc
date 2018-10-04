@@ -14,7 +14,10 @@
 
   &.disabled {
     filter: $global--disable-blur;
-    pointer-events: none;
+
+    .logo {
+      pointer-events: none;
+    }
   }
 
   .logo {

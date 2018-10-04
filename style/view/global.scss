@@ -72,7 +72,7 @@
   $global--morph-duration opacity;
 
   &.disabled {
-    transform: translate3d(0, 0, 0) scale(1.5);
+    transform: translate3d(0, 0, 0);
     filter: blur(3px);
     pointer-events: none;
   }

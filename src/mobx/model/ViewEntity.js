@@ -4,6 +4,8 @@ import { types } from 'mobx-state-tree'
 
 import { values, keys } from 'mobx'
 
+import RootStoreModel from '../RootStoreModel'
+
 import EntityGuideModel from './EntityGuideModel'
 import EntityPolygonModel from './EntityPolygonModel'
 import EntityObjectModel from './EntityObjectModel'
@@ -22,6 +24,8 @@ import Style from '../../../style/variables/global.scss'
 const BasicInfoModel = types.model({
   // Necessary to reference this in the view entity
   id: types.identifier,
+  // For easier accessibility
+  rootStore: types.optional(types.reference(types.late(() => RootStoreModel)), 'root-store'),
   clientWidth: types.optional(types.number, 0),
   clientHeight: types.optional(types.number, 0),
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),

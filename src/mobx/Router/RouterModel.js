@@ -43,7 +43,7 @@ const RouterModel = types.model({
   }
 
   // Called only when the hash changes, not on initialisation
-  function onHashChange (e) {
+  function onHashChange () {
     self.updateHash()
 
     if (!self.rootStore.isTransitioning) {

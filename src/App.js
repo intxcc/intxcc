@@ -38,6 +38,12 @@ const OverlayViews = {
 
 @observer
 class App extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.disposers = {}
+  }
+
   componentDidMount () {
     window.addEventListener('resize', this.updateDimensions)
     window.addEventListener('hashchange', this.props.store.router.onHashChange, false)
@@ -112,9 +118,39 @@ class App extends React.Component {
             }
           }
 
+          // Forward router params to the responsible state or null to indicate, that the state should no longer update based on the router params
+          let routerParams = this.props.store.router.params
+          if (view.model === this.props.store.router.model) {
+            routerParams = this.props.store.router.params
+          } else {
+            routerParams = null
+          }
+
+          // Check if the responsible state does have a function to receive router params and forward them
+          if (this.props.store.state[view.model].subscribeToRouterParams) {
+            if (routerParams !== null) {
+              // Only add disposers if there are none, which means no subscription inside of the state
+              if (!this.disposers[view.model] || this.disposers[view.model].length <= 0) {
+                this.disposers[view.model] = []
+
+                // Save the disposer to delete the subscription from the state to the router parameters, when the current model changes
+                this.disposers[view.model].push(this.props.store.state[view.model].subscribeToRouterParams(routerParams))
+              }
+            } else {
+              if (this.disposers[view.model]) {
+                for (let disposer of this.disposers[view.model]) {
+                  // Dispose of all subscriptions of states that do not represent the current path
+                  disposer()
+                }
+
+                // Clear disposers
+                this.disposers[view.model] = []
+              }
+            }
+          }
+
           const loadView = React.createElement(Views[view.model], {
             global: this.props.store.global,
-            router: this.props.store.router,
             state: this.props.store.state[view.model],
             view: view
           })

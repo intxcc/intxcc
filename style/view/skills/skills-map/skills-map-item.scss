@@ -1,3 +1,7 @@
+.skills-map-item-link {
+  text-decoration: none;
+}
+
 .skills-map-item {
   transition: .2s background-color,
   .2s color,
@@ -7,6 +11,7 @@
 
   padding: 0 .5rem;
 
+  color: $black;
   font-size: 1.8rem;
 
   &:hover {

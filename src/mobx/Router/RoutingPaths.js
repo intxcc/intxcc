@@ -31,6 +31,10 @@ const RoutingPaths = [
   {
     path: '/contact',
     model: 'contact'
+  },
+  {
+    path: '/contact/:id',
+    model: 'contact'
   }
 ]
 

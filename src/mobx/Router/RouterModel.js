@@ -65,7 +65,11 @@ const RouterModel = types.model({
     // Remember this, to revert changes that don't work
     self.lastWorkingPath = self.path
 
-    self.params.clear()
+    // Only clear paramaters is the view model changed
+    if (self.model !== self.nextModel) {
+      self.params.clear()
+    }
+
     // Load new params from the already parsed path, which wrote them to nextParams
     for (let paramIndex in self.nextParams.toJSON()) {
       const paramValue = self.nextParams.get(paramIndex)

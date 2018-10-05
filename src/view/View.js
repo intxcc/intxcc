@@ -289,6 +289,7 @@ class View extends React.Component {
           {/* Render helper divs */}
           <HelperDivsComponent className={props.className} modelName={props.view.model} that={this} guides={props.viewModel.guides} />
         </div>
+        <div className='view-content-background'></div>
         <main
           className={'view-content' + disabledClassName}
           ref={ (viewContent) => { this.viewContent = viewContent }}

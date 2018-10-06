@@ -18,16 +18,17 @@ import Style from '../../../style/variables/global.scss'
 const PopupWrapper = observer((props) => (
   <div className='popup-wrapper'>
     <TransitionGroup className="popup-list">
-      {values(props.popups).map(popup => (
+      {props.loadPopups ? values(props.popups).map(popup => (
         <CSSTransition key={popup.id + '-csstransition'} timeout={parseInt(Style.popupFadeOutDuration)} classNames="popup-transition">
           <PopupComponent key={popup.id} closeFunc={() => props.closeFunc(popup.id)} className={popup.className} title={popup.title} text={popup.text} hint={popup.hint} />
         </CSSTransition>
-      ))}
+      )) : ''}
     </TransitionGroup>
   </div>
 ))
 
 PopupWrapper.propTypes = {
+  loadPopups: PropTypes.bool,
   popups: PropTypes.object,
   closeFunc: PropTypes.func
 }

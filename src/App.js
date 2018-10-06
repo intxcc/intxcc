@@ -170,6 +170,7 @@ class App extends React.Component {
 
           return (
             <View
+              isMainView={key === 'main'}
               key={'view-' + key}
               className={'view-' + key}
               rootStore={this.props.store}

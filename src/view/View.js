@@ -34,6 +34,11 @@ class View extends React.Component {
       height: 0
     }
 
+    // Remember if the popup wrapper should already load the popups
+    this.state = {
+      loadPopups: false
+    }
+
     // Set timeout before updating teh helper divs, to prevent changing the state while the render method is running
     this.updateTimeout = false
   }
@@ -267,15 +272,25 @@ class View extends React.Component {
 
     let disabledClassName = ''
     // If this view has popups active and is not transitioning, disable this view
-    if (!props.rootStore.isTransitioning && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
+    if (this.state.loadPopups && !props.rootStore.isTransitioning && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
       disabledClassName = ' disabled'
     }
 
     let popupComponent = ''
     if (props.state && props.state.toJSON()['stateBasicInfo'] !== '') {
       popupComponent = (
-        <PopupWrapper closeFunc={props.state.basicInfo.closePopup} popups={props.state.basicInfo.popups} />
+        <PopupWrapper closeFunc={props.state.basicInfo.closePopup} popups={props.state.basicInfo.popups} loadPopups={this.state.loadPopups} />
       )
+
+      // Only the main view can have popups. Only set loadPopups once on the first render.
+      if (props.isMainView && !this.state.loadPopups) {
+        // So the popup load will get animated, we have to render the popup wrapper with no popups first and on next render add them
+        setTimeout(() => {
+          this.setState({
+            loadPopups: true
+          })
+        }, 0)
+      }
     }
 
     // //////////////// //
@@ -319,6 +334,7 @@ class View extends React.Component {
 }
 
 View.propTypes = {
+  isMainView: PropTypes.bool,
   global: PropTypes.object,
   rootStore: PropTypes.object,
   view: PropTypes.object,

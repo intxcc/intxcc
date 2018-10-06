@@ -69,11 +69,11 @@
 
 .view-model,
 .view-content {
-  transition: $global--morph-duration filter,
-  $global--morph-duration background-color,
-  $global--morph-duration transform,
-  $global--morph-duration clip-path,
-  $global--morph-duration opacity;
+  transition: $global--popup-fade-out-duration filter,
+  $global--popup-fade-out-duration background-color,
+  $global--popup-fade-out-duration transform,
+  $global--popup-fade-out-duration clip-path,
+  $global--popup-fade-out-duration opacity;
 
   clip-path: $global--enable-clip-path;
 
@@ -131,8 +131,8 @@
   bottom: 0;
   left: 0;
 
-  transition: $global--morph-duration filter,
-  $global--morph-duration clip-path;
+  transition: $global--popup-fade-out-duration filter,
+  $global--popup-fade-out-duration clip-path;
 
   clip-path: $global--enable-clip-path;
 

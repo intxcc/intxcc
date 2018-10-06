@@ -15,7 +15,7 @@ $global--fade-out-duration: $global--fade-out-duration-ms + ms;
 $global--morph-duration-ms: $global--fade-out-duration-ms + 400;
 $global--morph-duration: $global--morph-duration-ms + ms;
 
-$global--popup-fade-out-duration-ms: 200;
+$global--popup-fade-out-duration-ms: $global--fade-out-duration-ms;
 $global--popup-fade-out-duration: $global--popup-fade-out-duration-ms + ms;
 
 $global--menu-height: 4vh;

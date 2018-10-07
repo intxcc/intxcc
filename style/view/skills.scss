@@ -1,10 +1,6 @@
 @import 'skillsLayout';
 
 .view-skills {
-  .view-content {
-    clip-path: circle(61vmax at 40% 60%);
-  }
-
   @import './skills/stories-overlay-title';
   @import './skills/skills-detail-view';
   @import './skills/skills-map';

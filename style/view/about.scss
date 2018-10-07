@@ -1,10 +1,6 @@
 @import 'aboutLayout';
 
 .view-about {
-  .view-content {
-    clip-path: $global--completely-enable-clip-path;
-  }
-
   .content-wrapper-inner {
     position: fixed;
     top: 0;

@@ -12,7 +12,7 @@ $global--font-size: 14px;
 $global--fade-out-duration-ms: 600;
 $global--fade-out-duration: $global--fade-out-duration-ms + ms;
 
-$global--morph-duration-ms: $global--fade-out-duration-ms + 400;
+$global--morph-duration-ms: $global--fade-out-duration-ms;
 $global--morph-duration: $global--morph-duration-ms + ms;
 
 $global--variant-change-duration-ms: 400;
@@ -34,7 +34,7 @@ $global--enable-clip-path: circle(70vmax at 50% 50%);
 :export {
   fadeOutDuration: $global--fade-out-duration-ms;
   popupFadeOutDuration: $global--popup-fade-out-duration-ms;
-  morphDuration: $global--morph-duration-ms - 400;
+  morphDuration: $global--morph-duration-ms;
   variantMorphDuration: $global--variant-change-duration-ms;
   skillsMapTransitionTime: $skills-map-transition-time-ms;
 }

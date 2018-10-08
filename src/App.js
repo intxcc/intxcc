@@ -46,6 +46,7 @@ class App extends React.Component {
     this.disposers = {}
   }
 
+  @autobind
   componentDidMount () {
     window.addEventListener('resize', this.updateDimensions)
     window.addEventListener('hashchange', this.props.store.router.onHashChange, false)
@@ -55,6 +56,7 @@ class App extends React.Component {
     this.props.store.router.initialize()
   }
 
+  @autobind
   componentWillUnmount () {
     window.removeEventListener('resize', this.updateDimensions)
     window.removeEventListener('hashchange', this.props.store.router.onHashChange, false)

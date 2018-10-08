@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 import writtenNumber from 'written-number'
 
 const StoryComponent = observer(props => (
-  <article>
+  <article ref={div => { props.refFunc(div) }}>
     <h1>
       <ul>
         <li><b>STORY</b></li>
@@ -42,6 +42,7 @@ const StoryComponent = observer(props => (
 
 StoryComponent.propTypes = {
   children: PropTypes.object,
+  refFunc: PropTypes.func,
   story: PropTypes.object
 }
 

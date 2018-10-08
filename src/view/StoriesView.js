@@ -11,9 +11,7 @@ import StoriesWrapperComponent from './Stories/StoriesWrapperComponent'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <ViewObject object={props.view.objects.get('articles-container')}>
-      <StoriesWrapperComponent stories={props.state.stories} />
-    </ViewObject>
+    <StoriesWrapperComponent stories={props.state.stories} state={props.state} />
   </div>
 ))
 

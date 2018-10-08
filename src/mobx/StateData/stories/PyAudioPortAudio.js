@@ -3,7 +3,7 @@
 const StoryData = {
   id: 'pyaudio-portaudio-owntrack',
   textName: 'PyAudioPortAudioText',
-  name: 'PyAudio/PortAudio Fork',
+  name: 'PyAudio & PortAudio',
   year: 2016,
   time: '2016 and 2018',
   type: 'Python Module',

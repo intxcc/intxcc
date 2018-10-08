@@ -1,11 +1,14 @@
 'use strict'
 
-import { types } from 'mobx-state-tree'
+import { types, resolveIdentifier } from 'mobx-state-tree'
+import { keys } from 'mobx'
 
 import BasicInfoModel from '../model/BasicInfoModel'
 
 const StoryModel = types.model({
   id: types.identifier,
+  div: types.maybeNull(types.frozen()),
+  top: types.optional(types.number, 0),
   textName: types.string,
   name: types.string,
   year: types.number,
@@ -23,18 +26,59 @@ const StoriesModel = types.model({
   selectedStory: types.reference(StoryModel),
   stories: types.array(StoryModel)
 }).actions(self => {
-  function onScroll (scrollTop) {
-    self.basicInfo.setScrollTop(scrollTop)
+  function setDiv (storyId, div) {
+    const story = resolveIdentifier(StoryModel, self.stories, storyId)
+    if (typeof story === 'undefined') {
+      return
+    }
 
-    // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
-    if (self.basicInfo.viewEntity !== '') {
-      if (self.basicInfo.scrollTop > 50) {
-        self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
+    story.div = div
+  }
+
+  function updateStoriesTop () {
+    for (let key of keys(self.stories)) {
+      const story = self.stories.get(key)
+      const rect = story.div.getBoundingClientRect()
+      if (rect.top < 0 && key !== keys(self.stories).length - 1) {
+        story.top = rect.bottom
       } else {
-        self.basicInfo.viewEntity.changeModelVariant('default')
+        story.top = rect.top
       }
     }
-    // TODO REMOVE THIS SHOULD BE DONE BY THE ROUTER !!
+  }
+
+  function onScroll (scrollTop) {
+    self.basicInfo.setScrollTop(scrollTop)
+    self.updateStoriesTop()
+
+    const windowHeightHalf = self.basicInfo.rootStore.global.clientHeight / 2
+
+    let mostVisibleStoryKey = false
+    let mostVisibleStoryTop = false
+    for (let key of keys(self.stories)) {
+      const story = self.stories.get(key)
+
+      if (mostVisibleStoryKey === false) {
+        mostVisibleStoryKey = key
+        mostVisibleStoryTop = story.top
+        continue
+      }
+
+      if (Math.abs(story.top - windowHeightHalf) < Math.abs(mostVisibleStoryTop - windowHeightHalf)) {
+        mostVisibleStoryKey = key
+        mostVisibleStoryTop = story.top
+      }
+    }
+
+    if (mostVisibleStoryKey !== false) {
+      self.selectedStory = self.stories.get(mostVisibleStoryKey)
+    }
+
+    if (Math.abs(mostVisibleStoryTop - windowHeightHalf) < 50 || (mostVisibleStoryTop - windowHeightHalf < 0 && Math.abs(mostVisibleStoryTop - windowHeightHalf) < 250)) {
+      self.basicInfo.viewEntity.changeModelVariant('default')
+    } else {
+      self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
+    }
   }
 
   function selectYear (index) {
@@ -42,6 +86,8 @@ const StoriesModel = types.model({
   }
 
   return {
+    setDiv,
+    updateStoriesTop,
     onScroll,
     selectYear
   }

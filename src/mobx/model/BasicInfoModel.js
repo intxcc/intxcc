@@ -34,7 +34,7 @@ const BasicInfoModel = types.model({
     const timeDifference = (new Date()).getTime() - self.lastPersist
 
     // If less than 1 second past since last persist and this persist is not forced skip it
-    if (!force && timeDifference < 1000) {
+    if (!force && timeDifference < 2000) {
       return
     }
 

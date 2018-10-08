@@ -10,6 +10,8 @@ import PopupModel from './PopupModel'
 
 import POPUP_404 from '../../config/POPUP_404'
 
+import persistStateBasicInfo from '../../persist/persistStateBasicInfo'
+
 /**
  * Basic Info for the different view states. Like scrollTop and modelvariant of the view, that is currently showing this. The basic info is at first a property of the view states, but in this file, because we get an infinite import loop otherwise. So before I google 1 hour how to circumvent this is just paste it here and write this far too long comment.
  */
@@ -24,7 +26,22 @@ const BasicInfoModel = types.model({
   modelVariant: types.optional(types.string, 'default'),
   scrollTop: types.optional(types.number, 0),
   popups: types.optional(types.map(PopupModel), {})
-}).actions(self => {
+}).volatile(self => ({
+  lastPersist: 0
+})).actions(self => {
+  // Saves the state to local/session storage. Force will always safe the state, for some properties (like scroll) it is preferrable to not force, because this changes very often, and to save on every change does not make much sense in regard to performance
+  function persist (force) {
+    const timeDifference = (new Date()).getTime() - self.lastPersist
+
+    // If less than 1 second past since last persist and this persist is not forced skip it
+    if (!force && timeDifference < 1000) {
+      return
+    }
+
+    self.lastPersist = (new Date()).getTime()
+    persistStateBasicInfo(self.toJSON())
+  }
+
   // Save the client dimensions here, so we can use them to calculate e.g. the mid to center the selected dif in the skills view
   function setClientDimensions (clientWidth, clientHeight) {
     self.clientWidth = clientWidth
@@ -41,6 +58,7 @@ const BasicInfoModel = types.model({
 
   function setScrollTop (scrollTop) {
     self.scrollTop = scrollTop
+    self.persist(false)
   }
 
   function show404Popup (popup) {
@@ -53,6 +71,7 @@ const BasicInfoModel = types.model({
 
   function closePopup (id) {
     self.popups.delete(id)
+    self.persist(true)
   }
 
   function clearNotPersistentPopups () {
@@ -64,6 +83,7 @@ const BasicInfoModel = types.model({
   }
 
   return {
+    persist,
     setClientDimensions,
     setViewEntityReference,
     setModelVariant,

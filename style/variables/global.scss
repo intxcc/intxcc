@@ -15,6 +15,9 @@ $global--fade-out-duration: $global--fade-out-duration-ms + ms;
 $global--morph-duration-ms: $global--fade-out-duration-ms + 400;
 $global--morph-duration: $global--morph-duration-ms + ms;
 
+$global--variant-change-duration-ms: 400;
+$global--variant-change-duration: $global--variant-change-duration-ms + ms;
+
 $global--popup-fade-out-duration-ms: $global--fade-out-duration-ms;
 $global--popup-fade-out-duration: $global--popup-fade-out-duration-ms + ms;
 
@@ -32,5 +35,6 @@ $global--enable-clip-path: circle(70vmax at 50% 50%);
   fadeOutDuration: $global--fade-out-duration-ms;
   popupFadeOutDuration: $global--popup-fade-out-duration-ms;
   morphDuration: $global--morph-duration-ms - 400;
+  variantMorphDuration: $global--variant-change-duration-ms;
   skillsMapTransitionTime: $skills-map-transition-time-ms;
 }

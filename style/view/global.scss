@@ -150,12 +150,12 @@
 .object-transition {
   .object,
   .rotation-div {
-    transition: $global--morph-duration opacity,
-    $global--morph-duration top,
-    $global--morph-duration right,
-    $global--morph-duration bottom,
-    $global--morph-duration left,
-    $global--morph-duration transform;
+    transition: $global--variant-change-duration opacity,
+    $global--variant-change-duration top,
+    $global--variant-change-duration right,
+    $global--variant-change-duration bottom,
+    $global--variant-change-duration left,
+    $global--variant-change-duration transform;
   }
 }
 

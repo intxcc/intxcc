@@ -47,7 +47,7 @@ const PolygonMorph = observer((props) => {
         stroke: props.stroke2,
         fill: props.fill2,
         strokeWidth: props.strokeWidth2
-      }} impl={TimingAnimation} config={{ duration: Style.morphDuration, easing: Easing.ease }}>
+      }} impl={TimingAnimation} config={{ duration: props.morphDuration, easing: Easing.ease }}>
       {({ t, d, stroke, fill, strokeWidth }) => {
         return (
           <animated.path
@@ -63,6 +63,7 @@ const PolygonMorph = observer((props) => {
 })
 
 PolygonMorph.propTypes = {
+  morphDuration: PropTypes.number,
   path1: PropTypes.string,
   stroke1: PropTypes.string,
   fill1: PropTypes.string,
@@ -119,6 +120,7 @@ const PolygonsComponent = observer((props) => (
 
           polygonMorphes.push(
             <PolygonMorph
+              morphDuration={parseInt(props.isVariantMorph ? Style.variantMorphDuration : Style.morphDuration)}
               key={props.classNameStart + key + '-' + morphToIndex}
               fill1={polygon.fill}
               stroke1={polygon.stroke}

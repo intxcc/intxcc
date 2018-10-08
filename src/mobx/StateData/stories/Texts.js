@@ -1,9 +1,11 @@
 'use strict'
 
-import Text0 from './Text0'
+import OwnTrackText from './OwnTrackText'
+import PyAudioPortAudioText from './PyAudioPortAudioText'
 
 const Texts = {
-  'Text0': Text0
+  'OwnTrackText': OwnTrackText,
+  'PyAudioPortAudioText': PyAudioPortAudioText
 }
 
 export default Texts

@@ -1,18 +1,17 @@
 'use strict'
 
 const StoryData = {
-  textName: 'Text0',
-  name: 'OwnTrack',
-  year: 2018,
-  time: 'February till April',
-  type: 'Mobile App',
-  subType: 'Android',
+  id: 'pyaudio-portaudio-owntrack',
+  textName: 'PyAudioPortAudioText',
+  name: 'PyAudio/PortAudio Fork',
+  year: 2016,
+  time: '2016 and 2018',
+  type: 'Python Module',
+  subType: 'with C bindings',
   skills: [
-    'java',
-    'android development',
-    'mysql',
+    'c',
     'python',
-    'php'
+    'windows'
   ],
   summary: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.'
 }

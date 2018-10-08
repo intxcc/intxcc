@@ -32,9 +32,15 @@ StoriesView.propTypes = {
 const StoriesOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
     <ViewObject object={props.view.objects.get('story-info-display')}>
-      <span className='story-info-display-name'>OwnTrack</span>
+      <span className='story-info-display-name'>
+        {props.state.selectedStory.name}
+      </span>
       <div className='story-info-secondary-display'>
-        <b>Skills</b> java | android studio | mysql | python | php
+        <b>Skills</b>{
+          props.state.selectedStory.skills.map((skill, index) => (
+            <a key={'selected-story-skill-link-' + index} className='selected-story-skill-link' href={'/#/skills/skill/' + skill.replace(new RegExp(' ', 'g'), '-')}>{skill}</a>
+          ))
+        }
       </div>
     </ViewObject>
     <ViewObject object={props.view.objects.get('story-name-display')}>

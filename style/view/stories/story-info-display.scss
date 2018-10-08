@@ -35,5 +35,26 @@
     b {
       color: $black;
     }
+
+    .selected-story-skill-link {
+      text-decoration: none;
+      color: $gray;
+
+      &::before {
+        // Attention these are not normal spaces but "&nbsp;"s
+        content: ' ';
+      }
+
+      &::after {
+        // Attention these are not normal spaces but "&nbsp;"s
+        content: ' |';
+      }
+
+      &:last-child {
+        &::after {
+          content: '';
+        }
+      }
+    }
   }
 }

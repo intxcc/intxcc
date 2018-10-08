@@ -5,6 +5,7 @@ import { types } from 'mobx-state-tree'
 import BasicInfoModel from '../model/BasicInfoModel'
 
 const StoryModel = types.model({
+  id: types.identifier,
   textName: types.string,
   name: types.string,
   year: types.number,
@@ -19,6 +20,7 @@ const StoriesModel = types.model({
   basicInfo: BasicInfoModel,
   years: types.array(types.number),
   selectedYear: types.optional(types.number, 0),
+  selectedStory: types.reference(StoryModel),
   stories: types.array(StoryModel)
 }).actions(self => {
   function onScroll (scrollTop) {

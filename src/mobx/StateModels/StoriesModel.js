@@ -6,6 +6,12 @@ import BasicInfoModel from '../model/BasicInfoModel'
 
 const StoryModel = types.model({
   textName: types.string,
+  name: types.string,
+  year: types.number,
+  time: types.optional(types.string, ''),
+  type: types.string,
+  subType: types.optional(types.string, ''),
+  skills: types.optional(types.array(types.string), []),
   summary: types.string
 })
 

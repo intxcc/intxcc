@@ -46,13 +46,15 @@ const RouterModel = types.model({
   function onHashChange () {
     self.updateHash()
 
-    if (!self.rootStore.isTransitioning) {
-      // Accept the current path as working
-      self.acceptPath()
-
-      if (!self.rootStore.views.get('main') || self.nextModel !== self.rootStore.views.get('main').model) {
-        self.rootStore.startTransition(self.model)
+    // If the nextmodel is the same as the current one, we can ignore the isTransitioning parameter
+    if (!self.rootStore.isTransitioning || self.nextModel === self.model) {
+      // Only transition if this is not the first render and the model actually changed
+      if (!self.rootStore.views.get('main') || (self.nextModel !== self.model && self.nextModel !== self.rootStore.views.get('main').model)) {
+        self.rootStore.startTransition(self.nextModel)
       }
+
+      // Accept the current path as working. Do this here, because this will change the model and make nextModel and model the same.
+      self.acceptPath()
     } else {
       self.goToLastWorkingPath()
     }

@@ -117,7 +117,7 @@ const SkillsModel = types.model({
 
       // Propagate hash change to router, which does normally not happened when the changes comes from within the application
       if (self.basicInfo) {
-        self.basicInfo.rootStore.router.onHashChange()
+        setTimeout(self.basicInfo.rootStore.router.onHashChange, 0)
       }
     }
   }

@@ -29,7 +29,7 @@ const RoutingPaths = [
     model: 'skills'
   },
   {
-    path: '/skills/:type(skill)-:skill_name/',
+    path: '/skills/:type(skill)/:skill_name',
     model: 'skills'
   },
   {

@@ -113,7 +113,11 @@ const SkillsModel = types.model({
 
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {
-      window.history.pushState(null, null, '/#/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-'))
+      if (self.routerParams.get('skill_name')) {
+        window.history.replaceState(null, null, '/#/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-'))
+      } else {
+        window.history.pushState(null, null, '/#/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-'))
+      }
 
       // Propagate hash change to router, which does normally not happened when the changes comes from within the application
       if (self.basicInfo) {

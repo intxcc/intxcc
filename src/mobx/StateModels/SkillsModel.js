@@ -2,11 +2,11 @@
 
 import { types, resolveIdentifier } from 'mobx-state-tree'
 
-import { BasicInfoModel } from '../model/ViewEntity'
+import BasicInfoModel from '../model/BasicInfoModel'
 
 import { getIdNumberFromIdString } from '../../miscFunctions'
 
-import SKILLS_EXPLANATION from '../../config/SkillsExplanation'
+import SKILLS_EXPLANATION from '../../config/POPUP_SKILLS_EXPLANATION'
 
 import Style from '../../../style/variables/global.scss'
 

@@ -2,7 +2,7 @@
 
 import { types } from 'mobx-state-tree'
 
-import { BasicInfoModel } from '../model/ViewEntity'
+import BasicInfoModel from '../model/BasicInfoModel'
 
 const AboutModel = types.model({
   basicInfo: BasicInfoModel

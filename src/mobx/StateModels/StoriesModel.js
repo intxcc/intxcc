@@ -2,7 +2,7 @@
 
 import { types } from 'mobx-state-tree'
 
-import { BasicInfoModel } from '../model/ViewEntity'
+import BasicInfoModel from '../model/BasicInfoModel'
 
 const StoryModel = types.model({
   textName: types.string,

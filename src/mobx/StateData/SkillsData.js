@@ -2,13 +2,13 @@
 
 import { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount } from './skills/SkillsColumns'
 
-import SKILLS_EXPLANATION from '../../config/SkillsExplanation'
+import POPUP_SKILLS_EXPLANATION from '../../config/POPUP_SKILLS_EXPLANATION'
 
 const SkillsData = {
   basicInfo: {
     id: 'skillsBasicInfo',
     popups: [
-      SKILLS_EXPLANATION
+      POPUP_SKILLS_EXPLANATION
     ]
   },
   columns: SkillsColumns,

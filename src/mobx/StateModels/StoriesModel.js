@@ -27,6 +27,10 @@ const StoriesModel = types.model({
   stories: types.array(StoryModel)
 }).actions(self => {
   function setDiv (storyId, div) {
+    if (div === null) {
+      return
+    }
+
     const story = resolveIdentifier(StoryModel, self.stories, storyId)
     if (typeof story === 'undefined') {
       return

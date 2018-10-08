@@ -14,6 +14,8 @@ const SkillsColumns = [
   General
 ]
 
+let SkillIndex = {}
+
 let columnCounter = 0
 let categoryCounter = 0
 let skillCounter = 0
@@ -25,6 +27,11 @@ for (let columnIndex in SkillsColumns) {
       category.skills[skillIndex].columnId = 'column-' + columnCounter
       category.skills[skillIndex].categoryId = 'category-' + categoryCounter
       category.skills[skillIndex].id = 'skill-' + skillCounter
+
+      // Index all skills for better searching and linking
+      const skillStringIdentifier = (category.skills[skillIndex].title).toLowerCase().replace(new RegExp(' ', 'g'), '-')
+      SkillIndex[skillStringIdentifier] = 'skill-' + skillCounter
+
       skillCounter++
     }
 
@@ -41,4 +48,4 @@ const ColumnsCount = columnCounter
 const CategoriesCount = categoryCounter
 const SkillsCount = skillCounter
 
-export { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount }
+export { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount, SkillIndex }

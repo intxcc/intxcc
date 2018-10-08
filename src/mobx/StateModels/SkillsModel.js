@@ -55,6 +55,7 @@ const SkillsModel = types.model({
   routerParams: types.optional(types.map(types.string), {}),
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
+  skillIndex: types.map(types.string),
   columns: types.array(SkillColumn),
   limits: types.optional(Limits, {}),
   mouseLastPosition: types.optional(Position, {}),
@@ -78,11 +79,24 @@ const SkillsModel = types.model({
 
         self.selectSkillById(parseInt(paramValue))
         break
+      case 'skill_name':
+        self.selectSkillByName(paramValue)
+        break
     }
   }
 
   function showExplanation () {
     self.basicInfo.showPopup(SKILLS_EXPLANATION)
+  }
+
+  function selectSkillByName (skillName) {
+    if (self.skillIndex.get(skillName)) {
+      const skillIdentifier = self.skillIndex.get(skillName)
+      self.selectSkillByIdentifier(skillIdentifier)
+    } else {
+      self.selectSkillById(0)
+      self.basicInfo.show404Popup()
+    }
   }
 
   function selectSkillByIdentifier (skillIdentifier) {
@@ -188,6 +202,7 @@ const SkillsModel = types.model({
   return {
     onRouterParamChange,
     showExplanation,
+    selectSkillByName,
     selectSkillByIdentifier,
     turnTransitionOff,
     toggleMouseDrag,

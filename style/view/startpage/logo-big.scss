@@ -12,14 +12,6 @@
 
   transform-origin: top left;
 
-  &.pre-disabled {
-    filter: $global--pre-disable-blur;
-
-    .logo {
-      pointer-events: none;
-    }
-  }
-
   &.disabled {
     filter: $global--disable-blur;
 

@@ -77,12 +77,12 @@
 
   clip-path: $global--enable-clip-path;
 
-  &.pre-disabled {
-    filter: $global--pre-disable-blur;
-    pointer-events: none;
-  }
-
   &.disabled {
+    transition: $global--popup-fade-out-duration filter,
+    $global--popup-fade-out-duration background-color,
+    $global--popup-fade-out-duration transform,
+    $global--popup-fade-out-duration opacity;
+
     filter: $global--disable-blur;
     pointer-events: none;
     clip-path: $global--disable-clip-path !important;
@@ -140,11 +140,6 @@
   $global--popup-fade-out-duration clip-path;
 
   clip-path: $global--enable-clip-path;
-
-  &.pre-disabled {
-    filter: $global--pre-disable-blur;
-    pointer-events: none;
-  }
 
   &.disabled {
     clip-path: $global--disable-clip-path !important;

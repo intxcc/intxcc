@@ -57,14 +57,14 @@
 .view-overlay {
   display: none;
   z-index: 102;
+
+  &.disabled {
+    background-color: rgba($color: $black, $alpha: .5);
+  }
 }
 
 .view-model {
   z-index: 10;
-
-  &.disabled {
-    background-color: rgba($color: $black, $alpha: .05);
-  }
 }
 
 .view-model,
@@ -145,6 +145,57 @@
     clip-path: $global--disable-clip-path !important;
     filter: $global--disable-blur;
     pointer-events: none;
+  }
+}
+
+.overlay-background-color {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  transition: $global--popup-fade-out-duration filter,
+  $global--popup-fade-out-duration background-color,
+  $global--popup-fade-out-duration transform,
+  $global--popup-fade-out-duration clip-path,
+  $global--popup-fade-out-duration opacity;
+
+  z-index: 100;
+  clip-path: $global--enable-clip-path;
+  pointer-events: none;
+
+  .overlay-background-color-blurred {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    transition: $global--popup-fade-out-duration filter,
+    $global--popup-fade-out-duration background-color,
+    $global--popup-fade-out-duration transform,
+    $global--popup-fade-out-duration clip-path,
+    $global--popup-fade-out-duration opacity;
+  }
+
+  &.disabled {
+    transition: $global--popup-fade-out-duration filter,
+    $global--popup-fade-out-duration background-color,
+    $global--popup-fade-out-duration transform,
+    $global--popup-fade-out-duration opacity;
+
+    background-color: rgba($color: $primary-color, $alpha: .3);
+    clip-path: $global--disable-clip-path;
+
+    .overlay-background-color-blurred {
+      transition: $global--popup-fade-out-duration filter,
+      $global--popup-fade-out-duration background-color,
+      $global--popup-fade-out-duration transform,
+      $global--popup-fade-out-duration opacity;
+
+      background-color: rgba($color: $white, $alpha: .8);
+    }
   }
 }
 

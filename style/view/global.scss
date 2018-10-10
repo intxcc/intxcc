@@ -175,7 +175,7 @@
   &.disabled {
     transition: $global--popup-fade-out-duration background-color;
 
-    background-color: rgba($color: darken($color: $primary-color, $amount: 20), $alpha: .2);
+    background-color: rgba($color: $black, $alpha: .2);
     clip-path: $global--disable-clip-path;
 
     .overlay-background-color-blurred {

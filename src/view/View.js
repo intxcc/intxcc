@@ -271,9 +271,14 @@ class View extends React.Component {
     const contentClassName = props.view.transitionState === 'morphVariant' ? ' object-transition ' : ''
 
     let disabledClassName = ''
-    // If this view has popups active and is not transitioning, disable this view
-    if (this.state.loadPopups && !props.rootStore.isTransitioning && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
+    // If this view has popups active, disable this view
+    if (this.state.loadPopups && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
       disabledClassName = ' disabled'
+    }
+
+    // If we are transitioning to another view, enable this one again
+    if (props.rootStore.isTransitioning && props.buffer) {
+      disabledClassName = ''
     }
 
     let popupComponent = ''

@@ -7,21 +7,21 @@ import { observer } from 'mobx-react'
 
 const StartPopup = observer(props => (
   <div className='popup start-popup'>
-    <h1>What is this?</h1>
     <h2>
-      This is intxcc:<br />
-      This is future:<br />
-      This is freedom:<br />
-      This is warm summer rain:<br />
-      This is design:<br />
+      <span>this is intxcc</span><br />
+      <span>this is future</span><br />
+      <span>this is freedom</span><br />
+      <span>this is warm summer rain</span><br />
       <span className='start-popup-for-you-span'>This is for you.</span>
     </h2>
     <h1>This is development, design &amp; art from Berlin.</h1>
-    <div onClick={props.closeFunc} className='start-popup-ok-btn'>
-      understood
-    </div>
-    <div onClick={props.closeFunc} className='start-popup-ok-btn start-popup-ok-btn2'>
-      ok, whatever.
+    <div className='start-popup-btn-wrapper'>
+      <div onClick={props.closeFunc} className='start-popup-btn'>
+        Cool.
+      </div>
+      <div onClick={props.closeFunc} className='start-popup-btn'>
+        I hate summer rain.
+      </div>
     </div>
   </div>
 ))

@@ -15,12 +15,20 @@ import PopupComponent from './PopupComponent'
 
 import Style from '../../../style/variables/global.scss'
 
+import StartPopup from './CustomPopups/StartPopup'
+const CustomPopups = {
+  'StartPopup': StartPopup
+}
+
 const PopupWrapper = observer((props) => (
   <div className='popup-wrapper'>
     <TransitionGroup className="popup-list">
       {values(props.popups).map(popup => (
         <CSSTransition key={popup.id + '-csstransition'} timeout={parseInt(Style.popupFadeOutDuration)} classNames="popup-transition">
-          <PopupComponent key={popup.id} closeFunc={() => props.closeFunc(popup.id)} className={popup.className} title={popup.title} text={popup.text} hint={popup.hint} />
+          {popup.customComponent !== '' && CustomPopups[popup.customComponent] ? React.createElement(CustomPopups[popup.customComponent], {
+            closeFunc: () => props.closeFunc(popup.id),
+            popup: popup
+          }) : <PopupComponent key={popup.id} closeFunc={() => props.closeFunc(popup.id)} className={popup.className} title={popup.title} text={popup.text} hint={popup.hint} />}
         </CSSTransition>
       ))}
     </TransitionGroup>

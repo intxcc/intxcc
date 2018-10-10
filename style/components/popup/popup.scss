@@ -1,11 +1,12 @@
 @import 'popup-wrapper';
 @import 'popup-transition';
+@import 'start-popup';
 
 .popup {
   position: relative;
 
   transform: translate3d(0, 0, 0);
-  transition: $global--popup-fade-out-duration opacity,
+  transition: calc(#{$global--popup-fade-out-duration} / 2) opacity,
   $global--popup-fade-out-duration transform;
 
   background-color: $white;

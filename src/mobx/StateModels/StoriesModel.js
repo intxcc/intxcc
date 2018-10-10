@@ -43,11 +43,7 @@ const StoriesModel = types.model({
     for (let key of keys(self.stories)) {
       const story = self.stories.get(key)
       const rect = story.div.getBoundingClientRect()
-      if (rect.top < 0 && key !== keys(self.stories).length - 1) {
-        story.top = rect.bottom
-      } else {
-        story.top = rect.top
-      }
+      story.top = rect.top
     }
   }
 
@@ -55,30 +51,33 @@ const StoriesModel = types.model({
     self.basicInfo.setScrollTop(scrollTop)
     self.updateStoriesTop()
 
-    const windowHeightHalf = self.basicInfo.rootStore.global.clientHeight / 2
+    const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
 
-    let mostVisibleStoryKey = false
-    let mostVisibleStoryTop = false
+    let biggestNegativeTopKey = false
+    let biggestNegativeTopValue = false
+    // To select a story we get the one, from which the top is the smallest amount above position top 0
     for (let key of keys(self.stories)) {
       const story = self.stories.get(key)
-
-      if (mostVisibleStoryKey === false) {
-        mostVisibleStoryKey = key
-        mostVisibleStoryTop = story.top
-        continue
-      }
-
-      if (Math.abs(story.top - windowHeightHalf) < Math.abs(mostVisibleStoryTop - windowHeightHalf)) {
-        mostVisibleStoryKey = key
-        mostVisibleStoryTop = story.top
+      const storyTopWithMargin = story.top - marginTopValue
+      if (storyTopWithMargin < 0) {
+        if (biggestNegativeTopKey === false) {
+          biggestNegativeTopKey = key
+          biggestNegativeTopValue = storyTopWithMargin
+        } else if (storyTopWithMargin > biggestNegativeTopValue) {
+          biggestNegativeTopKey = key
+          biggestNegativeTopValue = storyTopWithMargin
+        }
       }
     }
 
-    if (mostVisibleStoryKey !== false) {
-      self.selectedStory = self.stories.get(mostVisibleStoryKey)
+    // If no top is negative we just select the first story
+    if (biggestNegativeTopKey === false) {
+      self.selectedStory = self.stories.get(keys(self.stories)[0])
+    } else {
+      self.selectedStory = self.stories.get(biggestNegativeTopKey)
     }
 
-    if (Math.abs(mostVisibleStoryTop - windowHeightHalf) < 50 || (mostVisibleStoryTop - windowHeightHalf < 0 && Math.abs(mostVisibleStoryTop - windowHeightHalf) < 250)) {
+    if (Math.abs(biggestNegativeTopValue) < marginTopValue * 0.75 && Math.abs(biggestNegativeTopValue) > marginTopValue * 0.25) {
       self.basicInfo.viewEntity.changeModelVariant('default')
     } else {
       self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')

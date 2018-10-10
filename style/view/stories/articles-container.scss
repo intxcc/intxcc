@@ -1,18 +1,26 @@
 .variant--article-focus {
-  .articles-container {
+  article {
     h1 {
       opacity: 1;
     }
   }
 }
 
-.articles-container {
-  position: absolute;
-  top: 42vh;
-  right: 33vh;
+article {
+  float: right;
+
+  margin-right: 33vh;
   width: 50vw;
 
   text-align: justify;
+
+  .article-inner {
+    transition: .2s opacity;
+  }
+
+  &:first-child {
+    margin-top: calc(42vh - 5rem);
+  }
 
   .articles-container-inner {
     position: absolute;
@@ -26,7 +34,7 @@
   h1 {
     display: flex;
     position: sticky;
-    top: -6rem;
+    top: -1px;
 
     align-items: center;
     justify-content: center;

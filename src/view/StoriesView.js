@@ -7,11 +7,19 @@ import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
 import YearSelection from './Stories/YearSelection'
-import StoriesWrapperComponent from './Stories/StoriesWrapperComponent'
+
+import StoryComponent from './Stories/StoryComponent'
+import Texts from '../mobx/StateData/stories/Texts'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <StoriesWrapperComponent stories={props.state.stories} state={props.state} />
+    {props.state.stories.map((story, index) => (
+      <StoryComponent refFunc={div => {
+        props.state.setDiv(story.id, div)
+      }} keyString={'story-' + story.id} key={'story-' + story.id} isSelected={story.id === props.state.selectedStory.id} story={story}>
+        {Texts[story.textName]}
+      </StoryComponent>
+    ))}
   </div>
 ))
 

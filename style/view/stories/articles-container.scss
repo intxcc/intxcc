@@ -10,6 +10,7 @@ article {
   float: right;
 
   margin-right: 33vh;
+  padding-bottom: 5rem;
   width: 50vw;
 
   text-align: justify;
@@ -19,7 +20,11 @@ article {
   }
 
   &:first-child {
-    margin-top: calc(42vh - 5rem);
+    margin-top: 42vh;
+  }
+
+  &:last-child {
+    margin-bottom: 5rem;
   }
 
   .articles-container-inner {

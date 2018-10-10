@@ -23,7 +23,7 @@ const ViewEntity = types.model({
   modelVariant: types.optional(types.string, 'default'),
   // Cooldown to prevent some race conditions, that were the cause of a freezed main view bug
   cooldown: types.optional(types.boolean, true),
-  stateBasicInfo: types.optional(types.reference(types.late(() => BasicInfoModel)), ''),
+  stateBasicInfo: types.maybeNull(types.reference(types.late(() => BasicInfoModel))),
   nextModelVariant: types.optional(types.string, ''),
   snapshotVariant: types.optional(types.string, ''),
   transitionState: types.optional(types.string, ''),
@@ -32,7 +32,15 @@ const ViewEntity = types.model({
   polygons: types.optional(types.map(EntityPolygonModel), {}),
   polygonsSnapshot: types.optional(types.map(EntityPolygonModel), {}),
   objects: types.optional(types.map(EntityObjectModel), {})
-}).actions(self => {
+}).views(self => ({
+  get isDisabled () {
+    if (!self.stateBasicInfo) {
+      return true
+    } else {
+      return self.stateBasicInfo.isDisabled
+    }
+  }
+})).actions(self => {
   // Save the reference to the basic info of the view state that is currently using this viewentity to display its state
   function setStateBasicInfo (stateBasicInfo) {
     self.stateBasicInfo = stateBasicInfo

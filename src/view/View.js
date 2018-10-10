@@ -34,27 +34,31 @@ class View extends React.Component {
       height: 0
     }
 
-    // Remember if the popup wrapper should already load the popups
-    this.state = {
-      loadPopups: false
-    }
-
     // Set timeout before updating teh helper divs, to prevent changing the state while the render method is running
     this.updateTimeout = false
+    this.didSetReferences = false
   }
 
   componentDidMount () {
+    this.setReferences()
+    this.updateHelperDivs()
+
+    // Set scroll top after first render, append to event queue
+    setTimeout(this.setScrollTop, 0)
+  }
+
+  @autobind
+  setReferences () {
+    if (this.didSetReferences) {
+      return
+    }
+
     // Give the basicInfo the reference of the view entity and the view entity the one of the basicInfo. Then load the modelVariant saved in the basicInfo of the state now loaded
     if (this.props.state && this.props.state.basicInfo) {
       this.props.state.basicInfo.setViewEntityReference(this.props.view.id)
       this.props.view.setStateBasicInfo(this.props.state.basicInfo.id)
       this.props.view.forceModelVariant(this.props.state.basicInfo.modelVariant)
     }
-
-    this.updateHelperDivs()
-
-    // Set scroll top after first render, append to event queue
-    setTimeout(this.setScrollTop, 0)
   }
 
   @autobind
@@ -186,6 +190,8 @@ class View extends React.Component {
 
   @autobind
   render () {
+    this.setReferences()
+
     const props = this.props
 
     let fadeClassName = ''
@@ -272,35 +278,16 @@ class View extends React.Component {
 
     let disabledClassName = ''
     // If this view has popups active, disable this view
-    if (this.state.loadPopups && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
+    if (props.view.isDisabled) {
       disabledClassName = ' disabled'
     }
 
     // If we are transitioning to another view, enable this one again
-    if (props.rootStore.isTransitioning && props.buffer) {
+    if (props.buffer) {
       disabledClassName = ''
     }
 
-    if (!props.buffer && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
-      disabledClassName += ' pre-disabled'
-    }
-
-    let popupComponent = ''
-    if (props.state && props.state.toJSON()['stateBasicInfo'] !== '') {
-      popupComponent = (
-        <PopupWrapper closeFunc={props.state.basicInfo.closePopup} popups={props.state.basicInfo.popups} loadPopups={this.state.loadPopups} />
-      )
-
-      // Only the main view can have popups. Only set loadPopups once on the first render.
-      if (props.isMainView && !this.state.loadPopups) {
-        // So the popup load will get animated, we have to render the popup wrapper with no popups first and on next render add them
-        setTimeout(() => {
-          this.setState({
-            loadPopups: true
-          })
-        }, 0)
-      }
-    }
+    const popupComponent = <PopupWrapper closeFunc={props.state.basicInfo.closePopup} popups={props.state.basicInfo.popups} />
 
     // //////////////// //
     // Render View //

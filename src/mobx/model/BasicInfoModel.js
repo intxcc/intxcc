@@ -3,6 +3,8 @@
 import { types } from 'mobx-state-tree'
 import { keys } from 'mobx'
 
+import { isEmpty } from '../../miscFunctions'
+
 import ViewEntity from './ViewEntity'
 
 import RootStoreModel from '../RootStoreModel'
@@ -25,9 +27,15 @@ const BasicInfoModel = types.model({
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
   modelVariant: types.optional(types.string, 'default'),
   scrollTop: types.optional(types.number, 0),
+  // To add functionality that the startpage can appear after beeing disabled beforehand
+  disabled: types.optional(types.boolean, false),
   popups: types.optional(types.map(PopupModel), {})
 }).volatile(self => ({
   lastPersist: 0
+})).views(self => ({
+  get isDisabled () {
+    return self.disabled || !isEmpty(self.popups.toJSON())
+  }
 })).actions(self => {
   // Saves the state to local/session storage. Force will always safe the state, for some properties (like scroll) it is preferrable to not force, because this changes very often, and to save on every change does not make much sense in regard to performance
   function persist (force) {
@@ -40,6 +48,11 @@ const BasicInfoModel = types.model({
 
     self.lastPersist = (new Date()).getTime()
     persistStateBasicInfo(self.toJSON())
+  }
+
+  // Attention: This only does set the self.disabled variable. If there are popups isDisabled will still return true
+  function setDisabled (disabled) {
+    self.disabled = disabled
   }
 
   // Save the client dimensions here, so we can use them to calculate e.g. the mid to center the selected dif in the skills view
@@ -84,6 +97,7 @@ const BasicInfoModel = types.model({
 
   return {
     persist,
+    setDisabled,
     setClientDimensions,
     setViewEntityReference,
     setModelVariant,

@@ -77,6 +77,11 @@
 
   clip-path: $global--enable-clip-path;
 
+  &.pre-disabled {
+    filter: $global--pre-disable-blur;
+    pointer-events: none;
+  }
+
   &.disabled {
     filter: $global--disable-blur;
     pointer-events: none;
@@ -135,6 +140,11 @@
   $global--popup-fade-out-duration clip-path;
 
   clip-path: $global--enable-clip-path;
+
+  &.pre-disabled {
+    filter: $global--pre-disable-blur;
+    pointer-events: none;
+  }
 
   &.disabled {
     clip-path: $global--disable-clip-path !important;

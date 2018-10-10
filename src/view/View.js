@@ -281,6 +281,10 @@ class View extends React.Component {
       disabledClassName = ''
     }
 
+    if (!props.buffer && props.state && props.state.toJSON()['stateBasicInfo'] !== '' && props.state.basicInfo.popups && !isEmpty(props.state.basicInfo.popups.toJSON())) {
+      disabledClassName += ' pre-disabled'
+    }
+
     let popupComponent = ''
     if (props.state && props.state.toJSON()['stateBasicInfo'] !== '') {
       popupComponent = (

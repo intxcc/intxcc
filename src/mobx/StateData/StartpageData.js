@@ -7,8 +7,8 @@ const StartpageData = {
       id: 'start-popup',
       className: 'start-popup',
       persistent: false,
-      title: 'This is intxcc.',
-      text: 'This is future: This is life: This is freedom: This is warm summer rain: This is design: This is for you.',
+      title: 'Hey there.',
+      text: 'This is future: This is freedom: This is warm summer rain: This is design: This is for you.',
       hint: 'This is development, design and art from Berlin.'
     }]
   }

@@ -3,15 +3,19 @@
   bottom: $global--menu-height;
   left: 0;
 
-  transition: $global--variant-change-duration filter;
-
   background-color: $white;
   padding: 2rem 2rem 1rem 5rem;
 
   max-width: 27rem;
 
+  * {
+    transition: $global--variant-change-duration filter;
+  }
+
   &.skills-detail-view-disabled {
-    filter: $global--disable-blur-less;
+    * {
+      filter: $global--disable-blur-less;
+    }
   }
 
   h1 {

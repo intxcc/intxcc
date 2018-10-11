@@ -72,8 +72,14 @@ function filterSkill (skill, filter) {
     markPassed = true
   }
 
-  // Other filters to be added here
-  return (markPassed)
+  let withCommentsPassed = true
+  if (filter.options['with-comments']) {
+    if (!skill.desc && !skill.trivia) {
+      withCommentsPassed = false
+    }
+  }
+
+  return (markPassed && withCommentsPassed)
 }
 
 function getColumns (filter) {

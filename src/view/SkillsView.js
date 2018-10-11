@@ -14,7 +14,7 @@ import SkillsDetailView from './Skills/SkillsDetailView'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <SkillsMap state={props.state} columns={props.state.columns} />
+    <SkillsMap state={props.state} columns={props.state.filteredColumns} />
     <SkillMenu state={props.state} />
     <ViewObject object={props.view.objects.get('stories-overlay-title')}>
       <div className='stories-overlay-title-inner'>

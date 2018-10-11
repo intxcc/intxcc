@@ -67,7 +67,59 @@ const SkillsModel = types.model({
   pointerLocked: types.optional(types.boolean, false),
   transitionOn: types.optional(types.boolean, false),
   filter: SkillFilter
-}).actions(self => {
+}).views(self => ({
+  get filteredColumns () {
+    let filteredColumns = []
+
+    for (let column of self.columns.toJSON()) {
+      let copyColumn = Object.assign({}, column)
+      copyColumn.categories = []
+      for (let category of column.categories.toJSON()) {
+        let copyCategory = Object.assign({}, category)
+        copyCategory.skills = []
+
+        for (let skill of category.skills.toJSON()) {
+          let copySkill = Object.assign({}, skill)
+          let markPassed = false
+
+          const mark = {
+            1: self.filter.options.get('mark-1'),
+            2: self.filter.options.get('mark-2'),
+            3: self.filter.options.get('mark-3')
+          }
+
+          let markFilterEnabled = false
+          for (let testMark in mark) {
+            const markActive = mark[testMark]
+            if (markActive) {
+              markFilterEnabled = true
+              if (parseInt(testMark) === copySkill.mark) {
+                markPassed = true
+              }
+            }
+          }
+
+          if (!markFilterEnabled) {
+            // Disable marked filter if no mark is selected
+            markPassed = true
+          }
+
+          if (markPassed) {
+            copyCategory.skills.push(copySkill)
+          }
+        }
+
+        if (copyCategory.skills.length > 0) {
+          copyColumn.categories.push(copyCategory)
+        }
+      }
+
+      filteredColumns.push(copyColumn)
+    }
+
+    return filteredColumns
+  }
+})).actions(self => {
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 

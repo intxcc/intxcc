@@ -10,7 +10,7 @@ const SkillFilter = types.model({
   options: types.optional(types.map(FilterOption), {})
 }).views(self => ({
   isChecked (optionName) {
-    if (self.options.get(optionName) && self.options.get(optionName).value === 'checked') {
+    if (self.options.get(optionName)) {
       return true
     } else {
       return false
@@ -18,16 +18,13 @@ const SkillFilter = types.model({
   }
 })).actions(self => {
   function toggleOption (optionName) {
-    let newValue
-    if (self.options.get(optionName) && self.options.get(optionName).value === 'checked') {
-      newValue = ''
+    if (self.options.get(optionName)) {
+      self.options.delete(optionName)
     } else {
-      newValue = 'checked'
+      self.options.set(optionName, {
+        value: 'checked'
+      })
     }
-
-    self.options.set(optionName, {
-      value: newValue
-    })
   }
 
   return {

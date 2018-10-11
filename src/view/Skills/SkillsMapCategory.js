@@ -21,6 +21,8 @@ const SkillsMapCategory = observer((props) => (
         return (
           <SkillsMapItem
             key={'skills-' + skill.id}
+            // Just to know when the filter changed TODO Will not work if the new id is the same
+            skillIndex={props.selected.skill && props.selected.skill.id === skill.id ? props.selected.skillIndex : 0}
             selected={props.selected.skill && props.selected.skill.id === skill.id}
             centerMapFunc={props.centerMapFunc}
             skill={skill}>

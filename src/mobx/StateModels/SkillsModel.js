@@ -97,6 +97,10 @@ const SkillsModel = types.model({
       SkillIdentifierIndex
     } = getColumns(self.filter.toJSON())
 
+    // To search for the next visible item later
+    let oldIdentifierList = self.skillIdentifierList.toJSON()
+    let oldIdentifierListSelection = self.selection.skillIndex
+
     self.columns = SkillsColumns
     self.skillTitleIndex = SkillTitleIndex
     self.skillIdentifierList = SkillIdentifierList
@@ -117,6 +121,28 @@ const SkillsModel = types.model({
         category.visible = atLeastOneSkillVisible
       }
     }
+
+    // Search the next visible item after the current selection
+    if (self.skillIdentifierList.length > 0 && self.selection.skill && oldIdentifierListSelection >= 0) {
+      let searchNewSelectionPos = oldIdentifierListSelection
+      while (typeof self.skillIdentifierIndex.get(oldIdentifierList[searchNewSelectionPos]) === 'undefined') {
+        searchNewSelectionPos++
+
+        if (searchNewSelectionPos >= oldIdentifierList.length) {
+          searchNewSelectionPos = 0
+        }
+
+        // Just to prevent infinite loops
+        if (searchNewSelectionPos === oldIdentifierListSelection) {
+          break
+        }
+      }
+
+      self.selectSkillByIdentifier(oldIdentifierList[searchNewSelectionPos])
+    }
+
+    self.transitionOn = true
+    setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
   }
 
   function setShowSkillFilter (showSkillFilter) {

@@ -92,7 +92,8 @@ const SkillsMapItem = observer((props) => {
   if (props.selected) {
     return (
       <SkillsMapItemLinkWrapper skill={props.skill}>
-        <SkillsMapItemComponent centerMapFunc={props.centerMapFunc} skill={props.skill} />
+        {/* Skill index is only given, because when it changes the component gets rerendered and recentered. E.g. When the filter changes */}
+        <SkillsMapItemComponent skillIndex={props.skillIndex} centerMapFunc={props.centerMapFunc} skill={props.skill} />
       </SkillsMapItemLinkWrapper>
     )
   } else {
@@ -105,6 +106,7 @@ const SkillsMapItem = observer((props) => {
 })
 
 SkillsMapItem.propTypes = {
+  skillIndex: PropTypes.number,
   selected: PropTypes.bool,
   centerMapFunc: PropTypes.func,
   skill: PropTypes.object

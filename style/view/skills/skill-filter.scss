@@ -1,13 +1,12 @@
 .skill-filter-wrapper-outer {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: $global--menu-height;
   left: 0;
 
-  pointer-events: none;
-
   overflow: hidden;
+  pointer-events: none;
 }
 
 .skill-filter-wrapper {

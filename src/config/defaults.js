@@ -14,15 +14,22 @@ const ProductionDefaults = {
   guideStroke: Colors.black,
   enableStartpageBackgroundVideo: true,
   showAllGuides: true,
-  showGuides: false
+  showGuides: false,
+  showSkillFilterPerDefault: false,
+  disableDefaultPopups: false
 }
 
 const DevelopmentDefaults = {
-  enableStartpageBackgroundVideo: true
+  enableStartpageBackgroundVideo: false,
+  showSkillFilterPerDefault: true,
+  disableDefaultPopups: true
 }
 
+// Here we can choose if in an development environment we want to see the page as it will be in production or with another config for better DX
+const EnableDevelopmentDefaultsIfOnLocalhost = true
+
 let isRunningInDevelopmentEnvironment = false
-if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
+if (EnableDevelopmentDefaultsIfOnLocalhost && (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost')) {
   isRunningInDevelopmentEnvironment = true
 }
 

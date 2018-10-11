@@ -1,0 +1,14 @@
+.skill-filter-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  opacity: 0;
+  background-color: $white;
+
+  padding: 2rem;
+
+  &.skill-filter-visible {
+    opacity: 1;
+  }
+}

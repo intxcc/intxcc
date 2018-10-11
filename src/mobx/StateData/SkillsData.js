@@ -2,14 +2,16 @@
 
 import { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount, SkillIndex } from './skills/SkillsColumns'
 
+import Defaults from '../../config/defaults'
 import POPUP_SKILLS_EXPLANATION from '../../config/POPUP_SKILLS_EXPLANATION'
 
 const SkillsData = {
   basicInfo: {
     id: 'skillsBasicInfo',
-    popups: [
-      POPUP_SKILLS_EXPLANATION
-    ]
+    popups: (Defaults.disableDefaultPopups
+      ? [] : [
+        POPUP_SKILLS_EXPLANATION
+      ])
   },
   skillIndex: SkillIndex,
   columns: SkillsColumns,

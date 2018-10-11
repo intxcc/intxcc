@@ -6,6 +6,7 @@ import BasicInfoModel from '../model/BasicInfoModel'
 
 import { getIdNumberFromIdString } from '../../miscFunctions'
 
+import Defaults from '../../config/defaults'
 import SKILLS_EXPLANATION from '../../config/POPUP_SKILLS_EXPLANATION'
 
 import Style from '../../../style/variables/global.scss'
@@ -53,6 +54,7 @@ const Limits = types.model({
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
   routerParams: types.optional(types.map(types.string), {}),
+  showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
   skillIndex: types.map(types.string),
@@ -82,6 +84,14 @@ const SkillsModel = types.model({
       case 'skill_name':
         self.selectSkillByName(paramValue)
         break
+    }
+  }
+
+  function setShowSkillFilter (showSkillFilter) {
+    if (showSkillFilter === 'toggle') {
+      self.showSkillFilter = !self.showSkillFilter
+    } else {
+      self.showSkillFilter = showExplanation
     }
   }
 
@@ -205,6 +215,7 @@ const SkillsModel = types.model({
 
   return {
     onRouterParamChange,
+    setShowSkillFilter,
     showExplanation,
     selectSkillByName,
     selectSkillByIdentifier,

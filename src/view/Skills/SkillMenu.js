@@ -9,7 +9,7 @@ import { observer } from 'mobx-react'
 
 const SkillMenu = observer((props) => (
   <ul className='skill-menu-wrapper'>
-    <li className='skill-menu-item'>
+    <li className='skill-menu-item' onClick={() => props.state.setShowSkillFilter('toggle')}>
       <span className='skill-menu-title'>Filter</span>
       <span className='skill-menu-icon'><FontAwesomeIcon icon={'filter'} /></span>
     </li>

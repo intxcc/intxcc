@@ -1,13 +1,16 @@
 'use strict'
 
+import Defaults from '../../config/defaults'
+
 const StartpageData = {
   basicInfo: {
     id: 'startpageBasicInfo',
-    popups: [{
-      id: 'start-popup',
-      customComponent: 'StartPopup',
-      persistent: false
-    }]
+    popups: (Defaults.disableDefaultPopups
+      ? [] : [{
+        id: 'start-popup',
+        customComponent: 'StartPopup',
+        persistent: false
+      }])
   }
 }
 

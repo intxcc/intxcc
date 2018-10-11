@@ -10,7 +10,7 @@ import { observer } from 'mobx-react'
 import MARK_TOOLTIP from '../../config/MarkTooltips'
 
 const SkillsDetailView = observer((props) => (
-  <div className='skills-detail-view'>
+  <div className={'skills-detail-view' + (props.disabled ? ' skills-detail-view-disabled' : '')}>
     {props.selection.skill.desc ? <p>
       {props.selection.skill.desc}
     </p> : ''}
@@ -28,6 +28,7 @@ const SkillsDetailView = observer((props) => (
 ))
 
 SkillsDetailView.propTypes = {
+  disabled: PropTypes.bool,
   selection: PropTypes.object
 }
 

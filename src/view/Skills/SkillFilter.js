@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 
 const SkillFilter = observer((props) => (
   <div className={'skill-filter-wrapper' + (props.showSkillFilter ? ' skill-filter-visible' : '')}>
-    <h1>skill filter</h1>
+    <h1>Skill Filter</h1>
   </div>
 ))
 

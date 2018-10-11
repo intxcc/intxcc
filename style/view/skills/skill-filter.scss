@@ -1,14 +1,24 @@
 .skill-filter-wrapper {
   position: fixed;
-  top: 0;
-  left: 0;
+  bottom: $global--menu-height;
+  left: 4rem;
+
+  transform: translate3d(-100%, 0, 0);
+  transition: $global--variant-change-duration transform,
+  $global--variant-change-duration opacity;
 
   opacity: 0;
-  background-color: $white;
+  z-index: 1;
 
-  padding: 2rem;
+  background-color: $white;
+  padding: 1rem;
 
   &.skill-filter-visible {
+    transform: translate3d(0, 0, 0);
     opacity: 1;
+  }
+
+  h1 {
+    font-variant: small-caps;
   }
 }

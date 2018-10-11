@@ -7,12 +7,16 @@ import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
 import ScrollAnchor from './Skills/ScrollAnchor'
+import SkillMenu from './Skills/SkillMenu'
+import SkillFilter from './Skills/SkillFilter'
 import SkillsMap from './Skills/SkillsMap'
 import SkillsDetailView from './Skills/SkillsDetailView'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>
     <SkillsMap state={props.state} columns={props.state.columns} />
+    <SkillMenu state={props.state} />
+    <SkillFilter state={props.state} />
     <ViewObject object={props.view.objects.get('stories-overlay-title')}>
       <div className='stories-overlay-title-inner'>
         Stories

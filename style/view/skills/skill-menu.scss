@@ -1,0 +1,58 @@
+.skill-menu-wrapper {
+  position: fixed;
+  top: 5rem;
+  left: 5rem;
+
+  transform: translateX(12.5vmax / $logo-dimension-ratio) rotate(-60deg) translateX(-100%) translateX(-.5rem);
+
+  list-style: none;
+  transform-origin: top left;
+}
+
+.skill-menu-item {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+  transform: translate3d(0, -1.65rem, 0);
+
+  transition: .2s transform,
+  .2s background-color;
+  cursor: pointer;
+
+  padding: .3rem .5rem;
+
+  &:hover {
+    transform: translate3d(0, -2px, 0);
+
+    background-color: $white;
+
+    .skill-menu-title {
+      opacity: 1;
+    }
+  }
+
+  .skill-menu-title {
+    transition: .2s opacity;
+
+    opacity: 0;
+
+    font-size: 1rem;
+    font-variant: small-caps;
+  }
+
+  .skill-menu-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // border-radius: 5px;
+    background-color: $white;
+
+    width: 2.25rem;
+    height: 2.25rem;
+
+    font-size: 1.5rem;
+  }
+}

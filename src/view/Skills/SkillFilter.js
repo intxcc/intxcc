@@ -7,6 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { observer } from 'mobx-react'
 
+import MARK_TOOLTIP from '../../config/MarkTooltips'
+
 const FilterCheckboxesWrapper = observer((props) => (
   <div className='filter-checkbox-wrapper'>
     {React.Children.map(props.children, child => (
@@ -47,7 +49,7 @@ FilterCheckboxesWrapper.propTypes = {
 }
 
 const FilterCheckbox = observer((props) => (
-  <div className={'filter-checkbox' + (props.isCheckedView(props.name) ? ' checked' : '')} onClick={() => props.toggleFunc(props.name)}>
+  <div title={props.tooltip} className={'filter-checkbox' + (props.isCheckedView(props.name) ? ' checked' : '')} onClick={() => props.toggleFunc(props.name)}>
     {props.children}
   </div>
 ))
@@ -57,6 +59,7 @@ FilterCheckbox.propTypes = {
     PropTypes.string,
     PropTypes.object
   ]),
+  tooltip: PropTypes.string,
   name: PropTypes.string,
   isCheckedView: PropTypes.func,
   toggleFunc: PropTypes.func
@@ -68,18 +71,18 @@ const SkillFilter = observer((props) => (
       <h1>Filter</h1>
       <FilterCheckboxesWrapper isCheckedView={props.state.filter.isChecked} toggleFunc={props.state.filter.toggleOption}>
         <FilterCheckboxesCategory title='Mark'>
-          <FilterCheckbox name='mark-1'>
+          <FilterCheckbox name='mark-1' tooltip={MARK_TOOLTIP['1']}>
             1
           </FilterCheckbox>
-          <FilterCheckbox name='mark-2'>
+          <FilterCheckbox name='mark-2' tooltip={MARK_TOOLTIP['2']}>
             2
           </FilterCheckbox>
-          <FilterCheckbox name='mark-3'>
+          <FilterCheckbox name='mark-3' tooltip={MARK_TOOLTIP['3']}>
             3
           </FilterCheckbox>
         </FilterCheckboxesCategory>
         <FilterCheckboxesCategory title='Other'>
-          <FilterCheckbox name='with-comments'>
+          <FilterCheckbox name='with-comments' tooltip='with comment'>
             <FontAwesomeIcon icon={['far', 'comment-dots']} />
           </FilterCheckbox>
         </FilterCheckboxesCategory>

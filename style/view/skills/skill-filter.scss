@@ -29,8 +29,9 @@
   }
 
   h1 {
-    margin: 0;
-    padding: 0;
+    padding-bottom: 1rem;
     font-variant: small-caps;
   }
+
+  @import 'skill-filter/filter-checkbox';
 }

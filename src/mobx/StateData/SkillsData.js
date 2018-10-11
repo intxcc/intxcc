@@ -19,7 +19,8 @@ const SkillsData = {
     columnsCount: ColumnsCount,
     categoriesCount: CategoriesCount,
     skillsCount: SkillsCount
-  }
+  },
+  filter: {}
 }
 
 export default SkillsData

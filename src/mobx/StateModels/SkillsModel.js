@@ -3,6 +3,7 @@
 import { types, resolveIdentifier } from 'mobx-state-tree'
 
 import BasicInfoModel from '../model/BasicInfoModel'
+import SkillFilter from './Skills/SkillFilter'
 
 import { getIdNumberFromIdString } from '../../miscFunctions'
 
@@ -64,7 +65,8 @@ const SkillsModel = types.model({
   mouseDragActive: types.optional(types.boolean, false),
   mouseDragEnabled: types.optional(types.boolean, true),
   pointerLocked: types.optional(types.boolean, false),
-  transitionOn: types.optional(types.boolean, false)
+  transitionOn: types.optional(types.boolean, false),
+  filter: SkillFilter
 }).actions(self => {
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)

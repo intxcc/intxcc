@@ -13,14 +13,20 @@ const SkillsMapCategory = observer((props) => (
       <h2>
         {props.title}
       </h2>
-      {props.skills.map(skill => (
-        <SkillsMapItem
-          key={'skills-' + skill.id}
-          selected={props.selected.skill && props.selected.skill.id === skill.id}
-          centerMapFunc={props.centerMapFunc}
-          skill={skill}>
-        </SkillsMapItem>
-      ))}
+      {props.skills.map(skill => {
+        if (!skill.visible) {
+          return ''
+        }
+
+        return (
+          <SkillsMapItem
+            key={'skills-' + skill.id}
+            selected={props.selected.skill && props.selected.skill.id === skill.id}
+            centerMapFunc={props.centerMapFunc}
+            skill={skill}>
+          </SkillsMapItem>
+        )
+      })}
     </div>
   </div>
 ))

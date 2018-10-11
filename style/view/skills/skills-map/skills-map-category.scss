@@ -7,8 +7,9 @@
 
   align-self: stretch;
   margin: 0 1rem;
-
   border-bottom: $skills-map-column-border;
+
+  min-height: 8rem;
 
   &.category-selected {
     .skills-map-category-inner {
@@ -22,13 +23,14 @@
 
     flex-direction: column;
     align-items: flex-end;
-
     align-self: stretch;
+    justify-content: center;
 
     border-right: 4px rgba($color: $black, $alpha: 0) dotted;
     border-left: 4px rgba($color: $black, $alpha: 0) dotted;
 
     padding: 1rem $skills-map-category-padding-left-right 1rem $skills-map-category-padding-left-right * 2;
+    height: 100%;
   }
 
   &:last-child {

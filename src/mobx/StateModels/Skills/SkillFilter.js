@@ -1,6 +1,6 @@
 'use strict'
 
-import { types } from 'mobx-state-tree'
+import { types, getParent } from 'mobx-state-tree'
 
 const FilterOption = types.model({
   value: types.string
@@ -17,6 +17,13 @@ const SkillFilter = types.model({
     }
   }
 })).actions(self => {
+  function applyFilter () {
+    const parent = getParent(self)
+    if (parent.applyFilter) {
+      parent.applyFilter()
+    }
+  }
+
   function toggleOption (optionName) {
     if (self.options.get(optionName)) {
       self.options.delete(optionName)
@@ -25,9 +32,12 @@ const SkillFilter = types.model({
         value: 'checked'
       })
     }
+
+    self.applyFilter()
   }
 
   return {
+    applyFilter,
     toggleOption
   }
 })

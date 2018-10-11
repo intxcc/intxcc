@@ -1,9 +1,11 @@
 'use strict'
 
-import { SkillsColumns, ColumnsCount, CategoriesCount, SkillsCount, SkillIndex } from './skills/SkillsColumns'
+import getColumns from './skills/SkillsColumns'
 
 import Defaults from '../../config/defaults'
 import POPUP_SKILLS_EXPLANATION from '../../config/POPUP_SKILLS_EXPLANATION'
+
+const { SkillsColumns, SkillTitleIndex, SkillIdentifierList, SkillIdentifierIndex } = getColumns()
 
 const SkillsData = {
   basicInfo: {
@@ -13,13 +15,10 @@ const SkillsData = {
         POPUP_SKILLS_EXPLANATION
       ])
   },
-  skillIndex: SkillIndex,
+  skillTitleIndex: SkillTitleIndex,
+  skillIdentifierList: SkillIdentifierList,
+  skillIdentifierIndex: SkillIdentifierIndex,
   columns: SkillsColumns,
-  limits: {
-    columnsCount: ColumnsCount,
-    categoriesCount: CategoriesCount,
-    skillsCount: SkillsCount
-  },
   filter: {}
 }
 

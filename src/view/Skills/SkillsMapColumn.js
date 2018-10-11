@@ -12,15 +12,21 @@ const SkillsMapColumn = observer((props) => (
     <h1>
       {props.title}
     </h1>
-    {props.categories.map(category => (
-      <SkillsMapCategory
-        key={'skills-' + category.id}
-        selected={props.selected.category && props.selected.category.id === category.id ? props.selected : false}
-        centerMapFunc={props.centerMapFunc}
-        title={category.title}
-        skills={category.skills}>
-      </SkillsMapCategory>
-    ))}
+    {props.categories.map(category => {
+      if (!category.visible) {
+        return ''
+      }
+
+      return (
+        <SkillsMapCategory
+          key={'skills-' + category.id}
+          selected={props.selected.category && props.selected.category.id === category.id ? props.selected : false}
+          centerMapFunc={props.centerMapFunc}
+          title={category.title}
+          skills={category.skills}>
+        </SkillsMapCategory>
+      )
+    })}
   </div>
 ))
 

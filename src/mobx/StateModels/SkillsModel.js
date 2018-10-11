@@ -5,6 +5,7 @@ import { types, resolveIdentifier } from 'mobx-state-tree'
 import BasicInfoModel from '../model/BasicInfoModel'
 import SkillFilter from './Skills/SkillFilter'
 
+import getColumns from '../StateData/skills/SkillsColumns'
 import { getIdNumberFromIdString } from '../../miscFunctions'
 
 import Defaults from '../../config/defaults'
@@ -16,6 +17,7 @@ const SkillModel = types.model({
   id: types.identifier,
   categoryId: types.string,
   columnId: types.string,
+  visible: types.optional(types.boolean, true),
   title: types.string,
   desc: types.optional(types.string, ''),
   trivia: types.optional(types.string, ''),
@@ -25,6 +27,7 @@ const SkillModel = types.model({
 const SkillCategory = types.model({
   id: types.identifier,
   columnId: types.string,
+  visible: types.optional(types.boolean, true),
   title: types.string,
   skills: types.array(SkillModel)
 })
@@ -43,13 +46,9 @@ const Position = types.model({
 const Selection = types.model({
   column: types.maybeNull(types.reference(SkillColumn)),
   category: types.maybeNull(types.reference(SkillCategory)),
-  skill: types.maybeNull(types.reference(SkillModel))
-})
-
-const Limits = types.model({
-  columnsCount: types.optional(types.number, 0),
-  categoriesCount: types.optional(types.number, 0),
-  skillsCount: types.optional(types.number, 0)
+  skill: types.maybeNull(types.reference(SkillModel)),
+  // Will indicate, where the selected skill is in the skillIdentifierList
+  skillIndex: types.optional(types.number, -1)
 })
 
 const SkillsModel = types.model({
@@ -58,9 +57,10 @@ const SkillsModel = types.model({
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
-  skillIndex: types.map(types.string),
+  skillTitleIndex: types.map(types.string),
+  skillIdentifierList: types.array(types.string),
+  skillIdentifierIndex: types.map(types.number),
   columns: types.array(SkillColumn),
-  limits: types.optional(Limits, {}),
   mouseLastPosition: types.optional(Position, {}),
   mouseDragActive: types.optional(types.boolean, false),
   mouseDragEnabled: types.optional(types.boolean, true),
@@ -89,6 +89,36 @@ const SkillsModel = types.model({
     }
   }
 
+  function applyFilter () {
+    const {
+      SkillsColumns,
+      SkillTitleIndex,
+      SkillIdentifierList,
+      SkillIdentifierIndex
+    } = getColumns(self.filter.toJSON())
+
+    self.columns = SkillsColumns
+    self.skillTitleIndex = SkillTitleIndex
+    self.skillIdentifierList = SkillIdentifierList
+    self.skillIdentifierIndex = SkillIdentifierIndex
+
+    for (let column of self.columns) {
+      for (let category of column.categories) {
+        let atLeastOneSkillVisible = false
+        for (let skill of category.skills) {
+          if (typeof self.skillIdentifierIndex.get(skill.id) !== 'undefined') {
+            skill.visible = true
+            atLeastOneSkillVisible = true
+          } else {
+            skill.visible = false
+          }
+        }
+
+        category.visible = atLeastOneSkillVisible
+      }
+    }
+  }
+
   function setShowSkillFilter (showSkillFilter) {
     if (showSkillFilter === 'toggle') {
       self.showSkillFilter = !self.showSkillFilter
@@ -102,8 +132,8 @@ const SkillsModel = types.model({
   }
 
   function selectSkillByName (skillName) {
-    if (self.skillIndex.get(skillName)) {
-      const skillIdentifier = self.skillIndex.get(skillName)
+    if (self.skillTitleIndex.get(skillName)) {
+      const skillIdentifier = self.skillTitleIndex.get(skillName)
       self.selectSkillByIdentifier(skillIdentifier)
     } else {
       self.selectSkillById(0)
@@ -122,13 +152,16 @@ const SkillsModel = types.model({
     self.selection.skill = skillIdentifier
     self.selection.category = self.selection.skill.categoryId
     self.selection.column = self.selection.skill.columnId
+    self.selection.skillIndex = self.skillIdentifierIndex.get(skillIdentifier)
+
+    const selectionIdentifier = self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
 
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {
       if (self.routerParams.get('skill_name')) {
-        window.history.replaceState(null, null, '/#/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-'))
+        window.history.replaceState(null, null, '/#/skills/' + skillIdentifier + '-' + selectionIdentifier)
       } else {
-        window.history.pushState(null, null, '/#/skills/' + skillIdentifier + '-' + self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-'))
+        window.history.pushState(null, null, '/#/skills/' + skillIdentifier + '-' + selectionIdentifier)
       }
 
       // Propagate hash change to router, which does normally not happened when the changes comes from within the application
@@ -191,23 +224,15 @@ const SkillsModel = types.model({
   }
 
   function scrollSkill (n) {
-    let skillId
-    if (self.selection.skill) {
-      skillId = getIdNumberFromIdString(self.selection.skill.id)
-      skillId += n
+    self.selection.skillIndex += n
 
-      if (skillId >= self.limits.skillsCount) {
-        skillId = self.limits.skillsCount - 1
-      }
-
-      if (skillId < 0) {
-        skillId = 0
-      }
-    } else {
-      skillId = 0
+    if (self.selection.skillIndex >= self.skillIdentifierList.length) {
+      self.selection.skillIndex = 0
+    } else if (self.selection.skillIndex < 0) {
+      self.selection.skillIndex = self.skillIdentifierList.length - 1
     }
 
-    self.selectSkillById(skillId)
+    self.selectSkillByIdentifier(self.skillIdentifierList[self.selection.skillIndex])
   }
 
   function selectSkillById (id) {
@@ -217,6 +242,7 @@ const SkillsModel = types.model({
 
   return {
     onRouterParamChange,
+    applyFilter,
     setShowSkillFilter,
     showExplanation,
     selectSkillByName,

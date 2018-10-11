@@ -57,12 +57,9 @@ const SkillsModel = types.model({
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
-  // This is the id in the skillIdList, of the selected skill, so we are able to scroll
-  selectionPrivateId: types.optional(types.number, -1),
   selection: types.optional(Selection, {}),
   skillIndex: types.map(types.string),
   columns: types.array(SkillColumn),
-  filteredColumns: types.optional(types.array(SkillColumn), []),
   limits: types.optional(Limits, {}),
   mouseLastPosition: types.optional(Position, {}),
   mouseDragActive: types.optional(types.boolean, false),

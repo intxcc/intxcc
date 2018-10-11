@@ -219,6 +219,22 @@ class View extends React.Component {
     }
     this.renderedVariant = props.view.modelVariant
 
+    // Animate scroll
+    if (props.view.stateBasicInfo) {
+      if (props.view.stateBasicInfo.animateScrollBy) {
+        if (this.viewContent) {
+          this.viewContent.scrollBy({
+            top: props.view.stateBasicInfo.scrollByValue,
+            left: 0,
+            behavior: 'smooth'
+          })
+
+          // Disable scroll by, so it will not get triggered on next render
+          setTimeout(props.view.stateBasicInfo.stopScrollBy, 0)
+        }
+      }
+    }
+
     // ///////////// //
     // Create Guides //
     let Guides

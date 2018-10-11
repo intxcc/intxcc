@@ -70,6 +70,8 @@ const StoriesModel = types.model({
       }
     }
 
+    const oldSelectionId = self.selectedStory.id
+
     // If no top is negative we just select the first story
     if (biggestNegativeTopKey === false) {
       self.selectedStory = self.stories.get(keys(self.stories)[0])
@@ -82,6 +84,16 @@ const StoriesModel = types.model({
     } else {
       self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
     }
+
+    if (oldSelectionId !== self.selectedStory.id && self.selectedStory.top > 0) {
+      self.scrollToStory(self.selectedStory)
+    }
+  }
+
+  function scrollToStory (story) {
+    self.updateStoriesTop()
+    const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
+    self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5))
   }
 
   function selectYear (index) {
@@ -92,6 +104,7 @@ const StoriesModel = types.model({
     setDiv,
     updateStoriesTop,
     onScroll,
+    scrollToStory,
     selectYear
   }
 })

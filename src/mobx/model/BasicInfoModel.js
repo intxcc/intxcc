@@ -27,6 +27,9 @@ const BasicInfoModel = types.model({
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
   modelVariant: types.optional(types.string, 'default'),
   scrollTop: types.optional(types.number, 0),
+  // To animate scrolling set animate scroll to to true and set the scrollTo variable
+  animateScrollBy: types.optional(types.boolean, false),
+  scrollByValue: types.optional(types.number, 0),
   // To add functionality that the startpage can appear after beeing disabled beforehand
   disabled: types.optional(types.boolean, false),
   popups: types.optional(types.map(PopupModel), {})
@@ -74,7 +77,17 @@ const BasicInfoModel = types.model({
     self.persist(false)
   }
 
-  function show404Popup (popup) {
+  // Animate scroll top to scrollTo
+  function scrollBy (scrollByValue) {
+    self.animateScrollBy = true
+    self.scrollByValue = scrollByValue
+  }
+
+  function stopScrollBy () {
+    self.animateScrollBy = false
+  }
+
+  function show404Popup () {
     self.showPopup(POPUP_404)
   }
 
@@ -102,6 +115,8 @@ const BasicInfoModel = types.model({
     setViewEntityReference,
     setModelVariant,
     setScrollTop,
+    scrollBy,
+    stopScrollBy,
     show404Popup,
     showPopup,
     closePopup,

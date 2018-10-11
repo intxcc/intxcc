@@ -57,9 +57,12 @@ const SkillsModel = types.model({
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
+  // This is the id in the skillIdList, of the selected skill, so we are able to scroll
+  selectionPrivateId: types.optional(types.number, -1),
   selection: types.optional(Selection, {}),
   skillIndex: types.map(types.string),
   columns: types.array(SkillColumn),
+  filteredColumns: types.optional(types.array(SkillColumn), []),
   limits: types.optional(Limits, {}),
   mouseLastPosition: types.optional(Position, {}),
   mouseDragActive: types.optional(types.boolean, false),
@@ -67,59 +70,7 @@ const SkillsModel = types.model({
   pointerLocked: types.optional(types.boolean, false),
   transitionOn: types.optional(types.boolean, false),
   filter: SkillFilter
-}).views(self => ({
-  get filteredColumns () {
-    let filteredColumns = []
-
-    for (let column of self.columns.toJSON()) {
-      let copyColumn = Object.assign({}, column)
-      copyColumn.categories = []
-      for (let category of column.categories.toJSON()) {
-        let copyCategory = Object.assign({}, category)
-        copyCategory.skills = []
-
-        for (let skill of category.skills.toJSON()) {
-          let copySkill = Object.assign({}, skill)
-          let markPassed = false
-
-          const mark = {
-            1: self.filter.options.get('mark-1'),
-            2: self.filter.options.get('mark-2'),
-            3: self.filter.options.get('mark-3')
-          }
-
-          let markFilterEnabled = false
-          for (let testMark in mark) {
-            const markActive = mark[testMark]
-            if (markActive) {
-              markFilterEnabled = true
-              if (parseInt(testMark) === copySkill.mark) {
-                markPassed = true
-              }
-            }
-          }
-
-          if (!markFilterEnabled) {
-            // Disable marked filter if no mark is selected
-            markPassed = true
-          }
-
-          if (markPassed) {
-            copyCategory.skills.push(copySkill)
-          }
-        }
-
-        if (copyCategory.skills.length > 0) {
-          copyColumn.categories.push(copyCategory)
-        }
-      }
-
-      filteredColumns.push(copyColumn)
-    }
-
-    return filteredColumns
-  }
-})).actions(self => {
+}).actions(self => {
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 

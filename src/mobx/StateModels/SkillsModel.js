@@ -142,6 +142,16 @@ const SkillsModel = types.model({
       self.selectSkillByIdentifier(oldIdentifierList[searchNewSelectionPos])
     }
 
+    // If no skill is selected, choose the first visible
+    if (!self.selection.skill) {
+      if (self.skillIdentifierList.length > 0) {
+        self.selectSkillByIdentifier(self.skillIdentifierList.get(0))
+      }
+    } else if (self.selection.skill.id && typeof self.skillIdentifierIndex.get(self.selection.skill.id) === 'undefined') {
+      // If one is selected, but not visible, remove selection
+      self.unSelect()
+    }
+
     // Disable transition, because it results in transitioning bugs
     // self.transitionOn = true
     // setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
@@ -167,6 +177,13 @@ const SkillsModel = types.model({
       self.selectSkillById(0)
       self.basicInfo.show404Popup()
     }
+  }
+
+  function unSelect () {
+    self.selection.skill = null
+    self.selection.category = null
+    self.selection.column = null
+    self.selection.skillIndex = -1
   }
 
   function selectSkillByIdentifier (skillIdentifier) {
@@ -279,6 +296,7 @@ const SkillsModel = types.model({
     setShowSkillFilter,
     showExplanation,
     selectSkillByName,
+    unSelect,
     selectSkillByIdentifier,
     turnTransitionOff,
     toggleMouseDrag,

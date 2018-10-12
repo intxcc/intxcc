@@ -89,7 +89,7 @@ const SkillsModel = types.model({
     }
   }
 
-  // TODO move this in a webworker, to not block teh main thread
+  // TODO move this in a webworker, to not block the main thread
   function applyFilter () {
     const {
       SkillsColumns,
@@ -124,7 +124,7 @@ const SkillsModel = types.model({
     }
 
     // Search the next visible item after the current selection
-    if (self.skillIdentifierList.length > 0 && self.selection.skill && oldIdentifierListSelection >= 0) {
+    if (oldIdentifierList.length > 0 && self.skillIdentifierList.length > 0 && self.selection.skill && oldIdentifierListSelection >= 0) {
       let searchNewSelectionPos = oldIdentifierListSelection
       while (typeof self.skillIdentifierIndex.get(oldIdentifierList[searchNewSelectionPos]) === 'undefined') {
         searchNewSelectionPos++

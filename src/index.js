@@ -24,4 +24,5 @@ ReactDOM.render(
   document.getElementById('app')
 )
 
+// TODO Remove before going into production
 module.hot.accept()

@@ -1,0 +1,13 @@
+.filter-search-wrapper {
+  margin-top: 3rem;
+
+  .filter-search-text-input {
+    border: 1px $black solid;
+    padding: 0 .5rem;
+
+    width: 100%;
+    height: 2rem;
+
+    box-sizing: border-box;
+  }
+}

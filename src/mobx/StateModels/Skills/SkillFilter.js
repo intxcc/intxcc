@@ -24,6 +24,14 @@ const SkillFilter = types.model({
     }
   }
 
+  function setOption (optionName, value) {
+    self.options.set(optionName, {
+      value: value
+    })
+
+    self.applyFilter()
+  }
+
   function toggleOption (optionName) {
     if (self.options.get(optionName)) {
       self.options.delete(optionName)
@@ -38,6 +46,7 @@ const SkillFilter = types.model({
 
   return {
     applyFilter,
+    setOption,
     toggleOption
   }
 })

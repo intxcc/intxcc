@@ -65,6 +65,17 @@ FilterCheckbox.propTypes = {
   toggleFunc: PropTypes.func
 }
 
+const FilterSearch = observer((props) => (
+  <div className='filter-search-wrapper'>
+    <input className='filter-search-text-input' value={props.searchText} onChange={(e) => props.onChange(e.target.value)} type='text' placeholder='Search' />
+  </div>
+))
+
+FilterSearch.propTypes = {
+  searchText: PropTypes.string,
+  onChange: PropTypes.func
+}
+
 const SkillFilter = observer((props) => (
   <div className='skill-filter-wrapper-outer'>
     <div className={'skill-filter-wrapper' + (props.showSkillFilter ? ' skill-filter-visible' : '')}>
@@ -87,6 +98,7 @@ const SkillFilter = observer((props) => (
           </FilterCheckbox>
         </FilterCheckboxesCategory>
       </FilterCheckboxesWrapper>
+      <FilterSearch searchText={props.state.filter.options.get('search') ? props.state.filter.options.get('search').value : ''} onChange={(input) => props.state.filter.setOption('search', input)} />
     </div>
   </div>
 ))

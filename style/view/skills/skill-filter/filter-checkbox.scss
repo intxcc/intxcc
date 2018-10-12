@@ -6,8 +6,12 @@
   justify-content: center;
 
   float: left;
-  margin-left: 1rem;
+  margin-right: 1rem;
   padding-left: 1.5rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
 
   .filter-checkbox-category-title {
     position: absolute;

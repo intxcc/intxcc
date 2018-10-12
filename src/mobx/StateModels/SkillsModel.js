@@ -5,7 +5,7 @@ import { types, resolveIdentifier } from 'mobx-state-tree'
 import BasicInfoModel from '../model/BasicInfoModel'
 import SkillFilter from './Skills/SkillFilter'
 
-import getColumns from '../StateData/skills/SkillsColumns'
+import getColumns from '../StateModels/Skills/getColumns'
 import { getIdNumberFromIdString } from '../../miscFunctions'
 
 import Defaults from '../../config/defaults'
@@ -89,6 +89,7 @@ const SkillsModel = types.model({
     }
   }
 
+  // TODO move this in a webworker, to not block teh main thread
   function applyFilter () {
     const {
       SkillsColumns,
@@ -169,9 +170,14 @@ const SkillsModel = types.model({
 
   function selectSkillByIdentifier (skillIdentifier) {
     // Show 404 if the skill does not exist and go to the skill with the id 0
-    if (typeof resolveIdentifier(SkillModel, self.columns, skillIdentifier) === 'undefined') {
+    if (typeof skillIdentifier === 'undefined' || typeof resolveIdentifier(SkillModel, self.columns, skillIdentifier) === 'undefined') {
       self.selectSkillById(0)
-      self.basicInfo.show404Popup()
+
+      // If there are no skills the skill identifier will be undefined, don't show 404 in this case
+      if (typeof skillIdentifier !== 'undefined') {
+        self.basicInfo.show404Popup()
+      }
+
       return
     }
 

@@ -42,8 +42,23 @@ SkillsMapItemConst.propTypes = {
 
 @observer
 class SkillsMapItemComponent extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.isActive = true
+  }
+
+  @autobind
+  componentWillUnmount () {
+    this.isActive = false
+  }
+
   @autobind
   updateSelectedPosition () {
+    if (!this.isActive) {
+      return
+    }
+
     // Wait for div reference to initialize
     if (!this.div) {
       setTimeout(this.updateSelectedPosition, 10)

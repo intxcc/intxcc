@@ -253,9 +253,9 @@ const SkillsModel = types.model({
     self.selection.skillIndex += n
 
     if (self.selection.skillIndex >= self.skillIdentifierList.length) {
-      self.selection.skillIndex = 0
-    } else if (self.selection.skillIndex < 0) {
       self.selection.skillIndex = self.skillIdentifierList.length - 1
+    } else if (self.selection.skillIndex < 0) {
+      self.selection.skillIndex = 0
     }
 
     self.selectSkillByIdentifier(self.skillIdentifierList[self.selection.skillIndex])

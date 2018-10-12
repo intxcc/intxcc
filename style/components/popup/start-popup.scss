@@ -56,9 +56,8 @@
     float: left;
 
     transition: .2s background-color,
-    .2s opacity;
+    .2s color;
 
-    opacity: .6;
     margin-left: 1rem;
 
     background-color: $white;
@@ -72,14 +71,14 @@
     font-variant: small-caps;
 
     &:first-child {
-      opacity: .8;
       margin-left: 0;
       background-color: $black;
       color: $white;
     }
 
     &:hover {
-      opacity: 1;
+      background-color: $white;
+      color: $primary-color;
     }
   }
 }

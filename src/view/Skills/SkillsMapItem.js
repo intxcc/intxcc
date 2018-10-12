@@ -63,7 +63,6 @@ class SkillsMapItemComponent extends React.Component {
   @autobind
   render () {
     setTimeout(this.updateSelectedPosition, 0)
-    setTimeout(this.updateSelectedPosition, 400)
 
     return (
       <div ref={div => { this.div = div }} className='skills-map-item item-selected'>

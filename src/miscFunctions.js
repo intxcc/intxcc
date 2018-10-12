@@ -8,6 +8,11 @@ function getIdNumberFromIdString (idString) {
   return parseInt(idString.split('-')[1])
 }
 
+// Escape string for use in a regular expression
+function escapeRegExp (string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
+}
+
 /**
  * Check if an object is empty
  * @param {*} Object to check if it is empty
@@ -53,4 +58,4 @@ function stringToBase64 (input) {
   return btoa(input)
 }
 
-export { getIdNumberFromIdString, isEmpty, degreesToRadians, lineIntersect, stringToBase64 }
+export { getIdNumberFromIdString, escapeRegExp, isEmpty, degreesToRadians, lineIntersect, stringToBase64 }

@@ -1,6 +1,7 @@
 'use strict'
 
 import { SkillsColumns, SkillTitleIndex } from '../../StateData/skills/SkillsColumns'
+import { escapeRegExp } from '../../../miscFunctions'
 
 function filterSkill (skill, filter) {
   let markPassed = false
@@ -46,7 +47,8 @@ function filterSkill (skill, filter) {
   let searchPassed = true
   if (filter.options['search'] && filter.options['search'].value !== '') {
     searchPassed = false
-    if (skill.title.toLowerCase().search(filter.options['search'].value.toLowerCase()) !== -1) {
+    const searchString = escapeRegExp(filter.options['search'].value.toLowerCase())
+    if (skill.title.toLowerCase().search(searchString) !== -1) {
       searchPassed = true
     }
   }

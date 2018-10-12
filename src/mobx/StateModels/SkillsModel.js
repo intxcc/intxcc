@@ -142,8 +142,9 @@ const SkillsModel = types.model({
       self.selectSkillByIdentifier(oldIdentifierList[searchNewSelectionPos])
     }
 
-    self.transitionOn = true
-    setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
+    // Disable transition, because it results in transitioning bugs
+    // self.transitionOn = true
+    // setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
   }
 
   function setShowSkillFilter (showSkillFilter) {

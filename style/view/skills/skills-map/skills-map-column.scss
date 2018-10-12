@@ -7,12 +7,12 @@
 
   border-right: $skills-map-column-border;
 
-  padding-top: 180vh;
+  padding-top: 490vmin;
 
   width: 25vw;
   min-width: 25rem;
 
-  height: 400vh;
+  height: 1000vmin;
 
   box-sizing: border-box;
 
@@ -21,7 +21,7 @@
   }
 
   &:first-child {
-    margin: 0 0 0 157vh;
+    margin: 0 0 0 180vmin;
     border-left: $skills-map-column-border;
   }
 

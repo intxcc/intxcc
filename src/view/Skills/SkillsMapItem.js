@@ -61,7 +61,7 @@ class SkillsMapItemComponent extends React.Component {
 
     // Wait for div reference to initialize
     if (!this.div) {
-      setTimeout(this.updateSelectedPosition, 10)
+      setTimeout(this.updateSelectedPosition, 0)
       return
     }
 

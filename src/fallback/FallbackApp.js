@@ -7,6 +7,8 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import BurgerMenu from './view/Components/BurgerMenu'
+
 import StartpageView from './view/StartpageView'
 import AboutView from './view/AboutView'
 
@@ -26,6 +28,7 @@ class FallbackApp extends React.Component {
 
     return (
       <div className='fallback-site-wrapper'>
+        <BurgerMenu />
         {loadView}
       </div>
     )

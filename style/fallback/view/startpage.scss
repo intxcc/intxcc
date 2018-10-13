@@ -1,0 +1,22 @@
+.startpage-wrapper {
+  display: flex;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  align-items: center;
+  justify-content: center;
+
+  background-image: url('/fallback_intxcc.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+
+  .fallback-logo {
+    width: 40vmin;
+    height: 40vmin;
+  }
+}

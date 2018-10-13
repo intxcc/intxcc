@@ -8,9 +8,6 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
-// Defines the fontawesome library with icons we want to use
-import './fontawesome'
-
 import View from './view/View'
 import { StartpageView, StartpageOverlayView } from './view/StartpageView'
 import { AboutView, AboutOverlayView } from './view/AboutView'

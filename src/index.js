@@ -6,6 +6,9 @@ import ReactDOM from 'react-dom'
 // eslint-disable-next-line
 import style from '../style/index.scss'
 
+// Defines the fontawesome library with icons we want to use
+import './fontawesome'
+
 import store from './mobx/store'
 
 import AppWrapper from './AppWrapper'

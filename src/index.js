@@ -34,9 +34,9 @@ class AppRender extends React.Component {
   @autobind
   updateDimensions () {
     const siteWrapper = this.siteWrapper
-    const global = this.props.store.global
-
-    global.setClientDimensions(siteWrapper.clientWidth, siteWrapper.clientHeight)
+    if (siteWrapper) {
+      this.props.store.global.setClientDimensions(siteWrapper.clientWidth, siteWrapper.clientHeight)
+    }
   }
 
   @autobind

@@ -108,6 +108,12 @@ class View extends React.Component {
     // Load the guides in the view entity
     for (let index in this.helperDivs) {
       const div = this.helperDivs[index]
+
+      // If this is called after the fallback got to be active, div won't exist anymore. But the rest is also not important in the fallback. So just return
+      if (!div) {
+        return
+      }
+
       const rect = div.getBoundingClientRect()
 
       let y = rect.top

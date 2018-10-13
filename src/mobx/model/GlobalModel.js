@@ -15,7 +15,7 @@ const GlobalModel = types.model({
 }).views(self => ({
   // Here we will decide if we render the fallback or not
   get useFallback () {
-    const shouldUseFallback = (self.clientHeight / self.clientWidth) > 0.7
+    const shouldUseFallback = (self.clientHeight / self.clientWidth) > 0.8
     return shouldUseFallback || Defaults.alwaysUseFallback
   },
   // Pixel scale is used to get dimension independent pixels

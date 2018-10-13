@@ -1,11 +1,19 @@
 .burger-menu-wrapper {
   @import 'burger-menu-handle';
+  @import 'burger-menu-inner';
+  @import 'burger-menu-entry';
 }
 
 .burger-menu {
+  display: flex;
+
   position: fixed;
   top: 2rem;
   left: 2rem;
+
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 
   transition: $global--variant-change-duration opacity,
   $global--variant-change-duration top,
@@ -18,7 +26,8 @@
   opacity: 0;
   z-index: 1999;
 
-  background-color: $white;
+  // background-color: $white;
+  background-color: #f0f;
 
   width: 4rem;
   min-width: 4rem;

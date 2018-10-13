@@ -10,8 +10,11 @@ import { observer } from 'mobx-react'
 import MenuEntries from '../../../config/MenuEntries'
 
 const BurgerMenuItem = observer(props => (
-  <div>
-  </div>
+  <a href={'#/' + props.name + '/'}>
+    <div className='burger-menu-entry'>
+      {props.caption}
+    </div>
+  </a>
 ))
 
 BurgerMenuItem.propTypes = {
@@ -26,9 +29,11 @@ const BurgerMenu = observer(props => (
       <FontAwesomeIcon icon='bars' />
     </div>
     <div className={'burger-menu' + (props.show ? ' active' : '')}>
-      {MenuEntries.map((menuEntry, index) => (
-        <BurgerMenuItem key={'burger-menu-entry-' + index} name={menuEntry.name} caption={menuEntry.caption} selected={menuEntry.name === props.activePage} />
-      ))}
+      <div className='burger-menu-inner'>
+        {MenuEntries.map((menuEntry, index) => (
+          <BurgerMenuItem key={'burger-menu-entry-' + index} name={menuEntry.name} caption={menuEntry.caption} selected={menuEntry.name === props.activePage} />
+        ))}
+      </div>
     </div>
   </div>
 ))

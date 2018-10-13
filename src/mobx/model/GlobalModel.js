@@ -17,7 +17,6 @@ const GlobalModel = types.model({
   // Here we will decide if we render the fallback or not
   get useFallback () {
     const shouldUseFallback = (self.clientHeight / self.clientWidth) > 0.8 ||
-      self.clientHeight < 960 ||
       self.clientWidth < 960
 
     return shouldUseFallback || Defaults.alwaysUseFallback

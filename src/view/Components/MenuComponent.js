@@ -7,28 +7,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { observer } from 'mobx-react'
 
-const MenuComponent = observer((props) => {
-  const menuEntries = [
-    {
-      name: 'about',
-      caption: 'about me'
-    }, {
-      name: 'stories',
-      caption: 'stories'
-    }, {
-      name: 'skills',
-      caption: 'skills'
-    }, {
-      name: 'contact',
-      caption: 'contact'
-    }
-  ]
+import MenuEntries from '../../config/MenuEntries'
 
-  for (let i in menuEntries) {
-    let menuEntry = menuEntries[i]
+const MenuComponent = observer((props) => {
+  let menuEntries = []
+
+  for (let i in MenuEntries) {
+    let menuEntry = Object.assign({}, MenuEntries[i])
+
     if (menuEntry.name === props.selection) {
-      menuEntries[i].selected = true
+      menuEntry.selected = true
     }
+
+    menuEntries.push(menuEntry)
   }
 
   return (

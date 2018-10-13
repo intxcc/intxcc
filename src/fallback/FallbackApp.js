@@ -28,7 +28,7 @@ class FallbackApp extends React.Component {
 
     return (
       <div className='fallback-site-wrapper'>
-        <BurgerMenu show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
+        <BurgerMenu activePage={this.props.store.global.activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
         {loadView}
       </div>
     )

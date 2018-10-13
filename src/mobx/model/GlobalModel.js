@@ -11,6 +11,10 @@ const GlobalModel = types.model({
   logoClassName: types.optional(types.string, ''),
   activePage: types.optional(types.string, '')
 }).views(self => ({
+  // Here we will decide if we render the fallback or not
+  get useFallback () {
+    return self.clientWidth < 600
+  },
   // Pixel scale is used to get dimension independent pixels
   get pixelScale () {
     const minLength = Math.min(self.clientHeight, self.clientWidth)

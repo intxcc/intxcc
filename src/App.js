@@ -48,26 +48,14 @@ class App extends React.Component {
 
   @autobind
   componentDidMount () {
-    window.addEventListener('resize', this.updateDimensions)
     window.addEventListener('hashchange', this.props.store.router.onHashChange, false)
-
-    this.updateDimensions()
 
     this.props.store.router.initialize()
   }
 
   @autobind
   componentWillUnmount () {
-    window.removeEventListener('resize', this.updateDimensions)
     window.removeEventListener('hashchange', this.props.store.router.onHashChange, false)
-  }
-
-  @autobind
-  updateDimensions () {
-    const siteWrapper = this.siteWrapper
-    const global = this.props.store.global
-
-    global.setClientDimensions(siteWrapper.clientWidth, siteWrapper.clientHeight)
   }
 
   @autobind
@@ -99,9 +87,7 @@ class App extends React.Component {
     }
 
     return (
-      <div
-        className='site-wrapper'
-        ref={ (siteWrapper) => { this.siteWrapper = siteWrapper }} >
+      <div className='site-wrapper'>
         {values(this.props.store.views).map((view, index) => {
           // Don't render empty views.
           if (view.model === '') {

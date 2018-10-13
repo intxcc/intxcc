@@ -2,6 +2,8 @@
 
 import { types } from 'mobx-state-tree'
 
+import Defaults from '../../config/defaults'
+
 /**
  * Describes the global object with globally relevant information
  */
@@ -13,7 +15,8 @@ const GlobalModel = types.model({
 }).views(self => ({
   // Here we will decide if we render the fallback or not
   get useFallback () {
-    return self.clientWidth < 600
+    const shouldUseFallback = (self.clientHeight / self.clientWidth) > 0.7
+    return shouldUseFallback || Defaults.alwaysUseFallback
   },
   // Pixel scale is used to get dimension independent pixels
   get pixelScale () {

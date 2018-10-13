@@ -11,11 +11,15 @@ const GlobalModel = types.model({
   clientWidth: types.optional(types.number, 0),
   clientHeight: types.optional(types.number, 0),
   logoClassName: types.optional(types.string, ''),
-  activePage: types.optional(types.string, '')
+  activePage: types.optional(types.string, ''),
+  showBurgerMenu: types.optional(types.boolean, false)
 }).views(self => ({
   // Here we will decide if we render the fallback or not
   get useFallback () {
-    const shouldUseFallback = (self.clientHeight / self.clientWidth) > 0.8
+    const shouldUseFallback = (self.clientHeight / self.clientWidth) > 0.8 ||
+      self.clientHeight < 960 ||
+      self.clientWidth < 960
+
     return shouldUseFallback || Defaults.alwaysUseFallback
   },
   // Pixel scale is used to get dimension independent pixels
@@ -33,6 +37,10 @@ const GlobalModel = types.model({
     self.activePage = activePage
   }
 
+  function setShowBurgerMenu (showBurgerMenu) {
+    self.showBurgerMenu = showBurgerMenu
+  }
+
   function setClientDimensions (clientWidth, clientHeight) {
     self.clientWidth = clientWidth
     self.clientHeight = clientHeight
@@ -40,6 +48,7 @@ const GlobalModel = types.model({
 
   return {
     setActivePage,
+    setShowBurgerMenu,
     setClientDimensions
   }
 })

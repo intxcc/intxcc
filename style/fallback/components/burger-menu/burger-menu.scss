@@ -1,0 +1,51 @@
+.burger-menu-wrapper {
+  @import 'burger-menu-handle';
+}
+
+.burger-menu {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+
+  transition: $global--variant-change-duration opacity,
+  $global--variant-change-duration top,
+  $global--variant-change-duration left,
+  $global--variant-change-duration width,
+  $global--variant-change-duration min-width,
+  $global--variant-change-duration height,
+  $global--variant-change-duration min-height;
+
+  opacity: 0;
+  z-index: 1999;
+
+  background-color: $white;
+
+  width: 4rem;
+  min-width: 4rem;
+
+  height: 4rem;
+  min-height: 4rem;
+
+  overflow: hidden;
+
+  &.active {
+    @media (max-height: 320px), (max-width: 320px) {
+      top: 0;
+      left: 0;
+
+      width: 100vw;
+      min-width: 100vw;
+
+      height: 100vh;
+      min-height: 100vh;
+    }
+
+    opacity: 1;
+
+    width: #{'calc(100vmin - 4rem)'};
+    min-width: #{'calc(100vmin - 4rem)'};
+
+    height: #{'calc(100vmin - 4rem)'};
+    min-height: #{'calc(100vmin - 4rem)'};
+  }
+}

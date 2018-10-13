@@ -24,7 +24,7 @@ const DevelopmentDefaults = {
   enableStartpageBackgroundVideo: false,
   showSkillFilterPerDefault: true,
   disableDefaultPopups: true,
-  alwaysUseFallback: true
+  alwaysUseFallback: false
 }
 
 // Here we can choose if in an development environment we want to see the page as it will be in production or with another config for better DX

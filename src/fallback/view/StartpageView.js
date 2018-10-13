@@ -11,7 +11,7 @@ import LogoPath from '../../logo/LogoPath'
 
 const StartpageView = observer(props => (
   <div className='startpage-wrapper'>
-    <LogoPath className={'fallback-logo'} strokeWidth={(Defaults.DefaultStrokeWidth * props.global.pixelScale) / 5} />
+    <LogoPath className={'fallback-logo'} strokeWidth={Defaults.DefaultStrokeWidth / 10} />
   </div>
 ))
 

@@ -46,17 +46,22 @@ const RouterModel = types.model({
   function onHashChange () {
     self.updateHash()
 
-    // If the nextmodel is the same as the current one, we can ignore the isTransitioning parameter
-    if (!self.rootStore.isTransitioning || self.nextModel === self.model) {
-      // Only transition if this is not the first render and the model actually changed
-      if (!self.rootStore.views.get('main') || (self.nextModel !== self.model && self.nextModel !== self.rootStore.views.get('main').model)) {
-        self.rootStore.startTransition(self.nextModel)
-      }
-
-      // Accept the current path as working. Do this here, because this will change the model and make nextModel and model the same.
+    if (self.rootStore.global.useFallback) {
+      self.rootStore.global.setActivePage(self.nextModel)
       self.acceptPath()
     } else {
-      self.goToLastWorkingPath()
+      // If the nextmodel is the same as the current one, we can ignore the isTransitioning parameter
+      if (!self.rootStore.isTransitioning || self.nextModel === self.model) {
+        // Only transition if this is not the first render and the model actually changed
+        if (!self.rootStore.views.get('main') || (self.nextModel !== self.model && self.nextModel !== self.rootStore.views.get('main').model)) {
+          self.rootStore.startTransition(self.nextModel)
+        }
+
+        // Accept the current path as working. Do this here, because this will change the model and make nextModel and model the same.
+        self.acceptPath()
+      } else {
+        self.goToLastWorkingPath()
+      }
     }
   }
 
@@ -125,10 +130,13 @@ const RouterModel = types.model({
     if (route === null) {
       self.goToLastWorkingPath()
 
-      // Show popup-404 after 500ms, when we can confidently assume that there is a main view entity
-      setTimeout(function () {
-        self.rootStore.views.get('main').stateBasicInfo.show404Popup()
-      }, 500)
+      // TODO also show a 404 if the fallback is active
+      if (!self.rootStore.global.useFallback) {
+        // Show popup-404 after 500ms, when we can confidently assume that there is a main view entity
+        setTimeout(function () {
+          self.rootStore.views.get('main').stateBasicInfo.show404Popup()
+        }, 500)
+      }
 
       return
     }

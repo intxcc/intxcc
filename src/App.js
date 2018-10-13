@@ -47,18 +47,6 @@ class App extends React.Component {
   }
 
   @autobind
-  componentDidMount () {
-    window.addEventListener('hashchange', this.props.store.router.onHashChange, false)
-
-    this.props.store.router.initialize()
-  }
-
-  @autobind
-  componentWillUnmount () {
-    window.removeEventListener('hashchange', this.props.store.router.onHashChange, false)
-  }
-
-  @autobind
   swapBuffer () {
     if (this.props.store.views.get('main').stateBasicInfo) {
       this.props.store.views.get('main').stateBasicInfo.clearNotPersistentPopups()

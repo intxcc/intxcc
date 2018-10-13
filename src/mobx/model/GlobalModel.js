@@ -27,7 +27,8 @@ const GlobalModel = types.model({
     return `0 0 ${self.clientWidth} ${self.clientHeight}`
   }
 })).actions(self => {
-  // ATTENTION: Changes only the variable in the global model, does not change the active page
+  // ATTENTION: Changes only the variable in the global model, DOES NOT change the active page.
+  // This variable is really important for the fallback, the fallback DOES change the active page with this variable
   function setActivePage (activePage) {
     self.activePage = activePage
   }

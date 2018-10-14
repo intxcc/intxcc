@@ -18,8 +18,8 @@
   display: flex;
 
   position: absolute;
-  top: 2rem;
-  left: 2rem;
+  top: 1rem;
+  left: 1rem;
 
   flex-wrap: wrap;
   align-items: center;
@@ -47,11 +47,11 @@
     min-height: 100vh;
   }
 
-  width: #{'calc(100vmin - 4rem)'};
-  min-width: #{'calc(100vmin - 4rem)'};
+  width: #{'calc(100vmin - 2rem)'};
+  min-width: #{'calc(100vmin - 2rem)'};
 
-  height: #{'calc(100vmin - 4rem)'};
-  min-height: #{'calc(100vmin - 4rem)'};
+  height: #{'calc(100vmin - 2rem)'};
+  min-height: #{'calc(100vmin - 2rem)'};
 
   overflow: hidden;
 

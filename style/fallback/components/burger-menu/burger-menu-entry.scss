@@ -12,8 +12,9 @@
   transition: .2s border-color,
   .2s color;
 
-  margin: 1rem;
+  margin: 1vmin;
   border: .75rem solid $black;
+  padding: 2vmin;
 
   width: 25vmin;
   min-width: 6.5rem;
@@ -25,7 +26,7 @@
 
   color: $black;
   font-family: 'Roboto Condensed';
-  font-size: 6vmin;
+  font-size: 5vmin;
   font-weight: bold;
   font-variant: small-caps;
 

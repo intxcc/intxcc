@@ -262,6 +262,14 @@ const SkillsModel = types.model({
   }
 
   function centerMap (x, y) {
+    // If we are in fallback mode we need to get the width and height manually. Also move the selection a bit to the right, as fallback indicates mostly a smaller screen.
+    if (self.basicInfo.rootStore.global.useFallback) {
+      self.basicInfo.clientWidth = window.innerWidth
+      self.basicInfo.clientHeight = window.innerHeight
+
+      x -= window.innerWidth / 5
+    }
+
     self.mapPosition.x = self.mapPosition.x - x + self.basicInfo.clientWidth / 2
     self.mapPosition.y = self.mapPosition.y - y + self.basicInfo.clientHeight / 2
   }

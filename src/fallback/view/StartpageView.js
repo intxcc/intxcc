@@ -18,7 +18,7 @@ const StartpageView = observer(props => (
     <img alt='Picture of me with triangles.' className='fallback-startpage-pic' src='/fallback_pic.png' />
     <h1>
       Development and Design by Marvin Alexander Rüll
-    </h1>1
+    </h1>
     <LogoPath className={'fallback-logo'} strokeWidth={Defaults.DefaultStrokeWidth / 10} />
     <LicenseAndImpressumLink />
   </div>

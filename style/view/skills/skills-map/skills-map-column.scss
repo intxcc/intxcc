@@ -10,15 +10,15 @@
   padding-top: 490vmin;
 
   width: 25vw;
-  min-width: 25rem;
+  min-width: 28rem;
 
   height: 1000vmin;
 
   box-sizing: border-box;
 
-  &.column-selected {
-    // background-color: darken($color: $white, $amount: 10);
-  }
+  // &.column-selected {
+  //   // background-color: darken($color: $white, $amount: 10);
+  // }
 
   &:first-child {
     margin: 0 0 0 180vmin;

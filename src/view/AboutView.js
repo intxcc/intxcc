@@ -11,7 +11,7 @@ import AboutTextComponent from './About/AboutTextComponent'
 const AboutView = observer((props) => (
   <div className='content-wrapper-inner'>
     <AboutTableComponent />
-    <AboutTextComponent />
+    <AboutTextComponent fallback={false} />
   </div>
 ))
 

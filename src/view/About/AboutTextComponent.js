@@ -1,13 +1,14 @@
 'use strict'
 
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
 import MYAGE from '../../config/MyAge'
 
 const AboutTextComponent = observer((props) => (
-  <div className='about-text-wrapper'>
+  <div className={(props.fallback ? 'fallback-' : '') + 'about-text-wrapper'}>
     <p>
       <strong className='about-text-intro-sentence'>Hi there,</strong> my name is Marvin Alexander Rüll, I am {MYAGE} years old and I take interest in everything regarding information technology since more than 3 years. Development as a whole is present in my life since about 10 years, from the book &quot;Delphi for Kids&quot; (<i>pascal</i>) to this website and a lot in between. I would call my work professional since only about 3 years, thought.
     </p>
@@ -19,5 +20,9 @@ const AboutTextComponent = observer((props) => (
     </p>
   </div>
 ))
+
+AboutTextComponent.propTypes = {
+  fallback: PropTypes.bool
+}
 
 export default AboutTextComponent

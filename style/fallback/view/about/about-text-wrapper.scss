@@ -1,0 +1,34 @@
+.fallback-about-text-wrapper {
+  margin: 0 2.35rem;
+  padding: 2rem;
+
+  @media (max-width: 480px) {
+    margin: 0;
+    padding: 2rem;
+  }
+
+  @media (max-width: 320px) {
+    margin: 1rem 0;
+    padding: 1rem;
+  }
+
+  .about-text-intro-sentence {
+    line-height: 1.5rem;
+    font-family: 'Roboto Condensed';
+    font-size: 3rem;
+  }
+
+  p {
+    padding: 0 0 2rem;
+
+    text-align: justify;
+    font-size: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: $black;
+    font-weight: 500;
+    font-style: italic;
+  }
+}

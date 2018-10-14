@@ -39,7 +39,12 @@
   color: $gray;
   font-size: 2rem;
 
+  box-sizing: border-box;
   pointer-events: initial;
+
+  &.background-color-enabled {
+    background-color: $white;
+  }
 
   &.active {
     border-color: rgba($color: $white, $alpha: 0);

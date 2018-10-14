@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 const FallbackSkills = observer(props => (
-  <div className='fallback-skills-overview-wrapper'>
+  <div className='fallback-skills-simplified-overview'>
+    a
   </div>
 ))
 

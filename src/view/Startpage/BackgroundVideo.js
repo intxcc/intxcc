@@ -7,6 +7,8 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import FallbackImageAlt from '../../config/FallbackImageAlt'
+
 @observer
 class BackgroundVideo extends React.Component {
   @autobind
@@ -43,7 +45,7 @@ class BackgroundVideo extends React.Component {
 
     return (
       <div className='startpage-background'>
-        <img className='startpage-background-image' alt='Snapshot of first frame of the background video. The background video shows fast moving wireframe objects, that resemble the text "intxcc". They change very quickly between a very abstract representation and a clear one while showing it from different angles. The right side of the video is blurred out.' src='/fallback_intxcc.png' />
+        <img className='startpage-background-image' alt={FallbackImageAlt} src='/fallback_intxcc.png' />
         {video}
       </div>
     )

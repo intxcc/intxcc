@@ -11,7 +11,7 @@ import { FallbackMenuEntries } from '../../../config/MenuEntries'
 
 const BurgerMenuItem = observer(props => (
   <a className='burger-menu-entry-link' href={'#/' + (props.name === 'startpage' ? '' : props.name + '/')}>
-    <div className={'burger-menu-entry' + (props.selected ? ' selected' : '')}>
+    <div onClick={props.disableBurgerMenuFunc} className={'burger-menu-entry' + (props.selected ? ' selected' : '')}>
       {props.caption}
     </div>
   </a>
@@ -20,6 +20,7 @@ const BurgerMenuItem = observer(props => (
 BurgerMenuItem.propTypes = {
   name: PropTypes.string,
   caption: PropTypes.string,
+  disableBurgerMenuFunc: PropTypes.func,
   selected: PropTypes.bool
 }
 
@@ -33,7 +34,12 @@ const BurgerMenu = observer(props => (
     <div className={'burger-menu' + (props.show ? ' active' : '')}>
       <div className='burger-menu-inner'>
         {FallbackMenuEntries.map((menuEntry, index) => (
-          <BurgerMenuItem key={'burger-menu-entry-' + index} name={menuEntry.name} caption={menuEntry.caption} selected={menuEntry.name === props.activePage} />
+          <BurgerMenuItem
+            key={'burger-menu-entry-' + index}
+            name={menuEntry.name}
+            caption={menuEntry.caption}
+            disableBurgerMenuFunc={() => props.setShowFunc(false)}
+            selected={menuEntry.name === props.activePage} />
         ))}
       </div>
     </div>

@@ -9,7 +9,7 @@
   transform-origin: top left;
 
   // Edge does not support selecting the logo only within the clip path of it, so we need to move the menu above the logo.
-  @supports (-ms-ime-align: auto) {// sass-lint:disable-line no-vendor-prefixes
+  @supports (-ms-ime-align: auto) {
     transform: translateY(-50%);
   }
 }

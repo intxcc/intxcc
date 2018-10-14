@@ -15,6 +15,7 @@
     ],
     "no-trailing-whitespace": true,
     "no-color-literals": 0,
-    "no-important": 0
+    "no-important": 0,
+    "no-vendor-prefixes": 0
   }
 }

@@ -30,6 +30,7 @@ $logo-clip-path: polygon(0 0, 50% 100%, 100% 0);
   opacity: 0;
   cursor: pointer;
   clip-path: $logo-clip-path;
+  -webkit-clip-path: $logo-clip-path;
 
   pointer-events: fill;
 

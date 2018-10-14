@@ -85,6 +85,7 @@
   $global--popup-fade-out-duration opacity;
 
   clip-path: $global--enable-clip-path;
+  -webkit-clip-path: $global--enable-clip-path;
 
   &.disabled {
     transition: $global--popup-fade-out-duration filter,
@@ -95,6 +96,7 @@
     filter: $global--disable-blur;
     pointer-events: none;
     clip-path: $global--disable-clip-path !important;
+    -webkit-clip-path: $global--disable-clip-path !important;
   }
 }
 
@@ -149,9 +151,11 @@
   $global--popup-fade-out-duration clip-path;
 
   clip-path: $global--enable-clip-path;
+  -webkit-clip-path: $global--enable-clip-path;
 
   &.disabled {
     clip-path: $global--disable-clip-path !important;
+    -webkit-clip-path: $global--disable-clip-path !important;
     filter: $global--disable-blur;
     pointer-events: none;
   }
@@ -169,6 +173,7 @@
 
   z-index: 100;
   clip-path: $global--enable-clip-path;
+  -webkit-clip-path: $global--enable-clip-path;
   pointer-events: none;
 
   .overlay-background-color-blurred {
@@ -186,6 +191,7 @@
 
     background-color: rgba($color: $black, $alpha: .3);
     clip-path: $global--disable-clip-path;
+    -webkit-clip-path: $global--disable-clip-path;
 
     .overlay-background-color-blurred {
       background-color: rgba($color: $white, $alpha: .7);

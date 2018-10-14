@@ -19,7 +19,7 @@
   // &.column-selected {
   //   // background-color: darken($color: $white, $amount: 10);
   // }
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     border-right: $skills-map-column-border-ie-fallback;
   }
 
@@ -27,7 +27,7 @@
     margin: 0 0 0 180vmin;
     border-left: $skills-map-column-border;
 
-    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
       border-left: $skills-map-column-border-ie-fallback;
     }
   }

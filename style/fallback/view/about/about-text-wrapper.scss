@@ -1,14 +1,6 @@
 .fallback-about-text-wrapper {
-  margin: 1rem 5vmin;
-  padding: 1rem 0;
-
-  @media (min-height: 1280px) {
-    margin: 4vmin 5vmin;
-  }
-
-  @media (max-width: 320px) {
-    padding: 0;
-  }
+  margin: 0 5vmin;
+  padding: 5vmin 0;
 
   .about-text-intro-sentence {
     line-height: 1.5rem;

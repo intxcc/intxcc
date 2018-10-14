@@ -1,27 +1,26 @@
-.fallback-skills-simplify-overview-button-wrapper {
+.fallback-skills-simplify-overview-button {
   @include user-select(none);
 
   display: flex;
 
-  position: fixed;
-  top: 5vmin;
-  right: 5vmin;
+  position: absolute;
+  top: 20%;
+  right: 6%;
 
   align-items: center;
   justify-content: center;
 
-  z-index: 1998;
   border: .3rem solid $gray;
 
   background-color: rgba($color: $white, $alpha: .8);
   cursor: pointer;
 
   padding: 0 .5rem;
-  max-width: #{'calc(90vw - 4rem - 5vmin)'};
+
+  max-width: 85%;
 
   height: 4rem;
-  min-height: 6vh;
-  max-height: 17.4vh;
+  max-height: 70%;
 
   overflow: hidden;
 
@@ -50,4 +49,18 @@
   @media (max-height: 500px) {
     font-size: 1.2rem;
   }
+}
+
+.fallback-skills-simplify-overview-button-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  z-index: 1998;
+
+  width: 80vw;
+  max-width: 80%;
+
+  height: 25vmin;
+  max-height: 25%;
 }

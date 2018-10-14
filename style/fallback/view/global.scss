@@ -18,3 +18,22 @@
     box-sizing: border-box;
   }
 }
+
+@mixin fallback-view-margin {
+  top: 5vmin;
+
+  margin-top: 4rem;
+  padding: 0;
+
+  min-height: #{'calc(100vh - 5vmin)'};
+
+  @media (max-height: 280px), (max-width: 280px) {
+    margin-top: 20vmin;
+    padding-top: 0;
+  }
+
+  @media (min-height: 1280px) {
+    margin-top: 6.25vmin;
+    padding-top: 0;
+  }
+}

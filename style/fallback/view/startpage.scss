@@ -40,6 +40,7 @@
 
     // IE Workaround
     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
+      min-width: 25rem;
       height: 25rem * $logo-dimension-ratio;
       overflow: hidden;
     }

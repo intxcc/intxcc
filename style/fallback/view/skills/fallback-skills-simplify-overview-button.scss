@@ -29,6 +29,7 @@
   font-size: 2vw;
 
   box-sizing: border-box;
+  pointer-events: initial;
 
   @media (max-width: 680px) {
     font-size: 1.6rem;
@@ -63,4 +64,6 @@
 
   height: 25vmin;
   max-height: 25%;
+
+  pointer-events: none;
 }

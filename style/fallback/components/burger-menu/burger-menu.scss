@@ -15,6 +15,14 @@
 }
 
 .burger-menu {
+  @media (max-height: 320px), (max-width: 320px) {
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+  }
+
   display: flex;
 
   position: absolute;
@@ -25,22 +33,12 @@
   align-items: center;
   justify-content: center;
 
+  transform: scale(.9);
   transition: $global--variant-change-duration opacity,
-  $global--variant-change-duration top,
-  $global--variant-change-duration left,
-  $global--variant-change-duration width,
-  $global--variant-change-duration height;
+  $global--variant-change-duration transform;
 
   opacity: 0;
   background-color: $white;
-
-  @media (max-height: 320px), (max-width: 320px) {
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 100vh;
-  }
 
   width: 92vmin;
   height: 92vmin;
@@ -48,6 +46,7 @@
   overflow: hidden;
 
   &.active {
+    transform: scale(1);
     opacity: 1;
     pointer-events: initial;
   }

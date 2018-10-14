@@ -16,16 +16,18 @@
   background-color: rgba($color: $white, $alpha: .8);
   cursor: pointer;
 
-  width: #{'calc(90vw - 4rem - 5vmin)'};
+  padding: 0 .5rem;
+  max-width: #{'calc(90vw - 4rem - 5vmin)'};
 
   height: 4rem;
+  min-height: 6vh;
   max-height: 17.4vh;
 
   overflow: hidden;
 
   text-align: center;
   color: $gray;
-  font-size: 2rem;
+  font-size: 2vw;
 
   box-sizing: border-box;
 
@@ -43,5 +45,9 @@
 
   @media (max-width: 180px) {
     font-size: .6rem;
+  }
+
+  @media (max-height: 500px) {
+    font-size: 1.2rem;
   }
 }

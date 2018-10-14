@@ -25,6 +25,8 @@ body {
 
   height: 100vh;
   width: 100vw;
+
+  padding: 1rem 0;
 }
 
 .license-wrapper,
@@ -39,6 +41,7 @@ body {
   font-family: 'Roboto Condensed', Arial, Helvetica, sans-serif;
 
   width: 400px;
+  max-width: 90vw;
 
   text-align: justify;
   font-variant: small-caps;

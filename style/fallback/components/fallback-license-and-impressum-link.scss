@@ -1,0 +1,26 @@
+.fallback-license-and-impressum-link {
+  position: absolute;
+  right: .25rem;
+  bottom: .25rem;
+
+  transition: .2s opacity;
+
+  color: $black;
+  font-family: 'Roboto Condensed';
+
+  &:hover {
+    opacity: .7;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    color: $black;
+  }
+
+  .menu-impressum-symbols {
+    margin-left: .25rem;
+  }
+}

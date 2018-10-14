@@ -8,6 +8,7 @@ import { observer } from 'mobx-react'
 import Defaults from '../../config/defaults'
 import LogoPath from '../../logo/LogoPath'
 import FallbackImageAlt from '../../config/FallbackImageAlt'
+import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
 
 const StartpageView = observer(props => (
   <div className='fallback-view-wrapper startpage-wrapper'>
@@ -17,8 +18,9 @@ const StartpageView = observer(props => (
     <img alt='Picture of me with triangles.' className='fallback-startpage-pic' src='/fallback_pic.png' />
     <h1>
       Development and Design by Marvin Alexander Rüll
-    </h1>
+    </h1>1
     <LogoPath className={'fallback-logo'} strokeWidth={Defaults.DefaultStrokeWidth / 10} />
+    <LicenseAndImpressumLink />
   </div>
 ))
 

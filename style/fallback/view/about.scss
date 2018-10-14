@@ -1,12 +1,13 @@
 .about-wrapper {
   display: flex;
+  top: 5vmin;
 
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 
-  margin-top: 5vmin;
   padding-top: 4rem;
+  min-height: #{'calc(100vh - 5vmin)'};
 
   @media (max-height: 320px), (max-width: 320px) {
     margin-top: 22.5vmin;

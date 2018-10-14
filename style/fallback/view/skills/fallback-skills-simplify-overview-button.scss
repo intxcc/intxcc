@@ -4,12 +4,15 @@
   display: flex;
 
   position: absolute;
-  top: 20%;
-  right: 4%;
+  top: 5vmin;
+  right: 5vmin;
 
   align-items: center;
   justify-content: center;
 
+  transition: .2s border-color,
+  .2s background-color,
+  .2s color;
   border: .3rem solid $gray;
 
   background-color: rgba($color: $white, $alpha: .8);
@@ -49,6 +52,11 @@
 
   @media (max-height: 500px) {
     font-size: 1.2rem;
+  }
+
+  &:hover {
+    border-color: rgba($color: $white, $alpha: 0);
+    color: lighten($color: $primary-color, $amount: 10);
   }
 }
 

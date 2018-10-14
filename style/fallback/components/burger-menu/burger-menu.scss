@@ -18,8 +18,8 @@
   display: flex;
 
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  top: 4vmin;
+  left: 4vmin;
 
   flex-wrap: wrap;
   align-items: center;
@@ -29,9 +29,7 @@
   $global--variant-change-duration top,
   $global--variant-change-duration left,
   $global--variant-change-duration width,
-  $global--variant-change-duration min-width,
-  $global--variant-change-duration height,
-  $global--variant-change-duration min-height;
+  $global--variant-change-duration height;
 
   opacity: 0;
   background-color: $white;
@@ -41,17 +39,11 @@
     left: 0;
 
     width: 100vw;
-    min-width: 100vw;
-
     height: 100vh;
-    min-height: 100vh;
   }
 
-  width: #{'calc(100vmin - 2rem)'};
-  min-width: #{'calc(100vmin - 2rem)'};
-
-  height: #{'calc(100vmin - 2rem)'};
-  min-height: #{'calc(100vmin - 2rem)'};
+  width: 92vmin;
+  height: 92vmin;
 
   overflow: hidden;
 

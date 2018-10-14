@@ -242,9 +242,14 @@ const SkillsModel = types.model({
     // Only when just one touch is registered, we will handle it like the mouse
     let screenX = e.screenX
     let screenY = e.screenY
-    if (e.touches && e.touches.length === 1) {
-      screenX = e.touches[0].screenX
-      screenY = e.touches[0].screenY
+    if (e.touches) {
+      if (e.touches.length === 1) {
+        screenX = e.touches[0].screenX
+        screenY = e.touches[0].screenY
+      } else {
+        self.mouseDragActive = false
+        return
+      }
     }
 
     self.mouseDragActive = true

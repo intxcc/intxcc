@@ -1,5 +1,9 @@
 .burger-menu-handle-wrapper {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 1999;
 
   width: 25vmin;
   max-width: 25%;

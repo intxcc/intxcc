@@ -7,6 +7,8 @@
 
   z-index: 1999;
 
+  pointer-events: none;
+
   @import 'burger-menu-handle';
   @import 'burger-menu-inner';
   @import 'burger-menu-entry';
@@ -52,7 +54,6 @@
   min-height: #{'calc(100vmin - 4rem)'};
 
   overflow: hidden;
-  pointer-events: none;
 
   &.active {
     opacity: 1;

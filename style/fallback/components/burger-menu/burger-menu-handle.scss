@@ -39,6 +39,8 @@
   color: $gray;
   font-size: 2rem;
 
+  pointer-events: initial;
+
   &.active {
     border-color: rgba($color: $white, $alpha: 0);
     background-color: $white;

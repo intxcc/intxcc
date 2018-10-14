@@ -1,10 +1,38 @@
+.burger-menu-entry-link {
+  text-decoration: none;
+}
+
 .burger-menu-entry {
+  display: flex;
+
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  transition: .2s border-color,
+  .2s color;
+
   margin: 1rem;
-  background-color: #f00;
+  border: .75rem solid $black;
 
-  width: 35vmin;
-  min-width: 10rem;
+  width: 25vmin;
+  min-width: 6.5rem;
 
-  height: 35vmin;
-  min-height: 10rem;
+  height: 25vmin;
+  min-height: 6.5rem;
+
+  text-align: center;
+
+  color: $black;
+  font-family: 'Roboto Condensed';
+  font-size: 6vmin;
+  font-weight: bold;
+  font-variant: small-caps;
+
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: rgba($color: $white, $alpha: 0);
+    color: lighten($color: $primary-color, $amount: 10);
+  }
 }

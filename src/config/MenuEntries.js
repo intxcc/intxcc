@@ -1,6 +1,6 @@
 'use strict'
 
-const MenuEntries = [
+const DefaultMenuEntries = [
   {
     name: 'about',
     caption: 'about me'
@@ -16,4 +16,23 @@ const MenuEntries = [
   }
 ]
 
-export default MenuEntries
+const FallbackMenuEntries = [
+  {
+    name: '',
+    caption: 'start'
+  }, {
+    name: 'about',
+    caption: 'about me'
+  }, {
+    name: 'stories',
+    caption: 'stories'
+  }, {
+    name: 'skills',
+    caption: 'skills'
+  }, {
+    name: 'contact',
+    caption: 'contact'
+  }
+]
+
+export { DefaultMenuEntries, FallbackMenuEntries }

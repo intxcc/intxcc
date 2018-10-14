@@ -26,35 +26,30 @@
   opacity: 0;
   z-index: 1999;
 
-  // background-color: $white;
-  background-color: #f0f;
+  background-color: $white;
 
-  width: 4rem;
-  min-width: 4rem;
+  @media (max-height: 320px), (max-width: 320px) {
+    top: 0;
+    left: 0;
 
-  height: 4rem;
-  min-height: 4rem;
+    width: 100vw;
+    min-width: 100vw;
+
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  width: #{'calc(100vmin - 4rem)'};
+  min-width: #{'calc(100vmin - 4rem)'};
+
+  height: #{'calc(100vmin - 4rem)'};
+  min-height: #{'calc(100vmin - 4rem)'};
 
   overflow: hidden;
+  pointer-events: none;
 
   &.active {
-    @media (max-height: 320px), (max-width: 320px) {
-      top: 0;
-      left: 0;
-
-      width: 100vw;
-      min-width: 100vw;
-
-      height: 100vh;
-      min-height: 100vh;
-    }
-
     opacity: 1;
-
-    width: #{'calc(100vmin - 4rem)'};
-    min-width: #{'calc(100vmin - 4rem)'};
-
-    height: #{'calc(100vmin - 4rem)'};
-    min-height: #{'calc(100vmin - 4rem)'};
+    pointer-events: initial;
   }
 }

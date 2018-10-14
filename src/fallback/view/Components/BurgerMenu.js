@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { observer } from 'mobx-react'
 
-import MenuEntries from '../../../config/MenuEntries'
+import { FallbackMenuEntries } from '../../../config/MenuEntries'
 
 const BurgerMenuItem = observer(props => (
-  <a href={'#/' + props.name + '/'}>
+  <a className='burger-menu-entry-link' href={'#/' + (props.name === '' ? '' : props.name + '/')}>
     <div className='burger-menu-entry'>
       {props.caption}
     </div>
@@ -25,12 +25,13 @@ BurgerMenuItem.propTypes = {
 
 const BurgerMenu = observer(props => (
   <div className='burger-menu-wrapper'>
+    {/* TODO Disable handle on very big zoom */}
     <div className={'burger-menu-handle' + (props.show ? ' active' : '')} onClick={() => props.setShowFunc(!props.show)}>
       <FontAwesomeIcon icon='bars' />
     </div>
     <div className={'burger-menu' + (props.show ? ' active' : '')}>
       <div className='burger-menu-inner'>
-        {MenuEntries.map((menuEntry, index) => (
+        {FallbackMenuEntries.map((menuEntry, index) => (
           <BurgerMenuItem key={'burger-menu-entry-' + index} name={menuEntry.name} caption={menuEntry.caption} selected={menuEntry.name === props.activePage} />
         ))}
       </div>

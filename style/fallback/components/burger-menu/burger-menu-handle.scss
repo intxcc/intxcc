@@ -4,13 +4,14 @@
   display: flex;
 
   position: fixed;
-  top: 2rem;
-  left: 2rem;
+  top: 2vmax;
+  left: 2vmax;
 
   align-items: center;
   justify-content: center;
 
   transition: .2s border-color,
+  .2s background-color,
   .2s color;
   z-index: 2000;
 
@@ -18,13 +19,17 @@
   cursor: pointer;
 
   width: 4rem;
+  max-width: 10vmax;
+
   height: 4rem;
+  max-height: 10vmax;
 
   color: $gray;
   font-size: 2rem;
 
   &.active {
     border-color: rgba($color: $white, $alpha: 0);
+    background-color: $white;
   }
 
   &:hover {

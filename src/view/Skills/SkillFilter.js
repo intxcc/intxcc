@@ -40,7 +40,7 @@ const FilterCheckboxesCategory = observer((props) => (
 
 FilterCheckboxesWrapper.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.array,
+    PropTypes.object,
     PropTypes.object
   ]),
   title: PropTypes.string,

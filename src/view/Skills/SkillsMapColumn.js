@@ -37,7 +37,7 @@ SkillsMapColumn.propTypes = {
   ]),
   centerMapFunc: PropTypes.func,
   title: PropTypes.string,
-  categories: PropTypes.array
+  categories: PropTypes.object
 }
 
 export default SkillsMapColumn

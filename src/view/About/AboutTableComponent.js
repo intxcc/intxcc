@@ -36,7 +36,7 @@ const AboutTableComponent = observer((props) => (
 
 // AboutTableComponent.propTypes = {
 //   state: PropTypes.object,
-//   columns: PropTypes.array
+//   columns: PropTypes.object
 // }
 
 export default AboutTableComponent

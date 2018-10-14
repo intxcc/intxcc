@@ -40,7 +40,7 @@ SkillsMapCategory.propTypes = {
   ]),
   centerMapFunc: PropTypes.func,
   title: PropTypes.string,
-  skills: PropTypes.array
+  skills: PropTypes.object
 }
 
 export default SkillsMapCategory

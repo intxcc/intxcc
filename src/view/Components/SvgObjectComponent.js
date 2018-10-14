@@ -13,7 +13,7 @@ const SvgObjectComponent = observer((props) => (
 
 SvgObjectComponent.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.array,
+    PropTypes.object,
     PropTypes.object
   ]),
   className: PropTypes.string,

@@ -13,7 +13,7 @@ const FallbackSkills = observer(props => (
 
 FallbackSkills.propTypes = {
   state: PropTypes.object,
-  columns: PropTypes.array
+  columns: PropTypes.object
 }
 
 export default FallbackSkills

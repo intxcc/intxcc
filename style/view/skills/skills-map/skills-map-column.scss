@@ -19,10 +19,17 @@
   // &.column-selected {
   //   // background-color: darken($color: $white, $amount: 10);
   // }
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
+    border-right: $skills-map-column-border-ie-fallback;
+  }
 
   &:first-child {
     margin: 0 0 0 180vmin;
     border-left: $skills-map-column-border;
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
+      border-left: $skills-map-column-border-ie-fallback;
+    }
   }
 
   &:last-child {

@@ -2,6 +2,9 @@
   margin: 0 5vmin;
   padding: 5vmin 0;
 
+  // For IE
+  max-width: #{'calc(100vw - 10vmin)'};
+
   .about-text-intro-sentence {
     line-height: 1.5rem;
     font-family: 'Roboto Condensed';

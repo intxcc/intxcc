@@ -24,7 +24,7 @@ const SkillsMapColumns = observer((props) => (
 SkillsMapColumns.propTypes = {
   selected: PropTypes.object,
   centerMapFunc: PropTypes.func,
-  columns: PropTypes.array
+  columns: PropTypes.object
 }
 
 export default SkillsMapColumns

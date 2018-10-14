@@ -30,7 +30,7 @@ const SkillsMap = observer((props) => (
 
 SkillsMap.propTypes = {
   state: PropTypes.object,
-  columns: PropTypes.array
+  columns: PropTypes.object
 }
 
 export default SkillsMap

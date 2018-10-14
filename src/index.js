@@ -1,5 +1,14 @@
 'use strict'
 
+// ///////////////// //
+// IMPORT POLYFILLS //
+
+import './polyfills/ObjectAssignPolyfill'
+import smoothscroll from 'smoothscroll-polyfill'
+
+// ////// //
+// START //
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -12,11 +21,6 @@ import './fontawesome'
 import store from './mobx/store'
 
 import AppWrapper from './AppWrapper'
-
-// ///////////////// //
-// IMPORT POLYFILLS //
-
-import smoothscroll from 'smoothscroll-polyfill'
 
 // /////////////// //
 // START POLYFILLS //

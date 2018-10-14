@@ -11,6 +11,10 @@
 
   min-height: 8rem;
 
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) { // sass-lint:disable-line no-vendor-prefixes
+    border-bottom: $skills-map-column-border-ie-fallback;
+  }
+
   &.category-selected {
     .skills-map-category-inner {
       border-right-color: $black;

@@ -41,7 +41,7 @@ YearSelection.propTypes = {
   // Additional class name
   className: PropTypes.string,
   // An array with the years that should be displayed
-  years: PropTypes.array,
+  years: PropTypes.object,
   // The index of the selected year
   selectedYear: PropTypes.number,
   // The function to select a year. Receives a year index as a single input: selectYear(index)

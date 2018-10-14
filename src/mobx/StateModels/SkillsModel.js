@@ -53,6 +53,7 @@ const Selection = types.model({
 
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
+  fallbackUseSkillMap: types.optional(types.boolean, false),
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
@@ -68,6 +69,10 @@ const SkillsModel = types.model({
   transitionOn: types.optional(types.boolean, false),
   filter: SkillFilter
 }).actions(self => {
+  function setFallbackUseSkillMap (fallbackUseSkillMap) {
+    self.fallbackUseSkillMap = fallbackUseSkillMap
+  }
+
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
@@ -297,7 +302,12 @@ const SkillsModel = types.model({
     }
   }
 
-  function scrollSkill (n) {
+  function scrollSkill (e, n) {
+    // If [STRG] is pressed while scrolling, the user probably wants to zoom and not to change the selection.
+    if (e.ctrlKey) {
+      return
+    }
+
     self.selection.skillIndex += n
 
     if (self.selection.skillIndex >= self.skillIdentifierList.length) {
@@ -315,6 +325,7 @@ const SkillsModel = types.model({
   }
 
   return {
+    setFallbackUseSkillMap,
     onRouterParamChange,
     applyFilter,
     setShowSkillFilter,

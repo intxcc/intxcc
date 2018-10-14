@@ -8,10 +8,17 @@ import { observer } from 'mobx-react'
 import SkillsMapColumns from './SkillsMapColumns'
 
 const SkillsMap = observer((props) => (
-  <div onWheel={(e) => {
-    const n = e.deltaY > 0 ? 1 : -1
-    props.state.scrollSkill(n)
-  }} onMouseDown={props.state.onMouseDown} onMouseUp={props.state.onMouseUp} onMouseMove={props.state.onMouseMove} className='skills-map-outer-wrapper'>
+  <div onMouseDown={props.state.onMouseDown}
+    onMouseUp={props.state.onMouseUp}
+    onMouseMove={props.state.onMouseMove}
+    onTouchStart={props.state.onMouseDown}
+    onTouchEnd={props.state.onMouseUp}
+    onTouchMove={props.state.onMouseMove}
+    onWheel={(e) => {
+      const n = e.deltaY > 0 ? 1 : -1
+      props.state.scrollSkill(n)
+    }}
+    className='skills-map-outer-wrapper'>
     <div className={'skills-map-wrapper' + ((props.state.transitionOn ? ' transition' : '')) + (!props.state.mouseDragEnabled ? ' no-drag' : '')}
       style={{
         'transform': 'translate3d(-50%, -50%, 0) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0) rotate(30deg)'

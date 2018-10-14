@@ -234,10 +234,18 @@ const SkillsModel = types.model({
   }
 
   function onMouseDown (e) {
+    // Only when just one touch is registered, we will handle it like the mouse
+    let screenX = e.screenX
+    let screenY = e.screenY
+    if (e.touches && e.touches.length === 1) {
+      screenX = e.touches[0].screenX
+      screenY = e.touches[0].screenY
+    }
+
     self.mouseDragActive = true
     self.mouseLastPosition = {
-      x: e.screenX,
-      y: e.screenY
+      x: screenX,
+      y: screenY
     }
   }
 
@@ -246,15 +254,23 @@ const SkillsModel = types.model({
   }
 
   function onMouseMove (e) {
+    // Only when just one touch is registered, we will handle it like the mouse
+    let screenX = e.screenX
+    let screenY = e.screenY
+    if (e.touches && e.touches.length === 1) {
+      screenX = e.touches[0].screenX
+      screenY = e.touches[0].screenY
+    }
+
     if (self.mouseDragEnabled && self.mouseDragActive) {
       const delta = {
-        x: -(self.mouseLastPosition.x - e.screenX),
-        y: -(self.mouseLastPosition.y - e.screenY)
+        x: -(self.mouseLastPosition.x - screenX),
+        y: -(self.mouseLastPosition.y - screenY)
       }
 
       self.mouseLastPosition = {
-        x: e.screenX,
-        y: e.screenY
+        x: screenX,
+        y: screenY
       }
 
       self.moveMapBy(delta)

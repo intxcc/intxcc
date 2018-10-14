@@ -45,4 +45,16 @@
       overflow: hidden;
     }
   }
+
+  @media (orientation: portrait) {
+    @media (max-width: 560px), (max-height: 560px) {
+      .fallback-startpage-pic {
+        min-width: 9.5rem;
+      }
+
+      .fallback-logo {
+        min-width: 9.5rem;
+      }
+    }
+  }
 }

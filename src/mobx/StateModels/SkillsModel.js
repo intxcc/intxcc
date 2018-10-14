@@ -53,7 +53,7 @@ const Selection = types.model({
 
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
-  fallbackUseSkillMap: types.optional(types.boolean, false),
+  fallbackUseSkillMap: types.optional(types.boolean, true),
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),

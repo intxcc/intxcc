@@ -1,4 +1,12 @@
 .burger-menu-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  z-index: 1999;
+
   @import 'burger-menu-handle';
   @import 'burger-menu-inner';
   @import 'burger-menu-entry';
@@ -7,7 +15,7 @@
 .burger-menu {
   display: flex;
 
-  position: fixed;
+  position: absolute;
   top: 2rem;
   left: 2rem;
 
@@ -24,8 +32,6 @@
   $global--variant-change-duration min-height;
 
   opacity: 0;
-  z-index: 1999;
-
   background-color: $white;
 
   @media (max-height: 320px), (max-width: 320px) {

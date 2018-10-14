@@ -1,11 +1,21 @@
+.burger-menu-handle-wrapper {
+  position: relative;
+
+  width: 25vmin;
+  max-width: 25%;
+
+  height: 25vmin;
+  max-height: 25%;
+}
+
 .burger-menu-handle {
   @include user-select(none);
 
   display: flex;
 
-  position: fixed;
-  top: 2vmax;
-  left: 2vmax;
+  position: absolute;
+  top: 20%;
+  left: 20%;
 
   align-items: center;
   justify-content: center;
@@ -19,10 +29,12 @@
   cursor: pointer;
 
   width: 4rem;
-  max-width: 10vmax;
+  max-width: 80%;
 
   height: 4rem;
-  max-height: 10vmax;
+  max-height: 80%;
+
+  overflow: hidden;
 
   color: $gray;
   font-size: 2rem;

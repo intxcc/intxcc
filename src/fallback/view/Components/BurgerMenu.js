@@ -25,9 +25,10 @@ BurgerMenuItem.propTypes = {
 
 const BurgerMenu = observer(props => (
   <div className='burger-menu-wrapper'>
-    {/* TODO Disable handle on very big zoom */}
-    <div className={'burger-menu-handle' + (props.show ? ' active' : '')} onClick={() => props.setShowFunc(!props.show)}>
-      <FontAwesomeIcon icon='bars' />
+    <div className='burger-menu-handle-wrapper'>
+      <div className={'burger-menu-handle' + (props.show ? ' active' : '')} onClick={() => props.setShowFunc(!props.show)}>
+        <FontAwesomeIcon icon='bars' />
+      </div>
     </div>
     <div className={'burger-menu' + (props.show ? ' active' : '')}>
       <div className='burger-menu-inner'>

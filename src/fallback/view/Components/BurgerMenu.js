@@ -10,8 +10,8 @@ import { observer } from 'mobx-react'
 import { FallbackMenuEntries } from '../../../config/MenuEntries'
 
 const BurgerMenuItem = observer(props => (
-  <a className='burger-menu-entry-link' href={'#/' + (props.name === '' ? '' : props.name + '/')}>
-    <div className='burger-menu-entry'>
+  <a className='burger-menu-entry-link' href={'#/' + (props.name === 'startpage' ? '' : props.name + '/')}>
+    <div className={'burger-menu-entry' + (props.selected ? ' selected' : '')}>
       {props.caption}
     </div>
   </a>

@@ -18,7 +18,7 @@ const DefaultMenuEntries = [
 
 const FallbackMenuEntries = [
   {
-    name: '',
+    name: 'startpage',
     caption: 'start'
   }, {
     name: 'about',

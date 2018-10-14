@@ -49,7 +49,7 @@ ViewObject.propTypes = {
   className: PropTypes.string,
   children: PropTypes.oneOfType([
     PropTypes.object,
-    PropTypes.object
+    PropTypes.array
   ])
 }
 

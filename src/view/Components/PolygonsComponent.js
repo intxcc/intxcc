@@ -152,7 +152,7 @@ PolygonsComponent.propTypes = {
   classNameStart: PropTypes.string,
   pixelScale: PropTypes.number,
   isVariantMorph: PropTypes.bool,
-  polygonKeys: PropTypes.object,
+  polygonKeys: PropTypes.array,
   polygons: PropTypes.object,
   morphTo: PropTypes.oneOfType([
     PropTypes.bool,

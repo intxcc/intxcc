@@ -26,6 +26,16 @@ const FallbackSelection = types.model({
   // Remember columns of categories, to deselect them if the column is deselected
   rememberCategoryColumn: {}
 })).actions(self => {
+  function showAll (columns) {
+    for (let column of columns) {
+      self.toggleOrSetSelectColumn(column.id, true)
+
+      for (let category of column.categories) {
+        self.toggleOrSetSelectCategory(category.id, column.id, true)
+      }
+    }
+  }
+
   function toggleOrSetSelectColumn (columnIdentifier, setSelected = null) {
     const isColumnSelected = self.isColumnSelected(columnIdentifier)
     const newIsColumnSelected = (setSelected === null) ? !isColumnSelected : setSelected
@@ -56,6 +66,7 @@ const FallbackSelection = types.model({
   }
 
   return {
+    showAll,
     toggleOrSetSelectColumn,
     toggleOrSetSelectCategory
   }

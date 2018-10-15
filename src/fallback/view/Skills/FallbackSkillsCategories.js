@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 
 const FallbackSkillsCategories = observer(props => (
   <div className='fallback-skills-simplified-categories'>
-    <h2>Categories</h2>
+    <h2>Select Categories</h2>
     {props.categories.map((category, index) => {
       // Check if current item is headline
       if (category.type === 'column-headline') {

@@ -23,6 +23,30 @@
     font-size: 1.5rem;
   }
 
+  .fallback-skills-simplified-overview-show-all-button {
+    display: inline-flex;
+    transition: .2s border-color,
+    .2s color;
+
+    margin-top: .5rem;
+
+    border-right: .5rem solid $black;
+    border-left: .5rem solid $black;
+
+    cursor: pointer;
+    padding: .25rem .5rem;
+
+    color: $black;
+    font-family: 'Roboto Condensed';
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    &:hover {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+  }
+
   @import 'fallback-skills-simplified-columns';
   @import 'fallback-skills-simplified-categories';
   @import 'fallback-skills-simplified-skills';

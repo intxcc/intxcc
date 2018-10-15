@@ -9,4 +9,9 @@ html.can-touch { // sass-lint:disable-line force-element-nesting no-qualifying-e
     background-color: rgba($color: $white, $alpha: .8) !important;
     color: $gray !important;
   }
+
+  .fallback-skills-simplified-overview-show-all-button {
+    border-color: $black !important;
+    color: $black !important;
+  }
 }

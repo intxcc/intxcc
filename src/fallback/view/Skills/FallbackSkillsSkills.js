@@ -7,6 +7,7 @@ import { observer } from 'mobx-react'
 
 const FallbackSkillsSkills = observer(props => (
   <div className='fallback-skills-simplified-skills'>
+    <a id='fallback-skills-simplified-overview-skills-start-anchor'></a>
     <h2>Skills</h2>
     {props.skills.map((skill, index) => {
       // Check if current item is headline

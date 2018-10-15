@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 
 const FallbackSkillColumns = observer(props => (
   <div className='fallback-skills-simplified-columns'>
-    <h2>Topics</h2>
+    <h2>Select Topics</h2>
     {props.columns.map(column => (
       <div
         key={'fallback-skills-column-' + column.id}

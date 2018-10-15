@@ -29,6 +29,14 @@ class FallbackApp extends React.Component {
     this.disposers = {}
   }
 
+  componentDidMount () {
+    window.addEventListener('scroll', this.onScroll)
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('scroll', this.onScroll)
+  }
+
   @autobind
   attachStateToRouter (activePage) {
     if (!this.props.store.state[activePage]) {
@@ -68,6 +76,11 @@ class FallbackApp extends React.Component {
   }
 
   @autobind
+  onScroll (e) {
+    console.log('scroll')
+  }
+
+  @autobind
   render () {
     const activePage = this.props.store.global.activePage
     this.attachStateToRouter(activePage)
@@ -77,6 +90,7 @@ class FallbackApp extends React.Component {
       state: this.props.store.state[activePage]
     }) : <span>404</span> // TODO Show real 404
 
+    // TODO REMEMBER SCROLL POSITION
     return (
       <div className='fallback-site-wrapper'>
         <BurgerMenu activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />

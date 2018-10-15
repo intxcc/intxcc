@@ -63,6 +63,10 @@ body {
   margin: .5rem 0;
 }
 
+.license-text {
+  max-width: 90vw;
+}
+
 .license-wrapper a {
   font-variant: initial;
 }

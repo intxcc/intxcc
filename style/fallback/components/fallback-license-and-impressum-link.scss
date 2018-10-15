@@ -8,6 +8,11 @@
   color: $black;
   font-family: 'Roboto Condensed';
 
+  // IE Workaround
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    position: fixed;
+  }
+
   &:hover {
     opacity: .7;
   }

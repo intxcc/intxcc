@@ -50,6 +50,9 @@
     justify-content: center;
     float: left;
 
+    transition: .2s background-color,
+    .2s color;
+
     margin: 0 .5rem 0 0;
     border-radius: .5rem;
 

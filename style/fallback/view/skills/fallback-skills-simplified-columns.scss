@@ -1,3 +1,8 @@
 .fallback-skills-simplified-columns {
-  background-color: #f0f;
+  .fallback-skills-simplified-column {
+    // Indicates that it's categories are visible
+    &.active {
+      background-color: #f00;
+    }
+  }
 }

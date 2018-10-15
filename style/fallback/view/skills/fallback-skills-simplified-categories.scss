@@ -1,0 +1,8 @@
+.fallback-skills-simplified-categories {
+  .fallback-skills-simplified-category {
+    // Indicates that it's skills are visible
+    &.active {
+      background-color: #ff0;
+    }
+  }
+}

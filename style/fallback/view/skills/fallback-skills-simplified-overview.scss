@@ -1,10 +1,9 @@
 .fallback-skills-simplified-overview {
   margin: 0 5vmin;
 
-  background-color: #f00;
-
   width: #{'calc(100% - 10vmin)'};
-  height: 1rem;
 
   @import 'fallback-skills-simplified-columns';
+  @import 'fallback-skills-simplified-categories';
+  @import 'fallback-skills-simplified-skills';
 }

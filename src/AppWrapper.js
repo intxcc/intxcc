@@ -42,7 +42,7 @@ class AppWrapper extends React.Component {
       <div ref={(siteWrapper) => { this.siteWrapper = siteWrapper }} className='site-wrapper-outer'>
         {this.props.store.global.useFallback
           ? <FallbackApp store={this.props.store} />
-          : <App store={this.props.store} />}
+          : <App router={this.props.store.router} store={this.props.store} />}
       </div>
     )
   }

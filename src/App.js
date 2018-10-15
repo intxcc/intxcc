@@ -44,6 +44,11 @@ class App extends React.Component {
   }
 
   @autobind
+  componentDidMount () {
+    this.props.router.initialize()
+  }
+
+  @autobind
   swapBuffer () {
     if (this.props.store.views.get('main').stateBasicInfo) {
       this.props.store.views.get('main').stateBasicInfo.clearNotPersistentPopups()
@@ -164,6 +169,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
+  router: PropTypes.object,
   store: PropTypes.object
 }
 

@@ -28,7 +28,7 @@ const DevelopmentDefaults = {
 }
 
 // Here we can choose if in an development environment we want to see the page as it will be in production or with another config for better DX
-const EnableDevelopmentDefaultsIfOnLocalhost = false
+const EnableDevelopmentDefaultsIfOnLocalhost = true
 
 let isRunningInDevelopmentEnvironment = false
 if (EnableDevelopmentDefaultsIfOnLocalhost && (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost')) {

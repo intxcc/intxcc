@@ -1,4 +1,6 @@
 .fallback-skills-list-item {
+  @include user-select(none);
+
   display: flex;
   align-items: center;
 

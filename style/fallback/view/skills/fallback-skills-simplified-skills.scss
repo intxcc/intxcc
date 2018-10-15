@@ -1,3 +1,8 @@
+#fallback-skills-simplified-overview-skills-start-anchor { // sass-lint:disable-line no-ids
+  position: relative;
+  top: #{'calc(-5vmin - 4rem)'};
+}
+
 .fallback-skills-simplified-skills {
   a {
     text-decoration: none;

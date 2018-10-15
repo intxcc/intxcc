@@ -12,7 +12,6 @@ import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
 
 const StartpageView = observer(props => (
   <div className='fallback-view-wrapper startpage-wrapper'>
-  {/* TODO Show side by side if orientation is landscape */}
     <img className='fallback-startpage-background-image' alt={FallbackImageAlt}>
       {/* For screenreaders and the like. */}
     </img>

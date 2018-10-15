@@ -64,10 +64,12 @@
       }
 
       .fallback-startpage-pic {
+        width: 60vh;
         min-width: 10rem;
       }
 
       .fallback-logo {
+        width: 60vh;
         min-width: 10rem;
       }
     }
@@ -76,10 +78,12 @@
   @media (orientation: portrait) {
     @media (max-width: 560px), (max-height: 560px) {
       .fallback-startpage-pic {
+        width: 50vw;
         min-width: 11rem;
       }
 
       .fallback-logo {
+        width: 40vw;
         min-width: 9.5rem;
       }
     }

@@ -10,6 +10,7 @@ import autobind from 'autobind-decorator'
 import subscribeToRouterParams from '../mobx/StateModels/functions/subscribeToRouterParams'
 
 import BurgerMenu from './view/Components/BurgerMenu'
+import GoToTopButton from './view/Components/GoToTopButton'
 
 import StartpageView from './view/StartpageView'
 import AboutView from './view/AboutView'
@@ -26,6 +27,10 @@ class FallbackApp extends React.Component {
   constructor (props) {
     super(props)
 
+    this.state = {
+      scrollTop: 0
+    }
+
     this.disposers = {}
   }
 
@@ -39,10 +44,16 @@ class FallbackApp extends React.Component {
 
   @autobind
   onScroll (e) {
+    const doc = document.documentElement
+    const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+
+    // Save scrollTop in react state to decide if the back-to-top button is shown
+    this.setState({
+      scrollTop: scrollTop
+    })
+
     const saveFallbackScrollTop = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].basicInfo && this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop : null
     if (saveFallbackScrollTop !== null) {
-      const doc = document.documentElement
-      const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
       saveFallbackScrollTop(scrollTop)
     }
   }
@@ -111,6 +122,7 @@ class FallbackApp extends React.Component {
     return (
       <div className='fallback-site-wrapper'>
         <BurgerMenu activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
+        <GoToTopButton show={this.state.scrollTop > 100} />
         {loadView}
       </div>
     )

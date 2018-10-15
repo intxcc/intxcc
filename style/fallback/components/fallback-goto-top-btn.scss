@@ -1,0 +1,38 @@
+.fallback-goto-top-btn {
+  display: flex;
+
+  position: fixed;
+  right: 5vmin;
+  bottom: 5vmin;
+
+  align-items: center;
+  justify-content: center;
+
+  transition: $global--variant-change-duration opacity,
+  .2s color;
+
+  opacity: 0;
+  z-index: 1999;
+
+  cursor: pointer;
+
+  width: 4rem;
+  max-width: 8vmax;
+
+  height: 4rem;
+  max-height: 8vmax;
+
+  color: $gray;
+  font-size: 3rem;
+
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: rgba($color: $white, $alpha: 0);
+    color: lighten($color: $primary-color, $amount: 10);
+  }
+
+  &.show {
+    opacity: 1;
+  }
+}

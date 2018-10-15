@@ -63,14 +63,27 @@ const FallbackSkills = observer(props => {
   return (
     <div className='fallback-skills-simplified-overview'>
       <h1>Skill Overview</h1>
-      <div onClick={() => {
-        // Select all columns and categories and scroll to skills
-        props.state.fallbackSelection.showAll(props.columns)
-        setTimeout(() => document.getElementById('fallback-skills-simplified-overview-skills-start-anchor').scrollIntoView({
-          behavior: 'smooth'
-        }), 100)
-      }} className='fallback-skills-simplified-overview-show-all-button'>
-        Show all
+      <div className='fallback-skills-simplified-overview-selection-button-wrapper'>
+        <div onClick={() => {
+          // Select all columns and categories and scroll to skills
+          props.state.fallbackSelection.showAll(props.columns)
+          setTimeout(() => document.getElementById('fallback-skills-simplified-overview-skills-start-anchor').scrollIntoView({
+            behavior: 'smooth'
+          }), 100)
+        }} className='fallback-skills-simplified-overview-selection-button'>
+          Show all
+        </div>
+        <div onClick={() => {
+          // Deselect all columns and categories and scroll to top
+          props.state.fallbackSelection.showNone()
+          setTimeout(() => window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          }), 100)
+        }} className='fallback-skills-simplified-overview-selection-button'>
+          Clear selection
+        </div>
       </div>
       <FallbackSkillColumns columns={props.columns} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />
       <FallbackSkillsCategories categories={categories} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />

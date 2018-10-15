@@ -36,6 +36,12 @@ const FallbackSelection = types.model({
     }
   }
 
+  function showNone () {
+    self.selectedColumns.clear()
+    self.selectedCategories.clear()
+    self.rememberCategoryColumn = {}
+  }
+
   function toggleOrSetSelectColumn (columnIdentifier, setSelected = null) {
     const isColumnSelected = self.isColumnSelected(columnIdentifier)
     const newIsColumnSelected = (setSelected === null) ? !isColumnSelected : setSelected
@@ -67,6 +73,7 @@ const FallbackSelection = types.model({
 
   return {
     showAll,
+    showNone,
     toggleOrSetSelectColumn,
     toggleOrSetSelectCategory
   }

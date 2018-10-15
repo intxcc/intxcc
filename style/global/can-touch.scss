@@ -6,12 +6,16 @@ html.can-touch { // sass-lint:disable-line force-element-nesting no-qualifying-e
 
   .fallback-skills-simplify-overview-button {
     border-color: $gray !important;
-    background-color: rgba($color: $white, $alpha: .8) !important;
+    background-color: $white !important;
     color: $gray !important;
   }
 
-  .fallback-skills-simplified-overview-show-all-button {
+  .fallback-skills-simplified-overview-selection-button {
     border-color: $black !important;
     color: $black !important;
+  }
+
+  .fallback-goto-top-btn {
+    color: $gray !important;
   }
 }

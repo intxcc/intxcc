@@ -1,7 +1,7 @@
 'use strict'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faEnvelopeOpen, faArrowsAlt, faTimes, faFilter, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelopeOpen, faArrowsAlt, faTimes, faFilter, faBars, faArrowCircleUp } from '@fortawesome/free-solid-svg-icons'
 import { faSquare, faCheckSquare, faCommentDots } from '@fortawesome/free-regular-svg-icons'
 import { faTwitter, faGithub, faLinkedin, faCreativeCommons, faCreativeCommonsSa, faCreativeCommonsBy } from '@fortawesome/free-brands-svg-icons'
 
@@ -10,6 +10,7 @@ library.add(faArrowsAlt)
 library.add(faTimes)
 library.add(faFilter)
 library.add(faBars)
+library.add(faArrowCircleUp)
 
 library.add(faSquare)
 library.add(faCheckSquare)

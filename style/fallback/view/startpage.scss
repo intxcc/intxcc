@@ -55,6 +55,24 @@
     }
   }
 
+  @media (orientation: landscape) {
+    @media (max-width: 560px), (max-height: 560px) {
+      h1 {
+        margin: 2rem 1rem;
+        min-width: 11rem;
+        font-size: 1.5rem;
+      }
+
+      .fallback-startpage-pic {
+        min-width: 10rem;
+      }
+
+      .fallback-logo {
+        min-width: 10rem;
+      }
+    }
+  }
+
   @media (orientation: portrait) {
     @media (max-width: 560px), (max-height: 560px) {
       .fallback-startpage-pic {

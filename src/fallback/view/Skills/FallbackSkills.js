@@ -15,8 +15,18 @@ const FallbackSkills = observer(props => {
     props.state.fallbackSelection.isColumnSelected(column.id) ||
     (props.state.selection.column && props.state.selection.column.id === column.id)
   ))) {
+    // If the column is only selected because the skill is selected, just push the category of the selected skill
+    let selectedOnlyBecauseSkillIsSelected = null
+    if (props.state.selection.column && props.state.selection.column.id === column.id && !props.state.fallbackSelection.isColumnSelected(column.id)) {
+      selectedOnlyBecauseSkillIsSelected = props.state.selection.category.id
+    }
+
     for (let category of column.categories) {
-      categories.push(category)
+      if (selectedOnlyBecauseSkillIsSelected === null) {
+        categories.push(category)
+      } else if (category.id === selectedOnlyBecauseSkillIsSelected) {
+        categories.push(category)
+      }
     }
   }
 
@@ -25,8 +35,18 @@ const FallbackSkills = observer(props => {
     props.state.fallbackSelection.isCategorySelected(category.id) ||
     (props.state.selection.category && props.state.selection.category.id === category.id)
   ))) {
+    // If the category is only selected because the skill is selected, just push the category of the selected skill
+    let selectedOnlyBecauseSkillIsSelected = null
+    if (props.state.selection.category && props.state.selection.category.id === category.id && !props.state.fallbackSelection.isCategorySelected(category.id)) {
+      selectedOnlyBecauseSkillIsSelected = props.state.selection.skill.id
+    }
+
     for (let skill of category.skills) {
-      skills.push(skill)
+      if (selectedOnlyBecauseSkillIsSelected === null) {
+        skills.push(skill)
+      } else if (skill.id === selectedOnlyBecauseSkillIsSelected) {
+        skills.push(skill)
+      }
     }
   }
 

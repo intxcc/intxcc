@@ -60,10 +60,6 @@ const FallbackSkills = observer(props => {
     }
   }
 
-  if (props.state.selection.skill) {
-    console.log(props.state.selection.skill.id)
-  }
-
   return (
     <div className='fallback-skills-simplified-overview'>
       <h1>Overview</h1>

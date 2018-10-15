@@ -13,7 +13,7 @@ const FallbackSkillsCategories = observer(props => (
       // Check if current item is headline
       if (category.type === 'column-headline') {
         return (
-          <h3>
+          <h3 key={'fallback-column-headline-' + index}>
             {category.title}
           </h3>
         )

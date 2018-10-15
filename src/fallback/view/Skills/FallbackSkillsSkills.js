@@ -9,20 +9,22 @@ import { observer } from 'mobx-react'
 const FallbackSkillsSkills = observer(props => (
   <div className='fallback-skills-simplified-skills'>
     <h2>Skills</h2>
-    {props.skills.map(skill => {
+    {props.skills.map((skill, index) => {
       // Check if current item is headline
       if (skill.type === 'category-headline') {
         return (
-          <h3>
+          <h3 key={'fallback-category-headline-' + index}>
             {skill.title}
           </h3>
         )
       }
 
+      const isSelected = props.selection.skill && props.selection.skill.id === skill.id
+      const href = '/#/skills/' + (!isSelected ? skill.id + '-' + skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-') : '')
       return (
-        <a key={'fallback-skills-skill-' + skill.id} className='fallback-skills-simplified-skill-link' href={'/#/skills/' + skill.id + '-' + skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')}>
+        <a key={'fallback-skills-skill-' + skill.id} href={href} className='fallback-skills-simplified-skill-link' >
           <div
-            className={'fallback-skills-list-item fallback-skills-simplified-skill' + (props.selection.skill && props.selection.skill.id === skill.id ? ' selected' : '')}>
+            className={'fallback-skills-list-item fallback-skills-simplified-skill' + (isSelected ? ' selected' : '')}>
             {skill.title}
           </div>
         </a>

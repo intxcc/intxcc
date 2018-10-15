@@ -81,6 +81,13 @@ const RouterModel = types.model({
       self.params.set(paramIndex, paramValue)
     }
 
+    // Catch if the new params has less items than the old ones and propagate this change
+    for (let paramIndex in self.params.toJSON()) {
+      if (typeof self.nextParams.get(paramIndex) === 'undefined') {
+        self.params.set(paramIndex, '')
+      }
+    }
+
     // Accept model
     self.model = self.nextModel
   }

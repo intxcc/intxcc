@@ -58,6 +58,12 @@ const SkillsModel = types.model({
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
+    // If the params where deleted, also delete the selection
+    if ((paramName === 'skill_id' || paramName === 'skill_name') && paramValue === '') {
+      self.unSelect()
+      return
+    }
+
     switch (paramName) {
       case 'skill_id':
         // If the URL changes, we check if the skill id is different than the selected skill, and if this is the case we transition smoothly to the new skill. This does not happen if the scroll wheel changes the selected skill, as then the in the URL represented skill is already selected

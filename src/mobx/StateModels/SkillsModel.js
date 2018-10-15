@@ -49,6 +49,7 @@ const SkillsModel = types.model({
   mouseDragEnabled: types.optional(types.boolean, true),
   pointerLocked: types.optional(types.boolean, false),
   transitionOn: types.optional(types.boolean, false),
+  ignoreNextEmptySkillName: types.optional(types.boolean, false),
   filter: SkillFilter
 }).actions(self => {
   function setFallbackUseSkillMap (fallbackUseSkillMap) {
@@ -60,6 +61,11 @@ const SkillsModel = types.model({
 
     // If the params where deleted, also delete the selection
     if ((paramName === 'skill_id' || paramName === 'skill_name') && paramValue === '') {
+      if (paramName === 'skill_name' && self.ignoreNextEmptySkillName) {
+        self.ignoreNextEmptySkillName = false
+        return
+      }
+
       self.unSelect()
       return
     }
@@ -163,6 +169,9 @@ const SkillsModel = types.model({
   }
 
   function selectSkillByName (skillName) {
+    // This function will result in changing the URL from name to id, so the skill name will be set empty, ignore it, if this function was the cause
+    self.ignoreNextEmptySkillName = true
+
     if (self.skillTitleIndex.get(skillName)) {
       const skillIdentifier = self.skillTitleIndex.get(skillName)
       self.selectSkillByIdentifier(skillIdentifier)

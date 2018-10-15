@@ -8,10 +8,11 @@ import { observer } from 'mobx-react'
 // TODO MARK COLUMN OF SELECTED SKILL
 const FallbackSkillColumns = observer(props => (
   <div className='fallback-skills-simplified-columns'>
+    <h2>Topics</h2>
     {props.columns.map(column => (
       <div
         key={'fallback-skills-column-' + column.id}
-        className={'fallback-skills-simplified-column' + (props.fallbackSelection.isColumnSelected(column.id) ? ' active' : '') + (props.selection.column && props.selection.column.id === column.id ? ' selected' : '')}
+        className={'fallback-skills-list-item fallback-skills-simplified-column' + (props.fallbackSelection.isColumnSelected(column.id) ? ' active' : '') + (props.selection.column && props.selection.column.id === column.id ? ' selected' : '')}
         onClick={() => props.fallbackSelection.toggleOrSetSelectColumn(column.id)}>
         {column.title}
       </div>

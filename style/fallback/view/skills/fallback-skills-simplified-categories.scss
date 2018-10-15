@@ -1,13 +1,19 @@
-.fallback-skills-simplified-categories {
-  .fallback-skills-simplified-category {
-    // Indicates that it's skills are visible
-    &.active {
-      background-color: #ff0;
-    }
+// .fallback-skills-simplified-categories {
+// }
+
+.fallback-skills-simplified-category {
+  // Indicates that it's skills are visible
+  &.active {
+    background-color: $black;
+    color: $white;
 
     &.selected {
-      background-color: $black;
+      background-color: lighten($color: $primary-color, $amount: 25);
       color: $white;
     }
+  }
+
+  &.selected {
+    color: $primary-color;
   }
 }

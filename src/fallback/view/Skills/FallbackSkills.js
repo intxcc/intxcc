@@ -21,6 +21,11 @@ const FallbackSkills = observer(props => {
       selectedOnlyBecauseSkillIsSelected = props.state.selection.category.id
     }
 
+    categories.push({
+      type: 'column-headline',
+      title: column.title
+    })
+
     for (let category of column.categories) {
       if (selectedOnlyBecauseSkillIsSelected === null) {
         categories.push(category)
@@ -41,6 +46,11 @@ const FallbackSkills = observer(props => {
       selectedOnlyBecauseSkillIsSelected = props.state.selection.skill.id
     }
 
+    skills.push({
+      type: 'category-headline',
+      title: category.title
+    })
+
     for (let skill of category.skills) {
       if (selectedOnlyBecauseSkillIsSelected === null) {
         skills.push(skill)
@@ -56,6 +66,7 @@ const FallbackSkills = observer(props => {
 
   return (
     <div className='fallback-skills-simplified-overview'>
+      <h1>Overview</h1>
       <FallbackSkillColumns columns={props.columns} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />
       <FallbackSkillsCategories categories={categories} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />
       <FallbackSkillsSkills skills={skills} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />

@@ -61,7 +61,7 @@ class FallbackApp extends React.Component {
       routerParams = null
     }
 
-    // If active page changed, scroll to top
+    // If active page changed, scroll to saved position
     if (!this.activePage || this.activePage !== activePage) {
       const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
 

@@ -1,0 +1,12 @@
+html.can-touch { // sass-lint:disable-line force-element-nesting no-qualifying-elements
+  .burger-menu-handle {
+    border-color: $gray !important;
+    color: $gray !important;
+  }
+
+  .fallback-skills-simplify-overview-button {
+    border-color: $gray !important;
+    background-color: rgba($color: $white, $alpha: .8) !important;
+    color: $gray !important;
+  }
+}

@@ -35,5 +35,13 @@ ReactDOM.render(
   document.getElementById('app')
 )
 
+// /////////////////// //
+// DETECT TOUCH IN CSS //
+
+document.addEventListener('touchstart', function addtouchclass (e) {
+  document.documentElement.classList.add('can-touch')
+  document.removeEventListener('touchstart', addtouchclass, false)
+}, false)
+
 // TODO Remove before going into production
 module.hot.accept()

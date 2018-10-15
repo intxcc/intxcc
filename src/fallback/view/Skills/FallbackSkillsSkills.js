@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
-// TODO MARK SELECTED SKILL
 const FallbackSkillsSkills = observer(props => (
   <div className='fallback-skills-simplified-skills'>
     <h2>Skills</h2>

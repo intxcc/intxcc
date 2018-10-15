@@ -38,6 +38,16 @@ class FallbackApp extends React.Component {
   }
 
   @autobind
+  onScroll (e) {
+    const saveFallbackScrollTop = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].basicInfo && this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop : null
+    if (saveFallbackScrollTop !== null) {
+      const doc = document.documentElement
+      const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+      saveFallbackScrollTop(scrollTop)
+    }
+  }
+
+  @autobind
   attachStateToRouter (activePage) {
     if (!this.props.store.state[activePage]) {
       return
@@ -50,6 +60,18 @@ class FallbackApp extends React.Component {
     } else {
       routerParams = null
     }
+
+    // If active page changed, scroll to top
+    if (!this.activePage || this.activePage !== activePage) {
+      const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
+
+      setTimeout(() => window.scroll({
+        top: savedScrollTop,
+        left: 0,
+        behavior: 'smooth'
+      }), 100)
+    }
+    this.activePage = activePage
 
     // Check if the responsible state does have a function to receive router params and forward them
     if (this.props.store.state[activePage].onRouterParamChange) {
@@ -73,11 +95,6 @@ class FallbackApp extends React.Component {
         }
       }
     }
-  }
-
-  @autobind
-  onScroll (e) {
-    console.log('scroll')
   }
 
   @autobind

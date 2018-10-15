@@ -27,6 +27,7 @@ const BasicInfoModel = types.model({
   viewEntity: types.optional(types.reference(types.late(() => ViewEntity)), ''),
   modelVariant: types.optional(types.string, 'default'),
   scrollTop: types.optional(types.number, 0),
+  fallbackScrollTop: types.optional(types.number, 0),
   // To animate scrolling set animate scroll to to true and set the scrollTo variable
   animateScrollBy: types.optional(types.boolean, false),
   scrollByValue: types.optional(types.number, 0),
@@ -72,6 +73,11 @@ const BasicInfoModel = types.model({
     self.modelVariant = modelVariant
   }
 
+  function saveFallbackScrollTop (scrollTop) {
+    self.fallbackScrollTop = scrollTop
+    self.persist(false)
+  }
+
   function setScrollTop (scrollTop) {
     self.scrollTop = scrollTop
     self.persist(false)
@@ -114,6 +120,7 @@ const BasicInfoModel = types.model({
     setClientDimensions,
     setViewEntityReference,
     setModelVariant,
+    saveFallbackScrollTop,
     setScrollTop,
     scrollBy,
     stopScrollBy,

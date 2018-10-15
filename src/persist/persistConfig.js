@@ -3,6 +3,7 @@
 const VariablesToPersist = {
   'stateBasicInfo': [
     'scrollTop',
+    'fallbackScrollTop',
     'popups'
   ]
 }

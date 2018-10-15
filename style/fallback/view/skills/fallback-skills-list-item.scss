@@ -4,10 +4,23 @@
   display: flex;
   align-items: center;
 
+  transition: .2s border-color,
+  .2s background-color;
+
+  border-color: $white;
   cursor: pointer;
 
   padding: .25rem .5rem .25rem 1rem;
   height: 1.8rem;
 
   font-size: 1.5rem;
+
+  &.active {
+    border-color: $black;
+  }
+
+  &:hover {
+    border-left: .5rem solid desaturate($color: $primary-color, $amount: 100);
+    padding: .25rem .5rem;
+  }
 }

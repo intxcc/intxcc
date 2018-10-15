@@ -11,6 +11,28 @@
   .fallback-skills-simplified-skill {
     color: $black;
 
+    .fallback-skills-skill-with-comments,
+    .fallback-skills-skill-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      float: left;
+
+      transition: .2s background-color,
+      .2s color;
+
+      margin: 0 .5rem 0 0;
+      border-radius: .5rem;
+
+      background-color: $black;
+
+      width: 1.4rem;
+      height: 1.4rem;
+
+      color: $white;
+      font-size: 1rem;
+    }
+
     &.selected {
       border-left: .5rem solid $primary-color;
       padding: .25rem .5rem;

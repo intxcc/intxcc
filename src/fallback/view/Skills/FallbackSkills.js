@@ -11,17 +11,27 @@ import FallbackSkillsSkills from './FallbackSkillsSkills'
 
 const FallbackSkills = observer(props => {
   let categories = []
-  for (let column of props.columns.filter(column => props.state.fallbackSelection.isColumnSelected(column.id))) {
+  for (let column of props.columns.filter(column => (
+    props.state.fallbackSelection.isColumnSelected(column.id) ||
+    (props.state.selection.column && props.state.selection.column.id === column.id)
+  ))) {
     for (let category of column.categories) {
       categories.push(category)
     }
   }
 
   let skills = []
-  for (let category of categories.filter(category => props.state.fallbackSelection.isCategorySelected(category.id))) {
+  for (let category of categories.filter(category => (
+    props.state.fallbackSelection.isCategorySelected(category.id) ||
+    (props.state.selection.category && props.state.selection.category.id === category.id)
+  ))) {
     for (let skill of category.skills) {
       skills.push(skill)
     }
+  }
+
+  if (props.state.selection.skill) {
+    console.log(props.state.selection.skill.id)
   }
 
   return (

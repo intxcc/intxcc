@@ -1,5 +1,15 @@
 .fallback-skills-simplified-skills {
+  a {
+    text-decoration: none;
+  }
+
   .fallback-skills-simplified-skill {
+    color: $black;
     // TODO MARK SELECTED SKILL
+
+    &.selected {
+      background-color: $black;
+      color: $white;
+    }
   }
 }

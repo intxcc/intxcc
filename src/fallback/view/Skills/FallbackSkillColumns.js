@@ -11,7 +11,7 @@ const FallbackSkillColumns = observer(props => (
     {props.columns.map(column => (
       <div
         key={'fallback-skills-column-' + column.id}
-        className={'fallback-skills-simplified-column' + (props.fallbackSelection.isColumnSelected(column.id) ? ' active' : '')}
+        className={'fallback-skills-simplified-column' + (props.fallbackSelection.isColumnSelected(column.id) ? ' active' : '') + (props.selection.column && props.selection.column.id === column.id ? ' selected' : '')}
         onClick={() => props.fallbackSelection.toggleOrSetSelectColumn(column.id)}>
         {column.title}
       </div>

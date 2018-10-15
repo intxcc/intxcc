@@ -11,7 +11,7 @@ const FallbackSkillsCategories = observer(props => (
     {props.categories.map(category => (
       <div
         key={'fallback-skills-category-' + category.id}
-        className={'fallback-skills-simplified-category' + (props.fallbackSelection.isCategorySelected(category.id) ? ' active' : '')}
+        className={'fallback-skills-simplified-category' + (props.fallbackSelection.isCategorySelected(category.id) ? ' active' : '') + (props.selection.category && props.selection.category.id === category.id ? ' selected' : '')}
         onClick={() => props.fallbackSelection.toggleOrSetSelectCategory(category.id, category.columnId)}>
         {category.title}
       </div>

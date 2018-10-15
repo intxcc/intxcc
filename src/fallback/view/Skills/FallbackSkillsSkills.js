@@ -9,11 +9,12 @@ import { observer } from 'mobx-react'
 const FallbackSkillsSkills = observer(props => (
   <div className='fallback-skills-simplified-skills'>
     {props.skills.map(skill => (
-      <div
-        key={'fallback-skills-skill-' + skill.id}
-        className={'fallback-skills-simplified-skill'}>
-        {skill.title}
-      </div>
+      <a key={'fallback-skills-skill-' + skill.id} className='fallback-skills-simplified-skill-link' href={'/#/skills/' + skill.id + '-' + skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')}>
+        <div
+          className={'fallback-skills-simplified-skill' + (props.selection.skill && props.selection.skill.id === skill.id ? ' selected' : '')}>
+          {skill.title}
+        </div>
+      </a>
     ))}
   </div>
 ))

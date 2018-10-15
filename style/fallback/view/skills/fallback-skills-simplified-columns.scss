@@ -4,5 +4,10 @@
     &.active {
       background-color: #f00;
     }
+
+    &.selected {
+      background-color: $black;
+      color: $white;
+    }
   }
 }

@@ -13,30 +13,11 @@ import SKILLS_EXPLANATION from '../../config/POPUP_SKILLS_EXPLANATION'
 
 import Style from '../../../style/variables/global.scss'
 
-const SkillModel = types.model({
-  id: types.identifier,
-  categoryId: types.string,
-  columnId: types.string,
-  visible: types.optional(types.boolean, true),
-  title: types.string,
-  desc: types.optional(types.string, ''),
-  trivia: types.optional(types.string, ''),
-  mark: types.optional(types.number, 0)
-})
+import SkillModel from './Skills/SkillModel'
+import SkillCategory from './Skills/SkillCategory'
+import SkillColumn from './Skills/SkillColumn'
 
-const SkillCategory = types.model({
-  id: types.identifier,
-  columnId: types.string,
-  visible: types.optional(types.boolean, true),
-  title: types.string,
-  skills: types.array(SkillModel)
-})
-
-const SkillColumn = types.model({
-  id: types.identifier,
-  title: types.string,
-  categories: types.array(SkillCategory)
-})
+import FallbackSelection from './Skills/FallbackSelection'
 
 const Position = types.model({
   x: types.optional(types.number, 0),
@@ -58,6 +39,7 @@ const SkillsModel = types.model({
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
+  fallbackSelection: types.optional(FallbackSelection, {}),
   skillTitleIndex: types.map(types.string),
   skillIdentifierList: types.array(types.string),
   skillIdentifierIndex: types.map(types.number),

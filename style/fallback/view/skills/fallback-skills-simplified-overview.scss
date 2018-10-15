@@ -5,4 +5,6 @@
 
   width: #{'calc(100% - 10vmin)'};
   height: 1rem;
+
+  @import 'fallback-skills-simplified-columns';
 }

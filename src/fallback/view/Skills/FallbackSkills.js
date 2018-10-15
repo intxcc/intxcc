@@ -5,9 +5,11 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+import FallbackSkillColumns from './FallbackSkillColumns'
+
 const FallbackSkills = observer(props => (
   <div className='fallback-skills-simplified-overview'>
-    a
+    <FallbackSkillColumns columns={props.columns} selection={props.state.selection} />
   </div>
 ))
 

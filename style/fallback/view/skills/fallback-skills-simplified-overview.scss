@@ -9,6 +9,12 @@
 
   h2 {
     margin: 1rem 0;
+
+    border-top: .5rem solid $black;
+    border-bottom: .5rem solid $black;
+
+    padding: .25rem .5rem;
+
     font-size: 2rem;
   }
 

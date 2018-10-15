@@ -62,7 +62,7 @@ const FallbackSkills = observer(props => {
 
   return (
     <div className='fallback-skills-simplified-overview'>
-      <h1>Overview</h1>
+      <h1>Skill Overview</h1>
       <FallbackSkillColumns columns={props.columns} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />
       <FallbackSkillsCategories categories={categories} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />
       <FallbackSkillsSkills skills={skills} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />

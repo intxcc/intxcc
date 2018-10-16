@@ -118,8 +118,15 @@ class FallbackApp extends React.Component {
       state: this.props.store.state[activePage]
     }) : <span>404</span> // TODO Show real 404
 
+    let scrollbarDisabled = false
+
+    // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
+    if (activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails) {
+      scrollbarDisabled = true
+    }
+
     return (
-      <div className='fallback-site-wrapper'>
+      <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '')}>
         <BurgerMenu activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
         <GoToTopButton show={this.state.scrollTop > 100} />
         {loadView}

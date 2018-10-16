@@ -6,6 +6,12 @@
   width: 100%;
   min-height: 100vh;
 
+  // MARKER_SCROLLBAR
+  &.disable-scroll-bar {
+    max-height: 100vh;
+    overflow: hidden;
+  }
+
   .fallback-view-wrapper {
     position: absolute;
     right: 0;

@@ -35,6 +35,7 @@ const Selection = types.model({
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
   fallbackUseSkillMap: types.optional(types.boolean, true),
+  fallbackShowSkillDetails: types.optional(types.boolean, false),
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
@@ -207,6 +208,11 @@ const SkillsModel = types.model({
     self.selection.skillIndex = self.skillIdentifierIndex.get(skillIdentifier)
 
     const selectionIdentifier = self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
+
+    // If a skill is selected, show the skill details in fallback mode
+    self.fallbackShowSkillDetails = true
+
+    console.log('test')
 
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {

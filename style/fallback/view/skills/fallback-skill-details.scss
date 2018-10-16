@@ -1,0 +1,22 @@
+.fallback-skill-details-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  transition: $global--variant-change-duration opacity,
+  $global--variant-change-duration transform;
+
+  opacity: 0;
+  z-index: 1000;
+
+  background-color: $white;
+
+  pointer-events: none;
+
+  &.show {
+    opacity: 1;
+    pointer-events: initial;
+  }
+}

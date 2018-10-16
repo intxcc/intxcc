@@ -118,7 +118,6 @@ class FallbackApp extends React.Component {
       state: this.props.store.state[activePage]
     }) : <span>404</span> // TODO Show real 404
 
-    // TODO REMEMBER SCROLL POSITION
     return (
       <div className='fallback-site-wrapper'>
         <BurgerMenu activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />

@@ -60,6 +60,7 @@ const FallbackSkills = observer(props => {
     }
   }
 
+  // If a skill is selected, create a list of all skills in the selected column and categories and notice the fallbackSelection, so we are able to use this data in the SkillsModel to scroll through the skills in the fallback
   if (props.state.selection.skill) {
     let fallbackSelectionSkillList = []
     let indexOfSelectedSkillinSkillList = -1
@@ -76,7 +77,11 @@ const FallbackSkills = observer(props => {
     }
 
     if (indexOfSelectedSkillinSkillList >= 0) {
-      props.state.fallbackSelection.setSelectedSkills(fallbackSelectionSkillList, indexOfSelectedSkillinSkillList)
+      // If the selection changed, tell the fallbackSelection state, so we save all selected skills. We need to do this, to be able to scroll through the skills, like we would do in the not-fallback mode1
+      if (fallbackSelectionSkillList.length !== props.state.fallbackSelection.selectedSkills.length) {
+        // Append setSelectedSkills to the JS event queue
+        setTimeout(() => props.state.fallbackSelection.setSelectedSkills(fallbackSelectionSkillList, indexOfSelectedSkillinSkillList), 0)
+      }
     }
   }
 

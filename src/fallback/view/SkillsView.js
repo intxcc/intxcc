@@ -17,6 +17,8 @@ const SkillsView = observer(props => (
     <SimplifySkillsOverviewButton fallbackUseSkillMap={props.state.fallbackUseSkillMap} setFallbackUseSkillMapFunc={props.state.setFallbackUseSkillMap} />
     {props.state.selection.skill
       ? <FallbackSkillDetails
+        selectedListLength={props.state.fallbackSelection.selectedSkills.length}
+        indexOfSelectedSkillInSelectedSkills={props.state.fallbackSelection.indexOfSelectedSkillInSelectedSkills}
         show={props.state.fallbackShowSkillDetails}
         scrollSkillFunc={props.state.scrollSkill}
         closeSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(false)}

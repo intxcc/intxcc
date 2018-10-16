@@ -12,6 +12,7 @@
 
   background-color: $white;
 
+  overflow: auto;
   pointer-events: none;
 
   &.show {

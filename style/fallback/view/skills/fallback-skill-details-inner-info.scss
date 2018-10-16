@@ -1,0 +1,30 @@
+.fallback-skill-details-inner-info {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    background-color: $black;
+    padding: .25rem 1rem;
+
+    color: $white;
+    font-size: 2rem;
+    font-weight: normal;
+  }
+
+  h1 {
+    border: .5rem solid $black;
+    padding: 0 .5rem;
+
+    font-size: 3rem;
+  }
+
+  h3 {
+    border-top: .25rem $white solid;
+    border-bottom: .25rem $white solid;
+
+    background-color: $black;
+    padding: .25rem 1rem;
+
+    color: $white;
+  }
+}

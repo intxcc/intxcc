@@ -64,6 +64,9 @@ const SkillsModel = types.model({
     }
 
     switch (e.key) {
+      case 'Escape':
+        self.fallbackShowSkillDetails = false
+        break
       case 'ArrowLeft':
         self.scrollSkill(-1)
         break

@@ -34,11 +34,13 @@ class FallbackApp extends React.Component {
     this.disposers = {}
   }
 
+  @autobind
   componentDidMount () {
     window.addEventListener('scroll', this.onScroll)
     window.addEventListener('keydown', this.onKeyDown)
   }
 
+  @autobind
   componentWillUnmount () {
     window.removeEventListener('scroll', this.onScroll)
     window.removeEventListener('keydown', this.onKeyDown)

@@ -41,8 +41,11 @@ const FallbackSelection = types.model({
     return self.selectedSkills[self.indexOfSelectedSkillInSelectedSkills]
   }
 
-  function setSelectedSkills (skills, indexOfSelectedSkill) {
+  function setIndexOfSelectedSkillinSkillList (indexOfSelectedSkill) {
     self.indexOfSelectedSkillInSelectedSkills = indexOfSelectedSkill
+  }
+
+  function setSelectedSkills (skills) {
     self.selectedSkills.clear()
     for (let skill of skills) {
       self.selectedSkills.push(skill.id)
@@ -96,6 +99,7 @@ const FallbackSelection = types.model({
 
   return {
     getNextOrPreviousSkillInSelection,
+    setIndexOfSelectedSkillinSkillList,
     setSelectedSkills,
     showAll,
     showNone,

@@ -233,7 +233,7 @@ const SkillsModel = types.model({
     const selectionIdentifier = self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
 
     // If a skill is selected, show the skill details in fallback mode
-    self.fallbackShowSkillDetails = true
+    self.fallbackSetShowSkillDetails(true)
 
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {

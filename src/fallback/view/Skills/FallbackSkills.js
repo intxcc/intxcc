@@ -69,19 +69,22 @@ const FallbackSkills = observer(props => {
         continue
       }
 
-      if (skill.id === props.state.selection.skill.id) {
+      if (props.state.selection.skill && skill.id === props.state.selection.skill.id) {
         indexOfSelectedSkillinSkillList = fallbackSelectionSkillList.length
       }
 
       fallbackSelectionSkillList.push(skill)
     }
 
-    if (indexOfSelectedSkillinSkillList >= 0) {
-      // If the selection changed, tell the fallbackSelection state, so we save all selected skills. We need to do this, to be able to scroll through the skills, like we would do in the not-fallback mode1
-      if (fallbackSelectionSkillList.length !== props.state.fallbackSelection.selectedSkills.length) {
-        // Append setSelectedSkills to the JS event queue
-        setTimeout(() => props.state.fallbackSelection.setSelectedSkills(fallbackSelectionSkillList, indexOfSelectedSkillinSkillList), 0)
-      }
+    // If the selection changed, tell the fallbackSelection state, so we save all selected skills. We need to do this, to be able to scroll through the skills, like we would do in the not-fallback mode1
+    if (fallbackSelectionSkillList.length !== props.state.fallbackSelection.selectedSkills.length) {
+      // Append setSelectedSkills to the JS event queue
+      setTimeout(() => props.state.fallbackSelection.setSelectedSkills(fallbackSelectionSkillList), 0)
+    }
+
+    // If the index of the selected skill in the selection changed, tell the state
+    if (indexOfSelectedSkillinSkillList !== props.state.fallbackSelection.indexOfSelectedSkillInSelectedSkills) {
+      setTimeout(() => props.state.fallbackSelection.setIndexOfSelectedSkillinSkillList(indexOfSelectedSkillinSkillList), 0)
     }
   }
 

@@ -337,6 +337,12 @@ const SkillsModel = types.model({
       return
     }
 
+    // If fallback is active we need to respect the fallback selection
+    if (self.basicInfo.rootStore.global.useFallback) {
+      self.selectSkillByIdentifier(self.fallbackSelection.getNextOrPreviousSkillInSelection(n))
+      return
+    }
+
     self.selection.skillIndex += n
 
     if (self.selection.skillIndex >= self.skillIdentifierList.length) {

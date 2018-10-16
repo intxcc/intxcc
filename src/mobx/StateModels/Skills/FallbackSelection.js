@@ -6,7 +6,10 @@ import { types } from 'mobx-state-tree'
 /** The purpose of this class, is to only show the selected columns/categories in fallback, to ensure the user can keep track of what is shown on the screen. */
 const FallbackSelection = types.model({
   selectedColumns: types.optional(types.map(types.boolean), {}),
-  selectedCategories: types.optional(types.map(types.boolean), {})
+  selectedCategories: types.optional(types.map(types.boolean), {}),
+  selectedSkills: types.optional(types.array(types.string), []),
+  // That means the index of the single selected skill in the selection of skills of the fallback
+  indexOfSelectedSkillInSelectedSkills: types.optional(types.number, -1)
 }).views(self => ({
   isColumnSelected (columnIdentifier) {
     if (self.selectedColumns.get(columnIdentifier) && self.selectedColumns.get(columnIdentifier) === true) {
@@ -26,6 +29,26 @@ const FallbackSelection = types.model({
   // Remember columns of categories, to deselect them if the column is deselected
   rememberCategoryColumn: {}
 })).actions(self => {
+  function getNextOrPreviousSkillInSelection (n) {
+    self.indexOfSelectedSkillInSelectedSkills += n
+
+    if (self.indexOfSelectedSkillInSelectedSkills >= self.selectedSkills.length) {
+      self.indexOfSelectedSkillInSelectedSkills = self.selectedSkills.length - 1
+    } else if (self.indexOfSelectedSkillInSelectedSkills < 0) {
+      self.indexOfSelectedSkillInSelectedSkills = 0
+    }
+
+    return self.selectedSkills[self.indexOfSelectedSkillInSelectedSkills]
+  }
+
+  function setSelectedSkills (skills, indexOfSelectedSkill) {
+    self.indexOfSelectedSkillInSelectedSkills = indexOfSelectedSkill
+    self.selectedSkills.clear()
+    for (let skill of skills) {
+      self.selectedSkills.push(skill.id)
+    }
+  }
+
   function showAll (columns) {
     for (let column of columns) {
       self.toggleOrSetSelectColumn(column.id, true)
@@ -72,6 +95,8 @@ const FallbackSelection = types.model({
   }
 
   return {
+    getNextOrPreviousSkillInSelection,
+    setSelectedSkills,
     showAll,
     showNone,
     toggleOrSetSelectColumn,

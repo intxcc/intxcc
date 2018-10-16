@@ -60,6 +60,26 @@ const FallbackSkills = observer(props => {
     }
   }
 
+  if (props.state.selection.skill) {
+    let fallbackSelectionSkillList = []
+    let indexOfSelectedSkillinSkillList = -1
+    for (let skill of skills) {
+      if (skill.type) {
+        continue
+      }
+
+      if (skill.id === props.state.selection.skill.id) {
+        indexOfSelectedSkillinSkillList = fallbackSelectionSkillList.length
+      }
+
+      fallbackSelectionSkillList.push(skill)
+    }
+
+    if (indexOfSelectedSkillinSkillList >= 0) {
+      props.state.fallbackSelection.setSelectedSkills(fallbackSelectionSkillList, indexOfSelectedSkillinSkillList)
+    }
+  }
+
   return (
     <div className='fallback-skills-simplified-overview'>
       <h1>Skill Overview</h1>

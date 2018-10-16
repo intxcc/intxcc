@@ -23,16 +23,29 @@
   }
 
   .fallback-skill-details-close-button {
+    display: flex;
+
     position: absolute;
     top: 5vmin;
     right: 5vmin;
 
-    background-color: #f00;
+    align-items: center;
+    justify-content: center;
+
+    transition: .2s color;
+    cursor: pointer;
 
     width: 4rem;
-    max-width: 8vmax;
+    max-width: 15vmin;
 
     height: 4rem;
-    max-height: 8vmax;
+    max-height: 15vmin;
+
+    color: $black;
+    font-size: 2rem;
+
+    &:hover {
+      color: $gray;
+    }
   }
 }

@@ -138,13 +138,15 @@ class FallbackApp extends React.Component {
         const doc = document.documentElement
         const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
-        // Save scrollTop in react state to revert to it, after the scrollbar was enabled again
-        setTimeout(() => this.setState({
-          scrollTop: scrollTop
-        }), 0)
+        // Save scrollTop in responsible state to revert to it, after the scrollbar was enabled again
+        const saveFallbackScrollTop = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].basicInfo && this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop : null
+        if (saveFallbackScrollTop !== null) {
+          saveFallbackScrollTop(scrollTop)
+        }
       } else {
+        const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
         setTimeout(() => window.scroll({
-          top: this.state.scrollTop,
+          top: savedScrollTop,
           left: 0
         }), 0)
       }

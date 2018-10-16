@@ -225,6 +225,11 @@ const SkillsModel = types.model({
       return
     }
 
+    // If no skill was selected before and the fallback selection is empty, select all skills. This might be usefull if a user will receive a link to a skill and does not know, that more skills are there. Avoid, that the skill page shows 0 of 0 skills for UX reasons.
+    if (!self.selection.skill && self.fallbackSelection.selectedSkills.length < 1) {
+      self.fallbackSelection.showAll(self.columns)
+    }
+
     self.selection.skill = skillIdentifier
     self.selection.category = self.selection.skill.categoryId
     self.selection.column = self.selection.skill.columnId

@@ -52,7 +52,7 @@ const FallbackSkills = observer(props => {
     })
 
     for (let skill of category.skills) {
-      if (selectedOnlyBecauseSkillIsSelected === null) {
+      if (selectedOnlyBecauseSkillIsSelected === null && skill.visible) {
         skills.push(skill)
       } else if (skill.id === selectedOnlyBecauseSkillIsSelected) {
         skills.push(skill)

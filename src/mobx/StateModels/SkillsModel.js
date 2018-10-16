@@ -189,6 +189,10 @@ const SkillsModel = types.model({
     self.selection.skillIndex = -1
   }
 
+  function fallbackSetShowSkillDetails (show) {
+    self.fallbackShowSkillDetails = show
+  }
+
   function selectSkillByIdentifier (skillIdentifier) {
     // Show 404 if the skill does not exist and go to the skill with the id 0
     if (typeof skillIdentifier === 'undefined' || typeof resolveIdentifier(SkillModel, self.columns, skillIdentifier) === 'undefined') {
@@ -211,8 +215,6 @@ const SkillsModel = types.model({
 
     // If a skill is selected, show the skill details in fallback mode
     self.fallbackShowSkillDetails = true
-
-    console.log('test')
 
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {
@@ -340,6 +342,7 @@ const SkillsModel = types.model({
     showExplanation,
     selectSkillByName,
     unSelect,
+    fallbackSetShowSkillDetails,
     selectSkillByIdentifier,
     turnTransitionOff,
     toggleMouseDrag,

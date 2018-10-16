@@ -41,9 +41,9 @@ const FallbackSkillsSkills = observer(props => (
       }
 
       const isSelected = props.selection.skill && props.selection.skill.id === skill.id
-      const href = '/#/skills/' + (!isSelected ? skill.id + '-' + skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-') : '')
+      const href = '/#/skills/' + skill.id + '-' + skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
       return (
-        <a key={'fallback-skills-skill-' + skill.id} href={href} className='fallback-skills-simplified-skill-link' >
+        <a key={'fallback-skills-skill-' + skill.id} href={href} className='fallback-skills-simplified-skill-link' onClick={props.openSkillDetailsFunc}>
           <div
             className={'fallback-skills-list-item fallback-skills-simplified-skill' + (isSelected ? ' selected' : '')}>
             <FallbackSkillsSkillMarkDisplay mark={skill.mark} /> {skill.desc || skill.trivia ? <FallbackSkillsSkillWithCommentsDisplay /> : ''} {skill.title}
@@ -55,6 +55,7 @@ const FallbackSkillsSkills = observer(props => (
 ))
 
 FallbackSkillsSkills.propTypes = {
+  openSkillDetailsFunc: PropTypes.func,
   selection: PropTypes.object,
   skills: PropTypes.array
 }

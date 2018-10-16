@@ -44,6 +44,11 @@ class FallbackApp extends React.Component {
 
   @autobind
   onScroll (e) {
+    // Scroll is ignored, while the scrollbar of the main wrapper is disabled
+    if (this.scrollbarDisabled) {
+      return
+    }
+
     const doc = document.documentElement
     const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
@@ -118,12 +123,36 @@ class FallbackApp extends React.Component {
       state: this.props.store.state[activePage]
     }) : <span>404</span> // TODO Show real 404
 
+    // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
     let scrollbarDisabled = false
 
-    // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
-    if (activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails) {
+    const skillDetailsActive = activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails
+
+    if (skillDetailsActive) {
       scrollbarDisabled = true
     }
+
+    // If the scrollbar will be disabled in the next render, save the current scrollTop and go back to it if the scrollbar is enabled again
+    if (typeof this.scrollbarDisabled !== 'undefined' && this.scrollbarDisabled !== scrollbarDisabled) {
+      if (scrollbarDisabled) {
+        const doc = document.documentElement
+        const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+
+        // Save scrollTop in react state to revert to it, after the scrollbar was enabled again
+        setTimeout(() => this.setState({
+          scrollTop: scrollTop
+        }), 0)
+      } else {
+        setTimeout(() => window.scroll({
+          top: this.state.scrollTop,
+          left: 0,
+          behavior: 'smooth'
+        }), 100)
+      }
+    }
+
+    // Save the scrollbar disabled state, to notice changes
+    this.scrollbarDisabled = scrollbarDisabled
 
     return (
       <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '')}>

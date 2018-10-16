@@ -7,12 +7,15 @@ import { observer } from 'mobx-react'
 
 const FallbackSkillDetails = observer(props => (
   <div className={'fallback-skill-details-wrapper' + (props.show ? ' show' : '')}>
-
+    <div onClick={props.closeSkillDetailsFunc} className='fallback-skill-details-close-button'>
+      +
+    </div>
   </div>
 ))
 
 FallbackSkillDetails.propTypes = {
-  show: PropTypes.bool
+  show: PropTypes.bool,
+  closeSkillDetailsFunc: PropTypes.func
 }
 
 export default FallbackSkillDetails

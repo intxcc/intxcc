@@ -15,9 +15,9 @@ import FallbackSkillDetails from './Skills/FallbackSkillDetails'
 const SkillsView = observer(props => (
   <div className='fallback-view-wrapper skills-wrapper'>
     <SimplifySkillsOverviewButton fallbackUseSkillMap={props.state.fallbackUseSkillMap} setFallbackUseSkillMapFunc={props.state.setFallbackUseSkillMap} />
-    <FallbackSkillDetails show={props.state.fallbackShowSkillDetails} />
+    <FallbackSkillDetails show={props.state.fallbackShowSkillDetails} closeSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(false)} />
     {props.state.fallbackUseSkillMap
-      ? <FallbackSkills state={props.state} columns={props.state.columns} />
+      ? <FallbackSkills state={props.state} columns={props.state.columns} openSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(true)} />
       : <SkillsMap state={props.state} columns={props.state.columns} />}
     <LicenseAndImpressumLink />
   </div>

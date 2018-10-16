@@ -19,4 +19,18 @@
     opacity: 1;
     pointer-events: initial;
   }
+
+  .fallback-skill-details-close-button {
+    position: absolute;
+    top: 5vmin;
+    right: 5vmin;
+
+    background-color: #f00;
+
+    width: 4rem;
+    max-width: 8vmax;
+
+    height: 4rem;
+    max-height: 8vmax;
+  }
 }

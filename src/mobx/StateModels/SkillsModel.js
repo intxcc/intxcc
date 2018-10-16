@@ -35,6 +35,7 @@ const Selection = types.model({
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
   fallbackUseSkillMap: types.optional(types.boolean, true),
+  fallbackShowSkillDetailsInner: types.optional(types.boolean, false),
   fallbackShowSkillDetails: types.optional(types.boolean, false),
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
@@ -208,7 +209,12 @@ const SkillsModel = types.model({
     self.selection.skillIndex = -1
   }
 
+  function fallbackSetShowSkillDetailsInner (show) {
+    self.fallbackShowSkillDetailsInner = show
+  }
+
   function fallbackSetShowSkillDetails (show) {
+    setTimeout(() => self.fallbackSetShowSkillDetailsInner(show), 0)
     self.fallbackShowSkillDetails = show
   }
 
@@ -373,6 +379,7 @@ const SkillsModel = types.model({
     showExplanation,
     selectSkillByName,
     unSelect,
+    fallbackSetShowSkillDetailsInner,
     fallbackSetShowSkillDetails,
     selectSkillByIdentifier,
     turnTransitionOff,

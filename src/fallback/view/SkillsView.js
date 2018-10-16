@@ -20,6 +20,7 @@ const SkillsView = observer(props => (
         selectedListLength={props.state.fallbackSelection.selectedSkills.length}
         indexOfSelectedSkillInSelectedSkills={props.state.fallbackSelection.indexOfSelectedSkillInSelectedSkills}
         show={props.state.fallbackShowSkillDetails}
+        showInner={props.state.fallbackShowSkillDetailsInner}
         scrollSkillFunc={props.state.scrollSkill}
         closeSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(false)}
         skill={props.state.selection.skill} />

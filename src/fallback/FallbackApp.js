@@ -36,10 +36,20 @@ class FallbackApp extends React.Component {
 
   componentDidMount () {
     window.addEventListener('scroll', this.onScroll)
+    window.addEventListener('keydown', this.onKeyDown)
   }
 
   componentWillUnmount () {
     window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('keydown', this.onKeyDown)
+  }
+
+  @autobind
+  onKeyDown (e) {
+    const handleOnKeyDown = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].handleOnKeyDown ? this.props.store.state[this.activePage].handleOnKeyDown : null
+    if (handleOnKeyDown !== null) {
+      handleOnKeyDown(e)
+    }
   }
 
   @autobind

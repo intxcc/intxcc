@@ -45,6 +45,18 @@ class View extends React.Component {
 
     // Set scroll top after first render, append to event queue
     setTimeout(this.setScrollTop, 0)
+
+    const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
+    if (handleOnKeyDown !== null) {
+      window.addEventListener('keydown', handleOnKeyDown)
+    }
+  }
+
+  componentWillUnmount () {
+    const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
+    if (handleOnKeyDown !== null) {
+      window.removeEventListener('keydown', handleOnKeyDown)
+    }
   }
 
   @autobind

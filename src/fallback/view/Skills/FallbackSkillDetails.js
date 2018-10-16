@@ -14,10 +14,10 @@ const FallbackSkillDetails = observer(props => (
     </div>
     <div className='fallback-skill-details-inner'>
       <h1>{props.skill.title}</h1>
-      <div className='fallback-skill-details-inner-bottom-button previous'>
+      <div onClick={() => props.scrollSkillFunc(-1)} className='fallback-skill-details-inner-bottom-button previous'>
         <FontAwesomeIcon icon={'arrow-circle-left'} />
       </div>
-      <div className='fallback-skill-details-inner-bottom-button next'>
+      <div onClick={() => props.scrollSkillFunc(1)} className='fallback-skill-details-inner-bottom-button next'>
         <FontAwesomeIcon icon={'arrow-circle-right'} />
       </div>
     </div>
@@ -26,6 +26,7 @@ const FallbackSkillDetails = observer(props => (
 
 FallbackSkillDetails.propTypes = {
   show: PropTypes.bool,
+  scrollSkillFunc: PropTypes.func,
   closeSkillDetailsFunc: PropTypes.func,
   skill: PropTypes.object
 }

@@ -16,7 +16,7 @@ const SkillsMap = observer((props) => (
     onTouchMove={props.state.onMouseMove}
     onWheel={(e) => {
       const n = e.deltaY > 0 ? 1 : -1
-      props.state.scrollSkill(e, n)
+      props.state.scrollSkill(n, e)
     }}
     className='skills-map-outer-wrapper'>
     <div className={'skills-map-wrapper' + ((props.state.transitionOn ? ' transition' : '')) + (!props.state.mouseDragEnabled ? ' no-drag' : '')}

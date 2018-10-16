@@ -57,6 +57,22 @@ const SkillsModel = types.model({
     self.fallbackUseSkillMap = fallbackUseSkillMap
   }
 
+  // Handle all keydown events, while this is the active state
+  function handleOnKeyDown (e) {
+    if (!e.key) {
+      return
+    }
+
+    switch (e.key) {
+      case 'ArrowLeft':
+        self.scrollSkill(-1)
+        break
+      case 'ArrowRight':
+        self.scrollSkill(1)
+        break
+    }
+  }
+
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
@@ -312,9 +328,9 @@ const SkillsModel = types.model({
     }
   }
 
-  function scrollSkill (e, n) {
+  function scrollSkill (n, e = null) {
     // If [STRG] is pressed while scrolling, the user probably wants to zoom and not to change the selection.
-    if (e.ctrlKey) {
+    if (e && e.ctrlKey) {
       return
     }
 
@@ -336,6 +352,7 @@ const SkillsModel = types.model({
 
   return {
     setFallbackUseSkillMap,
+    handleOnKeyDown,
     onRouterParamChange,
     applyFilter,
     setShowSkillFilter,

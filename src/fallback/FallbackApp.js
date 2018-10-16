@@ -83,9 +83,8 @@ class FallbackApp extends React.Component {
 
       setTimeout(() => window.scroll({
         top: savedScrollTop,
-        left: 0,
-        behavior: 'smooth'
-      }), 100)
+        left: 0
+      }), 0)
     }
     this.activePage = activePage
 
@@ -132,28 +131,34 @@ class FallbackApp extends React.Component {
       scrollbarDisabled = true
     }
 
-    // If the scrollbar will be disabled in the next render, save the current scrollTop and go back to it if the scrollbar is enabled again
-    if (typeof this.scrollbarDisabled !== 'undefined' && this.scrollbarDisabled !== scrollbarDisabled) {
-      if (scrollbarDisabled) {
-        const doc = document.documentElement
-        const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
+    // Only revert or save scroll top, if the active page did not change between renders
+    if (activePage === this.lastActivePage) {
+      // If the scrollbar will be disabled in the next render, save the current scrollTop and go back to it if the scrollbar is enabled again
+      if (typeof this.scrollbarDisabled !== 'undefined' && this.scrollbarDisabled !== scrollbarDisabled) {
+        if (scrollbarDisabled) {
+          const doc = document.documentElement
+          const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
-        // Save scrollTop in responsible state to revert to it, after the scrollbar was enabled again
-        const saveFallbackScrollTop = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].basicInfo && this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop : null
-        if (saveFallbackScrollTop !== null) {
-          saveFallbackScrollTop(scrollTop)
+          // Save scrollTop in responsible state to revert to it, after the scrollbar was enabled again
+          const saveFallbackScrollTop = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].basicInfo && this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop : null
+
+          if (saveFallbackScrollTop !== null) {
+            saveFallbackScrollTop(scrollTop)
+          }
+        } else {
+          const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
+
+          setTimeout(() => window.scroll({
+            top: savedScrollTop,
+            left: 0
+          }), 0)
         }
-      } else {
-        const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
-        setTimeout(() => window.scroll({
-          top: savedScrollTop,
-          left: 0
-        }), 0)
       }
     }
 
     // Save the scrollbar disabled state, to notice changes
     this.scrollbarDisabled = scrollbarDisabled
+    this.lastActivePage = activePage
 
     return (
       <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '')}>

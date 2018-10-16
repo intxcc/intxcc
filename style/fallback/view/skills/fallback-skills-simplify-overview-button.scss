@@ -13,7 +13,7 @@
   transition: .2s border-color,
   .2s background-color,
   .2s color;
-  border: .3rem solid $gray;
+  border: .3rem solid $black;
 
   background-color: $white;
   cursor: pointer;
@@ -28,7 +28,7 @@
   overflow: hidden;
 
   text-align: center;
-  color: $gray;
+  color: $black;
   font-size: 2vw;
 
   box-sizing: border-box;

@@ -1,0 +1,57 @@
+.fallback-skill-details-inner {
+  position: absolute;
+  top: 15vmin;
+  right: 5vmin;
+  left: 5vmin;
+
+  padding: 1rem 0;
+  min-height: #{'calc(100vh - 15vmin)'};
+
+  box-sizing: border-box;
+
+  .fallback-skill-details-inner-bottom-button {
+    @include user-select(none);
+
+    display: flex;
+
+    position: absolute;
+    bottom: 5vmin;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: .2s color;
+
+    cursor: pointer;
+
+    color: $black;
+    font-size: 10vmax;
+
+    box-sizing: border-box;
+
+    @media (min-height: 800px), (min-width: 800px) {
+      font-size: 5rem;
+    }
+
+    &:hover {
+      color: lighten($color: $primary-color, $amount: 10);
+    }
+
+    &.previous {
+      left: 0;
+    }
+
+    &.next {
+      right: 0;
+    }
+  }
+
+  @media (max-height: 500px), (max-width: 500px) {
+    top: 20vmin;
+    min-height: #{'calc(100vh - 20vmin)'};
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+}

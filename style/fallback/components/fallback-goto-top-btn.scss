@@ -1,4 +1,6 @@
 .fallback-goto-top-btn {
+  @include user-select(none);
+
   display: flex;
 
   position: fixed;
@@ -16,19 +18,10 @@
 
   cursor: pointer;
 
-  width: 4rem;
-  max-width: 8vmax;
-
-  height: 4rem;
-  max-height: 8vmax;
-
-  color: $gray;
-  font-size: 3rem;
-
-  box-sizing: border-box;
+  color: $black;
+  font-size: 10vmax;
 
   &:hover {
-    border-color: rgba($color: $white, $alpha: 0);
     color: lighten($color: $primary-color, $amount: 10);
   }
 

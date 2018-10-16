@@ -1,13 +1,13 @@
 html.can-touch { // sass-lint:disable-line force-element-nesting no-qualifying-elements
   .burger-menu-handle {
-    border-color: $gray !important;
-    color: $gray !important;
+    border-color: $black !important;
+    color: $black !important;
   }
 
   .fallback-skills-simplify-overview-button {
-    border-color: $gray !important;
+    border-color: $black !important;
     background-color: $white !important;
-    color: $gray !important;
+    color: $black !important;
   }
 
   .fallback-skills-simplified-overview-selection-button {
@@ -16,10 +16,14 @@ html.can-touch { // sass-lint:disable-line force-element-nesting no-qualifying-e
   }
 
   .fallback-goto-top-btn {
-    color: $gray !important;
+    color: $black !important;
   }
 
   .fallback-skill-details-close-button {
+    color: $black !important;
+  }
+
+  .fallback-skill-details-inner-bottom-button {
     color: $black !important;
   }
 }

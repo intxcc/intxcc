@@ -76,6 +76,7 @@ const FallbackSkills = observer(props => {
         <div onClick={() => {
           // Deselect all columns and categories and scroll to top
           props.state.fallbackSelection.showNone()
+          props.state.unSelect()
           setTimeout(() => window.scroll({
             top: 0,
             left: 0,

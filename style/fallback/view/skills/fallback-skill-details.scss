@@ -18,6 +18,8 @@
   &.show {
     opacity: 1;
     pointer-events: initial;
+
+    transition-duration: 0s;
   }
 
   .fallback-skill-details-close-button {

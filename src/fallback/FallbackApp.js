@@ -145,9 +145,8 @@ class FallbackApp extends React.Component {
       } else {
         setTimeout(() => window.scroll({
           top: this.state.scrollTop,
-          left: 0,
-          behavior: 'smooth'
-        }), 100)
+          left: 0
+        }), 0)
       }
     }
 

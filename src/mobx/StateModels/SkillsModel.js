@@ -42,7 +42,9 @@ const SkillsModel = types.model({
   mapPosition: types.optional(Position, {}),
   selection: types.optional(Selection, {}),
   fallbackSelection: types.optional(FallbackSelection, {}),
+  // skillTitleIndex contains always ALL skills, mapping the title to an identifier string. That variable does ignore the filter.
   skillTitleIndex: types.map(types.string),
+  // The next 2 variables contain all skills visible for the filter currently active
   skillIdentifierList: types.array(types.string),
   skillIdentifierIndex: types.map(types.number),
   columns: types.array(SkillColumn),
@@ -129,10 +131,12 @@ const SkillsModel = types.model({
     self.skillIdentifierList = SkillIdentifierList
     self.skillIdentifierIndex = SkillIdentifierIndex
 
+    // Only show a column, if at least one skill is visible
     for (let column of self.columns) {
       for (let category of column.categories) {
         let atLeastOneSkillVisible = false
         for (let skill of category.skills) {
+          // Check if skill is in skillIdentifierIndex, which holds all visible skill identifiers
           if (typeof self.skillIdentifierIndex.get(skill.id) !== 'undefined') {
             skill.visible = true
             atLeastOneSkillVisible = true

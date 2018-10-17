@@ -170,6 +170,7 @@ class FallbackApp extends React.Component {
 
     // Things to do, if the active page changed
     if (activePage !== this.lastActivePage) {
+      // Every time one goes to the fallback skills, select all skills. This is important if one deselected all skills and then clicks on a link on the about page. Then one should not read '0 of 0 Skills' for UX reasons.
       if (activePage === 'skills' && this.props.store.state[activePage]) {
         this.props.store.state[activePage].fallbackSelection.showAll(this.props.store.state[activePage].columns)
       }

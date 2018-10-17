@@ -14,7 +14,7 @@ import MARK_TOOLTIP from '../../config/MarkTooltips'
 const SkillsDetailView = observer((props) => (
   <div className='skills-detail-view'>
     {props.selection.skill.desc ? <p>
-      <LinkReplaceComponent text={props.skill.desc} />
+      <LinkReplaceComponent text={props.selection.skill.desc} />
     </p> : ''}
     <h1>
       {props.selection.skill.desc || props.selection.skill.trivia ? <div title={'with comment'} className='skills-detail-view-icon'>
@@ -24,7 +24,7 @@ const SkillsDetailView = observer((props) => (
       {props.selection.skill.title}
     </h1>
     {props.selection.skill.trivia ? <p className='skills-detail-view-trivia'>
-      <LinkReplaceComponent text={props.skill.trivia} />
+      <LinkReplaceComponent text={props.selection.skill.trivia} />
     </p> : ''}
   </div>
 ))

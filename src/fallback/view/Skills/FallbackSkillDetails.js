@@ -22,7 +22,17 @@ const FallbackSkillDetails = observer(props => {
       <div className={'fallback-skill-details-inner' + (props.showInner ? ' show' : '')}>
         <div className='fallback-skill-details-inner-info'>
           <h2>Skill {props.indexOfSelectedSkillInSelectedSkills} of <strong>{props.selectedListLength - 1}</strong></h2>
-          <h3>{props.column.title} | {props.category.title} | {markString}</h3>
+          <h3>
+            <div className='h3-item'>
+              {props.column.title}
+            </div>
+            <div className='h3-item'>
+              {props.category.title}
+            </div>
+            <div className='h3-item'>
+              {markString}
+            </div>
+          </h3>
         </div>
         <div className='fallback-skill-details-inner-content'>
           <div className='fallback-skill-details-inner-title-wrapper'>

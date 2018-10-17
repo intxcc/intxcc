@@ -13,7 +13,7 @@
   transition: .2s border-color,
   .2s background-color,
   .2s color;
-  border: .3rem solid $black;
+  border: .5rem solid $black;
 
   background-color: $white;
   cursor: pointer;
@@ -30,6 +30,7 @@
   text-align: center;
   color: $black;
   font-size: 2vw;
+  font-weight: bold;
 
   box-sizing: border-box;
   pointer-events: initial;

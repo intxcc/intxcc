@@ -17,6 +17,14 @@ import AboutView from './view/AboutView'
 import SkillsView from './view/SkillsView'
 import ContactView from './view/ContactView'
 
+const Pages = [
+  'startpage',
+  'about',
+  'skills',
+  'stories',
+  'contact'
+]
+
 const Views = {
   'startpage': StartpageView,
   'about': AboutView,
@@ -46,11 +54,19 @@ class FallbackApp extends React.Component {
   componentWillUnmount () {
     window.removeEventListener('scroll', this.onScroll)
     window.removeEventListener('keydown', this.onKeyDown)
+
+    // Dispone of all subscriptions on unmount
+    for (let stateName in this.disposers) {
+      const disposers = this.disposers[stateName]
+      for (let disposer of disposers) {
+        disposer()
+      }
+    }
   }
 
   @autobind
   onKeyDown (e) {
-    const handleOnKeyDown = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].handleOnKeyDown ? this.props.store.state[this.activePage].handleOnKeyDown : null
+    const handleOnKeyDown = this.props.store.state[this.lastActivePage] && this.props.store.state[this.lastActivePage].handleOnKeyDown ? this.props.store.state[this.lastActivePage].handleOnKeyDown : null
     if (handleOnKeyDown !== null) {
       handleOnKeyDown(e)
     }
@@ -71,56 +87,48 @@ class FallbackApp extends React.Component {
       scrollTop: scrollTop
     })
 
-    const saveFallbackScrollTop = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].basicInfo && this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop : null
+    const saveFallbackScrollTop = this.props.store.state[this.lastActivePage] && this.props.store.state[this.lastActivePage].basicInfo && this.props.store.state[this.lastActivePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.lastActivePage].basicInfo.saveFallbackScrollTop : null
     if (saveFallbackScrollTop !== null) {
       saveFallbackScrollTop(scrollTop)
     }
   }
 
   @autobind
-  attachStateToRouter (activePage) {
-    if (!this.props.store.state[activePage]) {
-      return
-    }
+  handleAttachStateToRouter () {
+    for (let stateName of Pages) {
+      if (!this.props.store.state[stateName]) {
+        return
+      }
 
-    // Forward router params to the responsible state or null to indicate, that the state should no longer update based on the router params
-    let routerParams = this.props.store.router.params
-    if (activePage === this.props.store.router.model) {
-      routerParams = this.props.store.router.params
-    } else {
-      routerParams = null
-    }
-
-    // If active page changed, scroll to saved position
-    if (!this.activePage || this.activePage !== activePage) {
-      const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
-
-      setTimeout(() => window.scroll({
-        top: savedScrollTop,
-        left: 0
-      }), 0)
-    }
-    this.activePage = activePage
-
-    // Check if the responsible state does have a function to receive router params and forward them
-    if (this.props.store.state[activePage].onRouterParamChange) {
-      if (routerParams !== null) {
-        // Only add disposers if there are none, which means no subscription inside of the state
-        if (!this.disposers[activePage] || this.disposers[activePage].length <= 0) {
-          this.disposers[activePage] = []
-
-          // Save the disposer to delete the subscription from the state to the router parameters, when the current model changes
-          this.disposers[activePage].push(subscribeToRouterParams(routerParams, this.props.store.state[activePage].onRouterParamChange))
-        }
+      // Forward router params to the responsible state or null to indicate, that the state should no longer update based on the router params
+      let routerParams = this.props.store.router.params
+      if (stateName === this.props.store.router.model) {
+        routerParams = this.props.store.router.params
       } else {
-        if (this.disposers[activePage]) {
-          for (let disposer of this.disposers[activePage]) {
-            // Dispose of all subscriptions of states that do not represent the current path
-            disposer()
-          }
+        routerParams = null
+      }
 
-          // Clear disposers
-          this.disposers[activePage] = []
+      // Check if the current state in the  does have a function to receive router params and forward them
+      if (this.props.store.state[stateName].onRouterParamChange) {
+        // Router params = null means, that the current state is not supposed to subscribe to the router, so dispose them in the else clause
+        if (routerParams !== null) {
+          // Only add disposers if there are none, which means no subscription inside of the state
+          if (!this.disposers[stateName] || this.disposers[stateName].length <= 0) {
+            this.disposers[stateName] = []
+
+            // Save the disposer to delete the subscription from the state to the router parameters, when the current model changes
+            this.disposers[stateName].push(subscribeToRouterParams(routerParams, this.props.store.state[stateName].onRouterParamChange))
+          }
+        } else {
+          if (this.disposers[stateName]) {
+            for (let disposer of this.disposers[stateName]) {
+              // Dispose of all subscriptions of states that do not represent the current path
+              disposer()
+            }
+
+            // Clear disposers
+            this.disposers[stateName] = []
+          }
         }
       }
     }
@@ -129,7 +137,6 @@ class FallbackApp extends React.Component {
   @autobind
   render () {
     const activePage = this.props.store.global.activePage
-    this.attachStateToRouter(activePage)
 
     const loadView = Views[activePage] ? React.createElement(Views[activePage], {
       global: this.props.store.global,
@@ -154,7 +161,7 @@ class FallbackApp extends React.Component {
           const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
           // Save scrollTop in responsible state to revert to it, after the scrollbar was enabled again
-          const saveFallbackScrollTop = this.props.store.state[this.activePage] && this.props.store.state[this.activePage].basicInfo && this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.activePage].basicInfo.saveFallbackScrollTop : null
+          const saveFallbackScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.saveFallbackScrollTop : null
 
           if (saveFallbackScrollTop !== null) {
             saveFallbackScrollTop(scrollTop)
@@ -170,15 +177,26 @@ class FallbackApp extends React.Component {
       }
     }
 
+    // If active page changed or there is no lastActive page, scroll to saved position
+    if (!this.lastActivePage || this.lastActivePage !== activePage) {
+      const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
+
+      setTimeout(() => window.scroll({
+        top: savedScrollTop,
+        left: 0
+      }), 0)
+    }
+
     // Things to do, if the active page changed
     if (activePage !== this.lastActivePage) {
+      this.handleAttachStateToRouter(activePage)
       // Every time one goes to the fallback skills, select all skills. This is important if one deselected all skills and then clicks on a link on the about page. Then one should not read '0 of 0 Skills' for UX reasons.
       if (activePage === 'skills' && this.props.store.state[activePage]) {
         this.props.store.state[activePage].fallbackSelection.showAll(this.props.store.state[activePage].columns)
       }
     }
 
-    // Save the scrollbar disabled state, to notice changes
+    // Save the scrollbar disabled state and lastActivePage, to notice changes
     this.scrollbarDisabled = scrollbarDisabled
     this.lastActivePage = activePage
 

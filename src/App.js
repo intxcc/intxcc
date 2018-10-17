@@ -49,6 +49,17 @@ class App extends React.Component {
   }
 
   @autobind
+  componentWillUnmount () {
+    // Dispone of all subscriptions on unmount
+    for (let stateName in this.disposers) {
+      const disposers = this.disposers[stateName]
+      for (let disposer of disposers) {
+        disposer()
+      }
+    }
+  }
+
+  @autobind
   swapBuffer () {
     if (this.props.store.views.get('main').stateBasicInfo) {
       this.props.store.views.get('main').stateBasicInfo.clearNotPersistentPopups()
@@ -108,6 +119,7 @@ class App extends React.Component {
 
           // Check if the responsible state does have a function to receive router params and forward them
           if (this.props.store.state[view.model].onRouterParamChange) {
+            // Router params = null means, that the current state is not supposed to subscribe to the router, so dispose them in the else clause
             if (routerParams !== null) {
               // Only add disposers if there are none, which means no subscription inside of the state
               if (!this.disposers[view.model] || this.disposers[view.model].length <= 0) {

@@ -85,11 +85,18 @@ const RouterModel = types.model({
     for (let paramIndex in self.params.toJSON()) {
       if (typeof self.nextParams.get(paramIndex) === 'undefined') {
         self.params.set(paramIndex, '')
+
+        // Only propagate once and then delete the param at the end of the event queue
+        setTimeout(() => self.deleteRouterParam(paramIndex), 0)
       }
     }
 
     // Accept model
     self.model = self.nextModel
+  }
+
+  function deleteRouterParam (paramIndex) {
+    self.params.delete(paramIndex)
   }
 
   function goToLastWorkingPath () {
@@ -167,6 +174,7 @@ const RouterModel = types.model({
     initialize,
     onHashChange,
     acceptPath,
+    deleteRouterParam,
     goToLastWorkingPath,
     updateHash,
     parsePath

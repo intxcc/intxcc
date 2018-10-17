@@ -24,7 +24,7 @@ const AdminColumn = {
         {
           title: 'MySQL',
           mark: 3,
-          desc: 'For the most part the main database I use. Lately I try to use more [SkillLink:MongoDB], if it has an advantage.'
+          desc: 'For the most part the main database I use. Lately I try to use more [Link#skill#MongoDB], if it has an advantage.'
         }, {
           title: 'MongoDB',
           mark: 2
@@ -39,7 +39,7 @@ const AdminColumn = {
         {
           title: 'Dovecot',
           mark: 2,
-          desc: 'I run my own mail server, for convenience and privacy reasons. That is what I use Dovecot and [SkillLink:Postfix] for. Thunderbird is the client I use when at my own computer.'
+          desc: 'I run my own mail server, for convenience and privacy reasons. That is what I use Dovecot and [Link#skill#Postfix] for. Thunderbird is the client I use when at my own computer.'
         }, {
           title: 'ejabberd',
           mark: 2,
@@ -48,7 +48,7 @@ const AdminColumn = {
         }, {
           title: 'Postfix',
           mark: 1,
-          desc: 'See [SkillLink:Dovecot].'
+          desc: 'See [Link#skill#Dovecot].'
         }, {
           title: 'Nextcloud',
           mark: 1,

@@ -40,7 +40,7 @@ const VariantModel = {
     },
     // Left top polygon with black stroke
     'ltp-a': {
-      deg: 5,
+      deg: 16,
       vpos: 'top',
       hpos: 'right'
     },

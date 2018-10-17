@@ -9,32 +9,38 @@ import { observer } from 'mobx-react'
 
 import MARK_TOOLTIP from '../../../config/MarkTooltips'
 
-const FallbackSkillDetails = observer(props => (
-  <div className={'fallback-skill-details-wrapper' + (props.show ? ' show' : '')}>
-    <div onClick={props.closeSkillDetailsFunc} className='fallback-skill-details-close-button'>
-      <FontAwesomeIcon icon={'times'} />
+const FallbackSkillDetails = observer(props => {
+  let markString = MARK_TOOLTIP[props.skill.mark]
+  // Capitalize first letter
+  markString = markString.charAt(0).toUpperCase() + markString.slice(1)
+
+  return (
+    <div className={'fallback-skill-details-wrapper' + (props.show ? ' show' : '')}>
+      <div onClick={props.closeSkillDetailsFunc} className='fallback-skill-details-close-button'>
+        <FontAwesomeIcon icon={'times'} />
+      </div>
+      <div className={'fallback-skill-details-inner' + (props.showInner ? ' show' : '')}>
+        <div className='fallback-skill-details-inner-info'>
+          <h2>Skill {props.indexOfSelectedSkillInSelectedSkills} of <strong>{props.selectedListLength - 1}</strong></h2>
+          <h3>{props.column.title} | {props.category.title} | {markString}</h3>
+          <h1>{props.skill.title}</h1>
+        </div>
+        {props.skill.desc && props.skill.desc !== '' ? <p className='fallback-skill-details-desc'>
+          {props.skill.desc}
+        </p> : ''}
+        {props.skill.trivia && props.skill.trivia !== '' ? <p className='fallback-skill-details-trivia'>
+          {props.skill.trivia}
+        </p> : ''}
+        <div onClick={() => props.scrollSkillFunc(-1)} className='fallback-skill-details-inner-bottom-button previous'>
+          <FontAwesomeIcon icon={'arrow-circle-left'} />
+        </div>
+        <div onClick={() => props.scrollSkillFunc(1)} className='fallback-skill-details-inner-bottom-button next'>
+          <FontAwesomeIcon icon={'arrow-circle-right'} />
+        </div>
+      </div>
     </div>
-    <div className={'fallback-skill-details-inner' + (props.showInner ? ' show' : '')}>
-      <div className='fallback-skill-details-inner-info'>
-        <h2>Skill {props.indexOfSelectedSkillInSelectedSkills} of <strong>{props.selectedListLength - 1}</strong></h2>
-        <h3>{MARK_TOOLTIP[props.skill.mark].toUpperCase()}</h3>
-        <h1>{props.skill.title}</h1>
-      </div>
-      <p className='fallback-skill-details-desc'>
-        {props.skill.desc}
-      </p>
-      <p className='fallback-skill-details-trivia'>
-        {props.skill.trivia}
-      </p>
-      <div onClick={() => props.scrollSkillFunc(-1)} className='fallback-skill-details-inner-bottom-button previous'>
-        <FontAwesomeIcon icon={'arrow-circle-left'} />
-      </div>
-      <div onClick={() => props.scrollSkillFunc(1)} className='fallback-skill-details-inner-bottom-button next'>
-        <FontAwesomeIcon icon={'arrow-circle-right'} />
-      </div>
-    </div>
-  </div>
-))
+  )
+})
 
 FallbackSkillDetails.propTypes = {
   selectedListLength: PropTypes.number,
@@ -43,6 +49,8 @@ FallbackSkillDetails.propTypes = {
   showInner: PropTypes.bool,
   scrollSkillFunc: PropTypes.func,
   closeSkillDetailsFunc: PropTypes.func,
+  column: PropTypes.object,
+  category: PropTypes.object,
   skill: PropTypes.object
 }
 

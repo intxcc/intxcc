@@ -23,6 +23,8 @@ const SkillsView = observer(props => (
         showInner={props.state.fallbackShowSkillDetailsInner}
         scrollSkillFunc={props.state.scrollSkill}
         closeSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(false)}
+        column={props.state.selection.column}
+        category={props.state.selection.category}
         skill={props.state.selection.skill} />
       : ''}
     {props.state.fallbackUseSkillMap

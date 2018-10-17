@@ -25,12 +25,14 @@ function replaceLinks (string) {
     const lastFindResultPlusOne = findResult + 1
     findResult = string.substr(lastFindResultPlusOne).search(/\[SkillLink:/)
     if (findResult < 0) {
-      parts.push(string.substr(lastEndPos))
       break
     }
 
     findResult += lastFindResultPlusOne
   }
+
+  // Push end to parts
+  parts.push(string.substr(lastEndPos))
 
   return parts
 }

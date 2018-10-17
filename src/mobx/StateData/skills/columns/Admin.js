@@ -48,7 +48,7 @@ const AdminColumn = {
         }, {
           title: 'Postfix',
           mark: 1,
-          desc: 'See "Dovecot".'
+          desc: 'See [SkillLink:Dovecot].'
         }, {
           title: 'Nextcloud',
           mark: 1,

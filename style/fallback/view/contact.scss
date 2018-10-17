@@ -1,0 +1,11 @@
+.contact-wrapper {
+  @include fallback-view-margin;
+
+  .fallback-contact-wrapper-inner {
+    margin: 0 5vmin;
+
+    h2 {
+      margin-top: 5vmin;
+    }
+  }
+}

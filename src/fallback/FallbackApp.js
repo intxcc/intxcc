@@ -15,11 +15,13 @@ import GoToTopButton from './view/Components/GoToTopButton'
 import StartpageView from './view/StartpageView'
 import AboutView from './view/AboutView'
 import SkillsView from './view/SkillsView'
+import ContactView from './view/ContactView'
 
 const Views = {
   'startpage': StartpageView,
   'about': AboutView,
-  'skills': SkillsView
+  'skills': SkillsView,
+  'contact': ContactView
 }
 
 @observer

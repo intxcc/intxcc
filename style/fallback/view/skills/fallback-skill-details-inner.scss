@@ -8,7 +8,7 @@
 
   opacity: 0;
 
-  padding: 1rem 0 6rem;
+  padding: 1rem 0;
   min-height: #{'calc(100vh - 15vmin)'};
 
   box-sizing: border-box;
@@ -17,40 +17,41 @@
     opacity: 1;
   }
 
+  .fallback-skill-details-inner-title-wrapper {
+    height: 4rem;
+  }
+
   .fallback-skill-details-inner-bottom-button {
     @include user-select(none);
 
     display: flex;
 
-    position: absolute;
-    bottom: 5vmin;
-
     align-items: center;
     justify-content: center;
 
     transition: .2s color;
+    background-color: $black;
 
     cursor: pointer;
 
-    color: $black;
-    font-size: 10vmax;
+    width: 4rem;
+    height: 4rem;
 
-    box-sizing: border-box;
-
-    @media (min-height: 800px), (min-width: 800px) {
-      font-size: 5rem;
-    }
+    color: $white;
+    font-size: 3rem;
 
     &:hover {
       color: lighten($color: $primary-color, $amount: 10);
     }
 
     &.previous {
-      left: 0;
+      float: left;
+      margin-right: .25rem;
     }
 
     &.next {
-      right: 0;
+      float: right;
+      margin-left: .25rem;
     }
   }
 
@@ -62,7 +63,7 @@
   @import 'fallback-skill-details-inner-info';
 
   p {
-    padding: 1rem;
+    padding: 1rem 1rem 0;
 
     text-align: justify;
     font-size: 1.5rem;

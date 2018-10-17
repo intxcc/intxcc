@@ -9,8 +9,8 @@ import {
   faFilter,
   faBars,
   faArrowCircleUp,
-  faArrowCircleRight,
-  faArrowCircleLeft
+  faArrowRight,
+  faArrowLeft
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faSquare, faCheckSquare, faCommentDots } from '@fortawesome/free-regular-svg-icons'
@@ -22,8 +22,8 @@ library.add(faTimes)
 library.add(faFilter)
 library.add(faBars)
 library.add(faArrowCircleUp)
-library.add(faArrowCircleRight)
-library.add(faArrowCircleLeft)
+library.add(faArrowRight)
+library.add(faArrowLeft)
 
 library.add(faSquare)
 library.add(faCheckSquare)

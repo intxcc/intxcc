@@ -1,0 +1,31 @@
+.fallback-contact-page-social-inner {
+  display: flex;
+
+  margin-top: 1rem;
+
+  border-top: .5rem solid $black;
+  border-bottom: .5rem solid $black;
+
+  padding: 1rem 0;
+
+  .contact-page-social-titles,
+  .contact-page-social-symbols,
+  .contact-page-social-links {
+    line-height: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .contact-page-social-titles {
+    text-align: right;
+  }
+
+  .contact-page-social-symbols {
+    padding: 0 .5rem;
+  }
+
+  .contact-page-social-links {
+    a {
+      color: $black;
+    }
+  }
+}

@@ -6,6 +6,13 @@
 
     h2 {
       margin-top: 5vmin;
+      background-color: $black;
+
+      padding: .25rem .5rem;
+      color: $white;
     }
   }
+
+  @import 'contact/fallback-contact-page-social';
+  @import 'contact/contact-page-impressum';
 }

@@ -38,30 +38,12 @@ class FallbackApp extends React.Component {
   componentDidMount () {
     window.addEventListener('scroll', this.onScroll)
     window.addEventListener('keydown', this.onKeyDown)
-    window.addEventListener('wheel', this.onWheel)
   }
 
   @autobind
   componentWillUnmount () {
     window.removeEventListener('scroll', this.onScroll)
     window.removeEventListener('keydown', this.onKeyDown)
-    window.removeEventListener('wheel', this.onWheel)
-  }
-
-  @autobind
-  onWheel (e) {
-    // Ignore onwheel if the usere is trying to zoom
-    if (e && e.ctrlKey) {
-      return
-    }
-
-    // TODO Check if this is a good idea, because if one skill detail is too long and a acrollbar is shown one will not be able to use it with the scroll wheel. But this might only happen on mobile devices, so check it.
-    if (this.skillDetailsActive) {
-      const key = e.deltaY < 0 ? 'ArrowLeft' : 'ArrowRight'
-      this.onKeyDown({
-        key: key
-      })
-    }
   }
 
   @autobind
@@ -155,10 +137,9 @@ class FallbackApp extends React.Component {
     // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
     let scrollbarDisabled = false
 
-    // Save skillDetailsActive to this, so we can scroll through skills onwheel if it is active
-    this.skillDetailsActive = activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails
+    const skillDetailsActive = activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails
 
-    if (this.skillDetailsActive) {
+    if (skillDetailsActive) {
       scrollbarDisabled = true
     }
 

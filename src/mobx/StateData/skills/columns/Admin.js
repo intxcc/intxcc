@@ -24,7 +24,7 @@ const AdminColumn = {
         {
           title: 'MySQL',
           mark: 3,
-          desc: 'For the most part the main database I use. Lately I try to use more MongoDB, if it has an advantage.'
+          desc: 'For the most part the main database I use. Lately I try to use more [SkillLink:MongoDB], if it has an advantage.'
         }, {
           title: 'MongoDB',
           mark: 2

@@ -1,5 +1,40 @@
 'use strict'
 
+import React from 'react'
+
+/** Replaces links in e.g. the description or trivia of a skill */
+function replaceLinks (string) {
+  let parts = []
+
+  let findResult = string.search(/\[SkillLink:/)
+  let lastEndPos = 0
+  while (findResult >= 0) {
+    const curPos = findResult + 11
+    const endPos = string.substr(curPos).search(/\]/)
+
+    if (curPos && endPos) {
+      parts.push(string.substr(lastEndPos, findResult - lastEndPos))
+      const skillName = string.substr(curPos, endPos)
+      parts.push(
+        <a key={parts[parts.length - 1] + '-link-' + skillName.toLowerCase()} href={'/#/skills/skill/' + skillName.toLowerCase()}>{skillName}</a>
+      )
+    }
+
+    lastEndPos = curPos + endPos + 1
+
+    const lastFindResultPlusOne = findResult + 1
+    findResult = string.substr(lastFindResultPlusOne).search(/\[SkillLink:/)
+    if (findResult < 0) {
+      parts.push(string.substr(lastEndPos))
+      break
+    }
+
+    findResult += lastFindResultPlusOne
+  }
+
+  return parts
+}
+
 /**
  * Gives id number from id string
  * @param {*} idString String representing the id. IMORTANT: Has to be shaped like '<some identifier>-<id number>'
@@ -58,4 +93,12 @@ function stringToBase64 (input) {
   return btoa(input)
 }
 
-export { getIdNumberFromIdString, escapeRegExp, isEmpty, degreesToRadians, lineIntersect, stringToBase64 }
+export {
+  replaceLinks,
+  getIdNumberFromIdString,
+  escapeRegExp,
+  isEmpty,
+  degreesToRadians,
+  lineIntersect,
+  stringToBase64
+}

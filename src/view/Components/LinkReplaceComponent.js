@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 import { escapeRegExp } from '../../miscFunctions'
 
 const linkStart = '[Link'
-const linkDelimiter = '#'
+const linkDelimiter = '|'
 const linkEnd = ']'
 
 function createLink (linkString, linkKey) {

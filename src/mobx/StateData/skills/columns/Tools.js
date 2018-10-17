@@ -55,7 +55,7 @@ const ToolsColumn = {
         {
           title: 'GitHub',
           mark: 3,
-          trivia: 'The full source code of this website can be found on my [Link#extern#GitHub profile#https://github.com/intxcc].'
+          trivia: 'The full source code of this website can be found on my [Link|extern|GitHub profile|https://github.com/intxcc].'
         }, {
           title: 'Git',
           mark: 2

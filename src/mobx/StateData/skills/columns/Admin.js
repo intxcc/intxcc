@@ -39,7 +39,7 @@ const AdminColumn = {
         {
           title: 'Dovecot',
           mark: 2,
-          desc: 'I run my own mail server, for convenience and privacy reasons. That is what I use dovecot and Postfix for. Thunderbird is the client I use when at my own computer.'
+          desc: 'I run my own mail server, for convenience and privacy reasons. That is what I use Dovecot and [SkillLink:Postfix] for. Thunderbird is the client I use when at my own computer.'
         }, {
           title: 'ejabberd',
           mark: 2,

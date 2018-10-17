@@ -27,7 +27,9 @@ class AppWrapper extends React.Component {
 
     this.updateDimensions()
 
-    this.props.store.router.initialize()
+    if (this.props.store.global.useFallback) {
+      this.props.store.router.initialize()
+    }
   }
 
   @autobind

@@ -28,8 +28,8 @@ const SkillsView = observer(props => (
         skill={props.state.selection.skill} />
       : ''}
     {props.state.fallbackUseSkillMap
-      ? <FallbackSkills state={props.state} columns={props.state.columns} openSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(true)} />
-      : <SkillsMap state={props.state} columns={props.state.columns} />}
+      ? <SkillsMap state={props.state} columns={props.state.columns} />
+      : <FallbackSkills state={props.state} columns={props.state.columns} openSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(true)} />}
     <LicenseAndImpressumLink />
   </div>
 ))

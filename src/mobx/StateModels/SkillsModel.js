@@ -34,7 +34,7 @@ const Selection = types.model({
 
 const SkillsModel = types.model({
   basicInfo: BasicInfoModel,
-  fallbackUseSkillMap: types.optional(types.boolean, true),
+  fallbackUseSkillMap: types.optional(types.boolean, false),
   fallbackShowSkillDetailsInner: types.optional(types.boolean, false),
   fallbackShowSkillDetails: types.optional(types.boolean, false),
   routerParams: types.optional(types.map(types.string), {}),
@@ -220,6 +220,19 @@ const SkillsModel = types.model({
     self.fallbackShowSkillDetails = show
   }
 
+  function getArrayOfSkills () {
+    let array = []
+    for (let column of self.columns.toJSON()) {
+      for (let category of column.categories) {
+        for (let skill of category.skills) {
+          array.push(skill)
+        }
+      }
+    }
+
+    return array
+  }
+
   function selectSkillByIdentifier (skillIdentifier) {
     // Show 404 if the skill does not exist and go to the skill with the id 0
     if (typeof skillIdentifier === 'undefined' || typeof resolveIdentifier(SkillModel, self.columns, skillIdentifier) === 'undefined') {
@@ -242,6 +255,17 @@ const SkillsModel = types.model({
     self.selection.category = self.selection.skill.categoryId
     self.selection.column = self.selection.skill.columnId
     self.selection.skillIndex = self.skillIdentifierIndex.get(skillIdentifier)
+
+    // If the skills map is active in fallback, set the setIndexOfSelectedSkillinSkillList to the skillIndex of the selected skill
+    if (self.fallbackUseSkillMap && self.basicInfo.rootStore.global.useFallback) {
+      self.fallbackSelection.setIndexOfSelectedSkillinSkillList(self.selection.skillIndex)
+
+      // If the skill map is active in fallback and not all skills are selected already, select all skills
+      if (self.fallbackSelection.selectedSkills.length !== self.skillIdentifierList.length) {
+        self.fallbackSelection.showAll(self.columns)
+        self.fallbackSelection.setSelectedSkills(self.getArrayOfSkills())
+      }
+    }
 
     const selectionIdentifier = self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
 
@@ -383,6 +407,7 @@ const SkillsModel = types.model({
     unSelect,
     fallbackSetShowSkillDetailsInner,
     fallbackSetShowSkillDetails,
+    getArrayOfSkills,
     selectSkillByIdentifier,
     turnTransitionOff,
     toggleMouseDrag,

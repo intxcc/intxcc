@@ -24,7 +24,7 @@ AboutTableItem.propTypes = {
 }
 
 const AboutTableComponent = observer((props) => (
-  <ul className='about-table-component'>
+  <ul className={'about-table-component'}>
     <AboutTableItem title='name' text='Marvin Alexander Rüll' />
     <AboutTableItem title='year of birth' text={'1994 (' + MYAGE + 'yrs)'} />
     <AboutTableItem title='location' text='Berlin / Germany' />

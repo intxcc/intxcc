@@ -177,23 +177,22 @@ class FallbackApp extends React.Component {
       }
     }
 
-    // If active page changed or there is no lastActive page, scroll to saved position
-    if (!this.lastActivePage || this.lastActivePage !== activePage) {
-      const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
-
-      setTimeout(() => window.scroll({
-        top: savedScrollTop,
-        left: 0
-      }), 0)
-    }
-
     // Things to do, if the active page changed
     if (activePage !== this.lastActivePage) {
+      // Handle the router subscription
       this.handleAttachStateToRouter(activePage)
+
       // Every time one goes to the fallback skills, select all skills. This is important if one deselected all skills and then clicks on a link on the about page. Then one should not read '0 of 0 Skills' for UX reasons.
       if (activePage === 'skills' && this.props.store.state[activePage]) {
         this.props.store.state[activePage].fallbackSelection.showAll(this.props.store.state[activePage].columns)
       }
+
+      // Scroll to top or last saved position
+      const savedScrollTop = this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo && this.props.store.state[activePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[activePage].basicInfo.fallbackScrollTop : 0
+      setTimeout(() => window.scroll({
+        top: savedScrollTop,
+        left: 0
+      }), 0)
     }
 
     // Save the scrollbar disabled state and lastActivePage, to notice changes

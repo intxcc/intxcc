@@ -9,6 +9,7 @@ import MYAGE from '../../config/MyAge'
 
 const AboutTextComponent = observer((props) => (
   <div className={(props.fallback ? 'fallback-' : '') + 'about-text-wrapper'}>
+    {props.includeFallbackPicture ? <img className='fallback-about-picture' alt='Picture of me with triangles.' src='/fallback_pic.png' /> : ''}
     <p>
       <strong className='about-text-intro-sentence'>Hi there,</strong> my name is Marvin Alexander Rüll, I am {MYAGE} years old and I take interest in everything regarding information technology since more than 3 years. Development as a whole is present in my life since about 10 years, from the book &quot;Delphi for Kids&quot; (<i>pascal</i>) to this website and a lot in between. I would call my work professional since only about 3 years, thought.
     </p>
@@ -22,6 +23,7 @@ const AboutTextComponent = observer((props) => (
 ))
 
 AboutTextComponent.propTypes = {
+  includeFallbackPicture: PropTypes.bool,
   fallback: PropTypes.bool
 }
 

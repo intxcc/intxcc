@@ -7,5 +7,6 @@
   align-items: flex-start;
   justify-content: flex-start;
 
+  @import 'about/fallback-about-picture';
   @import 'about/about-text-wrapper';
 }

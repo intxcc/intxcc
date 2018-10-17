@@ -23,17 +23,17 @@ const FallbackSkillDetails = observer(props => {
         <div className='fallback-skill-details-inner-info'>
           <h2>Skill {props.indexOfSelectedSkillInSelectedSkills} of <strong>{props.selectedListLength - 1}</strong></h2>
           <h3>{props.column.title} | {props.category.title} | {markString}</h3>
+        </div>
+        <div className='fallback-skill-details-inner-content'>
           <div className='fallback-skill-details-inner-title-wrapper'>
-            <div onClick={() => props.scrollSkillFunc(-1)} className='fallback-skill-details-inner-bottom-button previous'>
+            <div onClick={() => props.scrollSkillFunc(-1)} className='fallback-skill-details-inner-button previous'>
               <FontAwesomeIcon icon={'arrow-left'} />
             </div>
-            <h1>{props.skill.title}</h1>
-            <div onClick={() => props.scrollSkillFunc(1)} className='fallback-skill-details-inner-bottom-button next'>
+            <div className='fallback-skill-details-inner-title'>{props.skill.title}</div>
+            <div onClick={() => props.scrollSkillFunc(1)} className='fallback-skill-details-inner-button next'>
               <FontAwesomeIcon icon={'arrow-right'} />
             </div>
           </div>
-        </div>
-        <div className='fallback-skill-details-inner-content'>
           {props.skill.desc && props.skill.desc !== '' ? <p className='fallback-skill-details-desc'>
             {props.skill.desc}
           </p> : ''}

@@ -17,13 +17,46 @@
     opacity: 1;
   }
 
+  .fallback-skill-details-inner-content {
+    position: relative;
+  }
+
   .fallback-skill-details-inner-title-wrapper {
     display: flex;
 
     min-height: 5rem;
+
+    @media (max-width: $fallback-give-buttons-extra-space-width-treshhold) {
+      display: block;
+      min-height: 10rem;
+    }
+
+    .fallback-skill-details-inner-title {
+      display: flex;
+
+      align-items: center;
+      justify-content: flex-start;
+
+      border: .5rem solid $black;
+      padding: 0 .5rem;
+
+      width: #{'calc(100vw - 10vmin - 10rem - 2.5rem)'};
+
+      font-size: 3rem;
+
+      @media (max-width: $fallback-give-buttons-extra-space-width-treshhold) {
+        position: absolute;
+        top: 5.25rem;
+
+        right: 0;
+        left: 0;
+
+        width: initial;
+      }
+    }
   }
 
-  .fallback-skill-details-inner-bottom-button {
+  .fallback-skill-details-inner-button {
     @include user-select(none);
 
     display: flex;
@@ -45,12 +78,29 @@
       color: lighten($color: $primary-color, $amount: 10);
     }
 
+    @media (max-width: $fallback-give-buttons-extra-space-width-treshhold) {
+      position: absolute;
+      top: 0;
+      width: #{'calc(50vw - 5vmin - .125rem)'};
+      height: 5rem;
+    }
+
     &.previous {
       margin-right: .25rem;
+
+      @media (max-width: $fallback-give-buttons-extra-space-width-treshhold) {
+        left: 0;
+        margin-right: 0;
+      }
     }
 
     &.next {
       margin-left: .25rem;
+
+      @media (max-width: $fallback-give-buttons-extra-space-width-treshhold) {
+        right: 0;
+        margin-left: 0;
+      }
     }
   }
 

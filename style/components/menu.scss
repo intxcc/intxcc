@@ -21,14 +21,14 @@
   right: 1vh;
 
   transition: .2s opacity;
-  opacity: .7;
+  opacity: 1;
 
   color: $black;
   font-family: 'Roboto Condensed';
   pointer-events: initial;
 
   &:hover {
-    opacity: 1;
+    opacity: .7;
   }
 
   a {

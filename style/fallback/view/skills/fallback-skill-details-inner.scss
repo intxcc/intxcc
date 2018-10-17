@@ -18,7 +18,9 @@
   }
 
   .fallback-skill-details-inner-title-wrapper {
-    height: 4rem;
+    display: flex;
+
+    min-height: 5rem;
   }
 
   .fallback-skill-details-inner-bottom-button {
@@ -34,8 +36,7 @@
 
     cursor: pointer;
 
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
 
     color: $white;
     font-size: 3rem;
@@ -45,12 +46,10 @@
     }
 
     &.previous {
-      float: left;
       margin-right: .25rem;
     }
 
     &.next {
-      float: right;
       margin-left: .25rem;
     }
   }

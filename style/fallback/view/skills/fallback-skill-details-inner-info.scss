@@ -18,13 +18,11 @@
     justify-content: flex-start;
 
     border: .5rem solid $black;
-
     padding: 0 .5rem;
-    height: 4rem;
+
+    width: #{'calc(100vw - 10vmin - 10rem - 2.5rem)'};
 
     font-size: 3rem;
-
-    box-sizing: border-box;
   }
 
   h3 {

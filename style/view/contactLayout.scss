@@ -12,18 +12,18 @@
   .guide-lp-a,
   .guide-lp-b,
   .guide-lp-c {
-    right: 107.5vmin;
+    right: #{'calc(115vmin - 3rem)'};
     bottom: 35vmin;
 
-    width: 15vmin;
-    height: 30vmin;
+    width: 20vmin;
+    height: 45vmin;
   }
 
   .guide-ltp-a,
   .guide-ltp-b,
   .guide-ltp-c {
-    right: 77.5vmin;
-    bottom: 60vmin;
+    right: 75vmin;
+    bottom: #{'calc(20vmin + 17.5rem)'};
 
     width: 40vmin;
     height: 30vmin;

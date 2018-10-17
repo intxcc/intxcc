@@ -168,6 +168,13 @@ class FallbackApp extends React.Component {
       }
     }
 
+    // Things to do, if the active page changed
+    if (activePage !== this.lastActivePage) {
+      if (activePage === 'skills' && this.props.store.state[activePage]) {
+        this.props.store.state[activePage].fallbackSelection.showAll(this.props.store.state[activePage].columns)
+      }
+    }
+
     // Save the scrollbar disabled state, to notice changes
     this.scrollbarDisabled = scrollbarDisabled
     this.lastActivePage = activePage

@@ -57,7 +57,7 @@ class FallbackApp extends React.Component {
 
     // TODO Check if this is a good idea, because if one skill detail is too long and a acrollbar is shown one will not be able to use it with the scroll wheel. But this might only happen on mobile devices, so check it.
     if (this.skillDetailsActive) {
-      const key = e.deltaY > 0 ? 'ArrowLeft' : 'ArrowRight'
+      const key = e.deltaY < 0 ? 'ArrowLeft' : 'ArrowRight'
       this.onKeyDown({
         key: key
       })

@@ -68,7 +68,7 @@ const ToolsColumn = {
       title: 'Others',
       skills: [
         {
-          title: 'Latex',
+          title: 'LaTeX',
           mark: 2
         }, {
           title: 'Bash',

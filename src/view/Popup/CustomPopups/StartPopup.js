@@ -16,7 +16,7 @@ const StartPopup = observer(props => (
     <h1>This is development, design &amp; art from Berlin.</h1>
     <div className='start-popup-btn-wrapper'>
       <div onClick={props.closeFunc} className='start-popup-btn btn-1'>
-        Show me more!
+        Continue to start
       </div>
       <div onClick={props.closeFunc} className='start-popup-btn btn-2'>
         I hate summer rain.

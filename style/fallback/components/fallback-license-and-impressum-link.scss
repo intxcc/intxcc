@@ -26,6 +26,11 @@
   }
 
   .menu-impressum-symbols {
-    margin-left: .25rem;
+    margin-left: .5rem;
+
+    svg {
+      width: auto;
+      height: $global--menu-height * .6;
+    }
   }
 }

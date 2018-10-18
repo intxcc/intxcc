@@ -3,11 +3,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { observer } from 'mobx-react'
 
 import { DefaultMenuEntries } from '../../config/MenuEntries'
+
+import GLPv3LogoPath from './GLPv3LogoPath'
 
 const MenuComponent = observer((props) => {
   let menuEntries = []
@@ -37,7 +37,7 @@ const MenuComponent = observer((props) => {
       <div className='menu-impressum-license-link'>
         <a target='_blank' rel='noopener noreferrer' href='/impressum.html'>Impressum &amp; License
           <span className='menu-impressum-symbols'>
-            <FontAwesomeIcon icon={['fab', 'creative-commons']} /> <FontAwesomeIcon icon={['fab', 'creative-commons-by']} /> <FontAwesomeIcon icon={['fab', 'creative-commons-sa']} />
+            <GLPv3LogoPath />
           </span>
         </a>
       </div>

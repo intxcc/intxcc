@@ -3,27 +3,29 @@
   align-self: center;
 
   background-color: $white;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem !important;
 
   pointer-events: initial;
 
   h1 {
-    float: left;
     margin-top: -.35rem;
 
-    border: 2px solid $primary-color;
-    padding: .1rem .3rem;
+    background-color: $black;
 
-    color: $primary-color;
-    font-size: 1.25rem;
+    padding: .25rem .5rem;
+
+    width: 21.5rem;
+
+    text-align: justify;
+    color: $white;
+    font-size: 1.1rem;
     font-weight: 500;
-
-    font-variant: small-caps;
+    text-align-last: justify;
   }
 
   h2 {
     padding: 0 0 .5rem;
-    font-size: 3rem;
+    font-size: 2.25rem;
     font-weight: 300;
 
     span {
@@ -31,54 +33,67 @@
       margin: .2rem 0;
 
       background-color: $black;
-      padding: 0 .5rem;
+      padding: .125rem .5rem;
 
       color: $white;
     }
   }
 
   .start-popup-for-you-span {
+    border-top: .5rem solid $black;
+    border-right: 0;
+    border-bottom: .5rem solid $black;
+    border-left: 0;
+
     background-color: $white;
+
     color: $black;
+    font-size: 3rem;
     font-weight: 600;
     font-variant: small-caps;
   }
 
   .start-popup-btn-wrapper {
-    position: absolute;
-    bottom: -1rem;
-    left: 2rem;
+    display: flex;
+    justify-content: space-between;
 
-    transform: translate3d(0, 100%, 0);
+    margin-top: .35rem;
+
+    border-top: 1rem solid $black;
+
+    padding-top: .375rem;
   }
 
   .start-popup-btn {
-    float: left;
+    display: flex;
+    align-items: center;
 
     transition: .2s background-color,
     .2s color;
 
-    margin-left: 1rem;
-
-    background-color: $white;
-
     cursor: pointer;
     padding: .2rem .5rem;
 
-    color: $black;
-    font-size: 2.5rem;
-    font-weight: 300;
-    font-variant: small-caps;
+    height: 2rem;
 
-    &:first-child {
-      margin-left: 0;
-      background-color: $black;
+    color: $black;
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    &.btn-1 {
+      justify-content: flex-start;
+      background-color: lighten($color: $primary-color, $amount: 10);
       color: $white;
+    }
+
+    &.btn-2 {
+      justify-content: flex-end;
+      color: lighten($color: $primary-color, $amount: 10);
     }
 
     &:hover {
       background-color: $white;
-      color: $primary-color;
+      color: $black;
     }
   }
 }

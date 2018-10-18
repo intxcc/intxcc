@@ -10,16 +10,15 @@ const StartPopup = observer(props => (
     <h2>
       <span>this is intxcc</span><br />
       <span>this is future</span><br />
-      <span>this is freedom</span><br />
       <span>this is warm summer rain</span><br />
       <span className='start-popup-for-you-span'>This is for you.</span>
     </h2>
     <h1>This is development, design &amp; art from Berlin.</h1>
     <div className='start-popup-btn-wrapper'>
-      <div onClick={props.closeFunc} className='start-popup-btn'>
-        Start.
+      <div onClick={props.closeFunc} className='start-popup-btn btn-1'>
+        Show me more!
       </div>
-      <div onClick={props.closeFunc} className='start-popup-btn'>
+      <div onClick={props.closeFunc} className='start-popup-btn btn-2'>
         I hate summer rain.
       </div>
     </div>

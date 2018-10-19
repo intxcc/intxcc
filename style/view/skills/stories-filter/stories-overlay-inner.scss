@@ -1,0 +1,40 @@
+.stories-overlay-inner {
+  transform-origin: top left;
+}
+
+.stories-overlay-inner-wrapper {
+  position: relative;
+
+  transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0);
+  z-index: 100;
+
+  width: 44vmin;
+  height: 25.3vmin;
+
+  -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+
+  .stories-overlay-toggle-show-btn {
+    display: flex;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: .2s color;
+    cursor: pointer;
+
+    width: 2rem;
+    height: 2rem;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    &:hover {
+      color: $primary-color-text;
+    }
+  }
+}

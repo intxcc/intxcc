@@ -2,8 +2,7 @@
 @import './skills/skills-map';
 
 .view-skills {
-  @import './skills/stories-overlay-title';
-  @import './skills/stories-overlay-inner';
+  @import './skills/stories-filter';
   @import './skills/skills-detail-view';
   @import './skills/skill-menu';
   @import './skills/skill-filter';

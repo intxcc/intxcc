@@ -18,6 +18,7 @@ import SkillCategory from './Skills/SkillCategory'
 import SkillColumn from './Skills/SkillColumn'
 
 import FallbackSelection from './Skills/FallbackSelection'
+import StoriesFilter from './Skills/StoriesFilter'
 
 const Position = types.model({
   x: types.optional(types.number, 0),
@@ -33,6 +34,7 @@ const Selection = types.model({
 })
 
 const SkillsModel = types.model({
+  id: types.identifier,
   basicInfo: BasicInfoModel,
   fallbackUseSkillMap: types.optional(types.boolean, false),
   fallbackShowSkillDetailsInner: types.optional(types.boolean, false),
@@ -54,7 +56,8 @@ const SkillsModel = types.model({
   pointerLocked: types.optional(types.boolean, false),
   transitionOn: types.optional(types.boolean, false),
   ignoreNextEmptySkillName: types.optional(types.number, 0),
-  filter: SkillFilter
+  filter: SkillFilter,
+  storiesFilter: StoriesFilter
 }).actions(self => {
   function setFallbackUseSkillMap (fallbackUseSkillMap) {
     self.fallbackUseSkillMap = fallbackUseSkillMap

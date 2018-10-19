@@ -6,11 +6,15 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
+
 import ScrollAnchor from './Skills/ScrollAnchor'
+
 import SkillMenu from './Skills/SkillMenu'
 import SkillFilter from './Skills/SkillFilter'
 import SkillsMap from './Skills/SkillsMap'
 import SkillsDetailView from './Skills/SkillsDetailView'
+
+import StoriesFilter from './Skills/StoriesFilter'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>
@@ -36,9 +40,7 @@ const SkillsOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
     <SkillFilter showSkillFilter={props.state.showSkillFilter} state={props.state} />
     <ViewObject object={props.view.objects.get('stories-overlay-inner')}>
-      <div className='stories-overlay-inner-wrapper'>
-        hello
-      </div>
+      <StoriesFilter filter={props.state.storiesFilter} />
     </ViewObject>
   </div>
 ))

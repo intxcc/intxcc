@@ -154,7 +154,13 @@ class App extends React.Component {
           })
 
           // Variant of the model that is going to get rendered
-          const modelVariant = view.modelVariant
+          let modelVariant = view.modelVariant
+
+          // If the view to get rendered has a state and that state has a basic info, look there for the model variant
+          if (this.props.store.state[view.model] && this.props.store.state[view.model].basicInfo) {
+            modelVariant = this.props.store.state[view.model].basicInfo.modelVariant
+          }
+
           // Load model of the specific variant
           const viewModel = this.props.store.viewModels.get(view.model).variants.get(modelVariant)
 

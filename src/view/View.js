@@ -65,6 +65,8 @@ class View extends React.Component {
       return
     }
 
+    this.didSetReferences = true
+
     // Give the basicInfo the reference of the view entity and the view entity the one of the basicInfo. Then load the modelVariant saved in the basicInfo of the state now loaded
     if (this.props.state && this.props.state.basicInfo) {
       this.props.state.basicInfo.setViewEntityReference(this.props.view.id)
@@ -260,7 +262,7 @@ class View extends React.Component {
       let guides = props.view.guides
       let morphTo = props.buffer ? props.buffer.guides : false
 
-      // If there is a snapshot, which is different from the current variant, we start morphong to the new variant. This only happens, when there is no buffer loaded (No state transition happening)
+      // If there is a snapshot, which is different from the current variant, we start morphing to the new variant. This only happens, when there is no buffer loaded (No state transition happening)
       if (props.view.snapshotVariant !== '' && props.view.snapshotVariant !== props.view.modelVariant && !props.buffer) {
         // !isEmpty(values(props.view.guidesSnapshot)) ? props.view.guidesSnapshot :
         guides = props.view.guidesSnapshot

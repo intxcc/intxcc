@@ -43,6 +43,13 @@ const VariantModel = {
         ['a', 'b'],
         ['b', 'c']
       ]
+    },
+    'stories-overlay-inner': {
+      type: 'intersections',
+      copyDeg: 'c',
+      intersections: [
+        ['b', 'c']
+      ]
     }
   }
 }

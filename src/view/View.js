@@ -227,7 +227,7 @@ class View extends React.Component {
 
     if (this.updateTimeout === false) {
       // Set the update of the helper divs at the end of the javascript event loop queue
-      this.updateTimeout = setTimeout(this.updateHelperDivs, 0)
+      this.updateTimeout = setTimeout(this.updateHelperDivs, 100)
     }
 
     // Compare last rendered model and current to update layout

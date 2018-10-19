@@ -35,6 +35,11 @@ SkillsView.propTypes = {
 const SkillsOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
     <SkillFilter showSkillFilter={props.state.showSkillFilter} state={props.state} />
+    <ViewObject object={props.view.objects.get('stories-overlay-inner')}>
+      <div className='stories-overlay-inner-wrapper'>
+        hello
+      </div>
+    </ViewObject>
   </div>
 ))
 

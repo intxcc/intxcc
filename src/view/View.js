@@ -36,11 +36,11 @@ class View extends React.Component {
 
     // Set timeout before updating teh helper divs, to prevent changing the state while the render method is running
     this.updateTimeout = false
-    this.didSetReferences = false
+
+    this.setReferences()
   }
 
   componentDidMount () {
-    this.setReferences()
     this.updateHelperDivs()
 
     // Set scroll top after first render, append to event queue
@@ -61,12 +61,6 @@ class View extends React.Component {
 
   @autobind
   setReferences () {
-    if (this.didSetReferences) {
-      return
-    }
-
-    this.didSetReferences = true
-
     // Give the basicInfo the reference of the view entity and the view entity the one of the basicInfo. Then load the modelVariant saved in the basicInfo of the state now loaded
     if (this.props.state && this.props.state.basicInfo) {
       this.props.state.basicInfo.setViewEntityReference(this.props.view.id)
@@ -210,8 +204,6 @@ class View extends React.Component {
 
   @autobind
   render () {
-    this.setReferences()
-
     const props = this.props
 
     let fadeClassName = ''

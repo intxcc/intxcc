@@ -40,7 +40,7 @@
 
   &:hover {
     border-color: rgba($color: $white, $alpha: 0);
-    color: lighten($color: $primary-color, $amount: 10);
+    color: $primary-color-text;
   }
 
   &.selected {

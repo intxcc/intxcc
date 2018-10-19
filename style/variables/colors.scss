@@ -1,4 +1,6 @@
 $primary-color: #00faa7;
+$primary-color-text: #00faa7;
+$primary-color-area: desaturate($color: lighten($color: $primary-color, $amount: 10), $amount: 20);
 
 // $primary-color: #ff0558;
 // $primary-color: #e60f33;

@@ -93,13 +93,13 @@
 
     &.btn-1 {
       justify-content: flex-start;
-      background-color: lighten($color: $primary-color, $amount: 10);
+      background-color: $primary-color-area;
       color: $white;
     }
 
     &.btn-2 {
       justify-content: flex-end;
-      color: lighten($color: $primary-color, $amount: 10);
+      color: $primary-color-text;
     }
 
     &:hover {

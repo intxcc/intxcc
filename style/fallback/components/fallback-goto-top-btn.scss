@@ -29,7 +29,7 @@
   }
 
   &:hover {
-    color: lighten($color: $primary-color, $amount: 10);
+    color: $primary-color-text;
   }
 
   &.show {

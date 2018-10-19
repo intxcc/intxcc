@@ -75,7 +75,7 @@
     font-size: 3rem;
 
     &:hover {
-      color: lighten($color: $primary-color, $amount: 10);
+      color: $primary-color-text;
     }
 
     @media (max-width: $fallback-give-buttons-extra-space-width-treshhold) {

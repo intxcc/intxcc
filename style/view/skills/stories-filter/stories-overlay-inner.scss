@@ -6,7 +6,7 @@
 
 .object-transition {
   .stories-overlay-inner-wrapper {
-    opacity: 0;
+    opacity: 0 !important;
     transition-duration: 0ms;
   }
 
@@ -19,6 +19,8 @@
 .variant--stories-filter-focus {
   .stories-overlay-inner-wrapper {
     transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0) rotate(-30deg) translate3d(22.5vmin, .5vmin, 0);
+
+    opacity: 1;
 
     width: 92.5vmin;
     height: 39.55vmin;
@@ -70,6 +72,8 @@
 
   transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0);
   transition: $global--variant-change-duration opacity;
+
+  opacity: 0;
 
   z-index: 100;
 

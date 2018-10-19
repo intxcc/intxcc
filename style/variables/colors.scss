@@ -1,6 +1,7 @@
 $primary-color: #00faa7;
-$primary-color-text: #00faa7;
 $primary-color-area: desaturate($color: lighten($color: $primary-color, $amount: 10), $amount: 20);
+$primary-color-text: lighten($color: $primary-color, $amount: 10);
+
 
 // $primary-color: #ff0558;
 // $primary-color: #e60f33;
@@ -10,9 +11,12 @@ $white: #fff;
 
 $gray: #666;
 
+$logo-color: $black;
+
 // sass-lint:disable-all
 :export {
   black: $black;
   white: $white;
+  logoColor: $logo-color;
   primaryColor: $primary-color;
 }

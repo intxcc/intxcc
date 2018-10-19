@@ -7,6 +7,7 @@ const ProductionDefaults = {
   Black: Colors.black,
   PolygonFill: Colors.black,
   PolygonStroke: 'none',
+  LogoColor: Colors.logoColor,
   DefaultStroke: Colors.black,
   DefaultStrokeWidth: 4, // should get multiplied with pixel scale
   DefaultStrokeMiterlimit: '20',

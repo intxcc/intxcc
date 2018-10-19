@@ -37,18 +37,16 @@ const PolygonMorph = observer((props) => {
     <Spring reset native
       from={{
         t: 0,
-        d: props.path1,
         stroke: props.stroke1,
         fill: props.fill1,
         strokeWidth: props.strokeWidth1
       }} to={{
         t: 1,
-        d: props.path2,
         stroke: props.stroke2,
         fill: props.fill2,
         strokeWidth: props.strokeWidth2
       }} impl={TimingAnimation} config={{ duration: props.morphDuration, easing: Easing.ease }}>
-      {({ t, d, stroke, fill, strokeWidth }) => {
+      {({ t, stroke, fill, strokeWidth }) => {
         return (
           <animated.path
             strokeWidth={strokeWidth}

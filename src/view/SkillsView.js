@@ -3,6 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { observer } from 'mobx-react'
 
 import ViewObject from './General/ViewObject'
@@ -40,6 +42,11 @@ const SkillsOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
     <SkillFilter showSkillFilter={props.state.showSkillFilter} state={props.state} />
     <ViewObject object={props.view.objects.get('stories-overlay-inner')}>
+      <div className='stories-overlay-filter-toggle-show-btn' onClick={props.state.storiesFilter.toggleExpand}>
+        {props.state.storiesFilter.expand
+          ? <FontAwesomeIcon icon={'compress'} />
+          : <FontAwesomeIcon icon={'expand'} />}
+      </div>
       <StoriesFilter filter={props.state.storiesFilter} />
     </ViewObject>
   </div>

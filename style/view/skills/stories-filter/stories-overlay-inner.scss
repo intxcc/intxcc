@@ -1,40 +1,75 @@
+@import 'stories-overlay-skill-list';
+
 .stories-overlay-inner {
   transform-origin: top left;
+}
+
+.object-transition {
+  .stories-overlay-inner-wrapper {
+    $duration: ($global--variant-change-duration-ms * 2) + ms;
+    transition: $duration clip-path,
+    $duration -webkit-clip-path,
+    $duration transform,
+    $duration width,
+    $duration opacity,
+    $duration height;
+  }
+}
+
+.variant--stories-filter-focus {
+  .stories-overlay-inner-wrapper {
+    transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0) rotate(-30deg) translate3d(16.75vmin, .5vmin, 0);
+
+    opacity: 1;
+
+    width: 69.1vmin;
+    height: 29.5vmin;
+
+    -webkit-clip-path: polygon(100% 0%, 0% 0%, 24.75% 100%, 75.35% 100%);
+    clip-path: polygon(100% 0%, 0% 0%, 24.75% 100%, 75.35% 100%);
+  }
+}
+
+.stories-overlay-filter-toggle-show-btn {
+  display: flex;
+
+  position: absolute;
+  top: -3rem;
+  left: -3rem;
+
+  align-items: center;
+  justify-content: center;
+
+  transition: .2s color;
+
+  z-index: 101;
+  cursor: pointer;
+
+  width: 2rem;
+  height: 2rem;
+
+  font-size: 2rem;
+  font-weight: bold;
+
+  pointer-events: initial;
+
+  &:hover {
+    color: $primary-color-text;
+  }
 }
 
 .stories-overlay-inner-wrapper {
   position: relative;
 
   transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0);
+  opacity: 0;
   z-index: 100;
 
   width: 44vmin;
   height: 25.3vmin;
 
-  -webkit-clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+  -webkit-clip-path: polygon(100% 0, 0% 100%, 0% 100%, 100% 100%);
+  clip-path: polygon(100% 0, 0% 100%, 0% 100%, 100% 100%);
 
-  .stories-overlay-toggle-show-btn {
-    display: flex;
-
-    position: absolute;
-    right: 0;
-    bottom: 0;
-
-    align-items: center;
-    justify-content: center;
-
-    transition: .2s color;
-    cursor: pointer;
-
-    width: 2rem;
-    height: 2rem;
-
-    font-size: 2rem;
-    font-weight: bold;
-
-    &:hover {
-      color: $primary-color-text;
-    }
-  }
+  transform-origin: bottom right;
 }

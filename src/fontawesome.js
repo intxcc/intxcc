@@ -10,7 +10,9 @@ import {
   faBars,
   faArrowCircleUp,
   faArrowRight,
-  faArrowLeft
+  faArrowLeft,
+  faExpand,
+  faCompress
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faSquare, faCheckSquare, faCommentDots } from '@fortawesome/free-regular-svg-icons'
@@ -24,6 +26,8 @@ library.add(faBars)
 library.add(faArrowCircleUp)
 library.add(faArrowRight)
 library.add(faArrowLeft)
+library.add(faExpand)
+library.add(faCompress)
 
 library.add(faSquare)
 library.add(faCheckSquare)

@@ -6,24 +6,24 @@ import { types } from 'mobx-state-tree'
 import SkillsModel from '../SkillsModel'
 
 const StoriesFilter = types.model({
-  show: types.optional(types.boolean, false),
+  expand: types.optional(types.boolean, false),
   skillsModel: types.optional(types.reference(types.late(() => SkillsModel)), 'skillsState')
 }).actions(self => {
-  function toggleShow () {
-    self.setShow(!self.show)
+  function toggleExpand () {
+    self.setExpand(!self.expand)
   }
 
-  function setShow (show) {
-    if (show !== self.show) {
-      self.skillsModel.basicInfo.viewEntity.changeModelVariant(show ? 'StoriesFilterFocusModel' : 'default')
+  function setExpand (expand) {
+    if (expand !== self.expand) {
+      self.skillsModel.basicInfo.viewEntity.changeModelVariant(expand ? 'StoriesFilterFocusModel' : 'default')
     }
 
-    self.show = show
+    self.expand = expand
   }
 
   return {
-    toggleShow,
-    setShow
+    toggleExpand,
+    setExpand
   }
 })
 

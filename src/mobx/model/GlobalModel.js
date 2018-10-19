@@ -19,6 +19,10 @@ const GlobalModel = types.model({
     const shouldUseFallback = (self.clientHeight / self.clientWidth) > 0.8 ||
       self.clientWidth < 960
 
+    if (Defaults.neverUseFallback) {
+      return false
+    }
+
     return shouldUseFallback || Defaults.alwaysUseFallback
   },
   // Pixel scale is used to get dimension independent pixels

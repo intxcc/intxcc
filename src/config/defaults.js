@@ -18,18 +18,21 @@ const ProductionDefaults = {
   showGuides: false,
   showSkillFilterPerDefault: false,
   disableDefaultPopups: false,
-  alwaysUseFallback: false
+  alwaysUseFallback: false,
+  neverUseFallback: false
 }
 
 const DevelopmentDefaults = {
   enableStartpageBackgroundVideo: false,
-  showSkillFilterPerDefault: true,
+  showSkillFilterPerDefault: false,
   disableDefaultPopups: true,
-  alwaysUseFallback: false
+  alwaysUseFallback: false,
+  neverUseFallback: true,
+  showGuides: false
 }
 
 // Here we can choose if in an development environment we want to see the page as it will be in production or with another config for better DX
-const EnableDevelopmentDefaultsIfOnLocalhost = false
+const EnableDevelopmentDefaultsIfOnLocalhost = true
 
 let isRunningInDevelopmentEnvironment = false
 if (EnableDevelopmentDefaultsIfOnLocalhost && (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost')) {

@@ -20,7 +20,10 @@ const VariantModel = {
       deg: -30,
       vpos: 'bottom',
       hpos: 'left'
-    }
+    },
+    // Stub for layout-stories-filter-focus-variant
+    'd': {},
+    'e': {}
   },
   polygons: {
     'SkillsPolyA': {
@@ -31,6 +34,7 @@ const VariantModel = {
       points: [
         ['a', 'b'],
         ['a', 'c'],
+        ['b', 'c'],
         ['b', 'c']
       ]
     }

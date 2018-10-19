@@ -89,7 +89,7 @@ const GuidesComponent = observer((props) => {
 
 GuidesComponent.propTypes = {
   classNameStart: PropTypes.string,
-  guideKeys: PropTypes.object,
+  guideKeys: PropTypes.array,
   guides: PropTypes.object,
   morphTo: PropTypes.oneOfType([
     PropTypes.bool,

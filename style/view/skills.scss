@@ -1,9 +1,10 @@
 @import 'skillsLayout';
 @import './skills/skills-map';
+@import './skills/stories-filter';
 
 .view-skills {
-  @import './skills/stories-filter';
+  @import './skills/skill-filter';
   @import './skills/skills-detail-view';
   @import './skills/skill-menu';
-  @import './skills/skill-filter';
 }
+

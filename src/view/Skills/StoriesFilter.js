@@ -7,9 +7,11 @@ import { observer } from 'mobx-react'
 
 const StoriesFilter = observer(props => (
   <div className='stories-overlay-inner-wrapper'>
-    <div className='stories-overlay-toggle-show-btn' onClick={props.filter.toggleShow}>
-      +
-    </div>
+    <ul className='stories-overlay-skill-list'>
+      <li>C++</li>
+      <li>Python</li>
+      <li>HTML5</li>
+    </ul>
   </div>
 ))
 

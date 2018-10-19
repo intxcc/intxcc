@@ -6,13 +6,12 @@
 
 .object-transition {
   .stories-overlay-inner-wrapper {
-    $duration: ($global--variant-change-duration-ms * 2) + ms;
-    transition: $duration clip-path,
-    $duration -webkit-clip-path,
-    $duration transform,
-    $duration width,
-    $duration opacity,
-    $duration height;
+    opacity: 0;
+  }
+
+  .stories-overlay-filter-toggle-show-btn {
+    opacity: 0;
+    transition-duration: 0ms;
   }
 }
 
@@ -28,6 +27,12 @@
     -webkit-clip-path: polygon(100% 0%, 0% 0%, 24.75% 100%, 75.35% 100%);
     clip-path: polygon(100% 0%, 0% 0%, 24.75% 100%, 75.35% 100%);
   }
+
+  .stories-overlay-filter-toggle-show-btn {
+    top: 43%;
+    left: -47%;
+    transform: rotate(-30deg);
+  }
 }
 
 .stories-overlay-filter-toggle-show-btn {
@@ -40,7 +45,8 @@
   align-items: center;
   justify-content: center;
 
-  transition: .2s color;
+  transition: $global--variant-change-duration opacity,
+  .2s color;
 
   z-index: 101;
   cursor: pointer;
@@ -62,11 +68,15 @@
   position: relative;
 
   transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0);
+  transition: $global--variant-change-duration opacity;
+
   opacity: 0;
   z-index: 100;
 
   width: 44vmin;
   height: 25.3vmin;
+
+  transition-delay: $global--variant-change-duration;
 
   -webkit-clip-path: polygon(100% 0, 0% 100%, 0% 100%, 100% 100%);
   clip-path: polygon(100% 0, 0% 100%, 0% 100%, 100% 100%);

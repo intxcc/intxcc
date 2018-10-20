@@ -5,14 +5,32 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
-const StoriesFilter = observer(props => (
+const StoriesFilterWrapper = observer(props => (
   <div className='stories-overlay-inner-wrapper'>
-    <ul className='stories-overlay-skill-list'>
-      <li>C++</li>
-      <li>Python</li>
-      <li>HTML5</li>
-    </ul>
+    <div className='stories-overlay-inner-wrapper-2'>
+      <div className='stories-overlay-inner-wrapper-3'>
+        <div className='stories-overlay-inner-wrapper-4'>
+          {props.children}
+        </div>
+      </div>
+    </div>
   </div>
+))
+
+StoriesFilterWrapper.propTypes = {
+  children: PropTypes.object
+}
+
+const StoriesFilter = observer(props => (
+  <StoriesFilterWrapper>
+    <div className='stories-overlay-inner-content'>
+      <ul className='stories-overlay-skill-list'>
+        <li>C++</li>
+        <li>Python</li>
+        <li>HTML5</li>
+      </ul>
+    </div>
+  </StoriesFilterWrapper>
 ))
 
 StoriesFilter.propTypes = {

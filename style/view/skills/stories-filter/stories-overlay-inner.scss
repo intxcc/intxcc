@@ -1,12 +1,10 @@
-@import 'stories-overlay-skill-list';
-
 .stories-overlay-inner {
   transform-origin: top left;
 }
 
 .object-transition {
   .stories-overlay-inner-wrapper {
-    opacity: 0 !important;
+    opacity: 0;
     transition-duration: 0ms;
   }
 
@@ -20,13 +18,8 @@
   .stories-overlay-inner-wrapper {
     transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0) rotate(-30deg) translate3d(22.5vmin, .5vmin, 0);
 
-    opacity: 1;
-
     width: 92.5vmin;
     height: 39.55vmin;
-
-    -webkit-clip-path: polygon(100% 0%, 0% 0%, 24.75% 100%, 75.35% 100%);
-    clip-path: polygon(100% 0%, 0% 0%, 24.75% 100%, 75.35% 100%);
 
     pointer-events: initial;
   }
@@ -35,6 +28,40 @@
     top: 43%;
     left: -47%;
     transform: rotate(-30deg);
+  }
+
+  .stories-overlay-inner-wrapper-2 {
+    position: absolute;
+    transform: rotate(-30deg) translate3d(13.5vmin, -50vmin, 0);
+
+    width: 100vmin;
+    height: 100vmin;
+
+    transform-origin: top right;
+  }
+
+  .stories-overlay-inner-wrapper-3 {
+    position: absolute;
+    transform: rotate(-30deg) translate3d(-54vmin, -20vmin, 0);
+
+    width: 100vmin;
+    height: 100vmin;
+
+    transform-origin: top left;
+  }
+
+  .stories-overlay-inner-wrapper-4 {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    transform: rotate(60deg) translate3d(0, 100%, 0);
+
+    width: 92.5vmin;
+    height: 44vmin;
+
+    transform-origin: bottom right;
   }
 }
 
@@ -73,16 +100,41 @@
   transform: translate3d(-100%, -100%, 0) translate3d(-1vmin, -1.1vmin, 0);
   transition: $global--variant-change-duration opacity;
 
-  opacity: 0;
-
   z-index: 100;
 
   width: 44vmin;
   height: 25.3vmin;
 
-  -webkit-clip-path: polygon(100% 0, 0% 100%, 0% 100%, 100% 100%);
-  clip-path: polygon(100% 0, 0% 100%, 0% 100%, 100% 100%);
+  overflow: hidden;
 
   transform-origin: bottom right;
   pointer-events: none;
 }
+
+.stories-overlay-inner-wrapper-2 {
+  position: absolute;
+  transform: rotate(-30deg) translate3d(-5vmin, -5.5vmin, 0);
+
+  width: 55vmin;
+  height: 100%;
+
+  overflow: hidden;
+  transform-origin: top right;
+}
+
+.stories-overlay-inner-wrapper-3 {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.stories-overlay-inner-wrapper-4 {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+}
+

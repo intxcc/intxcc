@@ -12,8 +12,7 @@ const GlobalModel = types.model({
   clientHeight: types.optional(types.number, 0),
   logoClassName: types.optional(types.string, ''),
   activePage: types.optional(types.string, ''),
-  showBurgerMenu: types.optional(types.boolean, false),
-  showedIEWarning: types.optional(types.boolean, false)
+  showBurgerMenu: types.optional(types.boolean, false)
 }).views(self => ({
   // Here we will decide if we render the fallback or not
   get useFallback () {
@@ -44,10 +43,6 @@ const GlobalModel = types.model({
     self.activePage = activePage
   }
 
-  function setShowedIEWarningTrue () {
-    self.showedIEWarning = true
-  }
-
   function setShowBurgerMenu (showBurgerMenu) {
     self.showBurgerMenu = showBurgerMenu
   }
@@ -59,7 +54,6 @@ const GlobalModel = types.model({
 
   return {
     setActivePage,
-    setShowedIEWarningTrue,
     setShowBurgerMenu,
     setClientDimensions
   }

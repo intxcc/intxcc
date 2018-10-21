@@ -13,7 +13,7 @@ import ScrollAnchor from './Skills/ScrollAnchor'
 
 import SkillMenu from './Skills/SkillMenu'
 import SkillFilter from './Skills/SkillFilter'
-import SkillsMap from './Skills/SkillsMap'
+import SkillsMap from './Skills/SkillsMap/SkillsMap'
 import SkillsDetailView from './Skills/SkillsDetailView'
 
 import StoriesFilter from './Skills/StoriesFilter'

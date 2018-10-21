@@ -8,7 +8,7 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
-import MARK_TOOLTIP from '../../config/MarkTooltips'
+import MARK_TOOLTIP from '../../../config/MarkTooltips'
 
 const SkillsItemInner = observer((props) => (
   <div className='skills-map-item-inner'>

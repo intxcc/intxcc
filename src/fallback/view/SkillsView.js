@@ -8,7 +8,9 @@ import { observer } from 'mobx-react'
 import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
 
 import SimplifySkillsOverviewButton from './Skills/SimplifySkillsOverviewButton'
-import SkillsMap from '../../view/Skills/SkillsMap'
+
+import SkillsMap from '../../view/Skills/SkillsMap/SkillsMap'
+
 import FallbackSkills from './Skills/FallbackSkills'
 import FallbackSkillDetails from './Skills/FallbackSkillDetails'
 

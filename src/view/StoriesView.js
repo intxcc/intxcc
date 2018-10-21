@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+import { getNameIdentifierFromSkill } from '../miscFunctions'
+
 import ViewObject from './General/ViewObject'
 import YearSelection from './Stories/YearSelection'
 
@@ -38,7 +40,7 @@ const StoriesOverlayView = observer((props) => (
       <div className='story-info-secondary-display'>
         <b>Skills</b>{
           props.state.selectedStory.skills.map((skill, index) => (
-            <a key={'selected-story-skill-link-' + index} className='selected-story-skill-link' href={'/#/skills/skill/' + skill.replace(new RegExp(' ', 'g'), '-')}>{skill}</a>
+            <a key={'selected-story-skill-link-' + index} className='selected-story-skill-link' href={'/#/skills/skill/' + getNameIdentifierFromSkill({title: skill})}>{skill}</a>
           ))
         }
       </div>

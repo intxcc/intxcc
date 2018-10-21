@@ -6,6 +6,8 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { observer } from 'mobx-react'
 
+import { getNameIdentifierFromSkill } from '../../../miscFunctions'
+
 import MARK_TOOLTIP from '../../../config/MarkTooltips'
 
 const FallbackSkillsSkillWithCommentsDisplay = observer(props => (
@@ -41,7 +43,7 @@ const FallbackSkillsSkills = observer(props => (
       }
 
       const isSelected = props.selection.skill && props.selection.skill.id === skill.id
-      const href = '/#/skills/' + skill.id + '-' + skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
+      const href = '/#/skills/' + skill.id + '-' + getNameIdentifierFromSkill(skill)
       return (
         <a key={'fallback-skills-skill-' + skill.id} href={href} className='fallback-skills-simplified-skill-link' onClick={props.openSkillDetailsFunc}>
           <div

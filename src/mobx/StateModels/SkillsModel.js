@@ -6,7 +6,7 @@ import BasicInfoModel from '../model/BasicInfoModel'
 import SkillFilter from './Skills/SkillFilter'
 
 import getColumns from '../StateModels/Skills/getColumns'
-import { getIdNumberFromIdString } from '../../miscFunctions'
+import { getNameIdentifierFromSkill, getIdNumberFromIdString } from '../../miscFunctions'
 
 import Defaults from '../../config/defaults'
 import SKILLS_EXPLANATION from '../../config/POPUP_SKILLS_EXPLANATION'
@@ -274,7 +274,7 @@ const SkillsModel = types.model({
       }
     }
 
-    const selectionIdentifier = self.selection.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
+    const selectionIdentifier = getNameIdentifierFromSkill(self.selection.skill)
 
     // If a skill is selected, show the skill details in fallback mode
     self.fallbackSetShowSkillDetails(true)

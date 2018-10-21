@@ -8,6 +8,8 @@ import { observer } from 'mobx-react'
 
 import autobind from 'autobind-decorator'
 
+import { getNameIdentifierFromSkill } from '../../../miscFunctions'
+
 import MARK_TOOLTIP from '../../../config/MarkTooltips'
 
 const SkillsItemInner = observer((props) => (
@@ -93,7 +95,7 @@ SkillsMapItemComponent.propTypes = {
 }
 
 const SkillsMapItemLinkWrapper = observer(props => (
-  <a className='skills-map-item-link' href={'/#/skills/' + props.skill.id + '-' + props.skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')}>
+  <a className='skills-map-item-link' href={'/#/skills/' + props.skill.id + '-' + getNameIdentifierFromSkill(props.skill)}>
     {props.children}
   </a>
 ))

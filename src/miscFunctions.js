@@ -1,6 +1,19 @@
 'use strict'
 
 /**
+ * Gives the name identifier for a skill eg. 'webpack-4'
+ * @param {*} skill - Skill object with id, title, etc.
+ */
+function getNameIdentifierFromSkill (skill) {
+  if (skill.title) {
+    return skill.title.toLowerCase().replace(new RegExp(' ', 'g'), '-')
+  }
+
+  // No identifer found
+  return false
+}
+
+/**
  * Gives id number from id string
  * @param {*} idString String representing the id. IMORTANT: Has to be shaped like '<some identifier>-<id number>'
  */
@@ -59,6 +72,7 @@ function stringToBase64 (input) {
 }
 
 export {
+  getNameIdentifierFromSkill,
   getIdNumberFromIdString,
   escapeRegExp,
   isEmpty,

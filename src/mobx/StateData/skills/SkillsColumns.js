@@ -6,6 +6,8 @@ import Concepts from './columns/Concepts'
 import Tools from './columns/Tools'
 import General from './columns/General'
 
+import { getNameIdentifierFromSkill } from '../../../miscFunctions'
+
 const SkillsColumns = [
   Languages,
   Admin,
@@ -30,7 +32,7 @@ for (let columnIndex in SkillsColumns) {
       category.skills[skillIndex].categoryId = 'category-' + categoryCounter
       category.skills[skillIndex].id = 'skill-' + skillCounter
 
-      const skillStringIdentifier = (category.skills[skillIndex].title).toLowerCase().replace(new RegExp(' ', 'g'), '-')
+      const skillStringIdentifier = getNameIdentifierFromSkill(category.skills[skillIndex])
       SkillTitleIndex[skillStringIdentifier] = 'skill-' + skillCounter
 
       skillCounter++

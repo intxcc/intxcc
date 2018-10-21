@@ -42,9 +42,7 @@ class View extends React.Component {
 
   componentDidMount () {
     this.updateHelperDivs()
-
-    // Set scroll top after first render, append to event queue
-    setTimeout(this.setScrollTop, 0)
+    this.setScrollTop()
 
     const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
     if (handleOnKeyDown !== null) {

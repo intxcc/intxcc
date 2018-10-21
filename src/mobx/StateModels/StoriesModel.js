@@ -35,12 +35,17 @@ const StoriesModel = types.model({
     switch (paramName) {
       case 'story_name':
         const storyIdentifier = 'story-' + paramValue
-        self.selectStoryByIdentifier(storyIdentifier)
+
+        // Only selectStoryByIdentifier if the selected story is not already selected
+        if (storyIdentifier !== self.selectedStory.id) {
+          self.selectStoryByIdentifier(storyIdentifier)
+        }
+
         break
     }
   }
 
-  function selectStoryByIdentifier (storyIdentifier, isCallback = false) {
+  function selectStoryByIdentifier (storyIdentifier, isCallback = false, doScroll = true) {
     // Show 404 if the skill does not exist and go to the skill with the id 0
     if (typeof storyIdentifier === 'undefined' || typeof resolveIdentifier(StoryModel, self.stories, storyIdentifier) === 'undefined') {
       self.selectStoryByIndex(0)
@@ -55,7 +60,7 @@ const StoriesModel = types.model({
 
     // Always wait 100ms before selecting a story, so the app has time to tell us if the viewEntity, the stories are shown in is the buffer or not
     if (!isCallback) {
-      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true), 100)
+      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true, doScroll), 100)
       return
     }
 
@@ -65,14 +70,32 @@ const StoriesModel = types.model({
     // If the divs were not initialized yes, wait at the end of the js event queue
     if (typeof story.div === 'undefined') {
       // Try again to get div at end of the js event loop
-      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true), 0)
+      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true, doScroll), 0)
+      return
+    }
+
+    // Only scroll, if the viewEntity, this state is shown in, is not the buffer, because the buffer is the only viewEntity with only a temporary use case
+    if (!self.basicInfo || self.basicInfo.viewEntityId === 'buffer') {
+      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true, doScroll), 500)
       return
     }
 
     // Scroll to selected story and set it as selected
     self.selectedStory = story
-    self.ignoreScrollForMs(2000)
-    self.scrollToStory(story)
+    if (doScroll) {
+      self.ignoreScrollForMs(1000)
+      self.scrollToStory(story)
+    }
+
+    // Check if the URL does represent the selected story. If not, we change the URL
+    if ('story-' + self.routerParams.get('story_name') !== self.selectedStory.id) {
+      window.history.pushState(null, null, '/#/stories/' + self.selectedStory.id)
+
+      // Propagate hash change to router, which does normally not happened when the changes comes from within the application
+      if (self.basicInfo) {
+        setTimeout(self.basicInfo.rootStore.router.onHashChange, 0)
+      }
+    }
   }
 
   function selectStoryByIndex (index) {
@@ -135,24 +158,24 @@ const StoriesModel = types.model({
         }
       }
     }
-
-    const oldSelectionId = self.selectedStory.id
-
     // If no top is negative we just select the first story
+    let newSelection = null
     if (biggestNegativeTopKey === false) {
-      self.selectedStory = self.stories.get(keys(self.stories)[0])
+      newSelection = self.stories.get(keys(self.stories)[0])
     } else {
-      self.selectedStory = self.stories.get(biggestNegativeTopKey)
+      newSelection = self.stories.get(biggestNegativeTopKey)
     }
 
-    if (Math.abs(biggestNegativeTopValue) < marginTopValue * 0.75 && Math.abs(biggestNegativeTopValue) > marginTopValue * 0.25) {
+    if (Math.abs(biggestNegativeTopValue) < marginTopValue * 0.75) {
       self.basicInfo.viewEntity.changeModelVariant('default')
     } else {
       self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
     }
 
-    if (oldSelectionId !== self.selectedStory.id && self.selectedStory.top > 0) {
-      self.scrollToStory(self.selectedStory)
+    if (newSelection.id !== self.selectedStory.id) {
+      // Last property decides, if we scroll or not. newSelection.top > 0 is true, when we need to scroll down. If we would need to scroll up, don't scroll.
+      // Never force scroll, while the user is scrolling, because this willr esult in a better UX
+      self.selectStoryByIdentifier(newSelection.id, false, false)
     }
   }
 

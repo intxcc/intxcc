@@ -19,14 +19,22 @@ const StoryModel = types.model({
   summary: types.string
 })
 
+const YearListItem = types.model({
+  year: types.number,
+  stories: types.array(types.reference(StoryModel))
+})
+
 const StoriesModel = types.model({
   basicInfo: BasicInfoModel,
   routerParams: types.optional(types.map(types.string), {}),
+  years: types.array(YearListItem),
   selectedStory: types.reference(StoryModel),
   storiesIndex: types.optional(types.map(types.string), {}),
   stories: types.array(StoryModel),
   ignoreScroll: types.optional(types.boolean, false)
-}).actions(self => {
+}).volatile(self => ({
+  ignoreScrollTimeout: false
+})).actions(self => {
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
@@ -129,8 +137,12 @@ const StoriesModel = types.model({
   function ignoreScrollForMs (timeoutMs, isCallback = false) {
     if (!isCallback) {
       self.ignoreScroll = true
-      setTimeout(() => self.ignoreScrollForMs(0, true), timeoutMs)
+      if (self.ignoreScrollTimeout) {
+        clearTimeout(self.ignoreScrollTimeout)
+      }
+      self.ignoreScrollTimeout = setTimeout(() => self.ignoreScrollForMs(0, true), timeoutMs)
     } else {
+      self.ignoreScrollTimeout = false
       self.ignoreScroll = false
     }
   }

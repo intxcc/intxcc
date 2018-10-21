@@ -9,6 +9,7 @@ import { getNameIdentifierFromSkill } from '../miscFunctions'
 
 import ViewObject from './General/ViewObject'
 
+import TimeBeam from './Stories/TimeBeam'
 import StoryComponent from './Stories/StoryComponent'
 import Texts from '../mobx/StateData/stories/Texts'
 
@@ -45,6 +46,7 @@ StoriesView.propTypes = {
 
 const StoriesOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
+    <TimeBeam state={props.state} />
     <ViewObject object={props.view.objects.get('story-info-display')}>
       <span className='story-info-display-name'>
         {props.state.selectedStory.name}

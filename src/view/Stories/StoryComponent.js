@@ -53,7 +53,7 @@ StoryComponent.propTypes = {
   index: PropTypes.number,
   yearHeadline: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.string
+    PropTypes.number
   ]),
   isSelected: PropTypes.bool,
   refFunc: PropTypes.func,

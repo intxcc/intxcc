@@ -22,6 +22,19 @@ const VariantModel = {
       vpos: 'top',
       hpos: 'right'
     },
+    // Guide lines to make a polygon out of the big triangle on the top right
+    'aa': {
+      deg: -56,
+      vpos: 'top',
+      hpos: 'right'
+    },
+    'aaa': {
+      type: 'copy',
+      reverse: true,
+      hide: true,
+      copy: 'aa',
+      move: 12
+    },
     // //////// //
     'd': {
       deg: -151,
@@ -150,7 +163,8 @@ const VariantModel = {
       points: [
         ['c', 'a'],
         ['c', 'b'],
-        ['a', 'b']
+        ['aa', 'b'],
+        ['aa', 'a']
       ]
     },
     'A': {
@@ -170,7 +184,8 @@ const VariantModel = {
       points: [
         ['c', 'a'],
         ['c', 'b'],
-        ['a', 'b']
+        ['aa', 'b'],
+        ['aa', 'a']
       ]
     },
     'C': {
@@ -180,7 +195,8 @@ const VariantModel = {
       points: [
         ['h', 'f'],
         ['h', 'g'],
-        ['f', 'g']
+        ['aaa', 'g'],
+        ['aaa', 'f']
       ]
     },
     'D': {

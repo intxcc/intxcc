@@ -20,17 +20,10 @@ for (let storyIndex in stories) {
   storiesIndex[story.id] = storyIndex
 }
 
-let years = []
-for (let year in yearMap) {
-  years.push(parseInt(year))
-}
-years = years.reverse()
-
 const StoriesData = {
   basicInfo: {
     id: 'storiesBasicInfo'
   },
-  years: years,
   selectedStory: 'story-pandatrek',
   storiesIndex: storiesIndex,
   stories: stories

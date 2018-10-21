@@ -1,7 +1,6 @@
 @import 'storiesLayout';
 
 .view-stories {
-  @import './stories/year-selection';
   @import './stories/selected-year-display';
   @import './stories/story-name-display';
   @import './stories/story-info-display';

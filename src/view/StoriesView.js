@@ -8,7 +8,6 @@ import { observer } from 'mobx-react'
 import { getNameIdentifierFromSkill } from '../miscFunctions'
 
 import ViewObject from './General/ViewObject'
-import YearSelection from './Stories/YearSelection'
 
 import StoryComponent from './Stories/StoryComponent'
 import Texts from '../mobx/StateData/stories/Texts'
@@ -17,7 +16,7 @@ const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
     {props.state.stories.map((story, index) => {
       const storyBeforeIndex = index - 1
-      let yearHeadline
+      let yearHeadline = false
       if (storyBeforeIndex < 0) {
         yearHeadline = story.year
       } else {
@@ -73,12 +72,6 @@ const StoriesOverlayView = observer((props) => (
         <strong>Timeframe</strong> {props.state.selectedStory.time}
       </span>
     </ViewObject>
-    <YearSelection
-      object={props.view.objects.get('year-selection')}
-      className={'stories-year-selection'}
-      years={props.state.years}
-      selectedYear={props.state.selectedYear}
-      selectYear={props.state.selectYear} />
     <ViewObject object={props.view.objects.get('story-page-name-display')}>
       stories
       <div className='story-page-name-display-caption'>

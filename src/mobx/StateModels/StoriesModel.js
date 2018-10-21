@@ -22,8 +22,6 @@ const StoryModel = types.model({
 const StoriesModel = types.model({
   basicInfo: BasicInfoModel,
   routerParams: types.optional(types.map(types.string), {}),
-  years: types.array(types.number),
-  selectedYear: types.optional(types.number, 0),
   selectedStory: types.reference(StoryModel),
   storiesIndex: types.optional(types.map(types.string), {}),
   stories: types.array(StoryModel),
@@ -195,10 +193,6 @@ const StoriesModel = types.model({
     self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5))
   }
 
-  function selectYear (index) {
-    self.selectedYear = index
-  }
-
   return {
     onRouterParamChange,
     selectStoryByIdentifier,
@@ -207,8 +201,7 @@ const StoriesModel = types.model({
     updateStoriesTop,
     ignoreScrollForMs,
     onScroll,
-    scrollToStory,
-    selectYear
+    scrollToStory
   }
 })
 

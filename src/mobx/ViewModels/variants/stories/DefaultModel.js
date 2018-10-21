@@ -256,13 +256,6 @@ const VariantModel = {
         ['b', 'c']
       ]
     },
-    'year-selection': {
-      type: 'intersections',
-      copyDeg: 'b',
-      intersections: [
-        ['b', 'c']
-      ]
-    },
     'story-info-display': {
       type: 'intersections',
       intersections: [

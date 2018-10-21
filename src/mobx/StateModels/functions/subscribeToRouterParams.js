@@ -11,9 +11,9 @@ function onRouterParamPatch (patch, callback) {
   }
 
   // TODO CHECK IF THIS IS GOOD. Ignore remove to keep state even if the view model does change
-  // if (patch.op === 'remove') {
-  //   callback(paramName, '')
-  // }
+  if (patch.op === 'remove') {
+    callback(paramName, '')
+  }
 }
 
 function subscribeToRouterParams (params, callback) {

@@ -32,6 +32,11 @@ const StoriesModel = types.model({
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
+    // Ignore the unselection on the stories page, but still update the routerParams
+    if (paramValue === '') {
+      return
+    }
+
     switch (paramName) {
       case 'story_name':
         const storyIdentifier = 'story-' + paramValue
@@ -172,7 +177,9 @@ const StoriesModel = types.model({
       self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
     }
 
-    if (newSelection.id !== self.selectedStory.id) {
+    const urlStoryName = 'story-' + self.routerParams.get('story_name')
+
+    if (newSelection.id !== self.selectedStory.id || newSelection.id !== urlStoryName) {
       // Last property decides, if we scroll or not. newSelection.top > 0 is true, when we need to scroll down. If we would need to scroll up, don't scroll.
       // Never force scroll, while the user is scrolling, because this willr esult in a better UX
       self.selectStoryByIdentifier(newSelection.id, false, false)

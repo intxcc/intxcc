@@ -87,14 +87,12 @@ const SkillsModel = types.model({
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
-    // If the params where deleted, also delete the selection
+    // If the params where deleted, ignore it, but update routerParams
     if ((paramName === 'skill_id' || paramName === 'skill_name') && paramValue === '') {
       if (paramName === 'skill_name' && self.ignoreNextEmptySkillName > 0) {
         self.ignoreNextEmptySkillName--
         return
       }
-
-      self.unSelect()
       return
     }
 
@@ -356,6 +354,9 @@ const SkillsModel = types.model({
   }
 
   function centerMap (x, y) {
+    // Makes sure the selected skill is definitely represented in the URL
+    self.selectSkillByIdentifier(self.selection.skill.id)
+
     // If we are in fallback mode we need to get the width and height manually. Also move the selection a bit to the right, as fallback indicates mostly a smaller screen.
     if (self.basicInfo.rootStore.global.useFallback) {
       self.basicInfo.clientWidth = window.innerWidth

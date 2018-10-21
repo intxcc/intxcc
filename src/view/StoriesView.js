@@ -40,21 +40,24 @@ const StoriesOverlayView = observer((props) => (
       <div className='story-info-secondary-display'>
         <b>Skills</b>{
           props.state.selectedStory.skills.map((skill, index) => (
-            <a key={'selected-story-skill-link-' + index} className='selected-story-skill-link' href={'/#/skills/skill/' + getNameIdentifierFromSkill({title: skill})}>{skill}</a>
+            <a key={'selected-story-skill-link-' + index} className='selected-story-skill-link' href={'/#/skills/skill/' + getNameIdentifierFromSkill({title: skill})}>
+              {/* Replaces spaces with "&nbsp;"s */}
+              {skill.replace(new RegExp(' ', 'g'), ' ')}
+            </a>
           ))
         }
       </div>
     </ViewObject>
     <ViewObject object={props.view.objects.get('story-name-display')}>
-      Mobile App<br />
+      {props.state.selectedStory.type}<br />
       <div className='story-name-caption'>
-        Android
+        {props.state.selectedStory.subType}
       </div>
     </ViewObject>
     <ViewObject object={props.view.objects.get('selected-year-display')}>
-      {props.state.years[props.state.selectedYear]}
+      {/* {props.state.years[props.state.selectedYear]} */}
       <span className='selected-year-caption'>
-        May Till August
+        {props.state.selectedStory.time}
       </span>
     </ViewObject>
     <YearSelection

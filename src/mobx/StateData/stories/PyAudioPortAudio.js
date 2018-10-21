@@ -6,7 +6,7 @@ const StoryData = {
   name: 'PyAudio & PortAudio',
   year: 2016,
   time: '2016 and 2018',
-  type: 'Python Module',
+  type: 'Python Pkg',
   subType: 'with C bindings',
   skills: [
     'c',

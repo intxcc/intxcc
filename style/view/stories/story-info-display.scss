@@ -21,11 +21,19 @@
   }
 
   .story-info-secondary-display {
+    transition: $global--variant-change-duration max-height,
+    $global--variant-change-duration padding;
+
     margin: -.5rem -1rem 0 0;
     border-top-right-radius: 0;
 
     background-color: $white;
     padding: .5rem 1rem;
+
+    width: 28rem;
+
+    max-height: 50vh;
+    overflow: hidden;
 
     color: $gray;
     font-size: 1.5vmax;
@@ -41,12 +49,11 @@
       color: $gray;
 
       &::before {
-        // Attention these are not normal spaces but "&nbsp;"s
-        content: ' ';
+        content: ' ';
       }
 
       &::after {
-        // Attention these are not normal spaces but "&nbsp;"s
+        // Attention this is not a normal space but a "&nbsp;"
         content: ' |';
       }
 

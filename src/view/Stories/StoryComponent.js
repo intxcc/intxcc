@@ -22,12 +22,12 @@ const StoryComponent = observer(props => (
           {props.story.time ? <li>{props.story.time.toLowerCase()}</li> : ''}
           <li><b>TYPE</b></li>
           <li>{props.story.type.toLowerCase()}{props.story.subType ? ' | ' + props.story.subType : ''}</li>
-          <li><b>SKILLS</b></li>
+          {/* <li><b>SKILLS</b></li>
           <li>{props.story.skills.map((skill, index) => (
             <span key={props.story.name + '-link-' + index} className='story-header-skills-item'>
               {skill.toLowerCase()}
             </span>
-          ))}</li>
+          ))}</li> */}
         </ul>
       </h1>
       <h2>

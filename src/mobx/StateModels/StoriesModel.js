@@ -21,11 +21,70 @@ const StoryModel = types.model({
 
 const StoriesModel = types.model({
   basicInfo: BasicInfoModel,
+  routerParams: types.optional(types.map(types.string), {}),
   years: types.array(types.number),
   selectedYear: types.optional(types.number, 0),
   selectedStory: types.reference(StoryModel),
-  stories: types.array(StoryModel)
+  storiesIndex: types.optional(types.map(types.string), {}),
+  stories: types.array(StoryModel),
+  ignoreScroll: types.optional(types.boolean, false)
 }).actions(self => {
+  function onRouterParamChange (paramName, paramValue) {
+    self.routerParams.set(paramName, paramValue)
+
+    switch (paramName) {
+      case 'story_name':
+        const storyIdentifier = 'story-' + paramValue
+        self.selectStoryByIdentifier(storyIdentifier)
+        break
+    }
+  }
+
+  function selectStoryByIdentifier (storyIdentifier, isCallback = false) {
+    // Show 404 if the skill does not exist and go to the skill with the id 0
+    if (typeof storyIdentifier === 'undefined' || typeof resolveIdentifier(StoryModel, self.stories, storyIdentifier) === 'undefined') {
+      self.selectStoryByIndex(0)
+
+      // If there are no skills the skill identifier will be undefined, don't show 404 in this case
+      if (typeof storyIdentifier !== 'undefined') {
+        self.basicInfo.show404Popup()
+      }
+
+      return
+    }
+
+    // Always wait 100ms before selecting a story, so the app has time to tell us if the viewEntity, the stories are shown in is the buffer or not
+    if (!isCallback) {
+      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true), 100)
+      return
+    }
+
+    // Only scroll, if the viewEntity, this state is shown in, is not the buffer, because the buffer is the only viewEntity with only a temporary use case
+    if (!self.basicInfo || self.basicInfo.viewEntityId === 'buffer') {
+      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier), 500)
+      return
+    }
+
+    const storyIndex = self.storiesIndex.get(storyIdentifier)
+    const story = self.stories.get(storyIndex)
+
+    // If the divs were not initialized yes, wait at the end of the js event queue
+    if (typeof story.div === 'undefined') {
+      // Try again to get div at end of the js event loop
+      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true), 0)
+      return
+    }
+
+    // Scroll to selected story and set it as selected
+    self.selectedStory = story
+    self.ignoreScrollForMs(2000)
+    self.scrollToStory(story)
+  }
+
+  function selectStoryByIndex (index) {
+    self.selectStoryByIdentifier(self.stories.get(index).id)
+  }
+
   function setDiv (storyId, div) {
     if (div === null) {
       return
@@ -47,7 +106,20 @@ const StoriesModel = types.model({
     }
   }
 
+  function ignoreScrollForMs (timeoutMs, isCallback = false) {
+    if (!isCallback) {
+      self.ignoreScroll = true
+      setTimeout(() => self.ignoreScrollForMs(0, true), timeoutMs)
+    } else {
+      self.ignoreScroll = false
+    }
+  }
+
   function onScroll (scrollTop) {
+    if (self.ignoreScroll) {
+      return
+    }
+
     self.basicInfo.setScrollTop(scrollTop)
     self.updateStoriesTop()
 
@@ -101,8 +173,12 @@ const StoriesModel = types.model({
   }
 
   return {
+    onRouterParamChange,
+    selectStoryByIdentifier,
+    selectStoryByIndex,
     setDiv,
     updateStoriesTop,
+    ignoreScrollForMs,
     onScroll,
     scrollToStory,
     selectYear

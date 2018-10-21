@@ -141,6 +141,11 @@ class App extends React.Component {
             }
           }
 
+          // Save viewEntityKey in statewBasicInfo
+          if (this.props.store.state[view.model] && this.props.store.state[view.model].basicInfo) {
+            this.props.store.state[view.model].basicInfo.setViewEntityId(key)
+          }
+
           const loadView = React.createElement(Views[view.model], {
             global: this.props.store.global,
             state: this.props.store.state[view.model],

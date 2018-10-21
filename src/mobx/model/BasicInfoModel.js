@@ -33,7 +33,8 @@ const BasicInfoModel = types.model({
   scrollByValue: types.optional(types.number, 0),
   // To add functionality that the startpage can appear after beeing disabled beforehand
   disabled: types.optional(types.boolean, false),
-  popups: types.optional(types.map(PopupModel), {})
+  popups: types.optional(types.map(PopupModel), {}),
+  viewEntityId: types.optional(types.string, '')
 }).volatile(self => ({
   lastPersist: 0
 })).views(self => ({
@@ -52,6 +53,11 @@ const BasicInfoModel = types.model({
 
     self.lastPersist = (new Date()).getTime()
     persistStateBasicInfo(self.toJSON())
+  }
+
+  // Save viewEntity id, to know e.g. if the main view is responsible for the state of this basic info
+  function setViewEntityId (entityId) {
+    self.viewEntityId = entityId
   }
 
   // Attention: This only does set the self.disabled variable. If there are popups isDisabled will still return true
@@ -116,6 +122,7 @@ const BasicInfoModel = types.model({
 
   return {
     persist,
+    setViewEntityId,
     setDisabled,
     setClientDimensions,
     setViewEntityReference,

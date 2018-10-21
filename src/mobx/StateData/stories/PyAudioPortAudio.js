@@ -1,7 +1,7 @@
 'use strict'
 
 const StoryData = {
-  id: 'pyaudio-portaudio-owntrack',
+  id: 'story-pyaudio-portaudio',
   textName: 'PyAudioPortAudioText',
   name: 'PyAudio & PortAudio',
   year: 2016,

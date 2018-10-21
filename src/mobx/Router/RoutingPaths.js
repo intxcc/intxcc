@@ -21,6 +21,10 @@ const RoutingPaths = [
     model: 'stories'
   },
   {
+    path: '/stories/:type(story)-:story_name',
+    model: 'stories'
+  },
+  {
     path: '/skills',
     model: 'skills'
   },

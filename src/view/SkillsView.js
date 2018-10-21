@@ -16,7 +16,7 @@ import SkillFilter from './Skills/SkillFilter'
 import SkillsMap from './Skills/SkillsMap/SkillsMap'
 import SkillsDetailView from './Skills/SkillsDetailView'
 
-import StoriesFilter from './Skills/StoriesFilter'
+import StoriesFilter from './Skills/StoriesFilter/StoriesFilter'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>

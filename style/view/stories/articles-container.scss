@@ -15,6 +15,29 @@ article {
 
   text-align: justify;
 
+  .article-year-headline {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    transform: translate3d(-2vmax, 3.5vmax, 0);
+
+    border-top: .5rem solid $black;
+    border-bottom: .5rem solid $black;
+
+    width: #{'calc(100% + 4vmax)'};
+    height: 5rem;
+
+    color: $black;
+    font-size: 4rem;
+    font-weight: bold;
+
+    &.first {
+      transform: translate3d(-2vmax, 6vmax, 0);
+    }
+  }
+
   .article-inner {
     transition: .2s opacity;
     opacity: .25;

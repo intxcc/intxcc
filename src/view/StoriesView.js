@@ -15,13 +15,26 @@ import Texts from '../mobx/StateData/stories/Texts'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
-    {props.state.stories.map((story, index) => (
-      <StoryComponent refFunc={div => {
-        props.state.setDiv(story.id, div)
-      }} keyString={'story-' + story.id} key={'story-' + story.id} isSelected={story.id === props.state.selectedStory.id} story={story}>
-        {Texts[story.textName]}
-      </StoryComponent>
-    ))}
+    {props.state.stories.map((story, index) => {
+      const storyBeforeIndex = index - 1
+      let yearHeadline
+      if (storyBeforeIndex < 0) {
+        yearHeadline = story.year
+      } else {
+        const storyBefore = props.state.stories.get(storyBeforeIndex)
+        if (story.year !== storyBefore.year) {
+          yearHeadline = story.year
+        }
+      }
+
+      return (
+        <StoryComponent refFunc={div => {
+          props.state.setDiv(story.id, div)
+        }} index={index} yearHeadline={yearHeadline} keyString={'story-' + story.id} key={'story-' + story.id} isSelected={story.id === props.state.selectedStory.id} story={story}>
+          {Texts[story.textName]}
+        </StoryComponent>
+      )
+    })}
   </div>
 ))
 
@@ -55,9 +68,9 @@ const StoriesOverlayView = observer((props) => (
       </div>
     </ViewObject>
     <ViewObject object={props.view.objects.get('selected-year-display')}>
-      {/* {props.state.years[props.state.selectedYear]} */}
+      <h1>{props.state.selectedStory.year}</h1>
       <span className='selected-year-caption'>
-        {props.state.selectedStory.time}
+        <strong>Timeframe</strong> {props.state.selectedStory.time}
       </span>
     </ViewObject>
     <YearSelection

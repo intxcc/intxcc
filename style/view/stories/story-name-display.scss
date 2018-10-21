@@ -1,5 +1,14 @@
+.variant--article-focus {
+  .story-name-display {
+    opacity: 0 !important;
+  }
+}
+
 .story-name-display {
   transform: translateX(-50%) rotate(90deg);
+  transition: $global--variant-change-duration opacity;
+  opacity: 1;
+
   margin: 0 0 0 -.9vw;
 
   line-height: .6em;

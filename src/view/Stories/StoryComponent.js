@@ -11,6 +11,7 @@ import { getNameIdentifierFromSkill } from '../../miscFunctions'
 
 const StoryComponent = observer(props => (
   <article ref={div => { props.refFunc(div) }} >
+    {props.yearHeadline ? <div className={'article-year-headline' + (props.index === 0 ? ' first' : '')}>{props.yearHeadline}</div> : ''}
     <div className={'article-inner' + (props.isSelected ? ' selected' : '')}>
       <h1>
         <ul className='article-h1-list'>
@@ -49,6 +50,11 @@ const StoryComponent = observer(props => (
 
 StoryComponent.propTypes = {
   children: PropTypes.object,
+  index: PropTypes.number,
+  yearHeadline: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.string
+  ]),
   isSelected: PropTypes.bool,
   refFunc: PropTypes.func,
   story: PropTypes.object

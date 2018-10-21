@@ -12,14 +12,21 @@
 
   @include user-select(none);
 
+  display: flex;
+  flex-direction: column;
+
   transform: translateY(-100%) translateY(-18px);
 
   line-height: .65em;
   color: $white;
   font-size: 4vmax;
-  font-weight: 300;
 
   transform-origin: left bottom;
+
+  h1 {
+    margin-bottom: -.2rem;
+    font-size: 3.5vmax;
+  }
 
   .selected-year-caption {
     @include user-select(text);
@@ -30,6 +37,11 @@
     color: $white;
     font-family: 'Roboto Condensed';
     font-size: 1.5vw;
-    font-variant: small-caps;
+    font-weight: normal;
+
+    strong {
+      font-weight: bold;
+      font-variant: small-caps;
+    }
   }
 }

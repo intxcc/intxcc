@@ -29,6 +29,8 @@
   }
 
   .story-info-secondary-display {
+    float: right;
+
     margin: -.5rem -1rem 0 0;
     border-top-right-radius: 0;
 
@@ -37,8 +39,9 @@
 
     max-width: 28rem;
 
+    text-align: justify;
     color: $gray;
-    font-size: 1.5vmax;
+    font-size: 1.2vmax;
     font-weight: normal;
     font-variant: small-caps;
 

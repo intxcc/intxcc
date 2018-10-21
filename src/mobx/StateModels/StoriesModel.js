@@ -94,7 +94,7 @@ const StoriesModel = types.model({
     // Scroll to selected story and set it as selected
     self.selectedStory = story
     if (doScroll) {
-      self.ignoreScrollForMs(1000)
+      self.ignoreScrollForMs(1500)
       self.scrollToStory(story)
     }
 

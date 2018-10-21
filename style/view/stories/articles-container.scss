@@ -2,6 +2,7 @@
   .article-inner.selected { // sass-lint:disable-line force-element-nesting
     h1 {
       opacity: 1;
+      pointer-events: initial;
     }
   }
 }
@@ -87,6 +88,8 @@ article {
     font-size: $articles-h2-spacer-margin-top-bottom * .45;
     font-weight: 200;
     font-variant: small-caps;
+
+    pointer-events: none;
 
     b {
       font-size: $articles-h2-spacer-margin-top-bottom * .7;

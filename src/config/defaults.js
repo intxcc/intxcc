@@ -27,7 +27,7 @@ const DevelopmentDefaults = {
   showSkillFilterPerDefault: false,
   disableDefaultPopups: true,
   alwaysUseFallback: false,
-  neverUseFallback: true,
+  neverUseFallback: false,
   showGuides: false
 }
 

@@ -7,13 +7,13 @@ import { observer } from 'mobx-react'
 
 import writtenNumber from 'written-number'
 
+import { getNameIdentifierFromSkill } from '../../miscFunctions'
+
 const StoryComponent = observer(props => (
   <article ref={div => { props.refFunc(div) }} >
-    <div className='article-inner' style={{
-      'opacity': props.isSelected ? '1' : '0.4'
-    }}>
+    <div className={'article-inner' + (props.isSelected ? ' selected' : '')}>
       <h1>
-        <ul>
+        <ul className='article-h1-list'>
           <li><b>STORY</b></li>
           <li>{props.story.name.toLowerCase()}</li>
           <li><b>YEAR</b></li>
@@ -21,13 +21,16 @@ const StoryComponent = observer(props => (
           {props.story.time ? <li><b>TIME</b></li> : ''}
           {props.story.time ? <li>{props.story.time.toLowerCase()}</li> : ''}
           <li><b>TYPE</b></li>
-          <li>{props.story.type.toLowerCase()}{props.story.subType ? ' | ' + props.story.subType : ''}</li>
-          {/* <li><b>SKILLS</b></li>
-          <li>{props.story.skills.map((skill, index) => (
-            <span key={props.story.name + '-link-' + index} className='story-header-skills-item'>
-              {skill.toLowerCase()}
-            </span>
-          ))}</li> */}
+          <li>{props.story.type}{props.story.subType ? ' | ' + props.story.subType : ''}</li>
+        </ul>
+        <div className='article-h1-spacer'></div>
+        <ul className='article-h1-skill-list'>
+          <li><b>SKILLS</b></li>
+          {props.story.skills.map((skill, index) => (
+            <a key={props.story.name + '-link-' + index} href={'/#/skills/skill/' + getNameIdentifierFromSkill({title: skill})}><li className='story-header-skills-item'>
+              {skill.toUpperCase()}
+            </li></a>
+          ))}
         </ul>
       </h1>
       <h2>

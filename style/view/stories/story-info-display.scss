@@ -1,7 +1,15 @@
+.variant--article-focus {
+  .story-info-display {
+    opacity: 0 !important;
+  }
+}
+
 .story-info-display {
   position: fixed;
 
   transform: translate3d(-100%, -55%, 0) translateX(-$articles-h2-spacer-margin-top-bottom);
+  transition: $global--variant-change-duration opacity;
+  opacity: 1;
   z-index: 2;
 
   text-align: right;
@@ -21,9 +29,6 @@
   }
 
   .story-info-secondary-display {
-    transition: $global--variant-change-duration max-height,
-    $global--variant-change-duration padding;
-
     margin: -.5rem -1rem 0 0;
     border-top-right-radius: 0;
 
@@ -31,9 +36,6 @@
     padding: .5rem 1rem;
 
     max-width: 28rem;
-
-    max-height: 50vh;
-    overflow: hidden;
 
     color: $gray;
     font-size: 1.5vmax;

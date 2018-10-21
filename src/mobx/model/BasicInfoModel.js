@@ -91,6 +91,8 @@ const BasicInfoModel = types.model({
 
   // Animate scroll top to scrollTo
   function scrollBy (scrollByValue) {
+    self.setScrollTop(self.scrollTop + scrollByValue)
+
     self.animateScrollBy = true
     self.scrollByValue = scrollByValue
   }

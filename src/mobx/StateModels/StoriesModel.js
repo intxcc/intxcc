@@ -59,12 +59,6 @@ const StoriesModel = types.model({
       return
     }
 
-    // Only scroll, if the viewEntity, this state is shown in, is not the buffer, because the buffer is the only viewEntity with only a temporary use case
-    if (!self.basicInfo || self.basicInfo.viewEntityId === 'buffer') {
-      setTimeout(() => self.selectStoryByIdentifier(storyIdentifier), 500)
-      return
-    }
-
     const storyIndex = self.storiesIndex.get(storyIdentifier)
     const story = self.stories.get(storyIndex)
 
@@ -163,6 +157,9 @@ const StoriesModel = types.model({
   }
 
   function scrollToStory (story) {
+    // If we scroll to the story top, always show the details view (that is the default)
+    self.basicInfo.viewEntity.changeModelVariant('default')
+
     self.updateStoriesTop()
     const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
     self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5))

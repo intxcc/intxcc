@@ -37,6 +37,7 @@ for (let year in yearMap) {
 years = years.reverse()
 
 const StoriesData = {
+  id: 'storiesState',
   basicInfo: {
     id: 'storiesBasicInfo'
   },

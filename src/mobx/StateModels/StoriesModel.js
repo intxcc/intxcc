@@ -25,6 +25,7 @@ const YearListItem = types.model({
 })
 
 const StoriesModel = types.model({
+  id: types.identifier,
   basicInfo: BasicInfoModel,
   routerParams: types.optional(types.map(types.string), {}),
   years: types.array(YearListItem),

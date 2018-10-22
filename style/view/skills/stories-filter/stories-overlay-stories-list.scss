@@ -1,0 +1,26 @@
+.variant--stories-filter-focus {
+  .stories-overlay-stories-list {
+    opacity: 1;
+  }
+}
+
+.stories-overlay-stories-list {
+  position: absolute;
+  right: 0;
+
+  transform: rotate(90deg) translate3d(100%, 0, 0);
+  opacity: 0;
+
+  padding: 23vmin 0;
+
+  width: #{'calc(39.55vmin - 2rem)'};
+  height: 92.5vmin;
+
+  list-style: none;
+  box-sizing: border-box;
+  transform-origin: top right;
+
+  li {
+    background-color: #f0f;
+  }
+}

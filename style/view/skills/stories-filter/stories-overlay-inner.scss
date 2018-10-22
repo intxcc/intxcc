@@ -35,7 +35,7 @@
   }
 
   .stories-overlay-filter-toggle-show-btn {
-    top: 43%;
+    top: 41.5%;
     left: -47%;
     transform: rotate(-30deg);
   }
@@ -88,8 +88,8 @@
   display: flex;
 
   position: absolute;
-  top: -3rem;
-  left: -3rem;
+  top: -3.25rem;
+  left: -3.25rem;
 
   align-items: center;
   justify-content: center;
@@ -98,7 +98,12 @@
   .2s color;
 
   z-index: 101;
+  border-radius: 3px;
+
+  background-color: $white;
+
   cursor: pointer;
+  padding: .25rem;
 
   width: 2rem;
   height: 2rem;

@@ -17,11 +17,14 @@ const StoriesFilter = observer(props => (
           <li key={'stories-filter-selected-skill-' + index}>{skill.title}</li>
         ))}
         <li>
-          <div className={'add-skill-to-stories-filter-btn' + (props.filter.addSkillMode ? ' add-skill-mode-active' : '')}>
-            <FontAwesomeIcon icon={'plus-square'} onClick={props.filter.toggleAddSkillMode} />
+          <div className='minus-stories-filter-btn'>
+            <FontAwesomeIcon icon={['far', 'minus-square']} onClick={props.filter.deleteLastSelection} />
           </div>
           <div className='clear-stories-filter-btn'>
-            <FontAwesomeIcon icon={'trash'} onClick={props.filter.clearSelection} />
+            <FontAwesomeIcon icon={'eraser'} onClick={props.filter.clearSelection} />
+          </div>
+          <div className={'add-skill-to-stories-filter-btn' + (props.filter.addSkillMode ? ' add-skill-mode-active' : '')}>
+            <FontAwesomeIcon icon={['far', 'plus-square']} onClick={props.filter.toggleAddSkillMode} />
           </div>
         </li>
       </ul>

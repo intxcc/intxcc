@@ -7,8 +7,9 @@
 
   list-style: none;
 
-  .clear-stories-filter-btn,
-  .add-skill-to-stories-filter-btn {
+  .add-skill-to-stories-filter-btn,
+  .minus-stories-filter-btn,
+  .clear-stories-filter-btn, {
     transition: .2s color;
     cursor: pointer;
 
@@ -24,9 +25,9 @@
     }
   }
 
+  .add-skill-to-stories-filter-btn,
   .clear-stories-filter-btn {
     margin-left: .5rem;
-    font-size: 1.1rem;
   }
 
   li {

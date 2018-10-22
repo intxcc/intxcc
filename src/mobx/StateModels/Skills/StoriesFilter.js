@@ -32,6 +32,10 @@ const StoriesFilter = types.model({
     self.setExpand(!self.expand)
   }
 
+  function deleteLastSelection () {
+    self.selectedSkills.remove(self.selectedSkills.get(self.selectedSkills.length - 1))
+  }
+
   function clearSelection () {
     // Empty object for duplicate checking
     self.selectedSkillsMap = {}
@@ -78,6 +82,7 @@ const StoriesFilter = types.model({
     toggleAddSkillMode,
     setAddSkillMode,
     toggleExpand,
+    deleteLastSelection,
     clearSelection,
     addSkill,
     setSingleSkillSelected,

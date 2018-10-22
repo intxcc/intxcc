@@ -1,6 +1,7 @@
 .variant--article-focus {
   .story-info-display {
     opacity: 0 !important;
+    pointer-events: none;
   }
 }
 

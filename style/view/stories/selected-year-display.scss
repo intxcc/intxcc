@@ -1,7 +1,7 @@
 .variant--article-focus {
   .selected-year-display {
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none !important;
   }
 }
 
@@ -9,8 +9,6 @@
   @include media-big {
     transform: translateY(-100%) translateY(-16px);
   }
-
-  @include user-select(none);
 
   display: flex;
   flex-direction: column;
@@ -29,8 +27,6 @@
   }
 
   .selected-year-caption {
-    @include user-select(text);
-
     margin: 0 0 0 1rem;
 
     text-shadow: initial;

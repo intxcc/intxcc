@@ -36,8 +36,6 @@ for (let year in yearMap) {
 }
 years = years.reverse()
 
-console.log(years)
-
 const StoriesData = {
   basicInfo: {
     id: 'storiesBasicInfo'

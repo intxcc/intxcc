@@ -89,7 +89,9 @@ const FallbackSkills = observer(props => {
   }
 
   // Makes sure the selected skill is definitely represented in the URL
-  setTimeout(() => props.state.selectSkillByIdentifier(props.state.selection.skill.id), 0)
+  if (props.state.selection.skill) {
+    setTimeout(() => props.state.selectSkillByIdentifier(props.state.selection.skill.id, false), 0)
+  }
 
   return (
     <div className='fallback-skills-simplified-overview'>

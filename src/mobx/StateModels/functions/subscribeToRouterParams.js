@@ -10,7 +10,6 @@ function onRouterParamPatch (patch, callback) {
     callback(paramName, paramValue)
   }
 
-  // TODO CHECK IF THIS IS GOOD. Ignore remove to keep state even if the view model does change
   if (patch.op === 'remove') {
     callback(paramName, '')
   }

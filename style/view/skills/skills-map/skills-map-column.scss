@@ -5,6 +5,8 @@
   align-items: center;
   justify-content: flex-start;
 
+  transition: .2s border-color;
+
   border-right: $skills-map-column-border;
 
   padding-top: 490vmin;
@@ -16,9 +18,6 @@
 
   box-sizing: border-box;
 
-  // &.column-selected {
-  //   // background-color: darken($color: $white, $amount: 10);
-  // }
   @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
     border-right: $skills-map-column-border-ie-fallback;
   }

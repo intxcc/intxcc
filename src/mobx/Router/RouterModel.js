@@ -38,8 +38,6 @@ const RouterModel = types.model({
 
     // Change active page variable, for easier accessibility of that variable
     self.rootStore.global.setActivePage(self.model)
-
-    // TODO Initialize model variants as well
   }
 
   // Called only when the hash changes, not on initialisation

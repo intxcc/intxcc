@@ -6,6 +6,9 @@
   align-items: flex-end;
 
   align-self: stretch;
+
+  transition: .2s border-color;
+
   margin: 0 1rem;
   border-bottom: $skills-map-column-border;
 
@@ -29,6 +32,8 @@
     align-items: flex-end;
     align-self: stretch;
     justify-content: center;
+
+    transition: .2s border-color;
 
     border-right: 4px rgba($color: $black, $alpha: 0) dotted;
     border-left: 4px rgba($color: $black, $alpha: 0) dotted;

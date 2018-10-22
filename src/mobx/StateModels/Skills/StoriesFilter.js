@@ -20,7 +20,7 @@ const StoriesFilter = types.model({
   // For duplicate checking
   selectedSkillsMap: {}
 })).views(self => ({
-  // TODO Move to a webworker to not block main thread. Also, this would be more performant with maps.
+  // TODO Move to a webworker and/or create an index: skill -> arrayOfStories[...]
   get filteredStories () {
     // Check if the story has ALL selected skills
     return self.storiesModel.stories.filter(story => {

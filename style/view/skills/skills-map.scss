@@ -7,12 +7,45 @@
   bottom: 0;
   left: 0;
 
-  transition: $skills-map-transition-time background-color;
+  transition: $skills-map-transition-time color;
 
   overflow: hidden;
 
   &.add-skill-mode {
-    background-color: rgba($color: $black, $alpha: .25);
+    color: $gray !important;
+
+    .skills-map-item {
+      color: $gray !important;
+
+      &:hover { // sass-lint:disable-line nesting-depth
+        background-color: $gray !important;
+        color: $white !important;
+
+        .skills-map-item-mark, // sass-lint:disable-line nesting-depth
+        .skills-map-item-comment-icon {
+          background-color: $white !important;
+          color: $gray !important;
+        }
+      }
+    }
+
+    .skills-map-item-mark {
+      background-color: $gray !important;
+      color: $white !important;
+    }
+
+    .skills-map-item-comment-icon {
+      opacity: 0 !important;
+    }
+
+    .skills-map-column,
+    .skills-map-category {
+      border-color: $gray !important;
+    }
+
+    .skills-map-category-inner {
+      border-color: rgba($color: $black, $alpha: 0) !important;
+    }
   }
 }
 

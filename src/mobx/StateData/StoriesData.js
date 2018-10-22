@@ -1,16 +1,18 @@
 'use strict'
 
 import Pandatrek from './stories/Pandatrek'
+import Thehackcamporg from './stories/Thehackcamporg'
 import OwnTrack from './stories/OwnTrack'
 import PyAudioPortAudio from './stories/PyAudioPortAudio'
+import E4parteieu from './stories/E4parteieu'
 import Intxcc from './stories/Intxcc'
-import Thehackcamporg from './stories/Thehackcamporg'
 
 const stories = [
   Pandatrek,
   Thehackcamporg,
   OwnTrack,
   PyAudioPortAudio,
+  E4parteieu,
   Intxcc
 ]
 

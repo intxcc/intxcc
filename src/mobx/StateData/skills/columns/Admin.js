@@ -37,6 +37,10 @@ const AdminColumn = {
       title: 'Communication',
       skills: [
         {
+          title: 'Tor',
+          mark: 2,
+          desc: 'Tor formerly known as "The Onion Routing". I was the creator and administrator of a lawful Tor hidden service.'
+        }, {
           title: 'Dovecot',
           mark: 2,
           desc: 'I run my own mail server, for convenience and privacy reasons. That is what I use Dovecot and [Link|skill|Postfix] for. Thunderbird is the client I use when at my own computer.'

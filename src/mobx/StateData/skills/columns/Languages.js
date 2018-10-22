@@ -83,9 +83,6 @@ const LanguagesColumn = {
         }, {
           title: 'Django',
           mark: 3
-        }, {
-          title: 'Redis',
-          mark: 1
         }
       ]
     }, {

@@ -14,7 +14,7 @@ class BackgroundVideo extends React.Component {
   @autobind
   componentDidMount () {
     if (this.video) {
-      this.video.playbackRate = 1
+      this.video.play()
     }
 
     this.checkIfShouldStop()
@@ -30,7 +30,11 @@ class BackgroundVideo extends React.Component {
   @autobind
   checkIfShouldStop () {
     if (this.video) {
-      this.video.playbackRate = this.props.stopped ? 0 : 1
+      if (this.props.stopped) {
+        this.video.pause()
+      } else {
+        this.video.play()
+      }
     }
   }
 

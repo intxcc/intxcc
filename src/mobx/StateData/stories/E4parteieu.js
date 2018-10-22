@@ -1,24 +1,35 @@
 'use strict'
 
 const StoryData = {
-  id: 'story-thehackcamporg',
-  textName: 'ThehackcamporgText',
-  name: 'thehackcamp.org',
-  year: 2014,
-  time: 'Spring till Summer',
-  type: 'Website',
-  subType: 'Tutorials Website',
+  id: 'story-e4parteieu',
+  textName: 'E4parteieuText',
+  name: 'e4-partei.eu',
+  year: 2017,
+  time: 'Winter 2016/2017',
+  type: 'Infrastructure',
+  subType: 'Political Party',
   skills: [
     'linux',
-    'tor',
     'nginx',
     'mysql',
-    'javascript',
-    'php',
+    'redis',
+    'websocket',
+    'scss',
+    'e6',
+    'reactjs',
+    'redux',
+    'gulp',
+    'python',
+    'django',
     'securing user data',
     'xsrf',
     'xss',
-    'sqli'
+    'sqli',
+    'tls',
+    'hsts',
+    'responsive design',
+    'restful',
+    'git'
   ],
   summary: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.'
 }

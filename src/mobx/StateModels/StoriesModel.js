@@ -70,6 +70,9 @@ const StoriesModel = types.model({
       return
     }
 
+    // Ignore scroll right away, because otherwise, if the story changed outside of the state, the state will revert the change
+    self.ignoreScrollForMs(1500)
+
     // Always wait 100ms before selecting a story, so the app has time to tell us if the viewEntity, the stories are shown in is the buffer or not
     if (!isCallback) {
       setTimeout(() => self.selectStoryByIdentifier(storyIdentifier, true, doScroll), 100)
@@ -149,7 +152,9 @@ const StoriesModel = types.model({
   }
 
   function onScroll (scrollTop) {
-    if (self.ignoreScroll) {
+    const isBuffer = self.basicInfo && self.basicInfo.viewEntityId === 'buffer'
+    // Ignore scroll if this the stories page is in the buffer
+    if (self.ignoreScroll || isBuffer) {
       return
     }
 
@@ -189,10 +194,9 @@ const StoriesModel = types.model({
     }
 
     const urlStoryName = 'story-' + self.routerParams.get('story_name')
-
     if (newSelection.id !== self.selectedStory.id || newSelection.id !== urlStoryName) {
       // Last property decides, if we scroll or not. newSelection.top > 0 is true, when we need to scroll down. If we would need to scroll up, don't scroll.
-      // Never force scroll, while the user is scrolling, because this willr esult in a better UX
+      // Never force scroll, while the user is scrolling, because this will result in a better UX
       self.selectStoryByIdentifier(newSelection.id, false, false)
     }
   }

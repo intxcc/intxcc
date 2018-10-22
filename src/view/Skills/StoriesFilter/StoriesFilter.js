@@ -30,9 +30,11 @@ const StoriesFilter = observer(props => (
       </ul>
       <ul className='stories-overlay-stories-list'>
         {props.filter.filteredStories.map((story, index) => (
-          <li key={'stories-filter-filtered-story-' + index}>
-            {story.name}
-          </li>
+          <a key={'stories-filter-filtered-story-' + index} href={'/#/stories/' + story.id}>
+            <li>
+              {story.name}
+            </li>
+          </a>
         ))}
       </ul>
     </div>

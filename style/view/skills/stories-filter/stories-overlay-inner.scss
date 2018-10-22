@@ -35,9 +35,15 @@
   }
 
   .stories-overlay-filter-toggle-show-btn {
-    top: 41.5%;
-    left: -47%;
+    top: 34%;
+    left: -48%;
     transform: rotate(-30deg);
+
+    border: .5rem $black solid;
+    background-color: $white;
+    padding: .25rem;
+
+    color: $black;
   }
 
   .stories-overlay-inner-wrapper-2 {
@@ -98,16 +104,16 @@
   .2s color;
 
   z-index: 101;
-  border-radius: 3px;
 
-  background-color: $white;
+  background-color: $black;
 
   cursor: pointer;
-  padding: .25rem;
+  padding: .75rem;
 
   width: 2rem;
   height: 2rem;
 
+  color: $white;
   font-size: 2rem;
   font-weight: bold;
 

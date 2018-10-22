@@ -1,7 +1,7 @@
 .startpage-midline {
   position: fixed;
   top: 50vh;
-  bottom: 32.875vh;
+  bottom: #{'calc(32.875vh - ' + $global--menu-height + ')'};
   left: 50vw;
 
   transform: translate3d(-50%, 0, 0);
@@ -14,8 +14,7 @@
 
 .startpage-midline-top-line {
   position: fixed;
-  // top: #{'calc(49.9vh - 1rem)'};
-  bottom: 50.1vh;
+  bottom: #{'calc(50.75vh - ' + $global--menu-height + ')'};
   left: 50vw;
 
   transform: translate3d(-.25rem, 0, 0);

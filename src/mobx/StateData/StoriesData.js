@@ -4,9 +4,11 @@ import Pandatrek from './stories/Pandatrek'
 import OwnTrack from './stories/OwnTrack'
 import PyAudioPortAudio from './stories/PyAudioPortAudio'
 import Intxcc from './stories/Intxcc'
+import Thehackcamporg from './stories/Thehackcamporg'
 
 const stories = [
   Pandatrek,
+  Thehackcamporg,
   OwnTrack,
   PyAudioPortAudio,
   Intxcc

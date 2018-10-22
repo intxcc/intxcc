@@ -7,6 +7,28 @@
 
   list-style: none;
 
+  .clear-stories-filter-btn,
+  .add-skill-to-stories-filter-btn {
+    transition: .2s color;
+    cursor: pointer;
+
+    color: $black;
+    font-size: 1.25rem;
+
+    &.add-skill-mode-active {
+      color: darken($color: $primary-color-text, $amount: 15) !important;
+    }
+
+    &:hover {
+      color: $primary-color-text;
+    }
+  }
+
+  .clear-stories-filter-btn {
+    margin-left: .5rem;
+    font-size: 1.1rem;
+  }
+
   li {
     display: inline-flex;
 
@@ -21,5 +43,10 @@
     height: 1.5rem;
 
     color: $white;
+
+    &:last-child {
+      margin: 0;
+      background-color: initial;
+    }
   }
 }

@@ -87,6 +87,9 @@ const SkillsModel = types.model({
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
+    // onRouterParamChange resets the stories filter addSkillMode. That happens, when the page is changing and is for better UX
+    self.storiesFilter.setAddSkillMode(false)
+
     // If the params where deleted, ignore it, but update routerParams
     if ((paramName === 'skill_id' || paramName === 'skill_name') && paramValue === '') {
       if (paramName === 'skill_name' && self.ignoreNextEmptySkillName > 0) {
@@ -270,6 +273,11 @@ const SkillsModel = types.model({
         self.fallbackSelection.showAll(self.columns)
         self.fallbackSelection.setSelectedSkills(self.getArrayOfSkills())
       }
+    }
+
+    // If no ore one skill is selected in the stories filter, set the selected skill for stories filter
+    if (self.storiesFilter.selectedSkills.length <= 1) {
+      self.storiesFilter.setSingleSkillSelected(self.selection.skill)
     }
 
     const selectionIdentifier = getNameIdentifierFromSkill(self.selection.skill)

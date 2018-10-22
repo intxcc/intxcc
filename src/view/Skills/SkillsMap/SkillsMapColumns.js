@@ -12,6 +12,7 @@ const SkillsMapColumns = observer((props) => (
     {props.columns.map(column => (
       <SkillsMapColumn
         key={'skills-' + column.id}
+        useSelectCallback={props.useSelectCallback}
         selected={props.selected.column && props.selected.column.id === column.id ? props.selected : false}
         centerMapFunc={props.centerMapFunc}
         title={column.title}
@@ -22,6 +23,10 @@ const SkillsMapColumns = observer((props) => (
 ))
 
 SkillsMapColumns.propTypes = {
+  useSelectCallback: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func
+  ]),
   selected: PropTypes.object,
   centerMapFunc: PropTypes.func,
   columns: PropTypes.object

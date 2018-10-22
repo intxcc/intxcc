@@ -21,6 +21,7 @@ const SkillsMapCategory = observer((props) => (
         return (
           <SkillsMapItem
             key={'skills-' + skill.id}
+            useSelectCallback={props.useSelectCallback}
             // Just to know when the filter changed
             skillIndex={props.selected.skill && props.selected.skill.id === skill.id ? props.selected.skillIndex : 0}
             selected={props.selected.skill && props.selected.skill.id === skill.id}
@@ -34,6 +35,10 @@ const SkillsMapCategory = observer((props) => (
 ))
 
 SkillsMapCategory.propTypes = {
+  useSelectCallback: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func
+  ]),
   selected: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.object

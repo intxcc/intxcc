@@ -94,13 +94,27 @@ SkillsMapItemComponent.propTypes = {
   centerMapFunc: PropTypes.func
 }
 
-const SkillsMapItemLinkWrapper = observer(props => (
-  <a className='skills-map-item-link' href={'/#/skills/' + props.skill.id + '-' + getNameIdentifierFromSkill(props.skill)}>
-    {props.children}
-  </a>
-))
+const SkillsMapItemLinkWrapper = observer(props => {
+  if (props.useSelectCallback && typeof props.useSelectCallback === 'function') {
+    return (
+      <span onClick={() => props.useSelectCallback(props.skill)}>
+        {props.children}
+      </span>
+    )
+  }
+
+  return (
+    <a className='skills-map-item-link' href={'/#/skills/' + props.skill.id + '-' + getNameIdentifierFromSkill(props.skill)}>
+      {props.children}
+    </a>
+  )
+})
 
 SkillsMapItemLinkWrapper.propTypes = {
+  useSelectCallback: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func
+  ]),
   skill: PropTypes.object,
   children: PropTypes.object
 }
@@ -108,14 +122,14 @@ SkillsMapItemLinkWrapper.propTypes = {
 const SkillsMapItem = observer((props) => {
   if (props.selected) {
     return (
-      <SkillsMapItemLinkWrapper skill={props.skill}>
+      <SkillsMapItemLinkWrapper useSelectCallback={props.useSelectCallback} skill={props.skill}>
         {/* Skill index is only given, because when it changes the component gets rerendered and recentered. E.g. When the filter changes */}
         <SkillsMapItemComponent skillIndex={props.skillIndex} centerMapFunc={props.centerMapFunc} skill={props.skill} />
       </SkillsMapItemLinkWrapper>
     )
   } else {
     return (
-      <SkillsMapItemLinkWrapper skill={props.skill}>
+      <SkillsMapItemLinkWrapper useSelectCallback={props.useSelectCallback} skill={props.skill}>
         <SkillsMapItemConst skill={props.skill} />
       </SkillsMapItemLinkWrapper>
     )
@@ -123,6 +137,10 @@ const SkillsMapItem = observer((props) => {
 })
 
 SkillsMapItem.propTypes = {
+  useSelectCallback: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.func
+  ]),
   skillIndex: PropTypes.number,
   selected: PropTypes.bool,
   centerMapFunc: PropTypes.func,

@@ -12,7 +12,9 @@ import {
   faArrowRight,
   faArrowLeft,
   faExpand,
-  faCompress
+  faCompress,
+  faPlusSquare,
+  faTrash
 } from '@fortawesome/free-solid-svg-icons'
 
 import { faSquare, faCheckSquare, faCommentDots } from '@fortawesome/free-regular-svg-icons'
@@ -28,6 +30,8 @@ library.add(faArrowRight)
 library.add(faArrowLeft)
 library.add(faExpand)
 library.add(faCompress)
+library.add(faPlusSquare)
+library.add(faTrash)
 
 library.add(faSquare)
 library.add(faCheckSquare)

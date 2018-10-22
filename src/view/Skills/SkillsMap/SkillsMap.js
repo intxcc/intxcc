@@ -18,12 +18,12 @@ const SkillsMap = observer((props) => (
       const n = e.deltaY > 0 ? 1 : -1
       props.state.scrollSkill(n, e)
     }}
-    className='skills-map-outer-wrapper'>
+    className={'skills-map-outer-wrapper' + (props.state.storiesFilter.addSkillMode ? ' add-skill-mode' : '')}>
     <div className={'skills-map-wrapper' + ((props.state.transitionOn ? ' transition' : '')) + (!props.state.mouseDragEnabled ? ' no-drag' : '')}
       style={{
         'transform': 'translate3d(-50%, -50%, 0) translate3d(' + props.state.mapPosition.x + 'px,' + props.state.mapPosition.y + 'px, 0) rotate(30deg)'
       }}>
-      <SkillsMapColumns selected={props.state.selection} centerMapFunc={props.state.centerMap} columns={props.columns} />
+      <SkillsMapColumns selected={props.state.selection} useSelectCallback={props.state.storiesFilter.addSkillMode ? props.state.storiesFilter.addSkill : false} centerMapFunc={props.state.centerMap} columns={props.columns} />
     </div>
   </div>
 ))

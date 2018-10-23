@@ -23,20 +23,14 @@
   transition: .2s opacity;
   opacity: 1;
 
-  color: $black;
   font-family: 'Roboto Condensed';
   pointer-events: initial;
-
-  &:hover {
-    opacity: .7;
-  }
 
   a {
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: $black;
   }
 
   .menu-impressum-symbols {

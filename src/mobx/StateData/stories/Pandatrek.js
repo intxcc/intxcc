@@ -5,7 +5,7 @@ const StoryData = {
   textName: 'PandatrekText',
   name: 'Pandatrek',
   year: 2012,
-  time: 'May till November',
+  time: 'May till november',
   type: 'Website',
   subType: 'Carsharing App',
   skills: [

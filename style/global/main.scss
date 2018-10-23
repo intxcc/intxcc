@@ -8,6 +8,14 @@
   outline: none;
 }
 
+a {
+  color: $black;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
 html {
   color: $black;
   font-family: 'Roboto';

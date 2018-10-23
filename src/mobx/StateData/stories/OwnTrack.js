@@ -5,7 +5,7 @@ const StoryData = {
   textName: 'OwnTrackText',
   name: 'OwnTrack',
   year: 2016,
-  time: 'February till April',
+  time: 'February till april',
   type: 'Mobile App',
   subType: 'Android',
   skills: [

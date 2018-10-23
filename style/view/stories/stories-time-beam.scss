@@ -1,7 +1,11 @@
 .stories-time-beam-wrapper {
+  display: flex;
+
   position: fixed;
   bottom: $global--menu-height;
   left: 0;
+
+  justify-content: left;
 
   transform: rotate(-90deg) translateY(100%);
 
@@ -11,6 +15,25 @@
 
   pointer-events: initial;
   transform-origin: bottom left;
+
+  .timebeam-headline {
+    display: flex;
+
+    flex: 1;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-left: .125rem;
+
+    border: .5rem $black solid;
+    border-top: 0;
+    height: 3rem;
+
+    font-weight: bold;
+
+    box-sizing: border-box;
+  }
 
   ul {
     display: flex;

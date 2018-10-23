@@ -25,6 +25,9 @@ const TimeBeam = observer(props => (
         </li>
       ))}
     </ul>
+    <div className='timebeam-headline'>
+      Timeline
+    </div>
   </div>
 ))
 

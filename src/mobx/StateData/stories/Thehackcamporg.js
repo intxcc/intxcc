@@ -5,7 +5,7 @@ const StoryData = {
   textName: 'ThehackcamporgText',
   name: 'thehackcamp.org',
   year: 2014,
-  time: 'Spring till Summer',
+  time: 'Spring till summer',
   type: 'Website',
   subType: 'Tutorials Website',
   skills: [

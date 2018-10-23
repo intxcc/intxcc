@@ -9,12 +9,12 @@ const StoryData = {
   type: 'Website',
   subType: 'Carsharing App',
   skills: [
-    'html',
+    'apache2',
     'css3',
+    'html',
     'javascript',
     'jquery',
     'linux',
-    'apache2',
     'mysql',
     'php'
   ],

@@ -20,6 +20,8 @@ let storiesIndex = {}
 let yearMap = {}
 for (let storyIndex in stories) {
   const story = stories[storyIndex]
+  story.skills.sort()
+
   if (!yearMap[story.year]) {
     yearMap[story.year] = []
   }

@@ -3,6 +3,10 @@ a {
   color: #242124;
 }
 
+a:hover {
+  color: #ff1e69;
+}
+
 p {
   margin: 0;
 }

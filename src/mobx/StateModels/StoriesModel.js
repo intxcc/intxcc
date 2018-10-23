@@ -71,7 +71,7 @@ const StoriesModel = types.model({
     }
 
     // Ignore scroll right away, because otherwise, if the story changed outside of the state, the state will revert the change
-    self.ignoreScrollForMs(1500)
+    self.ignoreScrollForMs(2000)
 
     // Always wait 100ms before selecting a story, so the app has time to tell us if the viewEntity, the stories are shown in is the buffer or not
     if (!isCallback) {
@@ -98,7 +98,7 @@ const StoriesModel = types.model({
     // Scroll to selected story and set it as selected
     self.selectedStory = story
     if (doScroll) {
-      self.ignoreScrollForMs(1500)
+      self.ignoreScrollForMs(2000)
       self.scrollToStory(story)
     }
 

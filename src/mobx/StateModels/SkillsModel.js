@@ -112,6 +112,9 @@ const SkillsModel = types.model({
         self.selectSkillById(parseInt(paramValue))
         break
       case 'skill_name':
+        self.transitionOn = true
+        setTimeout(self.turnTransitionOff, parseInt(Style.skillsMapTransitionTime) + 100)
+
         self.selectSkillByName(paramValue)
         break
     }

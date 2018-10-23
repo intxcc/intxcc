@@ -11,8 +11,6 @@ import {
 import { observer } from 'mobx-react'
 import { values } from 'mobx'
 
-import autobind from 'autobind-decorator'
-
 import PopupComponent from './PopupComponent'
 
 import Style from '../../../style/variables/global.scss'
@@ -24,17 +22,23 @@ const CustomPopups = {
 
 @observer
 class PopupWrapper extends React.Component {
-  @autobind
+  constructor (props) {
+    super(props)
+
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.onKeyDown = this.onKeyDown.bind(this)
+    this.render = this.render.bind(this)
+  }
+
   componentDidMount () {
     window.addEventListener('keydown', this.onKeyDown)
   }
 
-  @autobind
   componentWillUnmount () {
     window.removeEventListener('keydown', this.onKeyDown)
   }
 
-  @autobind
   onKeyDown (e) {
     if (e && e.key && e.key === 'Escape') {
       if (values(this.props.popups)[0]) {
@@ -43,7 +47,6 @@ class PopupWrapper extends React.Component {
     }
   }
 
-  @autobind
   render () {
     return (
       <div className='popup-wrapper'>

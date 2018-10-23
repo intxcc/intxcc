@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { observer } from 'mobx-react'
 
-import autobind from 'autobind-decorator'
-
 import { getNameIdentifierFromSkill } from '../../../miscFunctions'
 
 import MARK_TOOLTIP from '../../../config/MarkTooltips'
@@ -48,14 +46,17 @@ class SkillsMapItemComponent extends React.Component {
     super(props)
 
     this.isActive = true
+
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.updateSelectedPosition = this.updateSelectedPosition.bind(this)
+    this.onClick = this.onClick.bind(this)
+    this.render = this.render.bind(this)
   }
 
-  @autobind
   componentWillUnmount () {
     this.isActive = false
   }
 
-  @autobind
   updateSelectedPosition () {
     if (!this.isActive) {
       return
@@ -71,13 +72,11 @@ class SkillsMapItemComponent extends React.Component {
     this.props.centerMapFunc(boundingClientRect.right, boundingClientRect.bottom)
   }
 
-  @autobind
   onClick () {
     // This is important, to recenter the skillItem if the map was moved manually
     this.updateSelectedPosition()
   }
 
-  @autobind
   render () {
     setTimeout(this.updateSelectedPosition, 0)
 

@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import { values, keys } from 'mobx'
 import { observer } from 'mobx-react'
 
-import autobind from 'autobind-decorator'
-
 import View from './view/View'
 import { StartpageView, StartpageOverlayView } from './view/StartpageView'
 import { AboutView, AboutOverlayView } from './view/AboutView'
@@ -41,14 +39,18 @@ class App extends React.Component {
     super(props)
 
     this.disposers = {}
+
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.swapBuffer = this.swapBuffer.bind(this)
+    this.clearBuffer = this.clearBuffer.bind(this)
+    this.render = this.render.bind(this)
   }
 
-  @autobind
   componentDidMount () {
     this.props.router.initialize()
   }
 
-  @autobind
   componentWillUnmount () {
     // Dispone of all subscriptions on unmount
     for (let stateName in this.disposers) {
@@ -59,7 +61,6 @@ class App extends React.Component {
     }
   }
 
-  @autobind
   swapBuffer () {
     if (this.props.store.views.get('main').stateBasicInfo) {
       this.props.store.views.get('main').stateBasicInfo.clearNotPersistentPopups()
@@ -69,12 +70,10 @@ class App extends React.Component {
     setTimeout(this.clearBuffer, 100)
   }
 
-  @autobind
   clearBuffer () {
     this.props.store.updateViewEntity('buffer', '')
   }
 
-  @autobind
   render () {
     const mainModelActive = this.props.store.views.get('main') && this.props.store.views.get('main').model !== ''
 

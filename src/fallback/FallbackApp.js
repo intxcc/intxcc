@@ -5,8 +5,6 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
-import autobind from 'autobind-decorator'
-
 import subscribeToRouterParams from '../mobx/StateModels/functions/subscribeToRouterParams'
 
 import BurgerMenu from './view/Components/BurgerMenu'
@@ -42,15 +40,20 @@ class FallbackApp extends React.Component {
     }
 
     this.disposers = {}
+
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.onKeyDown = this.onKeyDown.bind(this)
+    this.onScroll = this.onScroll.bind(this)
+    this.handleAttachStateToRouter = this.handleAttachStateToRouter.bind(this)
+    this.render = this.render.bind(this)
   }
 
-  @autobind
   componentDidMount () {
     window.addEventListener('scroll', this.onScroll)
     window.addEventListener('keydown', this.onKeyDown)
   }
 
-  @autobind
   componentWillUnmount () {
     window.removeEventListener('scroll', this.onScroll)
     window.removeEventListener('keydown', this.onKeyDown)
@@ -64,7 +67,6 @@ class FallbackApp extends React.Component {
     }
   }
 
-  @autobind
   onKeyDown (e) {
     const handleOnKeyDown = this.props.store.state[this.lastActivePage] && this.props.store.state[this.lastActivePage].handleOnKeyDown ? this.props.store.state[this.lastActivePage].handleOnKeyDown : null
     if (handleOnKeyDown !== null) {
@@ -72,7 +74,6 @@ class FallbackApp extends React.Component {
     }
   }
 
-  @autobind
   onScroll (e) {
     // Scroll is ignored, while the scrollbar of the main wrapper is disabled
     if (this.scrollbarDisabled) {
@@ -93,7 +94,6 @@ class FallbackApp extends React.Component {
     }
   }
 
-  @autobind
   handleAttachStateToRouter () {
     for (let stateName of Pages) {
       if (!this.props.store.state[stateName]) {
@@ -134,7 +134,6 @@ class FallbackApp extends React.Component {
     }
   }
 
-  @autobind
   render () {
     const activePage = this.props.store.global.activePage
 

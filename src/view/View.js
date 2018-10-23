@@ -6,8 +6,6 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 import { keys, values } from 'mobx'
 
-import autobind from 'autobind-decorator'
-
 import { isEmpty } from '../miscFunctions'
 
 import Logo from '../logo/Logo'
@@ -37,6 +35,14 @@ class View extends React.Component {
     // Set timeout before updating teh helper divs, to prevent changing the state while the render method is running
     this.updateTimeout = false
 
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.setReferences = this.setReferences.bind(this)
+    this.setScrollTop = this.setScrollTop.bind(this)
+    this.viewContentScroll = this.viewContentScroll.bind(this)
+    this.updateHelperDivs = this.updateHelperDivs.bind(this)
+    this.render = this.render.bind(this)
+
     this.setReferences()
   }
 
@@ -57,7 +63,6 @@ class View extends React.Component {
     }
   }
 
-  @autobind
   setReferences () {
     // Give the basicInfo the reference of the view entity and the view entity the one of the basicInfo. Then load the modelVariant saved in the basicInfo of the state now loaded
     if (this.props.state && this.props.state.basicInfo) {
@@ -67,7 +72,6 @@ class View extends React.Component {
     }
   }
 
-  @autobind
   setScrollTop () {
     if (this.viewContent) {
       if (this.props.state && this.props.state.onScroll) {
@@ -76,7 +80,6 @@ class View extends React.Component {
     }
   }
 
-  @autobind
   viewContentScroll () {
     if (this.viewContent) {
       // onScroll event is forwarded to the state if it has a onScroll event
@@ -91,7 +94,6 @@ class View extends React.Component {
     }
   }
 
-  @autobind
   updateHelperDivs () {
     this.updateTimeout = false
 
@@ -200,7 +202,6 @@ class View extends React.Component {
     setTimeout(this.viewContentScroll, 0)
   }
 
-  @autobind
   render () {
     const props = this.props
 

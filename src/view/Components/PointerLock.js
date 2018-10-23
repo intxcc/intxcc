@@ -3,16 +3,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import autobind from 'autobind-decorator'
-
 class PointerLock extends React.Component {
   constructor (props) {
     super(props)
 
     this.pointerLocked = false
+
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.lockChangeAlert = this.lockChangeAlert.bind(this)
+    this.requestPointerLock = this.requestPointerLock.bind(this)
+    this.exitPointerLock = this.exitPointerLock.bind(this)
+    this.togglePointerLock = this.togglePointerLock.bind(this)
+    this.onClick = this.onClick.bind(this)
+    this.safariMouseMoveWorkaround = this.safariMouseMoveWorkaround.bind(this)
+    this.onMouseMove = this.onMouseMove.bind(this)
+    this.render = this.render.bind(this)
   }
 
-  @autobind
   componentDidMount () {
     if ('onpointerlockchange' in document) {
       document.addEventListener('pointerlockchange', this.lockChangeAlert, false)
@@ -21,7 +29,6 @@ class PointerLock extends React.Component {
     }
   }
 
-  @autobind
   componentWillUnmount () {
     if ('onpointerlockchange' in document) {
       document.removeEventListener('pointerlockchange', this.lockChangeAlert)
@@ -30,7 +37,6 @@ class PointerLock extends React.Component {
     }
   }
 
-  @autobind
   lockChangeAlert () {
     if (document.pointerLockElement === this.canvas || document.mozPointerLockElement === this.canvas) {
       this.pointerLocked = true
@@ -42,19 +48,16 @@ class PointerLock extends React.Component {
     this.props.onPointerLockChange(this.pointerLocked)
   }
 
-  @autobind
   requestPointerLock () {
     this.canvas.requestPointerLock = this.canvas.requestPointerLock || this.canvas.mozRequestPointerLock
     this.canvas.requestPointerLock()
   }
 
-  @autobind
   exitPointerLock () {
     document.exitPointerLock = document.exitPointerLock || document.mozExitPointerLock
     document.exitPointerLock()
   }
 
-  @autobind
   togglePointerLock () {
     if (this.pointerLocked) {
       this.exitPointerLock()
@@ -65,7 +68,6 @@ class PointerLock extends React.Component {
     this.pointerLocked = !this.pointerLocked
   }
 
-  @autobind
   onClick () {
     this.prevX = false
     this.prevY = false
@@ -87,7 +89,6 @@ class PointerLock extends React.Component {
     this.prevY = e.screenY
   }
 
-  @autobind
   onMouseMove (e) {
     if (!this.pointerLocked) {
       return
@@ -105,7 +106,6 @@ class PointerLock extends React.Component {
     }
   }
 
-  @autobind
   render () {
     return (
       <canvas onMouseMove={this.onMouseMove} onClick={this.onClick} ref={canvas => { this.canvas = canvas }} className={this.props.className} />

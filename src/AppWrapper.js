@@ -5,14 +5,20 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
-import autobind from 'autobind-decorator'
-
 import App from './App'
 import FallbackApp from './fallback/FallbackApp'
 
 @observer
 class AppWrapper extends React.Component {
-  @autobind
+  constructor (props) {
+    super(props)
+
+    this.updateDimensions = this.updateDimensions.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.render = this.render.bind(this)
+  }
+
   updateDimensions () {
     const siteWrapper = this.siteWrapper
     if (siteWrapper) {
@@ -20,7 +26,6 @@ class AppWrapper extends React.Component {
     }
   }
 
-  @autobind
   componentDidMount () {
     window.addEventListener('resize', this.updateDimensions)
     window.addEventListener('hashchange', this.props.store.router.onHashChange, false)
@@ -32,13 +37,11 @@ class AppWrapper extends React.Component {
     }
   }
 
-  @autobind
   componentWillUnmount () {
     window.removeEventListener('resize', this.updateDimensions)
     window.removeEventListener('hashchange', this.props.store.router.onHashChange, false)
   }
 
-  @autobind
   render () {
     return (
       <div ref={(siteWrapper) => { this.siteWrapper = siteWrapper }} className='site-wrapper-outer'>

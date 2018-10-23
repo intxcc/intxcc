@@ -5,13 +5,19 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
-import autobind from 'autobind-decorator'
-
 import FallbackImageAlt from '../../config/FallbackImageAlt'
 
 @observer
 class BackgroundVideo extends React.Component {
-  @autobind
+  constructor (props) {
+    super(props)
+
+    this.componentDidMount = this.componentDidMount.bind(this)
+    this.getSnapshotBeforeUpdate = this.getSnapshotBeforeUpdate.bind(this)
+    this.checkIfShouldStop = this.checkIfShouldStop.bind(this)
+    this.render = this.render.bind(this)
+  }
+
   componentDidMount () {
     if (this.video) {
       this.video.play()
@@ -20,14 +26,12 @@ class BackgroundVideo extends React.Component {
     this.checkIfShouldStop()
   }
 
-  @autobind
   getSnapshotBeforeUpdate () {
     this.checkIfShouldStop()
 
     return null
   }
 
-  @autobind
   checkIfShouldStop () {
     if (this.video) {
       if (this.props.stopped) {
@@ -38,7 +42,6 @@ class BackgroundVideo extends React.Component {
     }
   }
 
-  @autobind
   render () {
     const video = this.props.showVideo ? (
       <video ref={video => { this.video = video }} className='startpage-background-video' style={{display: this.props.stopped ? 'none' : 'initial'}} loop autoPlay>

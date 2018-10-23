@@ -2,7 +2,7 @@
 
 import Defaults from '../../../../config/defaults'
 
-// This is the ViewModel of the contact view
+// This is the ViewModel of the skills view
 
 const VariantModel = {
   guides: {

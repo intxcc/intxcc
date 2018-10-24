@@ -3,6 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { observer } from 'mobx-react'
 
 import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
@@ -16,6 +18,9 @@ import FallbackSkillDetails from './Skills/FallbackSkillDetails'
 
 const SkillsView = observer(props => (
   <div className='fallback-view-wrapper skills-wrapper'>
+    {props.state.fallbackUseSkillMap ? <div className='show-help-btn' onClick={props.state.showExplanation}>
+      <FontAwesomeIcon icon={'info'} />
+    </div> : ''}
     <SimplifySkillsOverviewButton fallbackUseSkillMap={props.state.fallbackUseSkillMap} setFallbackUseSkillMapFunc={props.state.setFallbackUseSkillMap} />
     {props.state.selection.skill
       ? <FallbackSkillDetails

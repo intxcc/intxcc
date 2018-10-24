@@ -7,6 +7,39 @@
   align-items: flex-start;
   justify-content: flex-start;
 
+  .show-help-btn {
+    @include user-select(none);
+
+    display: flex;
+
+    position: absolute;
+    top: 0;
+    left: 10vmin;
+
+    align-items: center;
+    justify-content: center;
+
+    transform: translate3d(4rem, -4rem, 0);
+    transition: .2s background-color,
+    .2s color;
+
+    z-index: 1;
+    background-color: $black;
+
+    cursor: pointer;
+
+    width: 4rem;
+    height: 4rem;
+
+    color: $white;
+    font-size: 2rem;
+
+    &:hover {
+      background-color: $white;
+      color: $primary-color;
+    }
+  }
+
   @import 'skills/skills-map-zoom-wrapper';
 
   @import 'skills/fallback-skills-simplify-overview-button';

@@ -3,6 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { observer } from 'mobx-react'
 
 import FallbackSkillColumns from './FallbackSkillColumns'
@@ -117,6 +119,9 @@ const FallbackSkills = observer(props => {
           }), 100)
         }} className='fallback-skills-simplified-overview-selection-button'>
           Clear selection
+        </div>
+        <div className='info-btn' onClick={props.state.showExplanation}>
+          <FontAwesomeIcon icon={'info'} />
         </div>
       </div>
       <FallbackSkillColumns columns={props.columns} selection={props.state.selection} fallbackSelection={props.state.fallbackSelection} />

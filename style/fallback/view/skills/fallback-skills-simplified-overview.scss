@@ -24,8 +24,45 @@
   }
 
   .fallback-skills-simplified-overview-selection-button-wrapper {
+    display: flex;
+
+    .info-btn {
+      @include user-select(none);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      transition: .2s background-color,
+      .2s color;
+
+      margin-top: .5rem;
+      margin-left: .5rem;
+
+      background-color: $black;
+
+      cursor: pointer;
+
+      width: 2.25rem;
+      height: 2.25rem;
+
+      color: $white;
+
+      &:hover {
+        background-color: $white;
+        color: $primary-color;
+      }
+    }
+
     .fallback-skills-simplified-overview-selection-button {
-      display: inline-flex;
+      @include user-select(none);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
       transition: .2s border-color,
       .2s color;
 
@@ -37,16 +74,20 @@
       cursor: pointer;
       padding: .25rem .5rem;
 
+      height: 2.25rem;
+
       color: $black;
       font-family: 'Roboto Condensed';
       font-size: 1.5rem;
       font-weight: bold;
 
+      box-sizing: border-box;
+
       &:first-child {
         border-left: .5rem solid $black;
       }
 
-      &:last-child {
+      &:nth-child(2) {
         border-right: .5rem solid $black;
       }
 

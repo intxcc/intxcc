@@ -5,6 +5,8 @@ import { keys } from 'mobx'
 
 import BasicInfoModel from '../model/BasicInfoModel'
 
+import STORIES_EXPLANATION from '../../config/POPUP_STORIES_EXPLANATION'
+
 const StoryModel = types.model({
   id: types.identifier,
   div: types.maybeNull(types.frozen()),
@@ -55,6 +57,10 @@ const StoriesModel = types.model({
 
         break
     }
+  }
+
+  function showExplanation () {
+    self.basicInfo.showPopup(STORIES_EXPLANATION)
   }
 
   function selectStoryByIdentifier (storyIdentifier, isCallback = false, doScroll = true) {
@@ -212,6 +218,7 @@ const StoriesModel = types.model({
 
   return {
     onRouterParamChange,
+    showExplanation,
     selectStoryByIdentifier,
     selectStoryByIndex,
     setDiv,

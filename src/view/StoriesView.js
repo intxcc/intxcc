@@ -3,6 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { observer } from 'mobx-react'
 
 import { getNameIdentifierFromSkill } from '../miscFunctions'
@@ -15,6 +17,9 @@ import Texts from '../mobx/StateData/stories/Texts'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
+    <div className='show-help-btn' onClick={props.state.showExplanation}>
+      <FontAwesomeIcon icon={'info'} />
+    </div>
     {props.state.stories.map((story, index) => {
       const storyBeforeIndex = index - 1
       let yearHeadline = false

@@ -203,7 +203,7 @@ const SkillsModel = types.model({
     if (showSkillFilter === 'toggle') {
       self.showSkillFilter = !self.showSkillFilter
     } else {
-      self.showSkillFilter = showExplanation
+      self.showSkillFilter = showSkillFilter
     }
   }
 

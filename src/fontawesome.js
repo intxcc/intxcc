@@ -15,7 +15,8 @@ import {
   faCompress,
   faEraser,
   faMinusCircle,
-  faPlusCircle
+  faPlusCircle,
+  faInfo
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -46,6 +47,7 @@ library.add(faCompress)
 library.add(faEraser)
 library.add(faMinusCircle)
 library.add(faPlusCircle)
+library.add(faInfo)
 
 library.add(faSquare)
 library.add(faCircle)

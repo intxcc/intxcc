@@ -15,6 +15,9 @@ const RouterModel = types.model({
   lastWorkingPath: types.optional(types.string, ''),
   path: types.optional(types.string, ''),
 
+  // To tell the fallback to show a 404 on the active page
+  fallbackShow404Popup: types.optional(types.boolean, false),
+
   // Required variables, because the structure of this website
   model: types.optional(types.string, ''),
   modelVariant: types.optional(types.string, ''),
@@ -118,6 +121,10 @@ const RouterModel = types.model({
     parsePath()
   }
 
+  function resetFallbackShow404Popup () {
+    self.fallbackShow404Popup = false
+  }
+
   function parsePath () {
     // Check if one of our routes is matching
     let route
@@ -142,13 +149,14 @@ const RouterModel = types.model({
     if (route === null) {
       self.goToLastWorkingPath()
 
-      // TODO also show a 404 if the fallback is active
       if (!self.rootStore.global.useFallback) {
         // Show popup-404 after 500ms, when we can confidently assume that there is a main view entity
         setTimeout(function () {
           self.rootStore.views.get('main').stateBasicInfo.show404Popup()
         }, 500)
       }
+
+      self.fallbackShow404Popup = true
 
       return
     }
@@ -175,6 +183,7 @@ const RouterModel = types.model({
     deleteRouterParam,
     goToLastWorkingPath,
     updateHash,
+    resetFallbackShow404Popup,
     parsePath
   }
 })

@@ -143,6 +143,14 @@ class FallbackApp extends React.Component {
     let popupComponent = ''
     let isDisabled = false
     if (this.props.store.state[activePage]) {
+      // If the router set fallbackShow404Popup to true, the active page will get a 404Popup and reset the router property fallbackShow404Popup
+      if (this.props.store.router.fallbackShow404Popup) {
+        setTimeout(() => {
+          this.props.store.state[activePage].basicInfo.show404Popup()
+          this.props.store.router.resetFallbackShow404Popup()
+        }, 0)
+      }
+
       popupComponent = <PopupWrapper closeFunc={this.props.store.state[activePage].basicInfo.closePopup} popups={this.props.store.state[activePage].basicInfo.popups} />
       isDisabled = this.props.store.state[activePage].basicInfo.isDisabled
     }

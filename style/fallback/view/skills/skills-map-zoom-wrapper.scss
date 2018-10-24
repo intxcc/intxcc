@@ -1,16 +1,24 @@
 .skills-map-zoom-wrapper {
   right: initial;
-  left: 0;
+  bottom: 5vmin;
+  left: 5vmin;
 
   flex-direction: row;
 
-  padding: 0 .5rem;
+  border: .5rem solid $black;
+  padding: 0 .25rem;
 
   width: initial;
-  height: 4.5rem;
+  height: 3rem;
 
   .skills-map-zoom-btn {
     margin: 0 .25rem;
-    font-size: 3rem;
+    font-size: 2rem;
+
+    &:first-child,
+    &:last-child {
+      padding: 0 .25rem;
+      font-size: 1.5rem;
+    }
   }
 }

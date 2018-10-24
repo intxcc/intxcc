@@ -24,10 +24,16 @@
     cursor: pointer;
 
     color: $black;
-    font-size: 3vmin;
+    font-size: 2.5vmin;
 
     &:hover {
       color: $primary-color;
+    }
+
+    &:first-child,
+    &:last-child {
+      padding: .25vmin 0;
+      font-size: 2vmin;
     }
   }
 }

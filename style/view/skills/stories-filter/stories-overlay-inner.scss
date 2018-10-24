@@ -1,5 +1,7 @@
 .stories-overlay-inner {
   transform-origin: top left;
+
+  pointer-events: none !important;
 }
 
 .object-transition {

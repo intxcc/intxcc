@@ -42,6 +42,7 @@ const SkillsModel = types.model({
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
+  mapScale: types.optional(types.number, 1),
   selection: types.optional(Selection, {}),
   fallbackSelection: types.optional(FallbackSelection, {}),
   // skillTitleIndex contains always ALL skills, mapping the title to an identifier string. That variable does ignore the filter.
@@ -59,6 +60,14 @@ const SkillsModel = types.model({
   filter: SkillFilter,
   storiesFilter: StoriesFilter
 }).actions(self => {
+  function changeMapScale (scaleDelta, scale = false) {
+    if (!scale) {
+      self.mapScale += scaleDelta
+    } else {
+      self.mapScale = scale
+    }
+  }
+
   function setFallbackUseSkillMap (fallbackUseSkillMap) {
     self.fallbackUseSkillMap = fallbackUseSkillMap
   }
@@ -368,8 +377,8 @@ const SkillsModel = types.model({
   }
 
   function centerMap (x, y) {
-    // Makes sure the selected skill is definitely represented in the URL
-    self.selectSkillByIdentifier(self.selection.skill.id)
+    // Makes sure the selected skill is definitely represented in the URL. Last property, to not show the skill details in fallback, on each centerMap
+    self.selectSkillByIdentifier(self.selection.skill.id, false)
 
     // If we are in fallback mode we need to get the width and height manually. Also move the selection a bit to the right, as fallback indicates mostly a smaller screen.
     if (self.basicInfo.rootStore.global.useFallback) {
@@ -419,6 +428,7 @@ const SkillsModel = types.model({
   }
 
   return {
+    changeMapScale,
     setFallbackUseSkillMap,
     handleOnKeyDown,
     onRouterParamChange,

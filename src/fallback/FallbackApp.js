@@ -157,7 +157,7 @@ class FallbackApp extends React.Component {
 
     const skillDetailsActive = activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails
 
-    if (skillDetailsActive) {
+    if (skillDetailsActive || isDisabled) {
       scrollbarDisabled = true
     }
 

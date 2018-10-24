@@ -12,7 +12,9 @@
   background-color: $white;
 
   padding: 2rem;
-  max-height: 90vh;
+  max-height: 100vh;
+
+  overflow: auto;
 
   box-sizing: border-box;
   pointer-events: initial;

@@ -1,4 +1,6 @@
 .fallback-site-wrapper {
   .popup-wrapper {
+    // Fallaback specific scss goes here
+    @import 'fallback-start-popup';
   }
 }

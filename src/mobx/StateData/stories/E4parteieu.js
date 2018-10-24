@@ -12,7 +12,7 @@ const StoryData = {
     'babel',
     'css3',
     'django',
-    'e6',
+    'es6',
     'git',
     'gulp',
     'hsts',

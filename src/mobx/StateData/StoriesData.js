@@ -1,5 +1,8 @@
 'use strict'
 
+import Defaults from '../../config/defaults'
+import POPUP_STORIES_EXPLANATION from '../../config/POPUP_STORIES_EXPLANATION'
+
 import Pandatrek from './stories/Pandatrek'
 import Thehackcamporg from './stories/Thehackcamporg'
 import OwnTrack from './stories/OwnTrack'
@@ -41,7 +44,11 @@ years = years.reverse()
 const StoriesData = {
   id: 'storiesState',
   basicInfo: {
-    id: 'storiesBasicInfo'
+    id: 'storiesBasicInfo',
+    popups: (Defaults.disableDefaultPopups
+      ? [] : [
+        POPUP_STORIES_EXPLANATION
+      ])
   },
   years: years,
   selectedStory: 'story-pandatrek',

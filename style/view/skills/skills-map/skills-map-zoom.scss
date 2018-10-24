@@ -17,6 +17,8 @@
   width: 4.5vmin;
 
   .skills-map-zoom-btn {
+    @include user-select(none);
+
     transition: .2s color;
 
     cursor: pointer;

@@ -7,4 +7,9 @@
   @import './stories/story-info-display';
   @import './stories/story-page-name-display';
   @import './stories/articles-container';
+
+  .show-help-btn {
+    top: .5rem;
+    left: 4rem;
+  }
 }

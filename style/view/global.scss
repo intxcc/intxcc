@@ -50,35 +50,6 @@
 
   overflow-y: auto;
   overflow-x: hidden;
-
-  .show-help-btn {
-    @include user-select(none);
-
-    display: flex;
-
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    align-items: center;
-    justify-content: center;
-
-    transition: .2s color;
-    z-index: 1;
-
-    background-color: $white;
-
-    cursor: pointer;
-
-    width: 2.75rem;
-    height: 2.75rem;
-
-    font-size: 1.75rem;
-
-    &:hover {
-      color: $primary-color;
-    }
-  }
 }
 
 .view-buffer {
@@ -189,6 +160,37 @@
     -webkit-clip-path: $global--disable-clip-path !important;
     filter: $global--disable-blur;
     pointer-events: none;
+  }
+
+  .show-help-btn {
+    @include user-select(none);
+
+    display: flex;
+
+    position: fixed;
+    top: .5rem;
+    left: .5rem;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: .2s color;
+    z-index: 1;
+
+    background-color: $white;
+
+    cursor: pointer;
+
+    width: 2rem;
+    height: 2rem;
+
+    font-size: 1.75rem;
+
+    pointer-events: initial;
+
+    &:hover {
+      color: $primary-color;
+    }
   }
 }
 

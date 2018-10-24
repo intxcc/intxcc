@@ -17,9 +17,6 @@ import Texts from '../mobx/StateData/stories/Texts'
 
 const StoriesView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <div className='show-help-btn' onClick={props.state.showExplanation}>
-      <FontAwesomeIcon icon={'info'} />
-    </div>
     {props.state.stories.map((story, index) => {
       const storyBeforeIndex = index - 1
       let yearHeadline = false
@@ -51,6 +48,9 @@ StoriesView.propTypes = {
 
 const StoriesOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
+    <div className='show-help-btn' onClick={props.state.showExplanation}>
+      <FontAwesomeIcon icon={'info'} />
+    </div>
     <TimeBeam state={props.state} />
     <ViewObject object={props.view.objects.get('story-info-display')}>
       <span className='story-info-display-name'>

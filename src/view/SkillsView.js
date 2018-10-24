@@ -20,9 +20,6 @@ import StoriesFilter from './Skills/StoriesFilter/StoriesFilter'
 
 const SkillsView = observer((props) => (
   <div className='content-wrapper-inner'>
-    <div className='show-help-btn' onClick={props.state.showExplanation}>
-      <FontAwesomeIcon icon={'info'} />
-    </div>
     <SkillsMap state={props.state} columns={props.state.columns} />
     <SkillMenu state={props.state} />
     <ViewObject object={props.view.objects.get('stories-overlay-title')}>
@@ -43,6 +40,9 @@ SkillsView.propTypes = {
 
 const SkillsOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
+    <div className='show-help-btn' onClick={props.state.showExplanation}>
+      <FontAwesomeIcon icon={'info'} />
+    </div>
     <SkillFilter showSkillFilter={props.state.showSkillFilter} state={props.state} />
     <ViewObject object={props.view.objects.get('stories-overlay-inner')}>
       <div className='stories-overlay-filter-toggle-show-btn' onClick={props.state.storiesFilter.toggleExpand}>

@@ -3,15 +3,17 @@
 @import 'start-popup';
 
 .popup {
-  position: relative;
+  position: absolute;
+  left: 50%;
 
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(-50%, 0, 0);
   transition: calc(#{$global--popup-fade-out-duration} / 2) opacity,
   $global--popup-fade-out-duration transform;
 
   background-color: $white;
-
   padding: 2rem;
+
+  max-width: 100vw;
   max-height: 100vh;
 
   overflow: auto;
@@ -34,12 +36,21 @@
 
     margin: .5rem 0 0;
 
+    max-width: #{'calc(100vw - 4rem)'};
+
     text-align: justify;
     font-family: 'Roboto Condensed';
     font-size: 1.5rem;
 
+    .popup-text {
+      align-self: center;
+      max-width: 82vw;
+    }
+
     .popup-hint {
+      align-self: center;
       margin: 1rem 0 0;
+      max-width: 82vw;
     }
   }
 

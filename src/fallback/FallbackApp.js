@@ -14,20 +14,22 @@ import FallbackPopupWrapper from './view/Components/FallbackPopupWrapper'
 
 import StartpageView from './view/StartpageView'
 import AboutView from './view/AboutView'
+import StoriesView from './view/StoriesView'
 import SkillsView from './view/SkillsView'
 import ContactView from './view/ContactView'
 
 const Pages = [
   'startpage',
   'about',
-  'skills',
   'stories',
+  'skills',
   'contact'
 ]
 
 const Views = {
   'startpage': StartpageView,
   'about': AboutView,
+  'stories': StoriesView,
   'skills': SkillsView,
   'contact': ContactView
 }
@@ -156,7 +158,7 @@ class FallbackApp extends React.Component {
     const loadView = Views[activePage] ? React.createElement(Views[activePage], {
       global: this.props.store.global,
       state: this.props.store.state[activePage]
-    }) : <span>404</span> // TODO Show real 404
+    }) : ''
 
     let scrollbarDisabled = false
 

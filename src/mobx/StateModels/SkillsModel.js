@@ -42,6 +42,7 @@ const SkillsModel = types.model({
   routerParams: types.optional(types.map(types.string), {}),
   showSkillFilter: types.optional(types.boolean, Defaults.showSkillFilterPerDefault),
   mapPosition: types.optional(Position, {}),
+  mapScaleRaw: types.optional(types.number, 1),
   mapScale: types.optional(types.number, 1),
   selection: types.optional(Selection, {}),
   fallbackSelection: types.optional(FallbackSelection, {}),
@@ -62,9 +63,19 @@ const SkillsModel = types.model({
 }).actions(self => {
   function changeMapScale (scaleDelta, scale = false) {
     if (!scale) {
-      self.mapScale += scaleDelta
+      self.mapScaleRaw += scaleDelta
     } else {
-      self.mapScale = scale
+      self.mapScaleRaw = scale
+    }
+
+    self.mapScale = Math.pow(self.mapScaleRaw, 2)
+
+    if (self.mapScale < 0.1) {
+      self.mapScale = 0.1
+      self.mapScaleRaw = Math.sqrt(0.1)
+    } else if (self.mapScale > 10) {
+      self.mapScale = 10
+      self.mapScaleRaw = Math.sqrt(10)
     }
   }
 

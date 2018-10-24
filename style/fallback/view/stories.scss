@@ -1,0 +1,13 @@
+.stories-wrapper {
+  @include fallback-view-margin;
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .stories-wrapper-inner {
+    margin: 5vmin;
+  }
+}

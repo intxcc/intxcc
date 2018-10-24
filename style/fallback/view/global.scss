@@ -17,6 +17,9 @@
     right: 0;
     left: 0;
 
+    transition: $global--morph-duration opacity,
+    $global--morph-duration filter;
+
     padding: 1rem;
     min-height: 100vh;
 
@@ -26,6 +29,39 @@
     @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
       // Don't ask me why this works
       height: 0;
+    }
+  }
+
+  .popup-wrapper {
+    pointer-events: none;
+  }
+
+  .fallback-disabled-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    transition: $global--morph-duration opacity;
+
+    opacity: 0;
+    z-index: 1;
+
+    background-color: $white;
+
+    pointer-events: none;
+  }
+
+  &.disable-fallback-view-wrapper {
+    .fallback-disabled-background {
+      opacity: .5;
+      pointer-events: initial;
+    }
+
+    .fallback-view-wrapper {
+      opacity: .5;
+      filter: $global--disable-blur;
     }
   }
 }

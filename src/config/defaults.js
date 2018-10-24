@@ -25,8 +25,8 @@ const ProductionDefaults = {
 const DevelopmentDefaults = {
   enableStartpageBackgroundVideo: false,
   showSkillFilterPerDefault: false,
-  disableDefaultPopups: true,
-  alwaysUseFallback: false,
+  disableDefaultPopups: false,
+  alwaysUseFallback: true,
   neverUseFallback: false,
   showGuides: false
 }

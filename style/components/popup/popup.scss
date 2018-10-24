@@ -42,6 +42,8 @@
   }
 
   .close-btn-wrapper {
+    @include user-select(none);
+
     display: flex;
 
     position: absolute;

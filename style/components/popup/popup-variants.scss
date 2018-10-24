@@ -1,11 +1,15 @@
 &.stories-explanation,
 &.skills-explanation {
+  .popup-text,
+  .popup-hint,
   .popup-inner {
     max-width: 23rem;
   }
 }
 
 &.popup-404 {
+  .popup-text,
+  .popup-hint,
   .popup-inner {
     max-width: 21rem;
   }

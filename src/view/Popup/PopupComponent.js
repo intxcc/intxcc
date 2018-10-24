@@ -16,7 +16,9 @@ const PopupComponent = observer(props => (
       </div>
     </div>
     <div className='popup-inner'>
-      {props.text}
+      <div className='popup-text'>
+        {props.text}
+      </div>
       {props.hint && props.hint !== '' ? (
         <div className='popup-hint'>
           <i>{props.hint}</i>

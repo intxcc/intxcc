@@ -10,6 +10,8 @@ import subscribeToRouterParams from '../mobx/StateModels/functions/subscribeToRo
 import BurgerMenu from './view/Components/BurgerMenu'
 import GoToTopButton from './view/Components/GoToTopButton'
 
+import PopupWrapper from '../view/Popup/PopupWrapper'
+
 import StartpageView from './view/StartpageView'
 import AboutView from './view/AboutView'
 import SkillsView from './view/SkillsView'
@@ -137,6 +139,14 @@ class FallbackApp extends React.Component {
   render () {
     const activePage = this.props.store.global.activePage
 
+    // Load popup component for the active page
+    let popupComponent = ''
+    let isDisabled = false
+    if (this.props.store.state[activePage]) {
+      popupComponent = <PopupWrapper closeFunc={this.props.store.state[activePage].basicInfo.closePopup} popups={this.props.store.state[activePage].basicInfo.popups} />
+      isDisabled = this.props.store.state[activePage].basicInfo.isDisabled
+    }
+
     const loadView = Views[activePage] ? React.createElement(Views[activePage], {
       global: this.props.store.global,
       state: this.props.store.state[activePage]
@@ -199,9 +209,11 @@ class FallbackApp extends React.Component {
     this.lastActivePage = activePage
 
     return (
-      <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '')}>
+      <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '') + (isDisabled ? ' disable-fallback-view-wrapper' : '')}>
         <BurgerMenu activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
         <GoToTopButton show={this.state.scrollTop > 100} />
+        {popupComponent}
+        <div className='fallback-disabled-background'></div>
         {loadView}
       </div>
     )

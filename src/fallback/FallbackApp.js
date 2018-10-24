@@ -194,6 +194,11 @@ class FallbackApp extends React.Component {
 
     // Things to do, if the active page changed
     if (activePage !== this.lastActivePage) {
+      // If active page changed, clear non-persistent popups
+      if (this.props.store.state[this.lastActivePage]) {
+        setTimeout(this.props.store.state[this.lastActivePage].basicInfo.clearNotPersistentPopups, 0)
+      }
+
       // Handle the router subscription
       this.handleAttachStateToRouter(activePage)
 

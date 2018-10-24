@@ -158,11 +158,11 @@ class FallbackApp extends React.Component {
       state: this.props.store.state[activePage]
     }) : <span>404</span> // TODO Show real 404
 
-    // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
     let scrollbarDisabled = false
 
     const skillDetailsActive = activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails
 
+    // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
     if (skillDetailsActive || isDisabled) {
       scrollbarDisabled = true
     }

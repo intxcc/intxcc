@@ -11,6 +11,8 @@ import {
 import { observer } from 'mobx-react'
 import { values } from 'mobx'
 
+import { isEmpty } from '../../miscFunctions'
+
 import PopupComponent from './PopupComponent'
 
 import Style from '../../../style/variables/global.scss'
@@ -49,7 +51,7 @@ class PopupWrapper extends React.Component {
 
   render () {
     return (
-      <div className='popup-wrapper'>
+      <div className={'popup-wrapper' + (isEmpty(this.props.popups.toJSON()) ? '' : ' not-empty')}>
         <TransitionGroup className='popup-list'>
           {values(this.props.popups).map(popup => (
             <CSSTransition key={popup.id + '-csstransition'} timeout={parseInt(Style.popupFadeOutDuration)} classNames='popup-transition'>

@@ -17,6 +17,17 @@
   min-width: 20rem;
   max-width: 90vw;
 
+  &.not-empty {
+    @media (max-height: 320px), (max-width: 320px) {
+      background-color: $white;
+
+      width: 100vw;
+      max-width: 100vw;
+
+      height: 100vh;
+    }
+  }
+
   .popup-list {
     display: flex;
     flex-direction: column;

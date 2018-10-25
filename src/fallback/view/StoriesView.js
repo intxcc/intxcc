@@ -3,6 +3,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { observer } from 'mobx-react'
 
 import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
@@ -11,6 +13,9 @@ import Texts from '../../mobx/StateData/stories/Texts'
 
 const StoriesView = observer(props => (
   <div className='fallback-view-wrapper stories-wrapper'>
+    <div className='show-help-btn' onClick={props.state.showExplanation}>
+      <FontAwesomeIcon icon={'info'} />
+    </div>
     <div className='stories-wrapper-inner'>
       <h1>Stories | My Portfolio</h1>
       <div className='articles-wrapper'>

@@ -19,7 +19,7 @@ const ToolsColumn = {
         }, {
           title: 'Blender',
           mark: 2,
-          trivia: 'The video on the startpage was created with Blender.'
+          trivia: 'The video on the startpage (if you are not on a small display) was created with Blender.'
         }, {
           title: 'Premiere Pro',
           mark: 2,

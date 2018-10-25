@@ -41,6 +41,11 @@ const AdminColumn = {
           mark: 2,
           desc: 'Tor formerly known as "The Onion Routing". I was the creator and administrator of a lawful Tor hidden service.'
         }, {
+          title: 'DNS',
+          mark: 2,
+          desc: 'I manage the DNS-records for intx.cc and marvinruell.de myself. I use spf-records to prevent others faking the sender of an email with my domain names, since I got numerous bounce mails that were not coming from my IP-address.',
+          trivia: '"Domain Name System"'
+        }, {
           title: 'Dovecot',
           mark: 2,
           desc: 'I run my own mail server, for convenience and privacy reasons. That is what I use Dovecot and [Link|skill|Postfix] for. Thunderbird is the client I use when at my own computer.'
@@ -71,13 +76,16 @@ const AdminColumn = {
           mark: 3
         }, {
           title: 'XSRF',
-          mark: 3
+          mark: 3,
+          trivia: '"Cross-site request forgery"'
         }, {
           title: 'HSTS',
-          mark: 3
+          mark: 3,
+          trivia: '"HTTP Strict Transport Security"'
         }, {
           title: 'TLS',
-          mark: 3
+          mark: 3,
+          trivia: '"Transport Layer Security"'
         }, {
           title: 'CORS',
           mark: 2

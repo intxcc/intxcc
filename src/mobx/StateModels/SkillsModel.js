@@ -140,7 +140,7 @@ const SkillsModel = types.model({
     }
   }
 
-  // TODO move this in a webworker, to not block the main thread
+  // TODO: move this in a webworker, to not block the main thread
   function applyFilter () {
     const {
       SkillsColumns,
@@ -264,7 +264,7 @@ const SkillsModel = types.model({
     return array
   }
 
-  function selectSkillByIdentifier (skillIdentifier, fallbackShowSkillDetailsProp = true) {
+  function selectSkillByIdentifier (skillIdentifier) {
     // Show 404 if the skill does not exist and go to the skill with the id 0
     if (typeof skillIdentifier === 'undefined' || typeof resolveIdentifier(SkillModel, self.columns, skillIdentifier) === 'undefined') {
       self.selectSkillById(0)
@@ -305,11 +305,8 @@ const SkillsModel = types.model({
 
     const selectionIdentifier = getNameIdentifierFromSkill(self.selection.skill)
 
-    // Only show if the fallbackShowSkillDetailsProp property is true, which is always, but when the fallback state makes sure, that the skill is represented in the URL. In this case, don't show the details
-    if (fallbackShowSkillDetailsProp) {
-      // If a skill is selected, show the skill details in fallback mode
-      self.fallbackSetShowSkillDetails(true)
-    }
+    // If a skill is selected, show the skill details in fallback mode
+    self.fallbackSetShowSkillDetails(true)
 
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {
@@ -388,9 +385,6 @@ const SkillsModel = types.model({
   }
 
   function centerMap (x, y) {
-    // Makes sure the selected skill is definitely represented in the URL. Last property, to not show the skill details in fallback, on each centerMap
-    self.selectSkillByIdentifier(self.selection.skill.id, false)
-
     // If we are in fallback mode we need to get the width and height manually. Also move the selection a bit to the right, as fallback indicates mostly a smaller screen.
     if (self.basicInfo.rootStore.global.useFallback) {
       self.basicInfo.clientWidth = window.innerWidth

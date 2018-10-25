@@ -42,7 +42,6 @@ const SkillsView = observer(props => (
 ))
 
 SkillsView.propTypes = {
-  onScrollCallbackFunc: PropTypes.func,
   state: PropTypes.object,
   global: PropTypes.object
 }

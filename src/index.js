@@ -12,6 +12,7 @@ import smoothscroll from 'smoothscroll-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+// Import the SCSS
 import '../style/index.scss'
 
 // Defines the fontawesome library with icons we want to use

@@ -9,5 +9,28 @@
 
   .stories-wrapper-inner {
     margin: 5vmin;
+
+    text-align: justify;
+
+    h1 {
+      text-align: left;
+      font-size: 2.5rem;
+    }
+
+    .year-headline {
+      margin: 1rem 0;
+      font-size: 2rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+
+      border-bottom: .5rem $black solid;
+      padding-bottom: 1rem;
+    }
+
+    article {
+      padding-top: 1rem;
+    }
   }
 }

@@ -53,9 +53,6 @@
     }
 
     .selected-story-skill-link {
-      transition: .2s color,
-      .2s background-color;
-
       text-decoration: none;
       color: $gray;
 
@@ -65,6 +62,7 @@
 
       &::after {
         // Attention this is not a normal space but a "&nbsp;"
+        color: $gray;
         content: ' |';
       }
 
@@ -75,8 +73,7 @@
       }
 
       &:hover {
-        background-color: $primary-color-text;
-        color: $white;
+        color: $secondary-color;
       }
     }
   }

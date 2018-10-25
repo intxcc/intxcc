@@ -13,7 +13,7 @@
   display: flex;
   flex-direction: column;
 
-  transform: translateY(-100%) translateY(-18px);
+  transform: translateY(-100%) translateY(-5px) translateX(-10px);
 
   line-height: .65em;
   color: $white;
@@ -22,8 +22,15 @@
   transform-origin: left bottom;
 
   h1 {
-    margin-bottom: -.2rem;
-    font-size: 3.5vmax;
+    @include media-big {
+      margin-bottom: -.1rem;
+      margin-left: 0;
+      font-size: 3.75vmax;
+    }
+
+    margin-bottom: -.4rem;
+    margin-left: .25rem;
+    font-size: 3vmax;
   }
 
   .selected-year-caption {

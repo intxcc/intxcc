@@ -9,8 +9,10 @@ import { observer } from 'mobx-react'
 
 import { getNameIdentifierFromSkill } from '../../miscFunctions'
 
-import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
 import Texts from '../../mobx/StateData/stories/Texts'
+
+import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
+import FallbackTimeline from './Stories/FallbackTimeline'
 
 const StoriesView = observer(props => (
   <div className='fallback-view-wrapper stories-wrapper'>
@@ -19,6 +21,7 @@ const StoriesView = observer(props => (
     </div>
     <div className='stories-wrapper-inner'>
       <h1>Stories | My Portfolio</h1>
+      <FallbackTimeline />
       <div className='articles-wrapper'>
         {props.state.stories.map((story, index) => (
           <article key={'fallback-article-' + index}>
@@ -39,7 +42,7 @@ const StoriesView = observer(props => (
             <div className='fallback-story-spacer'></div>
             <h3>{story.summary}</h3>
             <div className='fallback-story-spacer'></div>
-            <p>{Texts[story.textName]}</p>
+            {Texts[story.textName]}
           </article>
         ))}
       </div>

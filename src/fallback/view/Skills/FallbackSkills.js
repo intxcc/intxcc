@@ -98,6 +98,7 @@ const FallbackSkills = observer(props => {
           // Select all columns and categories and scroll to skills
           props.state.fallbackSelection.showAll(props.columns)
           setTimeout(() => document.getElementById('fallback-skills-simplified-overview-skills-start-anchor').scrollIntoView({
+            block: 'start',
             behavior: 'smooth'
           }), 100)
         }} className='fallback-skills-simplified-overview-selection-button'>
@@ -114,6 +115,19 @@ const FallbackSkills = observer(props => {
           }), 100)
         }} className='fallback-skills-simplified-overview-selection-button'>
           Clear selection
+        </div>
+        <div className='info-btn' onClick={() => {
+          const newFallbackShowFilter = !props.state.fallbackShowFilter
+          if (newFallbackShowFilter) {
+            // Scroll to the start of skills when the filter is activated
+            setTimeout(() => document.getElementById('fallback-skills-simplified-overview-skills-start-anchor').scrollIntoView({
+              block: 'start',
+              behavior: 'smooth'
+            }), 100)
+          }
+          props.state.fallbackSetShowFilter(newFallbackShowFilter)
+        }}>
+          <FontAwesomeIcon icon={'filter'} />
         </div>
         <div className='info-btn' onClick={props.state.showExplanation}>
           <FontAwesomeIcon icon={'info'} />

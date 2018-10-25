@@ -16,7 +16,8 @@ import {
   faEraser,
   faMinus,
   faPlus,
-  faInfo
+  faInfo,
+  faWindowClose
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -48,6 +49,7 @@ library.add(faEraser)
 library.add(faMinus)
 library.add(faPlus)
 library.add(faInfo)
+library.add(faWindowClose)
 
 library.add(faSquare)
 library.add(faCircle)

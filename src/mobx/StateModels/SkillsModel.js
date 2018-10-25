@@ -37,6 +37,7 @@ const SkillsModel = types.model({
   id: types.identifier,
   basicInfo: BasicInfoModel,
   fallbackUseSkillMap: types.optional(types.boolean, false),
+  fallbackShowFilter: types.optional(types.boolean, false),
   fallbackShowSkillDetailsInner: types.optional(types.boolean, false),
   fallbackShowSkillDetails: types.optional(types.boolean, false),
   routerParams: types.optional(types.map(types.string), {}),
@@ -242,11 +243,21 @@ const SkillsModel = types.model({
     self.selection.skillIndex = -1
   }
 
+  function fallbackToggleShowFilter () {
+    self.fallbackSetShowFilter(!self.fallbackShowFilter)
+  }
+
+  function fallbackSetShowFilter (show) {
+    console.log('fallbackShowFilter: ' + show)
+    self.fallbackShowFilter = show
+  }
+
   function fallbackSetShowSkillDetailsInner (show) {
     self.fallbackShowSkillDetailsInner = show
   }
 
   function fallbackSetShowSkillDetails (show) {
+    // The inner has a transition property, but to transition, we first have to load it faded-out, which we do here, wait one render (end of event loop => "setTimeout([...], 0)") and then also set the inner to show
     setTimeout(() => self.fallbackSetShowSkillDetailsInner(show), 0)
     self.fallbackShowSkillDetails = show
   }
@@ -442,6 +453,8 @@ const SkillsModel = types.model({
     showExplanation,
     selectSkillByName,
     unSelect,
+    fallbackToggleShowFilter,
+    fallbackSetShowFilter,
     fallbackSetShowSkillDetailsInner,
     fallbackSetShowSkillDetails,
     getArrayOfSkills,

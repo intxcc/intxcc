@@ -16,10 +16,18 @@ import SkillsMap from '../../view/Skills/SkillsMap/SkillsMap'
 import FallbackSkills from './Skills/FallbackSkills'
 import FallbackSkillDetails from './Skills/FallbackSkillDetails'
 
+import FallbackSkillsFilter from './Skills/FallbackSkillsFilter'
+
 const SkillsView = observer(props => (
-  <div className='fallback-view-wrapper skills-wrapper'>
-    {props.state.fallbackUseSkillMap ? <div className='show-help-btn' onClick={props.state.showExplanation}>
+  <div className={'fallback-view-wrapper skills-wrapper' + (props.state.fallbackShowFilter ? ' filter-active' : '')}>
+    <FallbackSkillsFilter
+      show={props.state.fallbackShowFilter}
+      state={props.state} />
+    {props.state.fallbackUseSkillMap ? <div className='show-help-btn second-btn' onClick={props.state.showExplanation}>
       <FontAwesomeIcon icon={'info'} />
+    </div> : ''}
+    {props.state.fallbackUseSkillMap ? <div className='show-help-btn' onClick={props.state.fallbackToggleShowFilter}>
+      <FontAwesomeIcon icon={'filter'} />
     </div> : ''}
     <SimplifySkillsOverviewButton fallbackUseSkillMap={props.state.fallbackUseSkillMap} setFallbackUseSkillMapFunc={props.state.setFallbackUseSkillMap} />
     {props.state.selection.skill

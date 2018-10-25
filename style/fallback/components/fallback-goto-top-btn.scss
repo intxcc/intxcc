@@ -24,6 +24,8 @@
   color: $black;
   font-size: 10vmax;
 
+  pointer-events: none;
+
   @media (min-height: 800px), (min-width: 800px) {
     font-size: 5rem;
   }
@@ -34,5 +36,6 @@
 
   &.show {
     opacity: 1;
+    pointer-events: initial;
   }
 }

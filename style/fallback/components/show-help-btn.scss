@@ -5,7 +5,7 @@
 
   position: absolute;
   top: 0;
-  left: 10vmin;
+  left: 7.5vmin;
 
   align-items: center;
   justify-content: center;
@@ -29,4 +29,8 @@
     background-color: $white;
     color: $primary-color;
   }
+}
+
+.second-btn {
+  transform: translate3d(8rem, -4rem, 0) translateX(2.5vmin);
 }

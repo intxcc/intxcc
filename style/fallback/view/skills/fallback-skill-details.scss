@@ -23,6 +23,8 @@
   }
 
   .fallback-skill-details-close-button {
+    @include user-select(none);
+
     display: flex;
 
     position: absolute;

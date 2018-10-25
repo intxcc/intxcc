@@ -1,0 +1,23 @@
+article {
+  padding-top: 1rem;
+
+  .year-headline {
+    margin: 1rem 0;
+    font-size: 2rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+
+    border-bottom: .5rem $black solid;
+    padding-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1.5rem;
+  }
+}

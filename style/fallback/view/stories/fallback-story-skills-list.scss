@@ -1,0 +1,32 @@
+.fallback-story-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+
+  list-style: none;
+  font-size: 1.25rem;
+
+  li {
+    display: flex;
+    align-items: flex-end;
+
+    &::after {
+      // Attention this is not a normal space but a "&nbsp;"
+      content: ', ';
+    }
+
+    &:first-child {
+      &::after {
+        // Attention this is not a normal space but a "&nbsp;"
+        content: ': ';
+      }
+    }
+
+    &:last-child {
+      &::after {
+        content: '.';
+      }
+    }
+  }
+}

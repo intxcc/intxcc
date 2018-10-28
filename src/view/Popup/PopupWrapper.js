@@ -53,14 +53,17 @@ class PopupWrapper extends React.Component {
     return (
       <div className={'popup-wrapper' + (isEmpty(this.props.popups.toJSON()) ? '' : ' not-empty')}>
         <TransitionGroup className='popup-list'>
-          {values(this.props.popups).map(popup => (
-            <CSSTransition key={popup.id + '-csstransition'} timeout={parseInt(Style.popupFadeOutDuration)} classNames='popup-transition'>
-              {popup.customComponent !== '' && CustomPopups[popup.customComponent] ? React.createElement(CustomPopups[popup.customComponent], {
-                closeFunc: () => this.props.closeFunc(popup.id),
-                popup: popup
-              }) : <PopupComponent key={popup.id} closeFunc={() => this.props.closeFunc(popup.id)} className={popup.className} title={popup.title} text={popup.text} hint={popup.hint} />}
-            </CSSTransition>
-          ))}
+          {values(this.props.popups).map(popup => {
+            const hint = this.props.isFallback && popup.fallbackHint && popup.fallbackHint !== '' ? popup.fallbackHint : popup.hint
+            return (
+              <CSSTransition key={popup.id + '-csstransition'} timeout={parseInt(Style.popupFadeOutDuration)} classNames='popup-transition'>
+                {popup.customComponent !== '' && CustomPopups[popup.customComponent] ? React.createElement(CustomPopups[popup.customComponent], {
+                  closeFunc: () => this.props.closeFunc(popup.id),
+                  popup: popup
+                }) : <PopupComponent key={popup.id} closeFunc={() => this.props.closeFunc(popup.id)} className={popup.className} title={popup.title} text={popup.text} hint={hint} />}
+              </CSSTransition>
+            )
+          })}
         </TransitionGroup>
       </div>
     )
@@ -68,6 +71,7 @@ class PopupWrapper extends React.Component {
 }
 
 PopupWrapper.propTypes = {
+  isFallback: PropTypes.bool,
   popups: PropTypes.object,
   closeFunc: PropTypes.func
 }

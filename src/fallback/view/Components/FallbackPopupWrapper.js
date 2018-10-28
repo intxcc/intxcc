@@ -13,7 +13,7 @@ const FallbackPopupWrapper = observer(props => {
   }
 
   return (
-    <PopupWrapper closeFunc={props.states[props.activePage].basicInfo.closePopup} popups={props.states[props.activePage].basicInfo.popups} />
+    <PopupWrapper isFallback={true} closeFunc={props.states[props.activePage].basicInfo.closePopup} popups={props.states[props.activePage].basicInfo.popups} />
   )
 })
 

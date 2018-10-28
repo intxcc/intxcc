@@ -9,7 +9,8 @@ const PopupModel = types.model({
   customComponent: types.optional(types.string, ''),
   title: types.optional(types.string, ''),
   text: types.optional(types.string, ''),
-  hint: types.optional(types.string, '')
+  hint: types.optional(types.string, ''),
+  fallbackHint: types.optional(types.string, '')
 })
 
 export default PopupModel

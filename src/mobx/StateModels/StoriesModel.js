@@ -34,9 +34,11 @@ const StoriesModel = types.model({
   selectedStory: types.reference(StoryModel),
   storiesIndex: types.optional(types.map(types.string), {}),
   stories: types.array(StoryModel),
-  ignoreScroll: types.optional(types.boolean, false)
+  ignoreScroll: types.optional(types.boolean, false),
+  fallbackShowTimeline: types.optional(types.boolean, true)
 }).volatile(self => ({
-  ignoreScrollTimeout: false
+  ignoreScrollTimeout: false,
+  resizeScrollToStoryTimeout: false
 })).actions(self => {
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
@@ -56,6 +58,30 @@ const StoriesModel = types.model({
         }
 
         break
+    }
+  }
+
+  function resizeScrollToStoryCallback (story) {
+    self.resizeScrollToStoryTimeout = false
+    self.scrollToStory(story, false)
+  }
+
+  function onResize (isCallback = false) {
+    const storyId = self.routerParams.get('story_name')
+    if (storyId && storyId !== '') {
+      const storyIdentifier = 'story-' + storyId
+      const story = resolveIdentifier(StoryModel, self.stories, storyIdentifier)
+      if (story) {
+        if (self.resizeScrollToStoryTimeout) {
+          clearTimeout(self.resizeScrollToStoryTimeout)
+        }
+
+        self.ignoreScrollForMs(200)
+
+        self.resizeScrollToStoryTimeout = setTimeout(() => {
+          self.resizeScrollToStoryCallback(story)
+        }, 100)
+      }
     }
   }
 
@@ -214,7 +240,7 @@ const StoriesModel = types.model({
     }
   }
 
-  function scrollToStory (story) {
+  function scrollToStory (story, smooth = true) {
     // Fallback doesn't have modelVariants, so we can skip this if fallback is active
     if (!self.basicInfo.rootStore.global.useFallback) {
       // If we scroll to the story top, always show the details view (that is the default)
@@ -226,15 +252,17 @@ const StoriesModel = types.model({
     // In fallback we scroll to start of black and in not-fallback the start of the block shall be more centered in the mid, bause of the headline polygon
     if (self.basicInfo.rootStore.global.useFallback) {
       // +50 because of the burger menu handle
-      self.basicInfo.scrollBy(story.top - 50)
+      self.basicInfo.scrollBy(story.top - 50, smooth)
     } else {
       const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
-      self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5))
+      self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5), smooth)
     }
   }
 
   return {
     onRouterParamChange,
+    resizeScrollToStoryCallback,
+    onResize,
     showExplanation,
     selectStoryByIdentifier,
     selectStoryByIndex,

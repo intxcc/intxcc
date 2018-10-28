@@ -2,12 +2,15 @@
 
 import { types } from 'mobx-state-tree'
 
+import RootStoreModel from '../RootStoreModel'
+
 import Defaults from '../../config/defaults'
 
 /**
  * Describes the global object with globally relevant information
  */
 const GlobalModel = types.model({
+  rootStore: types.optional(types.reference(types.late(() => RootStoreModel)), 'root-store'),
   clientWidth: types.optional(types.number, 0),
   clientHeight: types.optional(types.number, 0),
   logoClassName: types.optional(types.string, ''),
@@ -50,6 +53,12 @@ const GlobalModel = types.model({
   function setClientDimensions (clientWidth, clientHeight) {
     self.clientWidth = clientWidth
     self.clientHeight = clientHeight
+
+    // Let the state of the actrive page know, that the window was resized
+    const activeState = self.rootStore.state[self.activePage]
+    if (activeState && activeState.onResize && typeof activeState.onResize === 'function') {
+      activeState.onResize()
+    }
   }
 
   return {

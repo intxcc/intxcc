@@ -31,6 +31,7 @@ const BasicInfoModel = types.model({
   // To animate scrolling set animate scroll to to true and set the scrollTo variable
   animateScrollBy: types.optional(types.boolean, false),
   scrollByValue: types.optional(types.number, 0),
+  scrollBySmooth: types.optional(types.boolean, false),
   // To add functionality that the startpage can appear after beeing disabled beforehand
   disabled: types.optional(types.boolean, false),
   popups: types.optional(types.map(PopupModel), {}),
@@ -90,9 +91,10 @@ const BasicInfoModel = types.model({
   }
 
   // Animate scroll top to scrollTo
-  function scrollBy (scrollByValue) {
+  function scrollBy (scrollByValue, smooth = true) {
     self.setScrollTop(self.scrollTop + scrollByValue)
     self.animateScrollBy = true
+    self.scrollBySmooth = smooth
     self.scrollByValue = scrollByValue
   }
 

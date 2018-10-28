@@ -153,7 +153,7 @@ class FallbackApp extends React.Component {
         window.scrollBy({
           top: this.props.store.state[activePage].basicInfo.scrollByValue,
           left: 0,
-          behavior: 'smooth'
+          behavior: this.props.store.state[activePage].basicInfo.scrollBySmooth ? 'smooth' : 'auto'
         })
 
         // Disable scroll by, so it will not get triggered on next render

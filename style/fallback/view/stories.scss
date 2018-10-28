@@ -12,6 +12,14 @@
 
     text-align: justify;
 
+    &.show-timeline {
+      margin: 5vmin 5vmin 5vmin #{'calc(10vmin + 4rem)'};
+
+      @media (max-width: 380px) {
+        margin: 5vmin 5vmin 5vmin 25vmin;
+      }
+    }
+
     h1 {
       margin-right: 18vmin;
 

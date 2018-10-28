@@ -40,11 +40,8 @@ class FallbackApp extends React.Component {
     super(props)
 
     this.state = {
-      showControls: true,
       scrollTop: 0
     }
-
-    this.lastScrollTop = 0
 
     this.disposers = {}
 
@@ -85,22 +82,22 @@ class FallbackApp extends React.Component {
     const doc = document.documentElement
     const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
-    // Scroll is ignored, while the scrollbar of the main wrapper is disabled
-    if (this.scrollbarDisabled) {
-      this.setState({
-        showControls: true,
-        scrollTop: this.state.scrollTop
-      })
+    setTimeout(() => this.props.store.global.fallbackOnScroll(scrollTop), 0)
 
+    // Scroll is ignored, while the scrollbar of the main wrapper is disabled, and he controls are shown
+    if (this.scrollbarDisabled) {
+      if (!this.props.store.global.fallbackShowControls) {
+        setTimeout(() => this.props.store.global.setFallbackShowControls(true), 0)
+      }
       return
     }
 
     // Save scrollTop in react state to decide if the back-to-top button is shown
-    this.setState({
-      showControls: this.lastScrollTop > scrollTop,
-      scrollTop: scrollTop
-    })
-    this.lastScrollTop = scrollTop
+    setTimeout(() => {
+      this.setState({
+        scrollTop: scrollTop
+      })
+    }, 0)
 
     const saveFallbackScrollTop = this.props.store.state[this.lastActivePage] && this.props.store.state[this.lastActivePage].basicInfo && this.props.store.state[this.lastActivePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.lastActivePage].basicInfo.saveFallbackScrollTop : null
     if (saveFallbackScrollTop !== null) {
@@ -157,20 +154,6 @@ class FallbackApp extends React.Component {
   render () {
     const activePage = this.props.store.global.activePage
 
-    // Animate scroll
-    if (this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo) {
-      if (this.props.store.state[activePage].basicInfo.animateScrollBy) {
-        window.scrollBy({
-          top: this.props.store.state[activePage].basicInfo.scrollByValue,
-          left: 0,
-          behavior: 'smooth'
-        })
-
-        // Disable scroll by, so it will not get triggered on next render
-        setTimeout(this.props.store.state[activePage].basicInfo.stopScrollBy, 0)
-      }
-    }
-
     // Load popup component for the active page
     let isDisabled = false
     if (this.props.store.state[activePage]) {
@@ -186,7 +169,6 @@ class FallbackApp extends React.Component {
     }
 
     const loadView = Views[activePage] ? React.createElement(Views[activePage], {
-      showControls: this.state.showControls,
       global: this.props.store.global,
       state: this.props.store.state[activePage]
     }) : ''
@@ -199,6 +181,20 @@ class FallbackApp extends React.Component {
     // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
     if (skillDetailsActive || isDisabled) {
       scrollbarDisabled = true
+    }
+
+    // Animate scroll
+    if (!scrollbarDisabled && this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo) {
+      if (this.props.store.state[activePage].basicInfo.animateScrollBy) {
+        setTimeout(() => window.scrollBy({
+          top: this.props.store.state[activePage].basicInfo.scrollByValue,
+          left: 0,
+          behavior: 'smooth'
+        }), 100)
+
+        // Disable scroll by, so it will not get triggered on next render
+        setTimeout(this.props.store.state[activePage].basicInfo.stopScrollBy, 0)
+      }
     }
 
     // Only revert or save scroll top, if the active page did not change between renders
@@ -255,8 +251,8 @@ class FallbackApp extends React.Component {
 
     return (
       <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '') + (isDisabled ? ' disable-fallback-view-wrapper' : '')}>
-        <BurgerMenu showHandle={this.state.showControls} activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
-        <GoToTopButton classNameSuffix={skillFilterActive ? ' filter-active' : ''} show={this.state.showControls && this.state.scrollTop > 100} />
+        <BurgerMenu showHandle={this.props.store.global.fallbackShowControls} activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
+        <GoToTopButton classNameSuffix={skillFilterActive ? ' filter-active' : ''} show={this.props.store.global.fallbackShowControls && this.state.scrollTop > 100} />
         <FallbackPopupWrapper states={this.props.store.state} activePage={this.props.store.global.activePage} />
         <div className='fallback-disabled-background'></div>
         {loadView}

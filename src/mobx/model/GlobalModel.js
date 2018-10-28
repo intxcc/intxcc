@@ -15,7 +15,8 @@ const GlobalModel = types.model({
   clientHeight: types.optional(types.number, 0),
   logoClassName: types.optional(types.string, ''),
   activePage: types.optional(types.string, ''),
-  showBurgerMenu: types.optional(types.boolean, false)
+  showBurgerMenu: types.optional(types.boolean, false),
+  fallbackShowControls: types.optional(types.boolean, true)
 }).views(self => ({
   // Here we will decide if we render the fallback or not
   get useFallback () {
@@ -39,11 +40,27 @@ const GlobalModel = types.model({
   get svgViewBox () {
     return `0 0 ${self.clientWidth} ${self.clientHeight}`
   }
+})).volatile(self => ({
+  fallbackLastScrollTop: 0
 })).actions(self => {
   // ATTENTION: Changes only the variable in the global model, DOES NOT change the active page.
   // This variable is really important for the fallback, the fallback DOES change the active page with this variable
   function setActivePage (activePage) {
     self.activePage = activePage
+  }
+
+  function setFallbackShowControls (fallbackShowControls) {
+    self.fallbackShowControls = fallbackShowControls
+  }
+
+  function fallbackOnScroll (scrollTop) {
+    const newFallbackShowControls = self.fallbackLastScrollTop > scrollTop
+
+    if ((scrollTop > self.fallbackLastScrollTop + 10) ||
+      (scrollTop < self.fallbackLastScrollTop - 10)) {
+      self.fallbackLastScrollTop = scrollTop
+      self.fallbackShowControls = newFallbackShowControls
+    }
   }
 
   function setShowBurgerMenu (showBurgerMenu) {
@@ -63,6 +80,8 @@ const GlobalModel = types.model({
 
   return {
     setActivePage,
+    setFallbackShowControls,
+    fallbackOnScroll,
     setShowBurgerMenu,
     setClientDimensions
   }

@@ -243,6 +243,12 @@ class FallbackApp extends React.Component {
         top: savedScrollTop,
         left: 0
       }), 0)
+
+      if (savedScrollTop === 0) {
+        setTimeout(() => this.setState({
+          scrollTop: 0
+        }), 0)
+      }
     }
 
     // Save the scrollbar disabled state and lastActivePage, to notice changes

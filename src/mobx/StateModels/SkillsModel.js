@@ -251,7 +251,6 @@ const SkillsModel = types.model({
   }
 
   function fallbackSetShowFilter (show) {
-    console.log('fallbackShowFilter: ' + show)
     self.fallbackShowFilter = show
   }
 

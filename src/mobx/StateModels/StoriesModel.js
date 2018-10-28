@@ -164,7 +164,11 @@ const StoriesModel = types.model({
       return
     }
 
-    self.basicInfo.setScrollTop(scrollTop)
+    // Only safe scrolltop in basic info if not in fallback. FallbackApp handles that itself
+    if (!self.basicInfo.rootStore.global.useFallback) {
+      self.basicInfo.setScrollTop(scrollTop)
+    }
+
     self.updateStoriesTop()
 
     const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
@@ -193,10 +197,13 @@ const StoriesModel = types.model({
       newSelection = self.stories.get(biggestNegativeTopKey)
     }
 
-    if (Math.abs(biggestNegativeTopValue) < marginTopValue * 0.75) {
-      self.basicInfo.viewEntity.changeModelVariant('default')
-    } else {
-      self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
+    // Fallback doesn't have modelVariants, so we can skip this if fallback is active
+    if (!self.basicInfo.rootStore.global.useFallback) {
+      if (Math.abs(biggestNegativeTopValue) < marginTopValue * 0.75) {
+        self.basicInfo.viewEntity.changeModelVariant('default')
+      } else {
+        self.basicInfo.viewEntity.changeModelVariant('ArticleFocusModel')
+      }
     }
 
     const urlStoryName = 'story-' + self.routerParams.get('story_name')
@@ -208,12 +215,22 @@ const StoriesModel = types.model({
   }
 
   function scrollToStory (story) {
-    // If we scroll to the story top, always show the details view (that is the default)
-    self.basicInfo.viewEntity.changeModelVariant('default')
+    // Fallback doesn't have modelVariants, so we can skip this if fallback is active
+    if (!self.basicInfo.rootStore.global.useFallback) {
+      // If we scroll to the story top, always show the details view (that is the default)
+      self.basicInfo.viewEntity.changeModelVariant('default')
+    }
 
     self.updateStoriesTop()
-    const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
-    self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5))
+
+    // In fallback we scroll to start of black and in not-fallback the start of the block shall be more centered in the mid, bause of the headline polygon
+    if (self.basicInfo.rootStore.global.useFallback) {
+      // +50 because of the burger menu handle
+      self.basicInfo.scrollBy(story.top - 50)
+    } else {
+      const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
+      self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5))
+    }
   }
 
   return {

@@ -96,6 +96,12 @@ class FallbackApp extends React.Component {
     if (saveFallbackScrollTop !== null) {
       saveFallbackScrollTop(scrollTop)
     }
+
+    // If the activePage has a onScroll function, pass the scrollTop to it
+    const stateOnScroll = this.props.store.state[this.lastActivePage] && this.props.store.state[this.lastActivePage].onScroll ? this.props.store.state[this.lastActivePage].onScroll : null
+    if (stateOnScroll !== null) {
+      stateOnScroll(scrollTop)
+    }
   }
 
   handleAttachStateToRouter () {
@@ -140,6 +146,20 @@ class FallbackApp extends React.Component {
 
   render () {
     const activePage = this.props.store.global.activePage
+
+    // Animate scroll
+    if (this.props.store.state[activePage] && this.props.store.state[activePage].basicInfo) {
+      if (this.props.store.state[activePage].basicInfo.animateScrollBy) {
+        window.scrollBy({
+          top: this.props.store.state[activePage].basicInfo.scrollByValue,
+          left: 0,
+          behavior: 'smooth'
+        })
+
+        // Disable scroll by, so it will not get triggered on next render
+        setTimeout(this.props.store.state[activePage].basicInfo.stopScrollBy, 0)
+      }
+    }
 
     // Load popup component for the active page
     let isDisabled = false

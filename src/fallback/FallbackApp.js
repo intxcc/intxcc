@@ -192,6 +192,10 @@ class FallbackApp extends React.Component {
           behavior: 'smooth'
         }), 100)
 
+        if (this.props.store.state[activePage].ignoreScrollForMs) {
+          this.props.store.state[activePage].ignoreScrollForMs(2000)
+        }
+
         // Disable scroll by, so it will not get triggered on next render
         setTimeout(this.props.store.state[activePage].basicInfo.stopScrollBy, 0)
       }
@@ -244,6 +248,7 @@ class FallbackApp extends React.Component {
         left: 0
       }), 0)
 
+      // This fixes a bug, where the scroll-to-top-button would be shown, even though there was no scroll
       if (savedScrollTop === 0) {
         setTimeout(() => this.setState({
           scrollTop: 0
@@ -257,7 +262,7 @@ class FallbackApp extends React.Component {
 
     return (
       <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '') + (isDisabled ? ' disable-fallback-view-wrapper' : '')}>
-        <BurgerMenu showHandle={this.props.store.global.fallbackShowControls} activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
+        <BurgerMenu showHandle={true} activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
         <GoToTopButton classNameSuffix={skillFilterActive ? ' filter-active' : ''} show={this.props.store.global.fallbackShowControls && this.state.scrollTop > 100} />
         <FallbackPopupWrapper states={this.props.store.state} activePage={this.props.store.global.activePage} />
         <div className='fallback-disabled-background'></div>

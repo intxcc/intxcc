@@ -42,7 +42,8 @@ const StoriesModel = types.model({
   fallbackTimelineTransition: types.optional(types.boolean, false)
 }).volatile(self => ({
   ignoreScrollTimeout: false,
-  resizeScrollToStoryTimeout: false
+  resizeScrollToStoryTimeout: false,
+  lastClientWidth: false
 })).actions(self => {
   function resetFallbackTimelineTransition () {
     self.fallbackTimelineTransition = false
@@ -85,6 +86,13 @@ const StoriesModel = types.model({
   }
 
   function onResize () {
+    // Ignore vertical resizing, as it might happen when scrolling on a mobile device
+    if (!self.lastClientWidth || self.lastClientWidth === self.basicInfo.rootStore.global.clientWidth) {
+      self.lastClientWidth = self.basicInfo.rootStore.global.clientWidth
+      return
+    }
+    self.lastClientWidth = self.basicInfo.rootStore.global.clientWidth
+
     const storyId = self.routerParams.get('story_name')
     if (storyId && storyId !== '') {
       const storyIdentifier = 'story-' + storyId

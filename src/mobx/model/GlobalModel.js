@@ -71,7 +71,7 @@ const GlobalModel = types.model({
     self.clientWidth = clientWidth
     self.clientHeight = clientHeight
 
-    // Let the state of the actrive page know, that the window was resized
+    // Let the state of the active page know, that the window was resized
     const activeState = self.rootStore.state[self.activePage]
     if (activeState && activeState.onResize && typeof activeState.onResize === 'function') {
       activeState.onResize()

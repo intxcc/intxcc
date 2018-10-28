@@ -1,6 +1,8 @@
 article {
   padding-top: 3rem;
 
+  max-width: #{'calc(100vw - 10vmin)'};
+
   .year-headline {
     margin-bottom: 1rem;
     font-size: 2rem;

@@ -159,6 +159,16 @@ const StoriesModel = types.model({
         setTimeout(self.basicInfo.rootStore.router.onHashChange, 0)
       }
     }
+
+    const isIeOrEdge = !!navigator.userAgent.match(/Trident/g) || !!navigator.userAgent.match(/MSIE/g) || !!/Edge\/\d./i.test(navigator.userAgent)
+    if (!isIeOrEdge) {
+      setTimeout(() => {
+        const elem = document.getElementById('selected-story-year-id')
+        if (elem) {
+          elem.scrollIntoView({behavior: 'smooth'})
+        }
+      }, 0)
+    }
   }
 
   function selectStoryByIndex (index) {

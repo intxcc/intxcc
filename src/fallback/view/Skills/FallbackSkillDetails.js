@@ -47,6 +47,7 @@ const FallbackSkillDetails = observer(props => {
               <FontAwesomeIcon icon={'arrow-right'} />
             </div>
           </div>
+          <div style={{clear: 'both'}}></div>
           {props.skill.desc && props.skill.desc !== '' ? <p className='fallback-skill-details-desc'>
             <LinkReplaceComponent text={props.skill.desc} />
           </p> : ''}

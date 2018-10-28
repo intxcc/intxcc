@@ -45,11 +45,8 @@
       font-size: 3rem;
 
       @media (max-width: $fallback-give-buttons-extra-space-width-treshhold) {
-        position: absolute;
-        top: 5.25rem;
-
-        right: 0;
-        left: 0;
+        float: left;
+        margin-top: 5.25rem;
 
         width: initial;
       }

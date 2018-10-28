@@ -177,33 +177,36 @@ const SkillsModel = types.model({
       }
     }
 
-    // Search the next visible item after the current selection
-    if (oldIdentifierList.length > 0 && self.skillIdentifierList.length > 0 && self.selection.skill && oldIdentifierListSelection >= 0) {
-      let searchNewSelectionPos = oldIdentifierListSelection
-      while (typeof self.skillIdentifierIndex.get(oldIdentifierList[searchNewSelectionPos]) === 'undefined') {
-        searchNewSelectionPos++
+    // Only search for next visible item if we are not in fallback mode, because this will trigger the fallback skill details otherwise
+    if (!self.basicInfo.rootStore.global.useFallback) {
+      // Search the next visible item after the current selection
+      if (oldIdentifierList.length > 0 && self.skillIdentifierList.length > 0 && self.selection.skill && oldIdentifierListSelection >= 0) {
+        let searchNewSelectionPos = oldIdentifierListSelection
+        while (typeof self.skillIdentifierIndex.get(oldIdentifierList[searchNewSelectionPos]) === 'undefined') {
+          searchNewSelectionPos++
 
-        if (searchNewSelectionPos >= oldIdentifierList.length) {
-          searchNewSelectionPos = 0
+          if (searchNewSelectionPos >= oldIdentifierList.length) {
+            searchNewSelectionPos = 0
+          }
+
+          // Just to prevent infinite loops
+          if (searchNewSelectionPos === oldIdentifierListSelection) {
+            break
+          }
         }
 
-        // Just to prevent infinite loops
-        if (searchNewSelectionPos === oldIdentifierListSelection) {
-          break
+        self.selectSkillByIdentifier(oldIdentifierList[searchNewSelectionPos])
+      }
+
+      // If no skill is selected, choose the first visible
+      if (!self.selection.skill) {
+        if (self.skillIdentifierList.length > 0) {
+          self.selectSkillByIdentifier(self.skillIdentifierList.get(0))
         }
+      } else if (self.selection.skill.id && typeof self.skillIdentifierIndex.get(self.selection.skill.id) === 'undefined') {
+        // If one is selected, but not visible, remove selection
+        self.unSelect()
       }
-
-      self.selectSkillByIdentifier(oldIdentifierList[searchNewSelectionPos])
-    }
-
-    // If no skill is selected, choose the first visible
-    if (!self.selection.skill) {
-      if (self.skillIdentifierList.length > 0) {
-        self.selectSkillByIdentifier(self.skillIdentifierList.get(0))
-      }
-    } else if (self.selection.skill.id && typeof self.skillIdentifierIndex.get(self.selection.skill.id) === 'undefined') {
-      // If one is selected, but not visible, remove selection
-      self.unSelect()
     }
 
     // Disable transition, because it results in transitioning bugs

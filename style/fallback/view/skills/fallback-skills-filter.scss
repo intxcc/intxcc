@@ -45,4 +45,22 @@
       color: $gray;
     }
   }
+
+  .fallback-skills-filter-inner {
+    display: flex;
+
+    .filter-search-wrapper {
+      margin-top: 0;
+      margin-left: .5rem;
+      width: 20vw;
+    }
+
+    .filter-checkbox-category {
+      margin-right: 0;
+      padding-left: .5rem;
+    }
+  }
+
+  @import '../../../view/skills/skill-filter/filter-checkbox';
+  @import '../../../view/skills/skill-filter/filter-search';
 }

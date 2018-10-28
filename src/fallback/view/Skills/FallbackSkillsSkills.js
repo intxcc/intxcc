@@ -35,6 +35,12 @@ const FallbackSkillsSkills = observer(props => (
     {props.skills.map((skill, index) => {
       // Check if current item is headline
       if (skill.type === 'category-headline') {
+        // If the category ifs empty, don't show category-headline
+        if (index + 1 === props.skills.length ||
+          (index + 1 < props.skills.length && props.skills[index + 1].type === 'category-headline')) {
+          return ''
+        }
+
         return (
           <h3 key={'fallback-category-headline-' + index}>
             {skill.title}

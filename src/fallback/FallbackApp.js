@@ -163,6 +163,7 @@ class FallbackApp extends React.Component {
     let scrollbarDisabled = false
 
     const skillDetailsActive = activePage === 'skills' && this.props.store.state[activePage].fallbackShowSkillDetails
+    const skillFilterActive = activePage === 'skills' && this.props.store.state[activePage].fallbackShowFilter
 
     // MARKER_SCROLLBAR All events that should result in a disabled scroll bar go here
     if (skillDetailsActive || isDisabled) {
@@ -224,7 +225,7 @@ class FallbackApp extends React.Component {
     return (
       <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '') + (isDisabled ? ' disable-fallback-view-wrapper' : '')}>
         <BurgerMenu activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
-        <GoToTopButton show={this.state.scrollTop > 100} />
+        <GoToTopButton classNameSuffix={skillFilterActive ? ' filter-active' : ''} show={this.state.scrollTop > 100} />
         <FallbackPopupWrapper states={this.props.store.state} activePage={this.props.store.global.activePage} />
         <div className='fallback-disabled-background'></div>
         {loadView}

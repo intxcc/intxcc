@@ -9,6 +9,10 @@
 
   &.filter-active {
     padding-bottom: 5rem;
+
+    .skills-map-zoom-wrapper {
+      bottom: #{'calc(5vmin + 5rem)'};
+    }
   }
 
   @import 'skills/skills-map-zoom-wrapper';

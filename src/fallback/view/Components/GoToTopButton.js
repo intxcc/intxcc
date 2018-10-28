@@ -12,13 +12,14 @@ const GoToTopButton = observer(props => (
     top: 0,
     left: 0,
     behavior: 'smooth'
-  })} className={'fallback-goto-top-btn' + (props.show ? ' show' : '')}>
+  })} className={'fallback-goto-top-btn' + (props.show ? ' show' : '') + props.classNameSuffix}>
     <FontAwesomeIcon icon='arrow-circle-up' />
   </div>
 ))
 
 GoToTopButton.propTypes = {
-  show: PropTypes.bool
+  show: PropTypes.bool,
+  classNameSuffix: PropTypes.string
 }
 
 export default GoToTopButton

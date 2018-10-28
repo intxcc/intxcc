@@ -1,26 +1,35 @@
+.show-help-btn-wrapper {
+  position: absolute;
+  top: 2.5vmin;
+  right: 5vmin;
+
+  z-index: 1;
+}
+
+
 .show-help-btn {
   @include user-select(none);
 
   display: flex;
 
-  position: absolute;
-  top: 0;
-  left: 7.5vmin;
-
   align-items: center;
   justify-content: center;
 
-  transform: translate3d(4rem, -4rem, 0);
   transition: .2s background-color,
   .2s color;
 
   z-index: 1;
+  margin-bottom: 2.5vmin;
+
   background-color: $black;
 
   cursor: pointer;
 
   width: 4rem;
+  max-width: 18vmin;
+
   height: 4rem;
+  max-height: 18vmin;
 
   color: $white;
   font-size: 2rem;
@@ -29,8 +38,4 @@
     background-color: $white;
     color: $primary-color;
   }
-}
-
-.second-btn {
-  transform: translate3d(8rem, -4rem, 0) translateX(2.5vmin);
 }

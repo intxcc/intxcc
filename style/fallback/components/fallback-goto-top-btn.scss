@@ -34,6 +34,10 @@
     color: $primary-color-text;
   }
 
+  &.filter-active {
+    bottom: #{'calc(5vmin + 5rem)'};
+  }
+
   &.show {
     opacity: 1;
     pointer-events: initial;

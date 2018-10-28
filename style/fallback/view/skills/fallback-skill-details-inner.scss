@@ -109,8 +109,6 @@
     min-height: #{'calc(100vh - 20vmin)'};
   }
 
-  @import 'fallback-skill-details-inner-info';
-
   p {
     padding: 1rem 1rem 0;
 
@@ -121,4 +119,7 @@
   .fallback-skill-details-trivia {
     font-style: italic;
   }
+
+  @import 'fallback-skill-details-inner-info';
+  @import 'fallback-skill-details-stories';
 }

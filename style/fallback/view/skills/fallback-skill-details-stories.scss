@@ -1,0 +1,46 @@
+.fallback-skill-details-stories-wrapper {
+  .fallback-skill-details-stories-headline {
+    margin-top: 1rem;
+
+    background-color: $black;
+    padding: .25rem .5rem;
+
+    color: $white;
+    font-size: 1.25rem;
+    font-weight: normal;
+  }
+
+  .fallback-skill-details-stories-list {
+    list-style: none;
+
+    a {
+      display: block;
+      padding: .5rem 0;
+
+      text-decoration: none;
+
+      &:first-child {
+        margin-top: .5rem;
+      }
+    }
+
+    li {
+      border-left: .5rem solid $black;
+
+      h2 {
+        display: inline-flex;
+
+        background-color: $black;
+        padding: .2rem .5rem;
+
+        color: $white;
+        font-weight: normal;
+      }
+
+      h1 {
+        padding: 0 .5rem;
+        text-decoration: underline;
+      }
+    }
+  }
+}

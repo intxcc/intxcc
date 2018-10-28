@@ -313,7 +313,7 @@ const SkillsModel = types.model({
     }
 
     // If no ore one skill is selected in the stories filter, set the selected skill for stories filter
-    if (self.storiesFilter.selectedSkills.length <= 1) {
+    if (self.storiesFilter.selectedSkills.length <= 1 || self.basicInfo.rootStore.global.useFallback) {
       self.storiesFilter.setSingleSkillSelected(self.selection.skill)
     }
 

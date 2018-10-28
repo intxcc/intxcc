@@ -42,7 +42,8 @@ const SkillsView = observer(props => (
         closeSkillDetailsFunc={() => props.state.fallbackSetShowSkillDetails(false)}
         column={props.state.selection.column}
         category={props.state.selection.category}
-        skill={props.state.selection.skill} />
+        skill={props.state.selection.skill}
+        storiesFilter={props.state.storiesFilter} />
       : ''}
     {props.state.fallbackUseSkillMap
       ? <SkillsMap state={props.state} columns={props.state.columns} />

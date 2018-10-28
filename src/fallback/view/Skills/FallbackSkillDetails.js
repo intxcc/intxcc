@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { observer } from 'mobx-react'
 
 import LinkReplaceComponent from '../../../view/Components/LinkReplaceComponent'
+import FallbackSkillDetailsStories from './FallbackSkillDetailsStories'
 
 import MARK_TOOLTIP from '../../../config/MarkTooltips'
 
@@ -53,6 +54,7 @@ const FallbackSkillDetails = observer(props => {
             <LinkReplaceComponent text={props.skill.trivia} />
           </p> : ''}
         </div>
+        <FallbackSkillDetailsStories storiesFilter={props.storiesFilter} />
       </div>
     </div>
   )
@@ -67,7 +69,8 @@ FallbackSkillDetails.propTypes = {
   closeSkillDetailsFunc: PropTypes.func,
   column: PropTypes.object,
   category: PropTypes.object,
-  skill: PropTypes.object
+  skill: PropTypes.object,
+  storiesFilter: PropTypes.object
 }
 
 export default FallbackSkillDetails

@@ -3,6 +3,7 @@
 import { types, resolveIdentifier } from 'mobx-state-tree'
 import { keys } from 'mobx'
 
+import ViewEntity from '../model/ViewEntity'
 import BasicInfoModel from '../model/BasicInfoModel'
 
 import STORIES_EXPLANATION from '../../config/POPUP_STORIES_EXPLANATION'
@@ -243,8 +244,11 @@ const StoriesModel = types.model({
   function scrollToStory (story, smooth = true) {
     // Fallback doesn't have modelVariants, so we can skip this if fallback is active
     if (!self.basicInfo.rootStore.global.useFallback) {
-      // If we scroll to the story top, always show the details view (that is the default)
-      self.basicInfo.viewEntity.changeModelVariant('default')
+      // Check if the viewEntity is valid, otherwise skip the model change
+      if (typeof resolveIdentifier(ViewEntity, self.basicInfo.rootStore.views, self.basicInfo.toJSON().viewEntity) !== 'undefined') {
+        // If we scroll to the story top, always show the details view (that is the default)
+        self.basicInfo.viewEntity.changeModelVariant('default')
+      }
     }
 
     self.updateStoriesTop()

@@ -1,41 +1,40 @@
-.show-help-btn-wrapper {
+.show-help-btn-fallback-wrapper {
   position: absolute;
   top: 2.5vmin;
   right: 5vmin;
 
   z-index: 1;
-}
 
+  .show-help-btn {
+    @include user-select(none);
 
-.show-help-btn {
-  @include user-select(none);
+    display: flex;
 
-  display: flex;
+    align-items: center;
+    justify-content: center;
 
-  align-items: center;
-  justify-content: center;
+    transition: .2s background-color,
+    .2s color;
 
-  transition: .2s background-color,
-  .2s color;
+    z-index: 1;
+    margin-bottom: 2.5vmin;
 
-  z-index: 1;
-  margin-bottom: 2.5vmin;
+    background-color: $black;
 
-  background-color: $black;
+    cursor: pointer;
 
-  cursor: pointer;
+    width: 4rem;
+    max-width: 18vmin;
 
-  width: 4rem;
-  max-width: 18vmin;
+    height: 4rem;
+    max-height: 18vmin;
 
-  height: 4rem;
-  max-height: 18vmin;
+    color: $white;
+    font-size: 2rem;
 
-  color: $white;
-  font-size: 2rem;
-
-  &:hover {
-    background-color: $white;
-    color: $primary-color;
+    &:hover {
+      background-color: $white;
+      color: $primary-color;
+    }
   }
 }

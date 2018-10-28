@@ -16,7 +16,7 @@ import FallbackTimeline from './Stories/FallbackTimeline'
 
 const StoriesView = observer(props => (
   <div className='fallback-view-wrapper stories-wrapper'>
-    <div className='show-help-btn-wrapper'>
+    <div className='show-help-btn-fallback-wrapper'>
       <div className='show-help-btn' onClick={props.state.showExplanation}>
         <FontAwesomeIcon icon={'info'} />
       </div>

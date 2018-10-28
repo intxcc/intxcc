@@ -23,7 +23,7 @@ const SkillsView = observer(props => (
     <FallbackSkillsFilter
       show={props.state.fallbackShowFilter}
       state={props.state} />
-    <div className='show-help-btn-wrapper'>
+    <div className='show-help-btn-fallback-wrapper'>
       {props.state.fallbackUseSkillMap ? <div className='show-help-btn second-btn' onClick={props.state.showExplanation}>
         <FontAwesomeIcon icon={'info'} />
       </div> : ''}

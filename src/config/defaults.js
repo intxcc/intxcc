@@ -26,7 +26,7 @@ const DevelopmentDefaults = {
   enableStartpageBackgroundVideo: false,
   showSkillFilterPerDefault: false,
   disableDefaultPopups: true,
-  alwaysUseFallback: true,
+  alwaysUseFallback: false,
   neverUseFallback: false,
   showGuides: false
 }

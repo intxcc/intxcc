@@ -67,6 +67,7 @@
   top: 0;
   right: 0;
 
+  transition: $global--variant-change-duration opacity;
   z-index: 998;
 
   width: 80vw;
@@ -76,4 +77,8 @@
   max-height: 25%;
 
   pointer-events: none;
+
+  &.hide {
+    opacity: 0;
+  }
 }

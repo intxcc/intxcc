@@ -31,7 +31,7 @@ const SkillsView = observer(props => (
         <FontAwesomeIcon icon={'filter'} />
       </div> : ''}
     </div>
-    <SimplifySkillsOverviewButton fallbackUseSkillMap={props.state.fallbackUseSkillMap} setFallbackUseSkillMapFunc={props.state.setFallbackUseSkillMap} />
+    <SimplifySkillsOverviewButton show={props.showControls} fallbackUseSkillMap={props.state.fallbackUseSkillMap} setFallbackUseSkillMapFunc={props.state.setFallbackUseSkillMap} />
     {props.state.selection.skill
       ? <FallbackSkillDetails
         selectedListLength={props.state.fallbackSelection.selectedSkills.length}
@@ -53,6 +53,7 @@ const SkillsView = observer(props => (
 ))
 
 SkillsView.propTypes = {
+  showControls: PropTypes.bool,
   state: PropTypes.object,
   global: PropTypes.object
 }

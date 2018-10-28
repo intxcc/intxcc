@@ -27,7 +27,7 @@ BurgerMenuItem.propTypes = {
 const BurgerMenu = observer(props => (
   <div className='burger-menu-wrapper'>
     <div className='burger-menu-handle-wrapper'>
-      <div className={'burger-menu-handle' + (props.show ? ' active' : '') + (props.activePage !== 'startpage' ? ' background-color-enabled' : '')} onClick={() => props.setShowFunc(!props.show)}>
+      <div className={'burger-menu-handle' + (!props.showHandle ? ' hide' : '') + (props.show ? ' active' : '') + (props.activePage !== 'startpage' ? ' background-color-enabled' : '')} onClick={() => props.setShowFunc(!props.show)}>
         <FontAwesomeIcon icon='bars' />
       </div>
     </div>
@@ -47,6 +47,7 @@ const BurgerMenu = observer(props => (
 ))
 
 BurgerMenu.propTypes = {
+  showHandle: PropTypes.bool,
   activePage: PropTypes.string,
   show: PropTypes.bool,
   setShowFunc: PropTypes.func

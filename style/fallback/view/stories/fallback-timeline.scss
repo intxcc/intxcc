@@ -38,6 +38,7 @@
     justify-content: center;
 
     transition: $global--variant-change-duration border-color,
+    opacity $global--variant-change-duration,
     .2s color;
 
     border-top: .5rem solid transparent;
@@ -51,6 +52,10 @@
 
     @media (max-width: 320px) {
       height: 17.5vmin;
+    }
+
+    &.hide {
+      opacity: 0;
     }
 
     &:hover {

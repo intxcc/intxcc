@@ -40,8 +40,11 @@ class FallbackApp extends React.Component {
     super(props)
 
     this.state = {
+      showControls: true,
       scrollTop: 0
     }
+
+    this.lastScrollTop = 0
 
     this.disposers = {}
 
@@ -79,18 +82,25 @@ class FallbackApp extends React.Component {
   }
 
   onScroll (e) {
-    // Scroll is ignored, while the scrollbar of the main wrapper is disabled
-    if (this.scrollbarDisabled) {
-      return
-    }
-
     const doc = document.documentElement
     const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0)
 
+    // Scroll is ignored, while the scrollbar of the main wrapper is disabled
+    if (this.scrollbarDisabled) {
+      this.setState({
+        showControls: true,
+        scrollTop: this.state.scrollTop
+      })
+
+      return
+    }
+
     // Save scrollTop in react state to decide if the back-to-top button is shown
     this.setState({
+      showControls: this.lastScrollTop > scrollTop,
       scrollTop: scrollTop
     })
+    this.lastScrollTop = scrollTop
 
     const saveFallbackScrollTop = this.props.store.state[this.lastActivePage] && this.props.store.state[this.lastActivePage].basicInfo && this.props.store.state[this.lastActivePage].basicInfo.saveFallbackScrollTop ? this.props.store.state[this.lastActivePage].basicInfo.saveFallbackScrollTop : null
     if (saveFallbackScrollTop !== null) {
@@ -176,6 +186,7 @@ class FallbackApp extends React.Component {
     }
 
     const loadView = Views[activePage] ? React.createElement(Views[activePage], {
+      showControls: this.state.showControls,
       global: this.props.store.global,
       state: this.props.store.state[activePage]
     }) : ''
@@ -244,8 +255,8 @@ class FallbackApp extends React.Component {
 
     return (
       <div className={'fallback-site-wrapper' + (scrollbarDisabled ? ' disable-scroll-bar' : '') + (isDisabled ? ' disable-fallback-view-wrapper' : '')}>
-        <BurgerMenu activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
-        <GoToTopButton classNameSuffix={skillFilterActive ? ' filter-active' : ''} show={this.state.scrollTop > 100} />
+        <BurgerMenu showHandle={this.state.showControls} activePage={activePage} show={this.props.store.global.showBurgerMenu} setShowFunc={this.props.store.global.setShowBurgerMenu} />
+        <GoToTopButton classNameSuffix={skillFilterActive ? ' filter-active' : ''} show={this.state.showControls && this.state.scrollTop > 100} />
         <FallbackPopupWrapper states={this.props.store.state} activePage={this.props.store.global.activePage} />
         <div className='fallback-disabled-background'></div>
         {loadView}

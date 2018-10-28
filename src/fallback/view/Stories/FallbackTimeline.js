@@ -12,7 +12,7 @@ const FallbackTimeline = observer(props => (
     <div className='fallback-timeline-inner'>
       a
     </div>
-    <div className='fallback-timeline-shrink-btn' onClick={props.toggle}>
+    <div className={'fallback-timeline-shrink-btn' + (!props.showControls ? ' hide' : '')} onClick={props.toggle}>
       {props.active
         ? <FontAwesomeIcon icon={'angle-left'} />
         : <FontAwesomeIcon icon={'angle-right'} />}
@@ -21,6 +21,7 @@ const FallbackTimeline = observer(props => (
 ))
 
 FallbackTimeline.propTypes = {
+  showControls: PropTypes.bool,
   active: PropTypes.bool,
   toggle: PropTypes.func
 }

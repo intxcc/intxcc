@@ -22,6 +22,7 @@ const StoriesView = observer(props => (
     <div className={'stories-wrapper-inner' + (props.state.fallbackShowTimeline ? ' show-timeline' : '') + (props.state.fallbackTimelineTransition ? ' transition' : '')}>
       <h1>Stories | My Portfolio</h1>
       <FallbackTimeline
+        showControls={props.showControls}
         active={props.state.fallbackShowTimeline}
         toggle={() => {
           props.state.setFallbackShowTimeline(!props.state.fallbackShowTimeline)
@@ -43,6 +44,7 @@ const StoriesView = observer(props => (
 ))
 
 StoriesView.propTypes = {
+  showControls: PropTypes.bool,
   state: PropTypes.object,
   global: PropTypes.object
 }

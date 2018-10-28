@@ -1,0 +1,37 @@
+.fallback-stories-timeline-year-list {
+  display: flex;
+  position: absolute;
+
+  align-items: center;
+  justify-content: center;
+
+  transform: rotate(-90deg) translateX(-100%);
+
+  height: 4rem;
+
+  list-style: none;
+  transform-origin: top left;
+
+  @media (max-width: 320px) {
+    height: 17.5vmin;
+  }
+
+  li {
+    margin: 0 .125rem;
+    height: 100%;
+  }
+
+  .fallback-stories-timeline-year-list-item-headline {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background-color: $black;
+
+    height: 50%;
+
+    color: $white;
+    font-weight: bold;
+  }
+}

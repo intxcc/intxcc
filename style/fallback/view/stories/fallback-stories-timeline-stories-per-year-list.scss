@@ -1,0 +1,27 @@
+.fallback-stories-timeline-stories-per-year-list {
+  display: flex;
+
+  padding: 0 .5rem;
+  height: 50%;
+
+  list-style: none;
+
+  a {
+    text-decoration: none;
+  }
+
+  li {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: underline;
+    white-space: nowrap;
+
+    &.selected {
+      text-decoration: none;
+      color: $primary-color;
+    }
+  }
+}

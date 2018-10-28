@@ -1,13 +1,13 @@
 .fallback-timeline-wrapper {
   position: fixed;
-  top: #{'calc(10vmin + 4rem)'};
+  top: #{'calc(7.5vmin + 4rem)'};
   bottom: 5vmin;
   left: 5vmin;
 
   width: 4rem;
 
   @media (max-width: 320px) {
-    top: 27.5vmin;
+    top: 25vmin;
     width: 17.5vmin;
   }
 
@@ -22,8 +22,31 @@
   }
 
   .fallback-timeline-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: #{'calc(4.5rem)'};
+    left: 0;
+
     transition: $global--variant-change-duration opacity;
     opacity: 0;
+
+    overflow: hidden;
+    transform-origin: top left;
+
+    @media (max-width: 320px) {
+      bottom: #{'calc(17.5vmin + .5rem)'};
+    }
+
+    .fallback-timeline-inner-scroll-wrapper {
+      position: absolute;
+
+      width: 200%;
+      height: 100%;
+
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
   }
 
   .fallback-timeline-shrink-btn {
@@ -62,4 +85,7 @@
       color: $primary-color;
     }
   }
+
+  @import 'fallback-stories-timeline-year-list';
+  @import 'fallback-stories-timeline-stories-per-year-list';
 }

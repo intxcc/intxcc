@@ -19,9 +19,13 @@ const StoriesView = observer(props => (
         <FontAwesomeIcon icon={'info'} />
       </div>
     </div>
-    <div className={'stories-wrapper-inner' + (props.state.fallbackShowTimeline ? ' show-timeline' : '')}>
+    <div className={'stories-wrapper-inner' + (props.state.fallbackShowTimeline ? ' show-timeline' : '') + (props.state.fallbackTimelineTransition ? ' transition' : '')}>
       <h1>Stories | My Portfolio</h1>
-      <FallbackTimeline />
+      <FallbackTimeline
+        active={props.state.fallbackShowTimeline}
+        toggle={() => {
+          props.state.setFallbackShowTimeline(!props.state.fallbackShowTimeline)
+        }} />
       <div className='articles-wrapper'>
         {props.state.stories.map((story, index) => (
           <StoryComponent

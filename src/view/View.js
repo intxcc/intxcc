@@ -237,7 +237,7 @@ class View extends React.Component {
           this.viewContent.scrollBy({
             top: props.view.stateBasicInfo.scrollByValue,
             left: 0,
-            behavior: props.view.stateBasicInfo.scrollBySmooth ? 'smooth' : 'auto'
+            behavior: 'smooth'
           })
 
           // Disable scroll by, so it will not get triggered on next render

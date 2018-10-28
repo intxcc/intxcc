@@ -1,20 +1,28 @@
 'use strict'
 
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { observer } from 'mobx-react'
 
 const FallbackTimeline = observer(props => (
-  <div className='fallback-timeline-wrapper'>
-    test
+  <div className={'fallback-timeline-wrapper' + (props.active ? ' active' : '')}>
+    <div className='fallback-timeline-inner'>
+      a
+    </div>
+    <div className='fallback-timeline-shrink-btn' onClick={props.toggle}>
+      {props.active
+        ? <FontAwesomeIcon icon={'angle-left'} />
+        : <FontAwesomeIcon icon={'angle-right'} />}
+    </div>
   </div>
 ))
 
-// FallbackSkillColumns.propTypes = {
-//   selection: PropTypes.object,
-//   fallbackSelection: PropTypes.object,
-//   columns: PropTypes.object
-// }
+FallbackTimeline.propTypes = {
+  active: PropTypes.bool,
+  toggle: PropTypes.func
+}
 
 export default FallbackTimeline

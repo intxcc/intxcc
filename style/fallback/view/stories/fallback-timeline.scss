@@ -1,3 +1,60 @@
 .fallback-timeline-wrapper {
-  background-color: #f00;
+  position: fixed;
+  top: #{'calc(10vmin + 4rem)'};
+  bottom: 5vmin;
+  left: 5vmin;
+
+  width: 4rem;
+
+  @media (max-width: 320px) {
+    top: 27.5vmin;
+    width: 17.5vmin;
+  }
+
+  &.active {
+    .fallback-timeline-inner {
+      opacity: 1;
+    }
+
+    .fallback-timeline-shrink-btn {
+      border-color: $black;
+    }
+  }
+
+  .fallback-timeline-inner {
+    transition: $global--variant-change-duration opacity;
+    opacity: 0;
+  }
+
+  .fallback-timeline-shrink-btn {
+    display: flex;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    align-items: center;
+    justify-content: center;
+
+    transition: $global--variant-change-duration border-color,
+    .2s color;
+
+    border-top: .5rem solid transparent;
+    background-color: $white;
+
+    cursor: pointer;
+
+    height: 4rem;
+
+    font-size: 2rem;
+
+    @media (max-width: 320px) {
+      height: 17.5vmin;
+    }
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
 }

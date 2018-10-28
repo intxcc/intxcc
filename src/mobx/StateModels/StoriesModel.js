@@ -3,10 +3,12 @@
 import { types, resolveIdentifier } from 'mobx-state-tree'
 import { keys } from 'mobx'
 
-import ViewEntity from '../model/ViewEntity'
-import BasicInfoModel from '../model/BasicInfoModel'
+import Style from '../../../style/variables/global.scss'
 
 import STORIES_EXPLANATION from '../../config/POPUP_STORIES_EXPLANATION'
+
+import ViewEntity from '../model/ViewEntity'
+import BasicInfoModel from '../model/BasicInfoModel'
 
 const StoryModel = types.model({
   id: types.identifier,
@@ -36,11 +38,25 @@ const StoriesModel = types.model({
   storiesIndex: types.optional(types.map(types.string), {}),
   stories: types.array(StoryModel),
   ignoreScroll: types.optional(types.boolean, false),
-  fallbackShowTimeline: types.optional(types.boolean, true)
+  fallbackShowTimeline: types.optional(types.boolean, true),
+  fallbackTimelineTransition: types.optional(types.boolean, false)
 }).volatile(self => ({
   ignoreScrollTimeout: false,
   resizeScrollToStoryTimeout: false
 })).actions(self => {
+  function resetFallbackTimelineTransition () {
+    self.fallbackTimelineTransition = false
+    setTimeout(self.onResize, 200)
+  }
+
+  function setFallbackShowTimeline (showTimeline) {
+    if (self.fallbackShowTimeline !== showTimeline) {
+      self.fallbackTimelineTransition = true
+      setTimeout(self.resetFallbackTimelineTransition, Style.variantMorphDuration)
+    }
+    self.fallbackShowTimeline = showTimeline
+  }
+
   function onRouterParamChange (paramName, paramValue) {
     self.routerParams.set(paramName, paramValue)
 
@@ -64,10 +80,11 @@ const StoriesModel = types.model({
 
   function resizeScrollToStoryCallback (story) {
     self.resizeScrollToStoryTimeout = false
-    self.scrollToStory(story, false)
+    self.ignoreScrollForMs(2000)
+    self.scrollToStory(story)
   }
 
-  function onResize (isCallback = false) {
+  function onResize () {
     const storyId = self.routerParams.get('story_name')
     if (storyId && storyId !== '') {
       const storyIdentifier = 'story-' + storyId
@@ -76,8 +93,6 @@ const StoriesModel = types.model({
         if (self.resizeScrollToStoryTimeout) {
           clearTimeout(self.resizeScrollToStoryTimeout)
         }
-
-        self.ignoreScrollForMs(200)
 
         self.resizeScrollToStoryTimeout = setTimeout(() => {
           self.resizeScrollToStoryCallback(story)
@@ -241,7 +256,7 @@ const StoriesModel = types.model({
     }
   }
 
-  function scrollToStory (story, smooth = true) {
+  function scrollToStory (story) {
     // Fallback doesn't have modelVariants, so we can skip this if fallback is active
     if (!self.basicInfo.rootStore.global.useFallback) {
       // Check if the viewEntity is valid, otherwise skip the model change
@@ -255,15 +270,17 @@ const StoriesModel = types.model({
 
     // In fallback we scroll to start of black and in not-fallback the start of the block shall be more centered in the mid, bause of the headline polygon
     if (self.basicInfo.rootStore.global.useFallback) {
-      // +50 because of the burger menu handle
-      self.basicInfo.scrollBy(story.top - 50, smooth)
+      // -50 because of the burger menu handle
+      self.basicInfo.scrollBy(story.top - 50)
     } else {
       const marginTopValue = self.basicInfo.rootStore.global.clientHeight / 1.5
-      self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5), smooth)
+      self.basicInfo.scrollBy(story.top - (marginTopValue / 1.5))
     }
   }
 
   return {
+    resetFallbackTimelineTransition,
+    setFallbackShowTimeline,
     onRouterParamChange,
     resizeScrollToStoryCallback,
     onResize,

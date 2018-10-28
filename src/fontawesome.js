@@ -17,7 +17,9 @@ import {
   faMinus,
   faPlus,
   faInfo,
-  faWindowClose
+  faWindowClose,
+  faAngleLeft,
+  faAngleRight
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -50,6 +52,8 @@ library.add(faMinus)
 library.add(faPlus)
 library.add(faInfo)
 library.add(faWindowClose)
+library.add(faAngleLeft)
+library.add(faAngleRight)
 
 library.add(faSquare)
 library.add(faCircle)

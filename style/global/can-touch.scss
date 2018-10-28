@@ -52,4 +52,8 @@ html.can-touch { // sass-lint:disable-line force-element-nesting no-qualifying-e
       color: $white !important;
     }
   }
+
+  .fallback-timeline-shrink-btn {
+    color: $black !important;
+  }
 }

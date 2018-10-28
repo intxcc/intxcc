@@ -12,11 +12,15 @@
 
     text-align: justify;
 
+    &.transition {
+      transition: $global--variant-change-duration margin;
+    }
+
     &.show-timeline {
       margin: 5vmin 5vmin 5vmin #{'calc(10vmin + 4rem)'};
 
-      @media (max-width: 380px) {
-        margin: 5vmin 5vmin 5vmin 25vmin;
+      @media (max-width: 320px) {
+        margin: 5vmin 5vmin 5vmin 27.5vmin;
       }
     }
 

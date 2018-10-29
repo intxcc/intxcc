@@ -56,4 +56,8 @@ html.can-touch { // sass-lint:disable-line force-element-nesting no-qualifying-e
   .fallback-timeline-shrink-btn {
     color: $black !important;
   }
+
+  .start-popup-close-progress-bar {
+    background-color: $white !important;
+  }
 }

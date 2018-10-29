@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -45,9 +44,5 @@ const ContactView = observer(props => (
     <LicenseAndImpressumLink />
   </div>
 ))
-
-// ContactView.propTypes = {
-//   global: PropTypes.object
-// }
 
 export default ContactView

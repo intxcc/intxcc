@@ -7,7 +7,7 @@ import { observer } from 'mobx-react'
 
 import SkillsMapColumn from './SkillsMapColumn'
 
-/** A wrapper for all columns oin the skill map. */
+/** A wrapper for all columns on the skills map. */
 const SkillsMapColumns = observer((props) => (
   <div className='skills-map-inner-wrapper'>
     {props.columns.map(column => (

@@ -39,7 +39,6 @@ StartpageView.propTypes = {
 const StartpageOverlayView = observer((props) => (
   <div className='overlay-wrapper-inner'>
     <div className='startpage-disable-video-wrapper'>
-
     </div>
   </div>
 ))

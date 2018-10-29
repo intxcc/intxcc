@@ -79,6 +79,8 @@
 
   .start-popup-btn {
     display: flex;
+    position: relative;
+
     align-items: center;
 
     transition: .2s background-color,
@@ -107,6 +109,24 @@
     &:hover {
       background-color: $white;
       color: $black;
+
+      .start-popup-close-progress-bar {
+        background-color: $black;
+      }
+    }
+
+    .start-popup-close-progress-bar {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      transform: scaleX(0);
+      transition: .2s background-color;
+
+      background-color: $white;
+
+      height: 2px;
     }
   }
 }

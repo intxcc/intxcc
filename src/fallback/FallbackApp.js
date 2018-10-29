@@ -62,6 +62,10 @@ class FallbackApp extends React.Component {
     window.removeEventListener('scroll', this.onScroll)
     window.removeEventListener('keydown', this.onKeyDown)
 
+    if (this.setScrollTopToZeroOnPageChangeTimeout) {
+      clearTimeout(this.setScrollTopToZeroOnPageChangeTimeout)
+    }
+
     // Dispone of all subscriptions on unmount
     for (let stateName in this.disposers) {
       const disposers = this.disposers[stateName]
@@ -250,9 +254,12 @@ class FallbackApp extends React.Component {
 
       // This fixes a bug, where the scroll-to-top-button would be shown, even though there was no scroll
       if (savedScrollTop === 0) {
-        setTimeout(() => this.setState({
-          scrollTop: 0
-        }), 0)
+        this.setScrollTopToZeroOnPageChangeTimeout = setTimeout(() => {
+          this.setScrollTopToZeroOnPageChangeTimeout = false
+          this.setState({
+            scrollTop: 0
+          })
+        }, 0)
       }
     }
 

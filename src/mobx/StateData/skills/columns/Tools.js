@@ -8,14 +8,16 @@ const ToolsColumn = {
       skills: [
         {
           title: 'Photoshop',
-          mark: 3
+          mark: 3,
+          desc: 'Not much to say. I like photographing, so its on my tool list for quite a while. When designing I use mostly vector graphics, but once in a while photoshop gets its place in the toolchain.'
         }, {
           title: 'Inkscape',
           mark: 3,
           trivia: 'The design for this website was created in Inkscape.'
         }, {
           title: 'Illustrator',
-          mark: 2
+          mark: 2,
+          trivia: 'I\'m also not a fan of monopolistic software companies, but Adobe just makes good tools.'
         }, {
           title: 'Blender',
           mark: 2,
@@ -34,7 +36,8 @@ const ToolsColumn = {
       skills: [
         {
           title: 'Visual Studio Code',
-          mark: 3
+          mark: 3,
+          desc: 'Moved from Dreamweaver to Brackets, then to [Link|skill|Atom] and now to Visual Studio Code. Was critical at first, because it is developed by Microsoft, but it is Open Source and Microsoft is loosening up a bit on its proprietary world view lately, it seems.'
         }, {
           title: 'Atom',
           mark: 3
@@ -46,7 +49,9 @@ const ToolsColumn = {
           mark: 2
         }, {
           title: 'IntelliJ',
-          mark: 2
+          mark: 2,
+          desc: 'I have never had such a nice developer experience like IntelliJ and Java. Eclipse is cool and all, and even though I\'m a fan of Open Source at the end of the day it is important for me what I can work with.',
+          trivia: 'Have never used [Link|Skill|Visual Studio Code] with Java though. I would give that a try the next time I work on a Java project.'
         }
       ]
     }, {
@@ -69,13 +74,16 @@ const ToolsColumn = {
       skills: [
         {
           title: 'LaTeX',
-          mark: 2
+          mark: 2,
+          desc: 'I do everything that is a static document in LaTeX.',
+          trivia: 'It just looks really pretty and professional.'
         }, {
           title: 'Bash',
           mark: 2
         }, {
           title: 'Cygwin',
-          mark: 2
+          mark: 2,
+          desc: 'Before WSL (Windows Subsystem for Linux) came around and I did not want to miss Linux while working on Windows I used Cygwin a lot.'
         }, {
           title: 'PowerShell',
           mark: 1

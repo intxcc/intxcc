@@ -106,16 +106,21 @@ const LanguagesColumn = {
       skills: [
         {
           title: 'C',
-          mark: 3
+          mark: 3,
+          desc: 'I really like C. It\'s tiny and beautiful. If you don\'t watch your step you will shoot yourself in the foot, but it\'s very performant and can be used for developing without high complexities (in the language itself) of languages like [Link|skill|ES6] or [Link|skill|Python].',
+          trivia: 'I would never ever use it though to write an server application. Too many pitfalls and everybody makes mistakes. Rust is on my to-learn-list though, which fixes some of them.'
         }, {
           title: 'C++',
           mark: 2
         }, {
           title: 'MIPS',
-          mark: 2
+          mark: 2,
+          desc: 'Had it half a year at university. Was really fun to learn how to write programms with it and how it gives you this very precise control of what the CPU should do.',
+          trivia: 'Once you\'re in the flow, it not even that hard to use it.'
         }, {
           title: 'PHP',
-          mark: 2
+          mark: 2,
+          desc: 'In the beginning I used a lot PHP, as I thought it was industry standard, like Photoshop is for photo editing. Nowadays I use more [Link|skill|Python] or [Link|skill|ES6] on the server side.'
         }
       ]
     }

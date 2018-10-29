@@ -12,7 +12,7 @@ import MARK_TOOLTIP from '../../../config/MarkTooltips'
 
 const SkillsItemInner = observer((props) => (
   <div className='skills-map-item-inner'>
-    {props.skill.desc || props.skill.trivia ? <div title={'with comment'} className='skills-map-item-comment-icon'>
+    {props.skill.desc ? <div title={'with comment'} className='skills-map-item-comment-icon'>
       <FontAwesomeIcon icon={['far', 'comment-dots']} />
     </div> : ''}
     {props.skill.mark <= 0 ? '' : (

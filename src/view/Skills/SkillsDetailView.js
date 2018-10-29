@@ -17,7 +17,7 @@ const SkillsDetailView = observer((props) => (
       <LinkReplaceComponent text={props.selection.skill.desc} />
     </p> : ''}
     <h1>
-      {props.selection.skill.desc || props.selection.skill.trivia ? <div title={'with comment'} className='skills-detail-view-icon'>
+      {props.selection.skill.desc ? <div title={'with comment'} className='skills-detail-view-icon'>
         <FontAwesomeIcon icon={['far', 'comment-dots']} />
       </div> : ''}
       <div className='skills-detail-view-mark' title={MARK_TOOLTIP[props.selection.skill.mark]}>{props.selection.skill.mark}</div>

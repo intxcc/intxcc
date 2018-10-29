@@ -54,7 +54,7 @@ const FallbackSkillsSkills = observer(props => (
         <a key={'fallback-skills-skill-' + skill.id} href={href} className='fallback-skills-simplified-skill-link' onClick={props.openSkillDetailsFunc}>
           <div
             className={'fallback-skills-list-item fallback-skills-simplified-skill' + (isSelected ? ' selected' : '')}>
-            <FallbackSkillsSkillMarkDisplay mark={skill.mark} /> {skill.desc || skill.trivia ? <FallbackSkillsSkillWithCommentsDisplay /> : ''} {skill.title}
+            <FallbackSkillsSkillMarkDisplay mark={skill.mark} /> {skill.desc ? <FallbackSkillsSkillWithCommentsDisplay /> : ''} {skill.title}
           </div>
         </a>
       )

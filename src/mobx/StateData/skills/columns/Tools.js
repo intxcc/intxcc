@@ -75,7 +75,7 @@ const ToolsColumn = {
         {
           title: 'LaTeX',
           mark: 2,
-          desc: 'I do everything that is a static document in LaTeX.',
+          desc: 'I do everything that is a static document in LaTeX. It just looks really pretty and professional.',
           trivia: '«It just looks really pretty and professional.» - Me'
         }, {
           title: 'Bash',

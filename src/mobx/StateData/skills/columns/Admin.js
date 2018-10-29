@@ -57,7 +57,7 @@ const AdminColumn = {
         }, {
           title: 'Postfix',
           mark: 1,
-          desc: 'See [Link|skill|Dovecot].'
+          trivia: 'See [Link|skill|Dovecot].'
         }, {
           title: 'Nextcloud',
           mark: 1,
@@ -73,7 +73,8 @@ const AdminColumn = {
       skills: [
         {
           title: 'Securing user data',
-          mark: 3
+          mark: 3,
+          desc: 'I value my own privacy, so It is also important for me to respect the privacy of my users. No password is saved or sent in plain text and I go great lengths disassemble all theoretical attack vectors on a user. Like [Link|skill|XSS], [Link|skill|SQLi], [Link|skill|XSRF], etc.'
         }, {
           title: 'XSRF',
           mark: 3,
@@ -88,13 +89,16 @@ const AdminColumn = {
           trivia: '"Transport Layer Security"'
         }, {
           title: 'CORS',
-          mark: 2
+          mark: 2,
+          trivia: '"Cross-origin resource sharing"'
         }, {
           title: 'XSS',
-          mark: 2
+          mark: 2,
+          trivia: '"Cross-site scripting"'
         }, {
           title: 'SQLi',
-          mark: 2
+          mark: 2,
+          trivia: '"SQL injection"'
         }, {
           title: 'iptables',
           mark: 1

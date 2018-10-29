@@ -31,10 +31,12 @@ const LanguagesColumn = {
           mark: 3
         }, {
           title: 'ES6',
-          mark: 3
+          mark: 3,
+          trivia: 'ES6 really made my life easier. Glad that babel does exist to transpile ES6 to ES5 for compatibility reasons.'
         }, {
           title: 'ReactJS',
-          mark: 3
+          mark: 3,
+          trivia: 'Yep, I\'d say I love ReactJS. But don\'t worry, I won\'t be mad if you hang around with it as well.'
         }, {
           title: 'MobX',
           mark: 3,

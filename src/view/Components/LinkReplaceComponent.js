@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
-import { escapeRegExp } from '../../miscFunctions'
+import { escapeRegExp, getNameIdentifierFromSkill } from '../../miscFunctions'
 
 const linkStart = '[Link'
 const linkDelimiter = '|'
@@ -25,7 +25,7 @@ function createLink (linkString, linkKey) {
       }
 
       return (
-        <a key={linkKey} href={'/#/skills/skill/' + skillName.toLowerCase()}>
+        <a key={linkKey} href={'/#/skills/skill/' + getNameIdentifierFromSkill({title: skillName})}>
           {skillName}
         </a>
       )

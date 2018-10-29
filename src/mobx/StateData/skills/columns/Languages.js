@@ -117,7 +117,7 @@ const LanguagesColumn = {
           title: 'MIPS',
           mark: 2,
           desc: 'Had it at university. Was really fun to learn how to write programs with it and how it gives you this very precise control of what the CPU should do.',
-          trivia: 'Once you\'re in the flow, it not even that hard to use it.'
+          trivia: 'Once you\'re in the flow, it\'s not even that hard to use it.'
         }, {
           title: 'PHP',
           mark: 2,

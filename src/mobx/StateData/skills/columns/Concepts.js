@@ -9,7 +9,7 @@ const ConceptsColumn = {
         {
           title: 'Coding Style Guides',
           mark: 3,
-          desc: 'I like standards, because It keeps me from learning ways, that only work for me. So even though this page was developed only by myself I\'m strictly using [Link|skill|Standard JS].'
+          desc: 'I like standards, because it keeps me from learning ways, that only work for me. So even though this page was developed only by myself I\'m strictly using [Link|skill|Standard JS].'
         }, {
           title: 'DRY',
           mark: 3,
@@ -21,7 +21,8 @@ const ConceptsColumn = {
         }, {
           title: 'RESTful',
           mark: 3,
-          desc: 'In my experience RESTful APIs are straight forward and integrate well with most languages. So up to now, I exclusively used them.'
+          desc: 'In my experience RESTful APIs are straight forward and integrate well with most languages.',
+          trivia: 'Up to now, I exclusively used RESTful APIs.'
         }, {
           title: 'Reusable Components',
           mark: 2,
@@ -34,7 +35,8 @@ const ConceptsColumn = {
         {
           title: 'Responsive Design',
           mark: 2,
-          desc: 'I think it\'s pretty straight forward, that this is a good idea. This page is responsive and still uses two seperated view models with a uniform state model. The seperated view models were neccessary to not be forced to compromise on design choices on the mobile or desktop version.'
+          desc: 'I think it\'s pretty straight forward, that this is a good idea. This website is responsive and still uses two seperated view models with a uniform state model.',
+          trivia: 'The seperated view models of this website were neccessary to not be forced to compromise on design choices on the mobile or desktop version.'
         }, {
           title: 'Material Design',
           mark: 2

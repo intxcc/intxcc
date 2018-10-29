@@ -9,7 +9,7 @@ const ToolsColumn = {
         {
           title: 'Photoshop',
           mark: 3,
-          desc: 'Not much to say. I like photographing, so its on my tool list for quite a while. When designing I use mostly vector graphics, but once in a while photoshop gets its place in the toolchain.'
+          desc: 'I like photographing, so its on my tool list for quite a while. When designing I use mostly vector graphics, but once in a while photoshop gets its place in the toolchain.'
         }, {
           title: 'Inkscape',
           mark: 3,
@@ -37,7 +37,8 @@ const ToolsColumn = {
         {
           title: 'Visual Studio Code',
           mark: 3,
-          desc: 'Moved from Dreamweaver to Brackets, then to [Link|skill|Atom] and now to Visual Studio Code. Was critical at first, because it is developed by Microsoft, but it is Open Source and Microsoft is loosening up a bit on its proprietary worldview lately, it seems.'
+          desc: 'Moved from Dreamweaver to Brackets, then to [Link|skill|Atom] and now to Visual Studio Code.',
+          trivia: 'Was critical at first, because it is developed by Microsoft, but it is Open Source and Microsoft is loosening up a bit on its proprietary worldview lately, it seems.'
         }, {
           title: 'Atom',
           mark: 3
@@ -50,7 +51,7 @@ const ToolsColumn = {
         }, {
           title: 'IntelliJ',
           mark: 2,
-          desc: 'I have never had such a nice developer experience like IntelliJ and Java. Eclipse is cool and all, and even though I\'m a fan of Open Source at the end of the day it is important for me what I can work with.',
+          desc: 'I have never had such a nice developing experience like IntelliJ and Java. Eclipse is cool and all, but even though I\'m a fan of Open Source at the end of the day it is most important for me what I can work with.',
           trivia: 'Have never used [Link|Skill|Visual Studio Code] with Java though. I would give that a try the next time I work on a Java project.'
         }
       ]
@@ -75,7 +76,7 @@ const ToolsColumn = {
         {
           title: 'LaTeX',
           mark: 2,
-          desc: 'I do everything that is a static document in LaTeX. It just looks really pretty and professional.',
+          desc: 'It just looks really pretty and professional. I do everything that is a static document in LaTeX.',
           trivia: '«It just looks really pretty and professional.» - Me'
         }, {
           title: 'Bash',

@@ -15,7 +15,7 @@ const GeneralColumn = {
           title: 'Windows',
           mark: 2,
           desc: 'Good understanding of the OS. Currently using Windows 10, but prior experience with XP, 7 and 8. Mostly use it because it runs some programs that are important for me, like Photoshop.',
-          trivia: 'I have some issues with Windows not respecting my privacy, but there is a tool for that.'
+          trivia: 'I have some issues with Windows not respecting my privacy, but there is a [Link|extern|tool|https://www.oo-software.com/shutup10] for that.'
         }
       ]
     }

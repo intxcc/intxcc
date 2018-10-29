@@ -1,7 +1,6 @@
 'use strict'
 
 import React from 'react'
-// import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
@@ -16,9 +15,5 @@ const AboutView = observer(props => (
     <LicenseAndImpressumLink />
   </div>
 ))
-
-// AboutView.propTypes = {
-//   global: PropTypes.object
-// }
 
 export default AboutView

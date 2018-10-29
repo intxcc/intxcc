@@ -1,7 +1,5 @@
 'use strict'
 
-// import ViewEntity from './model/ViewEntity'
-
 /**
  * Describes the three views.
  * @main - The view currently visible

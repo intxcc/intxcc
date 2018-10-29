@@ -1,5 +1,6 @@
 'use strict'
 
+/** The popup shown when a path is not valid or an object does not exist. */
 const POPUP_404 = {
   id: 'popup-404',
   className: 'popup-404',

@@ -1,5 +1,6 @@
 'use strict'
 
+/** Popup to explain the stories page. */
 const STORIES_EXPLANATION = {
   id: 'stories-explanation-popup',
   className: 'stories-explanation',

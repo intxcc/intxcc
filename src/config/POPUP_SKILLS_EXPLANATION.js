@@ -1,5 +1,6 @@
 'use strict'
 
+/** Popup to explain the skills page. */
 const SKILLS_EXPLANATION = {
   id: 'skills-explanation-popup',
   className: 'skills-explanation',

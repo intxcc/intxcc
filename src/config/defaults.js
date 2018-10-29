@@ -1,7 +1,7 @@
 'use strict'
 
 import Colors from '../../style/variables/colors.scss'
-
+/** Describes very basic but static configuration properties */
 const ProductionDefaults = {
   White: Colors.white,
   Black: Colors.black,
@@ -22,6 +22,7 @@ const ProductionDefaults = {
   neverUseFallback: false
 }
 
+// Use this if a development environment was detected and it is enabled
 const DevelopmentDefaults = {
   enableStartpageBackgroundVideo: false,
   showSkillFilterPerDefault: false,

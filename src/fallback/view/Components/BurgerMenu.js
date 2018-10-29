@@ -9,6 +9,7 @@ import { observer } from 'mobx-react'
 
 import { FallbackMenuEntries } from '../../../config/MenuEntries'
 
+/** The burger menu is the main menu of the fallback. It is mostly shown by 3 lines on the top left. */
 const BurgerMenuItem = observer(props => (
   <a className='burger-menu-entry-link' href={'#/' + (props.name === 'startpage' ? '' : props.name + '/')}>
     <div onClick={props.disableBurgerMenuFunc} className={'burger-menu-entry' + (props.selected ? ' selected' : '')}>

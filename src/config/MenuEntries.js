@@ -16,6 +16,7 @@ const DefaultMenuEntries = [
   }
 ]
 
+/** The fallback menu gets its own variable, because it has the startpage as an entry and the normal menu does not. */
 const FallbackMenuEntries = [
   {
     name: 'startpage',

@@ -25,7 +25,7 @@ const ConceptsColumn = {
         }, {
           title: 'Reusable Components',
           mark: 2,
-          desc: 'I don\' think there is much to say, why this is a good idea. I was e.g. happy to use the skills map on mobile devices and desktops. And thanks to the structure, I would be able to use it in a new project as well, if I have the urge for it.'
+          desc: 'I don\'t think there is much to say, as to why this is a good idea. I was for example happy to use the skills map on mobile devices and desktops. And thanks to the structure, I would be able to use it in a new project as well, if I have the urge for it.'
         }
       ]
     }, {
@@ -34,7 +34,7 @@ const ConceptsColumn = {
         {
           title: 'Responsive Design',
           mark: 2,
-          desc: 'I think it\'s pretty straight forward, that this is a good idea. This page is responsive and still uses two seperated view models with a uniform state model. The seperated view models were neccessary to not be forced to compromise on design choices on mobile or desktop.'
+          desc: 'I think it\'s pretty straight forward, that this is a good idea. This page is responsive and still uses two seperated view models with a uniform state model. The seperated view models were neccessary to not be forced to compromise on design choices on the mobile or desktop version.'
         }, {
           title: 'Material Design',
           mark: 2

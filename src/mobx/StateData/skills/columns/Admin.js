@@ -61,7 +61,7 @@ const AdminColumn = {
         }, {
           title: 'Nextcloud',
           mark: 1,
-          desc: 'My privacy is really important for me, that is why I host my own cloud, where I organize some parts of my life, like appointments, tasks, notes, contacts and the Deck-App. Also great: The nice android and thunderbird integration.'
+          desc: 'My privacy is really important for me, that is why I host my own cloud, where I organize some parts of my life, like appointments, tasks, notes and contacts. To organize the steps for this website I used the Deck-App. Also great: The nice android and thunderbird integration.'
         }, {
           title: 'Roundcube',
           mark: 1,
@@ -74,7 +74,7 @@ const AdminColumn = {
         {
           title: 'Securing user data',
           mark: 3,
-          desc: 'I value my own privacy, so It is also important for me to respect the privacy of my users. No password is saved or sent in plain text and I go great lengths disassemble all theoretical attack vectors on a user. Like [Link|skill|XSS], [Link|skill|SQLi], [Link|skill|XSRF], etc.'
+          desc: 'I value my own privacy, so It is also important for me to respect the privacy of my users. No password is saved or sent in plain text and I go great lengths to disassemble all theoretical attack vectors on a user. Like [Link|skill|XSS], [Link|skill|SQLi], [Link|skill|XSRF], etc.'
         }, {
           title: 'XSRF',
           mark: 3,

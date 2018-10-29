@@ -40,7 +40,8 @@ const LanguagesColumn = {
         }, {
           title: 'MobX',
           mark: 3,
-          desc: 'Including MST (MobX state tree).'
+          desc: 'Including MST (MobX state tree).',
+          trivia: 'This site uses MobX 4 (LTS) for compatibility reasons.'
         }, {
           title: 'Canvas',
           mark: 2

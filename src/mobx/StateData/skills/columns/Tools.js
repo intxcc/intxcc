@@ -17,7 +17,7 @@ const ToolsColumn = {
         }, {
           title: 'Illustrator',
           mark: 2,
-          trivia: 'I\'m also not a fan of monopolistic software companies, but Adobe just makes good tools.'
+          trivia: 'I\'m also not a big fan of almost monopolistic software companies, but Adobe just makes good tools.'
         }, {
           title: 'Blender',
           mark: 2,

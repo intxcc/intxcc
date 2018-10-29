@@ -36,7 +36,7 @@ function filterSkill (skill, filter) {
 
   let withCommentsPassed = true
   if (filter.options['with-comments']) {
-    if (!skill.desc && !skill.trivia) {
+    if (!skill.desc) {
       withCommentsPassed = false
     }
   }

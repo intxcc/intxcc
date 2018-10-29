@@ -19,10 +19,6 @@ class BackgroundVideo extends React.Component {
   }
 
   componentDidMount () {
-    if (this.video) {
-      this.video.play()
-    }
-
     this.checkIfShouldStop()
   }
 

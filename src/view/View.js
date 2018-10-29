@@ -37,6 +37,7 @@ class View extends React.Component {
 
     this.componentDidMount = this.componentDidMount.bind(this)
     this.componentWillUnmount = this.componentWillUnmount.bind(this)
+    this.onKeyDown = this.onKeyDown.bind(this)
     this.setReferences = this.setReferences.bind(this)
     this.setScrollTop = this.setScrollTop.bind(this)
     this.viewContentScroll = this.viewContentScroll.bind(this)
@@ -52,14 +53,21 @@ class View extends React.Component {
 
     const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
     if (handleOnKeyDown !== null) {
-      window.addEventListener('keydown', handleOnKeyDown)
+      window.addEventListener('keydown', this.onKeyDown)
     }
   }
 
   componentWillUnmount () {
     const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
     if (handleOnKeyDown !== null) {
-      window.removeEventListener('keydown', handleOnKeyDown)
+      window.removeEventListener('keydown', this.onKeyDown)
+    }
+  }
+
+  onKeyDown (e) {
+    const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
+    if (handleOnKeyDown !== null) {
+      handleOnKeyDown(e)
     }
   }
 

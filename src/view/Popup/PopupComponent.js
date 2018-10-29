@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { observer } from 'mobx-react'
 
+/** Descibes a normal popup. Is used in fallback and normal view. */
 const PopupComponent = observer(props => (
   <div className={'popup ' + props.className}>
     <h1>{props.title}</h1>

@@ -2,6 +2,7 @@
 
 import DefaultModel from './DefaultModel'
 
+/** This model is active, when the article is in focus, to not overlay the content with the headline, we just use a quite small sticky header. */
 const ArticleFocusModel = JSON.parse(JSON.stringify(DefaultModel))
 
 ArticleFocusModel.className = 'variant--article-focus'

@@ -10,6 +10,7 @@ import viewEntities from './viewEntities'
 import StateModel from './StateModels/StateModel'
 import StateData from './StateData/StateData'
 
+// Create an entity of the RootStoreModel
 const store = RootStoreModel.create({
   id: 'root-store',
   router: RouterModel.create({

@@ -14,6 +14,7 @@ import Style from '../../../style/variables/global.scss'
 
 import Defaults from '../../config/defaults'
 
+/** If we don't need to morph a polygon, just draw it. */
 const Polygon = observer((props) => (
   <path
     d={props.path}
@@ -30,6 +31,7 @@ Polygon.propTypes = {
   strokeWidth: PropTypes.number
 }
 
+/** Descibes how to morph between polygons. */
 const PolygonMorph = observer((props) => {
   const interpolator = interpolate(props.path1, props.path2, { maxSegmentLength: 5 })
 
@@ -72,6 +74,7 @@ PolygonMorph.propTypes = {
   strokeWidth2: PropTypes.number
 }
 
+/** Descibes how to draw the polygons. */
 const PolygonsComponent = observer((props) => (
   values(props.polygons).map((polygon, key) => {
     key = props.polygonKeys[key]

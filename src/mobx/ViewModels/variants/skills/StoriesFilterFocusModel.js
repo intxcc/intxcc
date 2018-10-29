@@ -2,6 +2,7 @@
 
 import DefaultModel from './DefaultModel'
 
+/** This model is active, to expand the stories filter on the skills page. */
 const StoriesFilterFocusModel = JSON.parse(JSON.stringify(DefaultModel))
 
 StoriesFilterFocusModel.className = 'variant--stories-filter-focus'

@@ -8,6 +8,7 @@ import { observer } from 'mobx-react'
 import SkillsMapZoom from './SkillsMapZoom'
 import SkillsMapColumns from './SkillsMapColumns'
 
+/** The skillsmap is a pretty way to get an overview of all my skills */
 const SkillsMap = observer((props) => (
   <div onMouseDown={props.state.onMouseDown}
     onMouseUp={props.state.onMouseUp}

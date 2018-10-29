@@ -49,7 +49,9 @@ GuideMorph.propTypes = {
   to2: PropTypes.object
 }
 
+/** The guide lines are used only in the background, to draw the polygons or put text at the intersections. In production they will not be shown, but in development it is important to know where they are. */
 const GuidesComponent = observer((props) => {
+  // If the guides are disabled, skip this whole component for performance reasons
   if (!Defaults.showGuides) {
     return ''
   }

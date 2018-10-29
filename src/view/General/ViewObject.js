@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+/** Describes a view object, that is positioned at e.g. an intersection of helper lines. This Component is internally used to position it. */
 const ViewObject = observer((props) => {
   if (!props.object) {
     return ''

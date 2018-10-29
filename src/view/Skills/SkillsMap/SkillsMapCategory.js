@@ -7,6 +7,7 @@ import { observer } from 'mobx-react'
 
 import SkillsMapItem from './SkillsMapItem'
 
+/** Descibes a category on the skill map, with an array of skills */
 const SkillsMapCategory = observer((props) => (
   <div className={'skills-map-category' + (props.selected ? ' category-selected' : '')}>
     <div className={'skills-map-category-inner'}>

@@ -4,6 +4,7 @@ import React from 'react'
 
 import Defaults from '../../config/defaults'
 
+/** Describes the path of the GLPv3 logo. We do this here, because the colors should be uniform and laoded from the defaults. */
 const GLPv3LogoPath = (props) => (
   <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 720 358' width={720} height={358} version='1.1'>
     <g id='g1' transform='translate(-26.149211,-6.9701601)'>

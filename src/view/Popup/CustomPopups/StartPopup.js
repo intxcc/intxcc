@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import { observer } from 'mobx-react'
 
+/** Describes the popup on the startpage. It is not persistent. */
 const StartPopup = observer(props => (
   <div className='popup start-popup'>
     <h2>

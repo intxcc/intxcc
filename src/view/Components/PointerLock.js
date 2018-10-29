@@ -3,6 +3,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+/** This Component can lock the pointer and call a callback with the move delta of the pointer and is used on this website as an option to move the map */
 class PointerLock extends React.Component {
   constructor (props) {
     super(props)

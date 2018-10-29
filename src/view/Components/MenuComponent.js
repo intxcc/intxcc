@@ -9,6 +9,7 @@ import { DefaultMenuEntries } from '../../config/MenuEntries'
 
 import GLPv3LogoPath from './GLPv3LogoPath'
 
+/** Describes the menu at the bottom of the normal version of the website */
 const MenuComponent = observer((props) => {
   let menuEntries = []
 

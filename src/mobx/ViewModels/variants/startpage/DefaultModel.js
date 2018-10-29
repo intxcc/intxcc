@@ -3,7 +3,7 @@
 import Colors from '../../../../../style/variables/colors.scss'
 import Defaults from '../../../../config/defaults'
 
-// This is the ViewModel of the stories view
+// This is the ViewModel of the startpage view
 
 const VariantModel = {
   logoClassName: 'logo-big',

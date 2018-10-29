@@ -7,6 +7,7 @@ import { observer } from 'mobx-react'
 
 import MYAGE from '../../config/MyAge'
 
+/** Describes the text about me on the about page */
 const AboutTextComponent = observer((props) => (
   <div className={(props.fallback ? 'fallback-' : '') + 'about-text-wrapper'}>
     {props.includeFallbackPicture ? <img className='fallback-about-picture' alt='Picture of me with triangles.' src='/fallback_pic.png' /> : ''}

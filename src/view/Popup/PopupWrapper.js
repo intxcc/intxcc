@@ -22,6 +22,7 @@ const CustomPopups = {
   'StartPopup': StartPopup
 }
 
+/** This component makes sure to transition popup enter and leaves and makes sure escape closed the popup. Is used in the fallback and normal version of the website. */
 @observer
 class PopupWrapper extends React.Component {
   constructor (props) {

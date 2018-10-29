@@ -23,6 +23,7 @@ AboutTableItem.propTypes = {
   text: PropTypes.string
 }
 
+/** Describes the table with some basic info about me on the about page */
 const AboutTableComponent = observer((props) => (
   <ul className={'about-table-component'}>
     <AboutTableItem title='name' text='Marvin Alexander Rüll' />
@@ -33,10 +34,5 @@ const AboutTableComponent = observer((props) => (
     <AboutTableItem title='favorite subfield' text='Web Design &amp; Development' />
   </ul>
 ))
-
-// AboutTableComponent.propTypes = {
-//   state: PropTypes.object,
-//   columns: PropTypes.object
-// }
 
 export default AboutTableComponent

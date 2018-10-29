@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { observer } from 'mobx-react'
 
+/** Describes the zoom controls for the skill map. Is used from the normal and the fallback view, but with different style. */
 const SkillsMapZoom = observer((props) => (
   <div className='skills-map-zoom-wrapper'>
     <div className='skills-map-zoom-btn'>

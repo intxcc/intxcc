@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 import { keys } from 'mobx'
 
+/** The helper divs are used to position the guide lines, that help in the background, to draw the polygons. */
 const HelperDivsComponent = observer((props) => {
   return keys(props.guides).map((key) => (
     <div

@@ -9,6 +9,7 @@ import StateModel from './StateModels/StateModel'
 import ViewModel from './model/ViewModel'
 import ViewEntity from './model/ViewEntity'
 
+/** The RootStoreModel holds the complete state of the App */
 const RootStoreModel = types.model({
   id: types.identifier,
   router: RouterModel,

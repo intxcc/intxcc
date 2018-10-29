@@ -7,6 +7,7 @@ import { observer } from 'mobx-react'
 
 import SkillsMapCategory from './SkillsMapCategory'
 
+/** Descibes an column on the skill map, with an array of categories */
 const SkillsMapColumn = observer((props) => (
   <div className={'skills-map-column' + (props.selected ? ' column-selected' : '')}>
     <h1>

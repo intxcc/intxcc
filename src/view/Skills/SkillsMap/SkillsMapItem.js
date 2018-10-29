@@ -10,6 +10,11 @@ import { getNameIdentifierFromSkill } from '../../../miscFunctions'
 
 import MARK_TOOLTIP from '../../../config/MarkTooltips'
 
+/** Descibes how a single skill is rendered.
+ * If the skill is selected we render it as a component, so when this component is mounted, we get a callback and can center the selected skill.
+ * If the skill is not selected use an arrow function to describe the skill, for performance reasons.
+ */
+
 const SkillsItemInner = observer((props) => (
   <div className='skills-map-item-inner'>
     {props.skill.desc ? <div title={'with comment'} className='skills-map-item-comment-icon'>
@@ -40,6 +45,7 @@ SkillsMapItemConst.propTypes = {
   skill: PropTypes.object
 }
 
+// This component is used for selected skills
 @observer
 class SkillsMapItemComponent extends React.Component {
   constructor (props) {
@@ -53,11 +59,13 @@ class SkillsMapItemComponent extends React.Component {
     this.render = this.render.bind(this)
   }
 
+  // Set isActive to false, so the callback from a timout knows to not do anything anymore, so react won't throw errors
   componentWillUnmount () {
     this.isActive = false
   }
 
   updateSelectedPosition () {
+    // If component did already unmount, do nothing
     if (!this.isActive) {
       return
     }
@@ -68,6 +76,7 @@ class SkillsMapItemComponent extends React.Component {
       return
     }
 
+    // Center the skill on the skill map
     const boundingClientRect = this.div.getBoundingClientRect()
     this.props.centerMapFunc(boundingClientRect.right, boundingClientRect.bottom)
   }
@@ -93,6 +102,7 @@ SkillsMapItemComponent.propTypes = {
   centerMapFunc: PropTypes.func
 }
 
+// Just a link wrapper, so we do not have to have redundant code
 const SkillsMapItemLinkWrapper = observer(props => {
   if (props.useSelectCallback && typeof props.useSelectCallback === 'function') {
     return (
@@ -118,6 +128,7 @@ SkillsMapItemLinkWrapper.propTypes = {
   children: PropTypes.object
 }
 
+// The actual Component used by the skill category to render skills, it decides wether to use a Component with onMount functions or arrow functions
 const SkillsMapItem = observer((props) => {
   if (props.selected) {
     return (

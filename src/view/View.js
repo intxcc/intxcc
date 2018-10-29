@@ -52,6 +52,7 @@ class View extends React.Component {
     this.setScrollTop()
 
     const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
+    // Only addEventListener listener when the state has a handleOnKeyDown function, but don't bind it directly, because this will cause a race condition of another view with the same state removing it
     if (handleOnKeyDown !== null) {
       window.addEventListener('keydown', this.onKeyDown)
     }
@@ -64,6 +65,7 @@ class View extends React.Component {
     }
   }
 
+  // We don't directly bind the handleOnKeyDown, because this would cause a race condition of another view with the same state removing it. Instead we forward the event here
   onKeyDown (e) {
     const handleOnKeyDown = this.props.state && this.props.state.handleOnKeyDown ? this.props.state.handleOnKeyDown : null
     if (handleOnKeyDown !== null) {

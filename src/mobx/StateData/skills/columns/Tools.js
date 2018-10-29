@@ -37,7 +37,7 @@ const ToolsColumn = {
         {
           title: 'Visual Studio Code',
           mark: 3,
-          desc: 'Moved from Dreamweaver to Brackets, then to [Link|skill|Atom] and now to Visual Studio Code. Was critical at first, because it is developed by Microsoft, but it is Open Source and Microsoft is loosening up a bit on its proprietary world view lately, it seems.'
+          desc: 'Moved from Dreamweaver to Brackets, then to [Link|skill|Atom] and now to Visual Studio Code. Was critical at first, because it is developed by Microsoft, but it is Open Source and Microsoft is loosening up a bit on its proprietary worldview lately, it seems.'
         }, {
           title: 'Atom',
           mark: 3
@@ -76,7 +76,7 @@ const ToolsColumn = {
           title: 'LaTeX',
           mark: 2,
           desc: 'I do everything that is a static document in LaTeX.',
-          trivia: 'It just looks really pretty and professional.'
+          trivia: '«It just looks really pretty and professional.» - Me'
         }, {
           title: 'Bash',
           mark: 2

@@ -74,7 +74,7 @@ const AdminColumn = {
         {
           title: 'Securing user data',
           mark: 3,
-          desc: 'I value my own privacy, so It is also important for me to respect the privacy of my users. No password is saved or sent in plain text and I go great lengths to disassemble all theoretical attack vectors on a user. Like [Link|skill|XSS], [Link|skill|SQLi], [Link|skill|XSRF], etc.'
+          desc: 'I value my own privacy, so It is important for me to respect the privacy of my users as well. No password is saved or sent in plain text and I go great lengths to disassemble all theoretical attack vectors known to me on a user. Like [Link|skill|XSS], [Link|skill|SQLi], [Link|skill|XSRF], etc.'
         }, {
           title: 'XSRF',
           mark: 3,

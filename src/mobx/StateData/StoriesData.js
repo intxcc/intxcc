@@ -4,6 +4,7 @@ import Defaults from '../../config/defaults'
 import POPUP_STORIES_EXPLANATION from '../../config/POPUP_STORIES_EXPLANATION'
 
 import Pandatrek from './stories/Pandatrek'
+import IntxccServer from './stories/IntxccServer'
 import Thehackcamporg from './stories/Thehackcamporg'
 import OwnTrack from './stories/OwnTrack'
 import PyAudioPortAudio from './stories/PyAudioPortAudio'
@@ -12,6 +13,7 @@ import Intxcc from './stories/Intxcc'
 
 const stories = [
   Pandatrek,
+  IntxccServer,
   Thehackcamporg,
   OwnTrack,
   PyAudioPortAudio,

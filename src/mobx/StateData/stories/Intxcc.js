@@ -30,7 +30,7 @@ const StoryData = {
     'windows',
     'yarn'
   ],
-  summary: 'People always ask me: "What is intxcc?". Alright. No, they don\'t. I would not be comfortable if that is the first question you ask me. Maybe the third - To make it short, its my home on the internet. Where I have my own cloud, mailserver and a website that displays my work and the skills I acquired over the years. Because they could be appealing and useful to you and so one could imagine you read through some of this and might want to contact me. So if you ask me: This site is for you. ❤'
+  summary: 'People always ask me: "What is intxcc?" - Alright. No, they don\'t. I would not be comfortable if this would be the first question you\'d ask me. Maybe the third - To make it short, its my home on the internet. Where I have my own cloud, mailserver and a website that displays my work and the skills I acquired over the years. Because they could be appealing and useful to you and so one could imagine you read through some of this and might want to contact me. So if you ask me: This site is for you. ❤'
 }
 
 export default StoryData

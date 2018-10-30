@@ -16,11 +16,11 @@ const StoryText = (
     <br />
     This was one of the shorter projects, (1 to 3 days, without the time for maintenance) but one of the most challenging. I learned a lot and am now far more comfortable with code I did not write myself.<br />
     <br />
-    The project is licensed under the MIT license - like the projects I forked from - and includes precompiled libraries. It is also still maintained by me with a good response time to issues and I merged some changes from the forks of my repository. Its github page has around 100 unique visits every week with a good google rank.<br />
+    The project is licensed under the MIT license - like the projects I forked from - and includes precompiled libraries. It is also still maintained by me with a good response time to issues and I merged some changes from the forks of my repository. Its GitHub page has around 100 unique visits every week with a good google rank.<br />
     <br />
     In conclusion I created a repository that did not only solve my problem but the problem of a lot of people. And my arduino-pyaudio-portaudio led strips work like a charm.<br />
     <br />
-    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/pyaudio_portaudio'>the project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>github page</a>.
+    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/pyaudio_portaudio'>the project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>GitHub page</a>.
   </p>
 )
 

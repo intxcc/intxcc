@@ -6,7 +6,7 @@ const StoryText = (
   <p>
     The intention of thehackcamp.org was educational and to catch attention. To convey some basic knowledge about IT security. The objective was to awaken peoples curiosity and to interest them for security in the IT world.<br />
     <br />
-    This is why the design was strictly adapted to the target group. To paint a mystical and powerful picture. Orange on black. Text white. Minimalistic. No rounded corners. There was a warning before one could visit the site, a hidden service, a manifest and as background image with serious looking people in suits and guy fawkes masks, that merge into the black background.<br />
+    This is why the design was strictly adapted to the target group. To paint a mystical and powerful picture. Orange on black. Text white. Minimalistic. No rounded corners. There was a warning before one could visit the site, a hidden service, a manifest and as background an image with serious looking people in suits and guy fawkes masks, that merge into the black background.<br />
     <br />
     To make the site popular I did guerrilla marketing myself on various darknet sites. Also there was a countdown before the start of the website and an invite system.<br />
     <br />

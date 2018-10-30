@@ -10,7 +10,7 @@ const StoryText = (
     <br />
     The server part receiving tracking data from the app is a very slim self hosted and open source PHP script to minimize any attack vectors.<br />
     <br />
-    The server part that visualizes the data is a python script. It reads the position data of a given timeframe from the database, then it calculates which parts of the map we need to download to illustrate them. We download this tile of the map via the Openstreetmap API and do some math magic to calculate where to draw the dots on the map (the script downloads the map tile as png and draws on it with using ImageDraw). The data never leaves this python script, the only thing Openstreetmap would know is the very very rough area one was in, as it would be an overkill to download the complete map.<br />
+    The server part that visualizes the data is a python script. It reads the position data of a given timeframe from the database and calculates which tile of the map we need to download to illustrate them. We download this tile of the map via the Openstreetmap API and do some math magic to calculate where to draw the dots on the map (the script downloads the map tile as png and draws on it using ImageDraw). The data never leaves this python script and the device its running on. The only thing Openstreetmap would know is the very very rough area one was in, as it would be an overkill to download the complete map.<br />
     <br />
     <i>
       If you are interested, <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/blob/master/server/private/draw_map.py#L11'>here</a> the points are calculated.
@@ -18,11 +18,11 @@ const StoryText = (
     <br />
     As you can imagine this app is not very popular. (Currently 3 stars and 2 forks on github.) That is of course, because it has only a limited use case and one needs knowledge about how to run a server to make use of it.<br />
     <br />
-    Still to make it useful for a broader audience I documented the project itself and the code really well. Even made a <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=RQiMUfzfB94'>youtube tutorial</a>.<br />
+    Still to make it useful for a broader audience I documented the project itself and the code really well. Even made a <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=RQiMUfzfB94'>youtube tutorial</a>. A Step-by-Step guide from setting up an ubuntu server to a working instance of the OwnTrack backend.<br />
     <br />
     Since this project I have a google developer license to upload my own apps to the google playstore.<br />
     <br />
-    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/'>this project</a> with <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/#latest-screenshots'>screenshots</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>github page</a>.
+    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/'>the project</a> with <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/#latest-screenshots'>screenshots</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>github page</a>.
   </p>
 )
 

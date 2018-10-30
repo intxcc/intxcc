@@ -12,7 +12,9 @@ const StoryText = (
     <br />
     The site worked as the requirements stated, altough I have to say this site would never have met the quality demands I have today towards myself. So it was a project from which I got mostly a lot of experience.<br />
     <br />
-    And just in case you are wondering: No, I don&apos;t have the 35 Bitcoin anymore that I was payed before the last payment. I was young and spent the money - back then ~1000€ - on everyday stuff. No regrets.
+    And just in case you are wondering: No, I don&apos;t have the 35 Bitcoin anymore that I was payed before the last payment. I was young and spent the money - back then ~1000€ - on everyday stuff. No regrets.<br />
+    <br />
+    A working backup does exist.
   </p>
 )
 

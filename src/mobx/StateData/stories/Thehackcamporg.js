@@ -20,7 +20,7 @@ const StoryData = {
     'xsrf',
     'xss'
   ],
-  summary: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.'
+  summary: 'I would say this project is outstanding in my portfolio. Not because it was the best thing I ever uploaded, but this hidden service/website was the most interesting and fun for me to establish in the darknet. To create a mystical aura around the project and to catch the attention of (metaphorically) everybody standing by.'
 }
 
 export default StoryData

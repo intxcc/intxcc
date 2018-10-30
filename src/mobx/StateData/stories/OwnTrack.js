@@ -16,7 +16,7 @@ const StoryData = {
     'php',
     'python'
   ],
-  summary: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.'
+  summary: 'The basic concept is a self hosted tracking app for privacy aware people. It\'s quite a niche project, but I wrote it mostly fitting my own usecase anyway. Nevertheless I put great demands to the documentation to make it available for anybody obtaining a copy. With a complete youtube tutorial, a play store entry and a well documented code base.'
 }
 
 export default StoryData

@@ -160,12 +160,12 @@ article {
   }
 
   .h2-spacer {
-    margin: $articles-h2-spacer-margin-top-bottom 4vmax;
+    // margin: $articles-h2-spacer-margin-top-bottom 4vmax;
 
-    border-radius: $articles-h2filler-width / 2;
-    background-color: $black;
+    // border-radius: $articles-h2filler-width / 2;
+    // background-color: $black;
 
-    height: $articles-h2filler-width;
+    height: $articles-h2-spacer-margin-top-bottom;
   }
 
   p {

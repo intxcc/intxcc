@@ -19,7 +19,7 @@ const StoryData = {
     'roundcube',
     'iptables'
   ],
-  summary: 'VERY CLEVER TEXT'
+  summary: 'The server behind intx.cc is a root server running debian, with various tools set up for my convenience. It is mainly used as my cloud, mail server and prototyping server.'
 }
 
 export default StoryData

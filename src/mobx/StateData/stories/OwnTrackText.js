@@ -4,17 +4,25 @@ import React from 'react'
 
 const StoryText = (
   <p>
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />
+    I got the main idea, when my smartphone was stolen, but I disabled all tracking services for privacy reasons. Because I did not want google to track my position, to get my smatphone back again if it would be stolen again I developed my own solution. This solution should come without strings attached to any second or third parties. All data stays on the devices of the users, that use this app at all times. The android app und the software environment to make it work are licensed as free software by me.<br />
     <br />
-    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.<br />
+    The server works with Openstreetmap, without disclosing the position information even to this service, used to visualize the data. That was one of the hardest parts to implement, but I found a way that satisfied me.<br />
     <br />
-    Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.<br />
+    The server part receiving tracking data from the app is a very slim self hosted and open source PHP script to minimize any attack vectors.<br />
     <br />
-    Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<br />
+    The server part that visualizes the data is a python script. It reads the position data of a given timeframe from the database, then it calculates which parts of the map we need to download to illustrate them. We download this tile of the map via the Openstreetmap API and do some math magic to calculate where to draw the dots on the map (the script downloads the map tile as png and draws on it with using ImageDraw). The data never leaves this python script, the only thing Openstreetmap would know is the very very rough area one was in, as it would be an overkill to download the complete map.<br />
     <br />
-    Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.<br />
+    <i>
+      If you are interested, <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/blob/master/server/private/draw_map.py#L11'>here</a> the points are calculated.
+    </i><br />
     <br />
-    At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+    As you can imagine this app is not very popular. (Currently 3 stars and 2 forks on github.) That is of course, because it has very limited use cases and one needs knowledge about how to run a server to make use of it.<br />
+    <br />
+    Still to make it useful for a broader audience I documented the project itself and the code really well. Even made a <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=RQiMUfzfB94'>youtube tutorial</a>.<br />
+    <br />
+    Since this project I have a google developer license to upload my own apps to the google playstore.<br />
+    <br />
+    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/'>this project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>github page</a>.
   </p>
 )
 

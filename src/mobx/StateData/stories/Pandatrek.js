@@ -18,7 +18,7 @@ const StoryData = {
     'mysql',
     'php'
   ],
-  summary: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.'
+  summary: 'The first job I\'ve ever done, while I was still in school. I got the requirements in a pdf-file and completed the job in about 150 work hours. The task at hand was a carsharing site for an australian person. All payments were payed to me in bitcoin. Sadly, as bitcoin skyrocketed he or she was not a fan of the project anymore and stopped paying me, so the website is not available anymore.'
 }
 
 export default StoryData

@@ -4,15 +4,21 @@ import React from 'react'
 
 const StoryText = (
   <p>
-    At the beginning there was a problem: I played around with my arduino and some led strips and wanted them to &quot;move&quot; to the rythm of the music. In specific to change the color values and luminosity with the rhythm.<br />
+    In the beginning there was a problem: I played around with my arduino and some led strips and wanted them to &quot;move&quot; to the rythm of the music. In specific to change the color values and luminosity with the rhythm.<br />
     <br />
-    To extract patterns from music there was already the python module <a target='_blank' rel='noopener noreferrer' href='https://aubio.org/'>aubio</a> (In specific energy based onset detection function) and because I like something straight-forward for this use case I decided to use python. To my surprise there was only a solution to record input streams in python, so after searching for better solutions I started to fork PyAudio with Portaudio, to make use of the <a target='_blank' rel='noopener noreferrer' href='https://docs.microsoft.com/de-de/windows/desktop/CoreAudio/loopback-recording'>AUDCLNT_STREAMFLAGS_LOOPBACK</a> flag in the Windows Audio Sesssion API (WASAPI).<br />
+    To extract patterns from music there was already the python module <a target='_blank' rel='noopener noreferrer' href='https://aubio.org/'>aubio</a> (in specific the energy based onset detection function) and because I wanted something straight-forward for this use case I decided to use python in whole project.<br />
     <br />
-    That was a really interesting project, because it was the first time I worked with code not written by myself and needed to understand it with only a very slim documentation. The most challenging part was to understand how the library works and how I can edit/extend the in C written code to make everything works as expected. After that I needed to learn how C bindings work with python to integrate everything in my forked module.<br />
+    To my surprise there was only a solution to record input streams, like the microphone, in python. But I wanted something universally working for all applications playing music. So I needed to find a way to record the output stream going to the speakers. With that stream one could record a few milliseconds and apply the onset detection function to it.<br />
     <br />
-    This was one of the shorter projects, (1 to 3 days, without the time for maintenance) but one of the most challenging. I learned a lot and am far more comfortable with code I did not write myself.<br />
+    After searching but not finding a better solution, I started to fork PyAudio with Portaudio, to make use of the <a target='_blank' rel='noopener noreferrer' href='https://docs.microsoft.com/windows/desktop/CoreAudio/loopback-recording'>AUDCLNT<i>[...]</i>LOOPBACK</a> flag in the Windows Audio Session API (WASAPI).<br />
     <br />
-    The project is licensed under the MIT license - like the projects I forked from - abd includes precompiled libraries. It is also still maintained by me with a good response time to issues. Around 100 unique visits are on its github page every week and it does have a good google rank.<br />
+    That was a really interesting project, because it was the first time I worked in-depth with code not written by myself and needed to understand it with only a very slim documentation. The most challenging part was to understand how the portaudio library works and how I can edit/extend the in C written code to make everything working as expected. After that I learned how C bindings worked with python, extended the PyAudio module to work with my portaudio fork and integrated and documented everything to a finished module.<br />
+    <br />
+    This was one of the shorter projects, (1 to 3 days, without the time for maintenance) but one of the most challenging. I learned a lot and am now far more comfortable with code I did not write myself.<br />
+    <br />
+    The project is licensed under the MIT license - like the projects I forked from - and includes precompiled libraries. It is also still maintained by me with a good response time to issues and I merged some changes from the forks of my repository. Its github page has around 100 unique visits every week with a good google rank.<br />
+    <br />
+    In conclusion I created a repository that did not only solve my problem but the problem of a lot of people. And my arduino-pyaudio-portaudio led strips work like a charm.<br />
     <br />
     See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/pyaudio_portaudio'>the project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>github page</a>.
   </p>

@@ -8,7 +8,7 @@ const StoryText = (
     <br />
     To extract patterns from music there was already the python module <a target='_blank' rel='noopener noreferrer' href='https://aubio.org/'>aubio</a> (in specific the energy based onset detection function) and because I wanted something straight-forward for this use case I decided to use python in whole project.<br />
     <br />
-    To my surprise there was only a solution to record input streams, like the microphone, in python. But I wanted something universally working for all applications playing music. So I needed to find a way to record the output stream going to the speakers. With that stream one could record a few milliseconds and apply the onset detection function to it.<br />
+    To my surprise the only solutions I found, were to record input streams, like the microphone, in python. But I wanted something universally working for all applications playing music. So I needed to find a way to record the output stream going to the speakers. With that stream one could record a few milliseconds and apply the onset detection function to it.<br />
     <br />
     After searching but not finding a better solution, I started to fork PyAudio with Portaudio, to make use of the <a target='_blank' rel='noopener noreferrer' href='https://docs.microsoft.com/windows/desktop/CoreAudio/loopback-recording'>AUDCLNT<i>[...]</i>LOOPBACK</a> flag in the Windows Audio Session API (WASAPI).<br />
     <br />

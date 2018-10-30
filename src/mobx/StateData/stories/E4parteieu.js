@@ -35,7 +35,7 @@ const StoryData = {
     'xsrf',
     'xss'
   ],
-  summary: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.'
+  summary: 'This was a project focussed on creating a new political party that rooted in a german subreddit on the social media platform reddit. I was the technical lead, responsible for the complete collaborative infrastructure. From backend to frontend. From running a secure debian server with all kinds of tools to connect everybody working together on this project, to creating a website with a customized poll platform with reddit API integration.'
 }
 
 export default StoryData

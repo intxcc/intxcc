@@ -61,7 +61,7 @@ class PopupWrapper extends React.Component {
                 {popup.customComponent !== '' && CustomPopups[popup.customComponent] ? React.createElement(CustomPopups[popup.customComponent], {
                   closeFunc: () => this.props.closeFunc(popup.id),
                   popup: popup
-                }) : <PopupComponent key={popup.id} closeFunc={() => this.props.closeFunc(popup.id)} className={popup.className} title={popup.title} text={popup.text} hint={hint} />}
+                }) : <PopupComponent key={popup.id} closeFunc={() => this.props.closeFunc(popup.id)} className={popup.className} title={popup.title} text={popup.text} hint={hint} trivia={popup.trivia} />}
               </CSSTransition>
             )
           })}

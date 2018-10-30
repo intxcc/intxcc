@@ -22,7 +22,12 @@ const PopupComponent = observer(props => (
       </div>
       {props.hint && props.hint !== '' ? (
         <div className='popup-hint'>
-          <i>{props.hint}</i>
+          {props.hint}
+        </div>
+      ) : ''}
+      {props.trivia && props.trivia !== '' ? (
+        <div className='popup-trivia'>
+          <i>{props.trivia}</i>
         </div>
       ) : ''}
     </div>
@@ -34,7 +39,8 @@ PopupComponent.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   text: PropTypes.string,
-  hint: PropTypes.string
+  hint: PropTypes.string,
+  trivia: PropTypes.string
 }
 
 export default PopupComponent

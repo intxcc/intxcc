@@ -4,7 +4,7 @@ import React from 'react'
 
 const StoryText = (
   <p>
-    I got the main idea, when my smartphone was stolen, but I disabled all tracking services for privacy reasons. Because I did not want google to track my position, to get my smatphone back again if it would be stolen again I developed my own solution. This solution should come without strings attached to any second or third parties. All data stays on the devices of the users, that use this app at all times. The android app und the software environment to make it work are licensed as free software by me.<br />
+    I got the main idea, when my smartphone was stolen, but I disabled all tracking services for privacy reasons. Because I did not want google to track my position, to get my smatphone back again if it would be stolen again I developed my own solution. This solution should come without strings attached to any second or third parties. All data stays on the devices of the users, that use this app at all times. The android app and the software environment to make it work are licensed as free software.<br />
     <br />
     The server works with Openstreetmap, without disclosing the position information even to this service, used to visualize the data. That was one of the hardest parts to implement, but I found a way that satisfied me.<br />
     <br />

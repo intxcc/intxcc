@@ -16,13 +16,13 @@ const StoryText = (
       If you are interested, <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/blob/master/server/private/draw_map.py#L11'>here</a> the points are calculated.
     </i><br />
     <br />
-    As you can imagine this app is not very popular. (Currently 3 stars and 2 forks on github.) That is of course, because it has very limited use cases and one needs knowledge about how to run a server to make use of it.<br />
+    As you can imagine this app is not very popular. (Currently 3 stars and 2 forks on github.) That is of course, because it has only a limited use case and one needs knowledge about how to run a server to make use of it.<br />
     <br />
     Still to make it useful for a broader audience I documented the project itself and the code really well. Even made a <a target='_blank' rel='noopener noreferrer' href='https://www.youtube.com/watch?v=RQiMUfzfB94'>youtube tutorial</a>.<br />
     <br />
     Since this project I have a google developer license to upload my own apps to the google playstore.<br />
     <br />
-    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/'>this project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>github page</a>.
+    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/'>this project</a> with <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/OwnTrack/#latest-screenshots'>screenshots</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>github page</a>.
   </p>
 )
 

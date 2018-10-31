@@ -40,15 +40,15 @@ class BackgroundVideo extends React.Component {
 
   render () {
     const video = this.props.showVideo ? (
-      <video ref={video => { this.video = video }} className='startpage-background-video' style={{display: this.props.stopped ? 'none' : 'initial'}} loop autoPlay>
-        <source src='./intxcc.webm' type='video/webm' />
-        <source src='./intxcc.mp4' type='video/mp4' />
+      <video poster='/fallback_intxcc.png' ref={video => { this.video = video }} className='startpage-background-video' style={{display: this.props.stopped ? 'none' : 'initial'}} loop autoPlay>
+        <source src={this.props.isFallback ? './intxcc_unblurred.webm' : './intxcc.webm'} type='video/webm' />
+        <source src={this.props.isFallback ? './intxcc_unblurred.mp4' : './intxcc.mp4'} type='video/mp4' />
       </video>
     ) : ''
 
     return (
       <div className='startpage-background'>
-        <img className='startpage-background-image' alt={FallbackImageAlt} src='/fallback_intxcc.png' />
+        {this.props.isFallback ? '' : <img className='startpage-background-image' alt={FallbackImageAlt} src='/fallback_intxcc.png' />}
         {video}
       </div>
     )
@@ -56,6 +56,7 @@ class BackgroundVideo extends React.Component {
 }
 
 BackgroundVideo.propTypes = {
+  isFallback: PropTypes.bool,
   stopped: PropTypes.bool,
   showVideo: PropTypes.bool
 }

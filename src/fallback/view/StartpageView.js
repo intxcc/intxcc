@@ -3,11 +3,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { values } from 'mobx'
 import { observer } from 'mobx-react'
 
+import { isEmpty } from '../../miscFunctions'
+
 import Defaults from '../../config/defaults'
+
 import LogoPath from '../../logo/LogoPath'
 import FallbackImageAlt from '../../config/FallbackImageAlt'
+import BackgroundVideo from '../../view/Startpage/BackgroundVideo'
 import LicenseAndImpressumLink from './Components/LicenseAndImpressumLink'
 
 const StartpageView = observer(props => (
@@ -15,6 +20,7 @@ const StartpageView = observer(props => (
     <img className='fallback-startpage-background-image' alt={FallbackImageAlt}>
       {/* For screenreaders and the like. */}
     </img>
+    <BackgroundVideo isFallback={true} stopped={!isEmpty(values(props.state.basicInfo.popups))} showVideo={Defaults.enableStartpageBackgroundVideo && props.state.showBackgroundVideo} />
     <img alt='Picture of me with triangles.' className='fallback-startpage-pic' src='/fallback_pic.png' />
     <h1>
       Development and Design by Marvin Alexander Rüll

@@ -44,4 +44,4 @@ document.addEventListener('touchstart', function addtouchclass (e) {
 }, false)
 
 // TODO: Remove before going into production
-module.hot.accept()
+// module.hot.accept()

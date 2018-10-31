@@ -145,6 +145,11 @@ const StoriesModel = types.model({
     const newTitle = story.name + ' | stories | ' + Defaults.BasicTitle
     setTimeout(() => { document.title = newTitle }, 100)
 
+    // Track page view
+    _paq.push(['setCustomUrl', '/' + window.location.hash.substr(1)])
+    _paq.push(['setDocumentTitle', newTitle])
+    _paq.push(['trackPageView'])
+
     // If the divs were not initialized yes, wait at the end of the js event queue
     if (typeof story.div === 'undefined') {
       // Try again to get div at end of the js event loop

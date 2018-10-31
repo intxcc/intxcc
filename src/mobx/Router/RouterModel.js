@@ -100,6 +100,13 @@ const RouterModel = types.model({
     }
     document.title = newTitle
 
+    // Only if the view model changed track the page view
+    if (self.model !== self.nextModel) {
+      _paq.push(['setCustomUrl', '/' + window.location.hash.substr(1)])
+      _paq.push(['setDocumentTitle', newTitle])
+      _paq.push(['trackPageView'])
+    }
+
     // Accept model
     self.model = self.nextModel
   }

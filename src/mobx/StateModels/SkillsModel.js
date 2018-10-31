@@ -326,9 +326,11 @@ const SkillsModel = types.model({
     setTimeout(() => { document.title = newTitle }, 100)
 
     // Track page view
+    /* eslint-disable */
     _paq.push(['setCustomUrl', '/' + window.location.hash.substr(1)])
     _paq.push(['setDocumentTitle', newTitle])
     _paq.push(['trackPageView'])
+    /* eslint-enable */
 
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {

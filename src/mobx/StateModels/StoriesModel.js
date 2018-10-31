@@ -146,9 +146,11 @@ const StoriesModel = types.model({
     setTimeout(() => { document.title = newTitle }, 100)
 
     // Track page view
+    /* eslint-disable */
     _paq.push(['setCustomUrl', '/' + window.location.hash.substr(1)])
     _paq.push(['setDocumentTitle', newTitle])
     _paq.push(['trackPageView'])
+    /* eslint-enable */
 
     // If the divs were not initialized yes, wait at the end of the js event queue
     if (typeof story.div === 'undefined') {

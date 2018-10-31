@@ -102,9 +102,11 @@ const RouterModel = types.model({
 
     // Only if the view model changed track the page view
     if (self.model !== self.nextModel) {
+      /* eslint-disable */
       _paq.push(['setCustomUrl', '/' + window.location.hash.substr(1)])
       _paq.push(['setDocumentTitle', newTitle])
       _paq.push(['trackPageView'])
+      /* eslint-enable */
     }
 
     // Accept model

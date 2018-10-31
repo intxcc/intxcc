@@ -93,20 +93,19 @@ const RouterModel = types.model({
       }
     }
 
-    // Change document title
-    let newTitle = Defaults.BasicTitle
-    if (!self.nextTitle !== '') {
-      newTitle = self.nextTitle + ' | ' + newTitle
-    }
-    document.title = newTitle
+    // Change document title only when title is not empty
+    if (self.nextTitle !== '') {
+      const newTitle = self.nextTitle + ' | ' + Defaults.BasicTitle
+      document.title = newTitle
 
-    // Only if the view model changed track the page view
-    if (self.model !== self.nextModel) {
-      /* eslint-disable */
-      _paq.push(['setCustomUrl', '/' + window.location.hash.substr(1)])
-      _paq.push(['setDocumentTitle', newTitle])
-      _paq.push(['trackPageView'])
-      /* eslint-enable */
+      // Only if the view model changed track the page view
+      if (self.model !== self.nextModel) {
+        /* eslint-disable */
+        _paq.push(['setCustomUrl', '/' + window.location.hash.substr(1)])
+        _paq.push(['setDocumentTitle', newTitle])
+        _paq.push(['trackPageView'])
+        /* eslint-enable */
+      }
     }
 
     // Accept model

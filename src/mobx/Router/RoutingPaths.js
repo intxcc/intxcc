@@ -10,7 +10,7 @@
 const RoutingPaths = [
   {
     path: '',
-    title: '',
+    title: 'startpage',
     model: 'startpage'
   },
   {
@@ -25,7 +25,7 @@ const RoutingPaths = [
   },
   {
     path: '/stories/:type(story)-:story_name',
-    title: 'stories',
+    title: '',
     model: 'stories'
   },
   {
@@ -35,12 +35,12 @@ const RoutingPaths = [
   },
   {
     path: '/skills/:type(skill)-:skill_id-(.*)',
-    title: 'skills',
+    title: '',
     model: 'skills'
   },
   {
     path: '/skills/:type(skill)/:skill_name',
-    title: 'skills',
+    title: '',
     model: 'skills'
   },
   {

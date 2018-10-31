@@ -5,6 +5,7 @@ import { keys } from 'mobx'
 
 import Style from '../../../style/variables/global.scss'
 
+import Defaults from '../../config/defaults'
 import STORIES_EXPLANATION from '../../config/POPUP_STORIES_EXPLANATION'
 
 import ViewEntity from '../model/ViewEntity'
@@ -139,6 +140,10 @@ const StoriesModel = types.model({
 
     const storyIndex = self.storiesIndex.get(storyIdentifier)
     const story = self.stories.get(storyIndex)
+
+    // Change document title
+    const newTitle = story.name + ' | stories | ' + Defaults.BasicTitle
+    setTimeout(() => { document.title = newTitle }, 100)
 
     // If the divs were not initialized yes, wait at the end of the js event queue
     if (typeof story.div === 'undefined') {

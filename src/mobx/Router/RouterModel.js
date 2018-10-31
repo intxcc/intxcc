@@ -8,6 +8,7 @@ import RootStoreModel from '../RootStoreModel'
 
 import RoutingPaths from './RoutingPaths'
 
+import Defaults from '../../config/defaults'
 const FallBackPath = '/'
 
 const RouterModel = types.model({
@@ -92,6 +93,13 @@ const RouterModel = types.model({
       }
     }
 
+    // Change document title
+    let newTitle = Defaults.BasicTitle
+    if (!self.nextTitle !== '') {
+      newTitle = self.nextTitle + ' | ' + newTitle
+    }
+    document.title = newTitle
+
     // Accept model
     self.model = self.nextModel
   }
@@ -173,6 +181,7 @@ const RouterModel = types.model({
       self.nextParams.set(paramKey, paramValue)
     }
 
+    self.nextTitle = route.title
     self.nextModel = route.model
   }
 

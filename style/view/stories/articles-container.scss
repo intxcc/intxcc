@@ -168,6 +168,13 @@ article {
     height: $articles-h2-spacer-margin-top-bottom;
   }
 
+  .p-h3 {
+    margin-bottom: $articles-h2-spacer-margin-top-bottom;
+    padding: 0 $articles-h2-spacer-margin-top-bottom;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
   p {
     @include media-big {
       font-size: 1.95rem;

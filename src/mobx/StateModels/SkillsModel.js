@@ -321,12 +321,16 @@ const SkillsModel = types.model({
     // If a skill is selected, show the skill details in fallback mode
     self.fallbackSetShowSkillDetails(true)
 
+    // Change document title
+    const newTitle = self.selection.skill.title + ' | skills | ' + Defaults.BasicTitle
+    setTimeout(() => { document.title = newTitle }, 100)
+
     // Check if the URL does represent the selected skill. If not, we change the URL
     if (parseInt(self.routerParams.get('skill_id')) !== getIdNumberFromIdString(self.selection.skill.id)) {
       if (self.routerParams.get('skill_name')) {
-        window.history.replaceState(null, null, '/#/skills/' + skillIdentifier + '-' + selectionIdentifier)
+        window.history.replaceState(null, newTitle, '/#/skills/' + skillIdentifier + '-' + selectionIdentifier)
       } else {
-        window.history.pushState(null, null, '/#/skills/' + skillIdentifier + '-' + selectionIdentifier)
+        window.history.pushState(null, newTitle, '/#/skills/' + skillIdentifier + '-' + selectionIdentifier)
       }
 
       // Propagate hash change to router, which does normally not happened when the changes comes from within the application

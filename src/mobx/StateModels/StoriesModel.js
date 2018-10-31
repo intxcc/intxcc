@@ -141,6 +141,10 @@ const StoriesModel = types.model({
     const storyIndex = self.storiesIndex.get(storyIdentifier)
     const story = self.stories.get(storyIndex)
 
+    if (self.selectedStory.id === story.id) {
+      return
+    }
+
     // Change document title
     const newTitle = story.name + ' | stories | ' + Defaults.BasicTitle
     setTimeout(() => { document.title = newTitle }, 100)

@@ -15,6 +15,7 @@ const StoryModel = types.model({
   id: types.identifier,
   div: types.maybeNull(types.frozen()),
   top: types.optional(types.number, 0),
+  bottom: types.optional(types.number, 0),
   textName: types.string,
   name: types.string,
   year: types.number,
@@ -40,7 +41,8 @@ const StoriesModel = types.model({
   stories: types.array(StoryModel),
   ignoreScroll: types.optional(types.boolean, false),
   fallbackShowTimeline: types.optional(types.boolean, true),
-  fallbackTimelineTransition: types.optional(types.boolean, false)
+  fallbackTimelineTransition: types.optional(types.boolean, false),
+  scrollTopInPercent: types.optional(types.number, 0)
 }).volatile(self => ({
   ignoreScrollTimeout: false,
   resizeScrollToStoryTimeout: false,
@@ -48,7 +50,7 @@ const StoriesModel = types.model({
 })).actions(self => {
   function resetFallbackTimelineTransition () {
     self.fallbackTimelineTransition = false
-    setTimeout(self.onResize, 200)
+    setTimeout(() => self.onResize(true), 200)
   }
 
   function setFallbackShowTimeline (showTimeline) {
@@ -83,12 +85,29 @@ const StoriesModel = types.model({
   function resizeScrollToStoryCallback (story) {
     self.resizeScrollToStoryTimeout = false
     self.ignoreScrollForMs(2000)
-    self.scrollToStory(story)
+
+    if (!self.basicInfo.rootStore.global.useFallback || self.scrollTopInPercent === -1) {
+      self.scrollToStory(story)
+      return
+    }
+
+    self.updateStoriesTop()
+    const firstStoryTop = self.stories.get(0).top
+    const lastStoryBottom = self.stories.get(self.stories.length - 1).bottom
+    const storiesHeight = lastStoryBottom - firstStoryTop
+    const newScrollTop = self.scrollTopInPercent * storiesHeight
+
+    setTimeout(() => window.scroll({
+      top: newScrollTop,
+      left: 0,
+      behavior: 'smooth'
+    }), 200)
   }
 
-  function onResize () {
+  function onResize (force = false) {
     // Ignore vertical resizing, as it might happen when scrolling on a mobile device
-    if (!self.lastClientWidth || self.lastClientWidth === self.basicInfo.rootStore.global.clientWidth) {
+    if (!force &&
+      (!self.lastClientWidth || self.lastClientWidth === self.basicInfo.rootStore.global.clientWidth)) {
       self.lastClientWidth = self.basicInfo.rootStore.global.clientWidth
       return
     }
@@ -105,7 +124,7 @@ const StoriesModel = types.model({
 
         self.resizeScrollToStoryTimeout = setTimeout(() => {
           self.resizeScrollToStoryCallback(story)
-        }, 100)
+        }, 200)
       }
     }
   }
@@ -221,6 +240,7 @@ const StoriesModel = types.model({
       const story = self.stories.get(key)
       const rect = story.div.getBoundingClientRect()
       story.top = rect.top
+      story.bottom = rect.bottom
     }
   }
 
@@ -238,6 +258,16 @@ const StoriesModel = types.model({
   }
 
   function onScroll (scrollTop) {
+    if (self.basicInfo.rootStore.global.useFallback) {
+      // Calculate the scrollTop in percent
+      const firstStoryTop = self.stories.get(0).top
+      const lastStoryBottom = self.stories.get(self.stories.length - 1).bottom
+      const storiesHeight = lastStoryBottom - firstStoryTop
+      self.scrollTopInPercent = scrollTop / storiesHeight
+    } else {
+      self.scrollTopInPercent = -1
+    }
+
     const isBuffer = self.basicInfo && self.basicInfo.viewEntityId === 'buffer'
     // Ignore scroll if this the stories page is in the buffer
     if (self.ignoreScroll || isBuffer) {

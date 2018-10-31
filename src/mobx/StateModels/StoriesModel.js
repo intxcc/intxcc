@@ -42,7 +42,7 @@ const StoriesModel = types.model({
   ignoreScroll: types.optional(types.boolean, false),
   fallbackShowTimeline: types.optional(types.boolean, true),
   fallbackTimelineTransition: types.optional(types.boolean, false),
-  scrollTopInPercent: types.optional(types.number, 0)
+  scrollTopInPercent: types.optional(types.number, -1)
 }).volatile(self => ({
   ignoreScrollTimeout: false,
   resizeScrollToStoryTimeout: false,
@@ -86,12 +86,15 @@ const StoriesModel = types.model({
     self.resizeScrollToStoryTimeout = false
     self.ignoreScrollForMs(2000)
 
+    // If we are not in fallback mode, or the last scrollTopInPercent is coming from the normal state, indicated by a -1 scroll to the start of the selected story
     if (!self.basicInfo.rootStore.global.useFallback || self.scrollTopInPercent === -1) {
-      self.scrollToStory(story)
+      setTimeout(() => self.scrollToStory(story), 400)
       return
     }
 
     self.updateStoriesTop()
+
+    // Calculate the scrollTop by persent and scroll to it
     const firstStoryTop = self.stories.get(0).top
     const lastStoryBottom = self.stories.get(self.stories.length - 1).bottom
     const storiesHeight = lastStoryBottom - firstStoryTop
@@ -101,7 +104,7 @@ const StoriesModel = types.model({
       top: newScrollTop,
       left: 0,
       behavior: 'smooth'
-    }), 200)
+    }), 0)
   }
 
   function onResize (force = false) {
@@ -124,7 +127,7 @@ const StoriesModel = types.model({
 
         self.resizeScrollToStoryTimeout = setTimeout(() => {
           self.resizeScrollToStoryCallback(story)
-        }, 200)
+        }, 300)
       }
     }
   }
@@ -257,17 +260,15 @@ const StoriesModel = types.model({
     }
   }
 
-  function onScroll (scrollTop) {
-    if (self.basicInfo.rootStore.global.useFallback) {
-      // Calculate the scrollTop in percent
-      const firstStoryTop = self.stories.get(0).top
-      const lastStoryBottom = self.stories.get(self.stories.length - 1).bottom
-      const storiesHeight = lastStoryBottom - firstStoryTop
-      self.scrollTopInPercent = scrollTop / storiesHeight
-    } else {
-      self.scrollTopInPercent = -1
-    }
+  function saveScrollTopInPercent (scrollTop) {
+    // Calculate the scrollTop in percent
+    const firstStoryTop = self.stories.get(0).top
+    const lastStoryBottom = self.stories.get(self.stories.length - 1).bottom
+    const storiesHeight = lastStoryBottom - firstStoryTop
+    self.scrollTopInPercent = scrollTop / storiesHeight
+  }
 
+  function onScroll (scrollTop) {
     const isBuffer = self.basicInfo && self.basicInfo.viewEntityId === 'buffer'
     // Ignore scroll if this the stories page is in the buffer
     if (self.ignoreScroll || isBuffer) {
@@ -277,6 +278,14 @@ const StoriesModel = types.model({
     // Only safe scrolltop in basic info if not in fallback. FallbackApp handles that itself
     if (!self.basicInfo.rootStore.global.useFallback) {
       self.basicInfo.setScrollTop(scrollTop)
+      // Tell the resize function, the last scroll was coming from the normal view and not the fallback one
+      self.scrollTopInPercent = -1
+    } else { // Only fallback does save the scrollTop in percent to not lose the text out of sight
+      if (self.scrollTopInPercent !== -1) {
+        self.saveScrollTopInPercent(scrollTop)
+      } else {
+        setTimeout(() => self.saveScrollTopInPercent(scrollTop), 500)
+      }
     }
 
     self.updateStoriesTop()
@@ -358,6 +367,7 @@ const StoriesModel = types.model({
     setDiv,
     updateStoriesTop,
     ignoreScrollForMs,
+    saveScrollTopInPercent,
     onScroll,
     scrollToStory
   }

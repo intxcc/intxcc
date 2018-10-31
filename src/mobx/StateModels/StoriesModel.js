@@ -88,7 +88,7 @@ const StoriesModel = types.model({
 
     // If we are not in fallback mode, or the last scrollTopInPercent is coming from the normal state, indicated by a -1 scroll to the start of the selected story
     if (!self.basicInfo.rootStore.global.useFallback || self.scrollTopInPercent === -1) {
-      setTimeout(() => self.scrollToStory(story), 400)
+      setTimeout(() => self.scrollToStory(story), 100)
       return
     }
 
@@ -110,7 +110,7 @@ const StoriesModel = types.model({
   function onResize (force = false) {
     // Ignore vertical resizing, as it might happen when scrolling on a mobile device
     if (!force &&
-      (!self.lastClientWidth || self.lastClientWidth === self.basicInfo.rootStore.global.clientWidth)) {
+      (self.lastClientWidth !== false && self.lastClientWidth === self.basicInfo.rootStore.global.clientWidth)) {
       self.lastClientWidth = self.basicInfo.rootStore.global.clientWidth
       return
     }
@@ -284,7 +284,8 @@ const StoriesModel = types.model({
       if (self.scrollTopInPercent !== -1) {
         self.saveScrollTopInPercent(scrollTop)
       } else {
-        setTimeout(() => self.saveScrollTopInPercent(scrollTop), 500)
+        // Wait until the state had time to scroll to the story, when changing between fallback and normal view
+        setTimeout(() => self.saveScrollTopInPercent(scrollTop), 250)
       }
     }
 

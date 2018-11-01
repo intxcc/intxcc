@@ -3,7 +3,7 @@
 import Colors from '../../style/variables/colors.scss'
 /** Describes very basic but static configuration properties */
 const ProductionDefaults = {
-  BasicTitle: 'intxcc | Media Design and Development',
+  BasicTitle: 'intx.cc | Media Design and Development',
   White: Colors.white,
   Black: Colors.black,
   PolygonFill: Colors.black,

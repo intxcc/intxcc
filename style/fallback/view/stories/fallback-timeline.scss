@@ -6,6 +6,8 @@
 
   width: 4rem;
 
+  pointer-events: none;
+
   @media (max-width: 320px) {
     top: 25vmin;
     width: 17.5vmin;
@@ -14,6 +16,7 @@
   &.active {
     .fallback-timeline-inner {
       opacity: 1;
+      pointer-events: initial;
     }
 
     .fallback-timeline-shrink-btn {
@@ -33,6 +36,8 @@
 
     overflow: hidden;
     transform-origin: top left;
+
+    pointer-events: none;
 
     @media (max-width: 320px) {
       bottom: #{'calc(17.5vmin + .5rem)'};
@@ -63,12 +68,15 @@
 
     font-size: 2rem;
 
+    pointer-events: initial;
+
     @media (max-width: 320px) {
       height: 17.5vmin;
     }
 
     &.hide {
       opacity: 0;
+      pointer-events: none;
     }
 
     &:hover {

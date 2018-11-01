@@ -8,6 +8,7 @@ const LanguagesColumn = {
       skills: [
         {
           title: 'HTML',
+          wikiLink: 'https://en.wikipedia.org/wiki/HTML',
           mark: 3
         }, {
           title: 'CSS3',
@@ -108,6 +109,7 @@ const LanguagesColumn = {
         {
           title: 'C',
           mark: 3,
+          wikiLink: 'https://en.wikipedia.org/wiki/C_(programming_language)',
           desc: 'I really like C. It\'s tiny and beautiful. If you don\'t watch your step you will shoot yourself in the foot, but it is very fast and can be used for developing without high complexities (in the language itself) of languages like [Link|skill|ES6] or [Link|skill|Python].',
           trivia: 'I would never ever use it though to write a server application. Too many pitfalls and everybody makes mistakes. Rust is on my to-learn-list, which fixes some of them.'
         }, {

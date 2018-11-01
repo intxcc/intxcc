@@ -23,6 +23,9 @@ const SkillsDetailView = observer((props) => (
       <div className='skills-detail-view-mark' title={MARK_TOOLTIP[props.selection.skill.mark]}>{props.selection.skill.mark}</div>
       {props.selection.skill.title}
     </h1>
+    {props.selection.skill.wikiLink ? <a className='skills-detail-view-wikipedia-link' target='_blank' rel='noopener noreferrer' href={props.selection.skill.wikiLink}>
+      Show on wikipedia
+    </a> : ''}
     {props.selection.skill.trivia ? <p className='skills-detail-view-trivia'>
       <LinkReplaceComponent text={props.selection.skill.trivia} />
     </p> : ''}

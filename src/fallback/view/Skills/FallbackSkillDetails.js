@@ -48,6 +48,9 @@ const FallbackSkillDetails = observer(props => {
             </div>
           </div>
           <div style={{clear: 'both'}}></div>
+          {props.skill.wikiLink ? <a className='fallback-skill-details-view-wikipedia-link' target='_blank' rel='noopener noreferrer' href={props.skill.wikiLink}>
+            Show on wikipedia
+          </a> : ''}
           {props.skill.desc && props.skill.desc !== '' ? <p className='fallback-skill-details-desc'>
             <LinkReplaceComponent text={props.skill.desc} />
           </p> : ''}

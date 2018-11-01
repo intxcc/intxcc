@@ -21,6 +21,13 @@
     position: relative;
   }
 
+  .fallback-skill-details-view-wikipedia-link {
+    display: block;
+
+    transform: translateY(.5rem);
+    margin: .5rem 0 0 1rem;
+  }
+
   .fallback-skill-details-inner-title-wrapper {
     display: flex;
 

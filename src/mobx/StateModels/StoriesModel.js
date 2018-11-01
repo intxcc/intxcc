@@ -46,7 +46,9 @@ const StoriesModel = types.model({
 }).volatile(self => ({
   ignoreScrollTimeout: false,
   resizeScrollToStoryTimeout: false,
-  lastClientWidth: false
+  lastClientWidth: false,
+  lastScrollTime: 0,
+  ignoreScrollTillScrollStandsStill: false
 })).actions(self => {
   function resetFallbackTimelineTransition () {
     self.fallbackTimelineTransition = false
@@ -84,7 +86,7 @@ const StoriesModel = types.model({
 
   function resizeScrollToStoryCallback (story) {
     self.resizeScrollToStoryTimeout = false
-    self.ignoreScrollForMs(2000)
+    self.ignoreScrollForMs(200)
 
     // If we are not in fallback mode, or the last scrollTopInPercent is coming from the normal state, indicated by a -1 scroll to the start of the selected story
     if (!self.basicInfo.rootStore.global.useFallback || self.scrollTopInPercent === -1) {
@@ -151,7 +153,7 @@ const StoriesModel = types.model({
 
     if (ignoreNextScroll) {
       // Ignore scroll right away, because otherwise, if the story changed outside of the state, the state will revert the change
-      self.ignoreScrollForMs(2000)
+      self.ignoreScrollForMs(200)
     }
 
     // Always wait 100ms before selecting a story, so the app has time to tell us if the viewEntity, the stories are shown in is the buffer or not
@@ -195,7 +197,7 @@ const StoriesModel = types.model({
     self.selectedStory = story
     if (doScroll) {
       if (ignoreNextScroll) {
-        self.ignoreScrollForMs(2000)
+        self.ignoreScrollForMs(200)
       }
       self.scrollToStory(story)
     }
@@ -250,6 +252,7 @@ const StoriesModel = types.model({
   function ignoreScrollForMs (timeoutMs, isCallback = false) {
     if (!isCallback) {
       self.ignoreScroll = true
+      self.ignoreScrollTillScrollStandsStill = true
       if (self.ignoreScrollTimeout) {
         clearTimeout(self.ignoreScrollTimeout)
       }
@@ -269,11 +272,27 @@ const StoriesModel = types.model({
   }
 
   function onScroll (scrollTop) {
+    const currentTime = (new Date()).getTime()
     const isBuffer = self.basicInfo && self.basicInfo.viewEntityId === 'buffer'
     // Ignore scroll if this the stories page is in the buffer
     if (self.ignoreScroll || isBuffer) {
+      // Save the scroll time still, as it needs to measure the time between every scroll, ignored, or not
+      self.lastScrollTime = currentTime
       return
     }
+
+    // The thought behind this, is that we ignore the scroll completely for about 200 ms, if the site is scrolling because of internal state change and set ignoreScrollTillScrollStandsStill to true. So after the 200ms passed, we wait till the scroll is over. That is indicated by more than 200ms between scroll events, after that ignoreScrollTillScrollStandsStill is false again and the scroll is noticed again
+    const timePassedSinceLastScroll = currentTime - self.lastScrollTime
+    if (self.ignoreScrollTillScrollStandsStill) {
+      // The treshhold for a standing still scroll is, if for 200 ms there was no scroll. In the normal UX this should be a time, no user will probably notice in normal use cases
+      if (timePassedSinceLastScroll > 200) {
+        self.ignoreScrollTillScrollStandsStill = false
+      } else {
+        self.lastScrollTime = currentTime
+        return
+      }
+    }
+    self.lastScrollTime = currentTime
 
     // Only safe scrolltop in basic info if not in fallback. FallbackApp handles that itself
     if (!self.basicInfo.rootStore.global.useFallback) {
@@ -285,6 +304,7 @@ const StoriesModel = types.model({
         self.saveScrollTopInPercent(scrollTop)
       } else {
         // Wait until the state had time to scroll to the story, when changing between fallback and normal view
+        self.ignoreScrollForMs(200)
         setTimeout(() => self.saveScrollTopInPercent(scrollTop), 250)
       }
     }

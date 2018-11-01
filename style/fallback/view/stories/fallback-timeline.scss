@@ -21,6 +21,11 @@
 
     .fallback-timeline-shrink-btn {
       border-color: $black;
+
+      &.hide {
+        transform: initial;
+        padding-left: initial;
+      }
     }
   }
 
@@ -56,7 +61,8 @@
     justify-content: center;
 
     transition: $global--variant-change-duration border-color,
-    opacity $global--variant-change-duration,
+    transform $global--variant-change-duration,
+    padding-left $global--variant-change-duration,
     .2s color;
 
     border-top: .5rem solid transparent;
@@ -75,8 +81,8 @@
     }
 
     &.hide {
-      opacity: 0;
-      pointer-events: none;
+      transform: translateX(-100%);
+      padding-left: 50%;
     }
 
     &:hover {

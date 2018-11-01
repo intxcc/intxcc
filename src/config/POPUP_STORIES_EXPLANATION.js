@@ -8,7 +8,7 @@ const STORIES_EXPLANATION = {
   text: 'Stories does mean the development stories from past and current projects.',
   hint: 'To filter stories for a specific skill, use the stories overlay on the skills-page.',
   fallbackHint: 'To filter stories for a specific skill, look on the details view of the skill on the skills-page.',
-  trivia: 'Contact me for more info about my portfolio projects.'
+  trivia: 'Contact me for more information about my portfolio projects.'
 }
 
 export default STORIES_EXPLANATION

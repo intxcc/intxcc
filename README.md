@@ -8,4 +8,4 @@ My personal website.
 [https://landing.intx.cc/](https://landing.intx.cc/)
 
 ## Issues
-Would be great if you report any errors you find. That you ♥
+Would be great if you report any errors you find. Thank you ♥

@@ -9,6 +9,7 @@ const AdminColumn = {
         {
           title: 'nginx',
           mark: 3,
+          desc: 'A fast and reliable server. I like it over [Link|skill|Apache2] because of the minimalistic approach.',
           trivia: 'This webpage is provided by nginx. Thank nginx, not me.'
         }, {
           title: 'NodeJS',
@@ -39,7 +40,7 @@ const AdminColumn = {
         {
           title: 'Tor',
           mark: 2,
-          desc: 'Tor formerly known as "The Onion Routing". I was the creator and administrator of a lawful Tor hidden service.'
+          desc: 'Tor formerly known as "The Onion Routing". I was the creator and administrator of a [Link|story|lawful Tor hidden service|story-thehackcamporg].'
         }, {
           title: 'DNS',
           mark: 2,

@@ -29,17 +29,30 @@ function createLink (linkString, linkKey) {
           {skillName}
         </a>
       )
+    case 'story':
+      const storyLinkText = linkData[0]
+      const storyName = linkData[1]
+
+      if (!storyLinkText || !storyName) {
+        break
+      }
+
+      return (
+        <a key={linkKey} href={'/#/stories/' + storyName}>
+          {storyLinkText}
+        </a>
+      )
     case 'extern':
-      const linkName = linkData[0]
+      const linkText = linkData[0]
       const linkUrl = linkData[1]
 
-      if (!linkName || !linkUrl) {
+      if (!linkText || !linkUrl) {
         break
       }
 
       return (
         <a key={linkKey} target='_blank' rel='noopener noreferrer' href={linkUrl}>
-          {linkName}
+          {linkText}
         </a>
       )
   }

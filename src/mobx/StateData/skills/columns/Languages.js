@@ -32,7 +32,7 @@ const LanguagesColumn = {
         }, {
           title: 'ES6',
           mark: 3,
-          trivia: 'ES6 really made my life easier. Glad that babel does exist to transpile ES6 to ES5 for compatibility reasons.'
+          trivia: 'ES6 really made my life easier. Glad that babel does exist to transpile ES6 to ES5 for compatibility.'
         }, {
           title: 'ReactJS',
           mark: 3,
@@ -41,7 +41,7 @@ const LanguagesColumn = {
           title: 'MobX',
           mark: 3,
           desc: 'Including MST (MobX state tree).',
-          trivia: 'This site uses MobX 4 (LTS) for compatibility reasons.'
+          trivia: 'This site uses MobX 4 (LTS) for compatibility.'
         }, {
           title: 'Canvas',
           mark: 2
@@ -108,8 +108,8 @@ const LanguagesColumn = {
         {
           title: 'C',
           mark: 3,
-          desc: 'I really like C. It\'s tiny and beautiful. If you don\'t watch your step you will shoot yourself in the foot, but it\'s very performant and can be used for developing without high complexities (in the language itself) of languages like [Link|skill|ES6] or [Link|skill|Python].',
-          trivia: 'I would never ever use it though to write a server application. Too many pitfalls and everybody makes mistakes. Rust is on my to-learn-list though, which fixes some of them.'
+          desc: 'I really like C. It\'s tiny and beautiful. If you don\'t watch your step you will shoot yourself in the foot, but it is very fast and can be used for developing without high complexities (in the language itself) of languages like [Link|skill|ES6] or [Link|skill|Python].',
+          trivia: 'I would never ever use it though to write a server application. Too many pitfalls and everybody makes mistakes. Rust is on my to-learn-list, which fixes some of them.'
         }, {
           title: 'C++',
           mark: 2

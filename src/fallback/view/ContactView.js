@@ -29,7 +29,7 @@ const ContactView = observer(props => (
           <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc'>intxcc</a><br />
           <a target='_blank' rel='noopener noreferrer' href='https://www.linkedin.com/in/intxcc/'>intxcc</a><br />
           <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/intxcc'>intxcc</a><br />
-          <a target='_blank' rel='noopener noreferrer' href='mailto:contact@intx.cc'>contact@intx.cc</a>
+          <a target='_blank' rel='noopener noreferrer' href='mailto:contact@intx.cc'>contact@intx.cc</a> <a target='_blank' rel='noopener noreferrer' href='https://intx.cc/public/contact[at]intx.cc_contact[at]marvinruell.de_public_key.asc'>pgp</a>
         </div>
       </div>
       <div className='contact-page-impressum'>

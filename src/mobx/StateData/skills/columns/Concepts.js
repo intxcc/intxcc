@@ -14,7 +14,7 @@ const ConceptsColumn = {
         }, {
           title: 'DRY',
           mark: 3,
-          wikiLink: 'https://de.wikipedia.org/wiki/Don\'t_repeat_yourself',
+          wikiLink: 'https://en.wikipedia.org/wiki/Don\'t_repeat_yourself',
           trivia: '"Don\'t repeat yourself"'
         }, {
           title: 'KISS',

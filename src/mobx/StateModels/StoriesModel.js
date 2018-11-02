@@ -110,6 +110,14 @@ const StoriesModel = types.model({
   }
 
   function onResize (force = false) {
+    // If the resize event is triggered, while a scroll from the app is in action, wait 600ms and rescroll
+    if (self.ignoreNextScroll || self.ignoreScrollTillScrollStandsStill) {
+      if (self.selectedStory) {
+        setTimeout(() => self.scrollToStory(self.selectedStory), 600)
+      }
+      return
+    }
+
     // Ignore vertical resizing, as it might happen when scrolling on a mobile device
     if (!force &&
       (self.lastClientWidth !== false && self.lastClientWidth === self.basicInfo.rootStore.global.clientWidth)) {

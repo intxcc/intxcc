@@ -4,9 +4,9 @@ import React from 'react'
 
 const StoryText = (
   <p>
-    In the beginning there was a problem: I played around with my arduino and some led strips and wanted them to &quot;move&quot; to the rythm of the music. In specific to change the color values and luminosity with the rhythm.<br />
+    In the beginning there was a problem: I played around with my arduino and some led strips and wanted them to &quot;move&quot; to the rythm of the music. Particularly to change the color values and luminosity with the rhythm.<br />
     <br />
-    To extract patterns from music there was already the python module <a target='_blank' rel='noopener noreferrer' href='https://aubio.org/'>aubio</a> (in specific the energy based onset detection function) and because I wanted something straight-forward for this use case I decided to use python in whole project.<br />
+    To extract patterns from music there was already the python module <a target='_blank' rel='noopener noreferrer' href='https://aubio.org/'>aubio</a> (in particular the energy based onset detection function) and because I wanted something straight-forward for this use case I decided to use python in the whole project.<br />
     <br />
     To my surprise the only solutions I found, were to record input streams, like the microphone, in python. But I wanted something universally working for all applications playing music. So I needed to find a way to record the output stream going to the speakers. With that stream one could record a few milliseconds and apply the onset detection function to it.<br />
     <br />

@@ -76,9 +76,6 @@
       align-items: flex-start;
       justify-content: center;
 
-      transition: .2s color,
-      .2s background-color;
-
       margin-left: 2rem;
 
       background-color: $white;
@@ -87,8 +84,9 @@
       min-height: 3rem;
 
       &:hover {
-        background-color: $primary-color-area;
-        color: $white;
+        h1 {
+          color: $secondary-color;
+        }
       }
     }
 

@@ -12,7 +12,7 @@ const StoryText = (
     <br />
     After searching but not finding a better solution, I started to fork PyAudio with Portaudio, to make use of the <a target='_blank' rel='noopener noreferrer' href='https://docs.microsoft.com/windows/desktop/CoreAudio/loopback-recording'>AUDCLNT<i>[...]</i>LOOPBACK</a> flag in the Windows Audio Session API (WASAPI).<br />
     <br />
-    That was a really interesting project, because it was the first time I worked in-depth with code not written by myself and needed to understand it with only a very slim documentation. The most challenging part was to understand how the portaudio library works and how I can edit/extend the in C written code to make everything working as expected. After that I learned how C bindings worked with python, extended the PyAudio module to work with my portaudio fork and integrated and documented everything to a finished module.<br />
+    That was a really interesting project, because it was the first time I worked in-depth with code not written by myself and needed to understand it with only a very slim documentation. The most challenging part was to understand how the portaudio library works and how I can edit/extend the in C written code to make everything work as expected. After that I learned how C bindings worked with python, extended the PyAudio module to work with my portaudio fork and integrated and documented everything to get a finished module.<br />
     <br />
     This was one of the shorter projects, (1 to 3 days, without the time for maintenance) but one of the most challenging. I learned a lot and am now far more comfortable with code I did not write myself.<br />
     <br />

@@ -22,6 +22,19 @@
     flex-direction: row;
   }
 
+  .fallback-startpage-headlines {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (orientation: landscape) {
+      width: 46vw;
+      min-width: 14rem;
+    }
+  }
+
   h1 {
     z-index: 1;
 
@@ -35,8 +48,9 @@
     font-size: 1.75rem;
 
     @media screen and (orientation: landscape) {
-      width: 19vw;
-      min-width: 14rem;
+      margin: 1rem .5rem;
+      padding: .25 .5rem;
+      font-size: 1.5rem;
     }
   }
 
@@ -54,8 +68,8 @@
     font-weight: normal;
 
     @media screen and (orientation: landscape) {
-      width: 19vw;
-      min-width: 14rem;
+      margin: 0 .5rem;
+      padding: .25 .5rem;
     }
   }
 
@@ -84,12 +98,6 @@
 
   @media (orientation: landscape) {
     @media (max-width: 560px), (max-height: 560px) {
-      h1 {
-        margin: 2rem 1rem;
-        min-width: 11rem;
-        font-size: 1.5rem;
-      }
-
       .fallback-startpage-pic {
         width: 60vh;
         min-width: 10rem;

@@ -22,12 +22,14 @@ const StartpageView = observer(props => (
     </img>
     <BackgroundVideo isFallback={true} stopped={!isEmpty(values(props.state.basicInfo.popups))} showVideo={Defaults.enableStartpageBackgroundVideo && props.state.showBackgroundVideo} />
     <img alt='Picture of me with triangles.' className='fallback-startpage-pic' src='/fallback_pic.png' />
-    <h1>
-      Development and Design by Marvin Alexander Rüll.
-    </h1>
-    <h2>
-      <strong>Hint</strong>: This website does work on all modern browsers and screen sizes, but looks better on big screens as they have more room for design.
-    </h2>
+    <div className='fallback-startpage-headlines'>
+      <h1>
+        Development and Design by Marvin Alexander Rüll.
+      </h1>
+      <h2>
+        <strong>Hint</strong>: This website does work on all modern browsers and screen sizes, but looks better on big screens as they have more room for design.
+      </h2>
+    </div>
     <LogoPath className={'fallback-logo'} strokeWidth={Defaults.DefaultStrokeWidth / 10} />
     <LicenseAndImpressumLink />
   </div>

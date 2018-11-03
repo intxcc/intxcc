@@ -27,7 +27,7 @@ const StartpageView = observer(props => (
         Development and Design by Marvin Alexander Rüll.
       </h1>
       <h2>
-        <strong>Hint</strong>: This website does work on all modern browsers and screen sizes, but looks better on big screens as they have more room for design.
+        <strong>Hint</strong>: This website was optimized for all modern browsers and screen sizes, but looks better on big screens as they have more room for design.
       </h2>
     </div>
     <LogoPath className={'fallback-logo'} strokeWidth={Defaults.DefaultStrokeWidth / 10} />

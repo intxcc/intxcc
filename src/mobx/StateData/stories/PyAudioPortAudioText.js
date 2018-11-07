@@ -4,6 +4,8 @@ import React from 'react'
 
 const StoryText = (
   <p>
+    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/pyaudio_portaudio'>the project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>GitHub page</a>.<br />
+    <br />
     In the beginning there was a problem: I played around with my arduino and some led strips and wanted them to &quot;move&quot; to the rythm of the music. Particularly to change the color values and luminosity with the rhythm.<br />
     <br />
     To extract patterns from music there was already the python module <a target='_blank' rel='noopener noreferrer' href='https://aubio.org/'>aubio</a> (in particular the energy based onset detection function) and because I wanted something straight-forward for this use case I decided to use python in the whole project.<br />
@@ -18,9 +20,7 @@ const StoryText = (
     <br />
     The project is licensed under the MIT license - like the projects I forked from - and includes precompiled libraries. It is also still maintained with a good response time to issues and I merged some changes from the forks of my repository. Its GitHub page has around 100 unique visits every week with a good google rank.<br />
     <br />
-    In conclusion I created a repository that did not only solve my problem but the problem of a lot of people. And my arduino-pyaudio-portaudio led strips work like a charm.<br />
-    <br />
-    See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/pyaudio_portaudio'>the project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>GitHub page</a>.
+    In conclusion I created a repository that did not only solve my problem but the problem of a lot of people. And my arduino-pyaudio-portaudio led strips work like a charm.
   </p>
 )
 

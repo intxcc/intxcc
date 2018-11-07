@@ -144,7 +144,7 @@ const LanguagesColumn = {
           title: 'MIPS Assembly',
           mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/MIPS_architecture',
-          desc: 'Had it at university. Was really fun to learn how to write programs with it and how it gives you this very precise control of what the CPU should do.',
+          desc: 'Had it in university. Was really fun to learn how to write programs with it and how it gives you this very precise control of what the CPU should do.',
           trivia: 'Once you\'re in the flow, it\'s not even that hard to use it.'
         }, {
           title: 'PHP',

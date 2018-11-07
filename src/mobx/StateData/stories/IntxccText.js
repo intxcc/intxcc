@@ -6,6 +6,8 @@ const StoryText = (
   <div>
     <p className='p-h3'>This is about the website: Information about the server <a href='/#/stories/story-intxcc-server'>here</a>.</p>
     <p>
+      See <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/intxcc'>the project</a> on my <a target='_blank' rel='noopener noreferrer' href='https://github.com/intxcc/'>GitHub page</a>.<br />
+      <br />
       At around 13.500 lines of code, this website might very well be the biggest project I completed so far.<br />
       <br />
       My main focus was to make a beautiful design, that displays information about me in an simple, comprehensible, but good looking way. For example the skills page is in my opinion far cleaner at showing all the information one could want to know, than just a normal list, while still beeing unique.<br />

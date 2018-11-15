@@ -12,6 +12,7 @@ const StoryData = {
     'dns',
     'dovecot',
     'ejabberd',
+    'linux',
     'mysql',
     'nextcloud',
     'nginx',

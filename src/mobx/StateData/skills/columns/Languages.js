@@ -51,6 +51,10 @@ const LanguagesColumn = {
           desc: 'Including MST (MobX state tree).',
           trivia: 'This site uses MobX 4 (LTS) for compatibility. More information [Link|extern|here|https://mobx.js.org/].'
         }, {
+          title: 'jQuery',
+          mark: 3,
+          wikiLink: 'https://en.wikipedia.org/wiki/JQuery'
+        }, {
           title: 'Canvas',
           mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/Canvas_element'
@@ -62,10 +66,6 @@ const LanguagesColumn = {
           title: 'Babel',
           mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/Babel_(compiler)'
-        }, {
-          title: 'jQuery',
-          mark: 2,
-          wikiLink: 'https://en.wikipedia.org/wiki/JQuery'
         }, {
           title: 'WebSocket',
           mark: 2,
@@ -137,6 +137,11 @@ const LanguagesColumn = {
           desc: 'I really like C. It\'s tiny and beautiful. If you don\'t watch your step you will shoot yourself in the foot, but it is very fast and can be used for developing without high complexities (in the language itself) of languages like [Link|skill|ES6] or [Link|skill|Python].',
           trivia: 'I would never ever use it though to write a server application. Too many pitfalls and everybody makes mistakes. Rust is on my to-learn-list, which fixes some of them.'
         }, {
+          title: 'PHP',
+          mark: 3,
+          wikiLink: 'https://en.wikipedia.org/wiki/PHP',
+          desc: 'In the beginning I used a lot PHP, as I thought it was industry standard, like Photoshop is for photo editing. Nowadays I use more [Link|skill|Python] or [Link|skill|ES6] on the server side.'
+        }, {
           title: 'C++',
           mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/C%2B%2B'
@@ -146,11 +151,6 @@ const LanguagesColumn = {
           wikiLink: 'https://en.wikipedia.org/wiki/MIPS_architecture',
           desc: 'Had it in university. Was really fun to learn how to write programs with it and how it gives you this very precise control of what the CPU should do.',
           trivia: 'Once you\'re in the flow, it\'s not even that hard to use it.'
-        }, {
-          title: 'PHP',
-          mark: 2,
-          wikiLink: 'https://en.wikipedia.org/wiki/PHP',
-          desc: 'In the beginning I used a lot PHP, as I thought it was industry standard, like Photoshop is for photo editing. Nowadays I use more [Link|skill|Python] or [Link|skill|ES6] on the server side.'
         }
       ]
     }

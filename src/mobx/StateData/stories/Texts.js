@@ -7,6 +7,7 @@ import OwnTrackText from './OwnTrackText'
 import PyAudioPortAudioText from './PyAudioPortAudioText'
 import E4parteieuText from './E4parteieuText'
 import IntxccText from './IntxccText'
+import EmarsysText from './EmarsysText'
 
 const Texts = {
   'PandatrekText': PandatrekText,
@@ -15,7 +16,8 @@ const Texts = {
   'OwnTrackText': OwnTrackText,
   'PyAudioPortAudioText': PyAudioPortAudioText,
   'E4parteieuText': E4parteieuText,
-  'IntxccText': IntxccText
+  'IntxccText': IntxccText,
+  'EmarsysText': EmarsysText
 }
 
 export default Texts

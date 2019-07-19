@@ -31,13 +31,18 @@ const AdminColumn = {
           wikiLink: 'https://en.wikipedia.org/wiki/MySQL',
           desc: 'For the most part the main database I use. Lately I try to use more [Link|skill|MongoDB], if it has an advantage.'
         }, {
+          title: 'PostgreSQL ',
+          mark: 3,
+          wikiLink: 'https://en.wikipedia.org/wiki/PostgreSQL',
+          desc: 'Using it a lot, because it is working better out of the box with [Link|skill|Heroku]. And once you get started with it you might actually like it better than [Link|skill|MySQL].'
+        }, {
+          title: 'Redis',
+          mark: 3,
+          wikiLink: 'https://en.wikipedia.org/wiki/Redis'
+        }, {
           title: 'MongoDB',
           mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/MongoDB'
-        }, {
-          title: 'Redis',
-          mark: 2,
-          wikiLink: 'https://en.wikipedia.org/wiki/Redis'
         }
       ]
     }, {

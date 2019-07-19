@@ -38,6 +38,22 @@ const ToolsColumn = {
         }
       ]
     }, {
+      title: 'Deployment',
+      skills: [
+        {
+          title: 'Heroku',
+          mark: 2,
+          wikiLink: 'https://en.wikipedia.org/wiki/Heroku',
+          desc: 'Using it a lot for business related stuff. I really learned its powerfulness, to love it, as well as most quirkes about it . When coding in private I do not often have to scale things up, so to get the chance to learn how to do that with Heroku was a lot of fun.',
+          trivia: 'Closely related to [Link|Skill|Docker].'
+        }, {
+          title: 'Docker',
+          mark: 2,
+          wikiLink: 'https://en.wikipedia.org/wiki/Docker_(software)',
+          desc: 'Was unsure, if this and [Link|Skill|Heroku] are the same skill, but I use it also outside of this environment (e.g. to run GitLab CI Runners) and liked the approach of it. I think it is not the best approach for everything, but definitely has its use cases.'
+        }
+      ]
+    }, {
       title: 'Development',
       skills: [
         {
@@ -70,6 +86,11 @@ const ToolsColumn = {
       title: 'Version CS',
       skills: [
         {
+          title: 'GitLab',
+          mark: 3,
+          wikiLink: 'https://en.wikipedia.org/wiki/GitLab',
+          trivia: 'Had the chance to use its CI Pipelines for automated testing and liked what I saw.'
+        }, {
           title: 'GitHub',
           mark: 3,
           wikiLink: 'https://en.wikipedia.org/wiki/GitHub',
@@ -80,7 +101,7 @@ const ToolsColumn = {
           wikiLink: 'https://en.wikipedia.org/wiki/Git'
         }, {
           title: 'Subversion',
-          mark: 1,
+          mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/Apache_Subversion'
         }
       ]
@@ -88,6 +109,12 @@ const ToolsColumn = {
       title: 'Others',
       skills: [
         {
+          title: 'WSL',
+          mark: 3,
+          wikiLink: 'https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux',
+          desc: 'Finally a tool to get a good developer experience on windows.',
+          trivia: 'Windows Subsystem for Linux'
+        }, {
           title: 'LaTeX',
           mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/LaTeX',
@@ -101,7 +128,7 @@ const ToolsColumn = {
           title: 'Cygwin',
           mark: 2,
           wikiLink: 'https://en.wikipedia.org/wiki/Cygwin',
-          desc: 'Before WSL (Windows Subsystem for Linux) came around and I did not want to miss Linux while working on Windows I used Cygwin a lot.'
+          desc: 'Before [Link|skill|WSL] came around and I did not want to miss Linux while working on Windows I used Cygwin a lot.'
         }, {
           title: 'PowerShell',
           mark: 1,

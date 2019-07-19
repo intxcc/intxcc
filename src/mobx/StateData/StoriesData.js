@@ -10,6 +10,7 @@ import OwnTrack from './stories/OwnTrack'
 import PyAudioPortAudio from './stories/PyAudioPortAudio'
 import E4parteieu from './stories/E4parteieu'
 import Intxcc from './stories/Intxcc'
+import Emarsys from './stories/Emarsys'
 
 const stories = [
   Pandatrek,
@@ -18,7 +19,8 @@ const stories = [
   OwnTrack,
   PyAudioPortAudio,
   E4parteieu,
-  Intxcc
+  Intxcc,
+  Emarsys
 ]
 
 let storiesIndex = {}

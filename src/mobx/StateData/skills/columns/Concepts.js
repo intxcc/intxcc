@@ -54,7 +54,7 @@ const ConceptsColumn = {
       skills: [
         {
           title: 'Agile',
-          mark: 2,
+          mark: 3,
           wikiLink: 'https://en.wikipedia.org/wiki/Agile_software_development'
         }, {
           title: 'Scrum',

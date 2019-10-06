@@ -36,8 +36,8 @@ const ContactView = observer(props => (
         <h2>Angaben gemäß §5 TMG | Impressum to conform to german law</h2>
         <p className='contact-page-impressum-content'>
           Marvin Alexander Rüll<br />
-          Abtstr. 4<br />
-          12489 Berlin
+          Müggelstr. 14<br />
+          10247 Berlin
         </p>
       </div>
     </div>

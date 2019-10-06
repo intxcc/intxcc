@@ -53,8 +53,8 @@ const ContactOverlayView = observer((props) => (
       <div className='contact-page-impressum-inner'>
         <h2>
           Marvin Alexander Rüll<br />
-          Abtstr. 4<br />
-          12489 Berlin
+          Müggelstr. 14<br />
+          10247 Berlin
         </h2>
         <h1>
           Angaben gemäß §5 TMG
